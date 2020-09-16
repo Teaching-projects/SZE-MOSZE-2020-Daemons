@@ -20,14 +20,16 @@ const void Control::Attack(Unit & firstplayer, Unit& secondplayer)
 		std::cout << firstname << " ->" << secondname << std::endl;
 		//secondhp = secondhp - firstdmg;
 		//secondplayer.SetHp(secondhp);
-		secondplayer.TakeDamage(secondhp);
+		secondplayer.TakeDamage(firstdmg);
+		secondhp = secondplayer.GetHp();
 		Report(firstplayer, secondplayer);
 		if (secondhp > 0)
 		{
 			std::cout << secondname << " ->" <<   firstname << std::endl;
 			//firsthp = firsthp - seconddmg;
 			//firstplayer.SetHp(firsthp);
-			firstplayer.TakeDamage(secondhp);
+			firstplayer.TakeDamage(seconddmg);
+			firsthp=firstplayer.GetHp();
 			Report(firstplayer, secondplayer);
 		}
 	}
