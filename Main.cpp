@@ -11,7 +11,7 @@ int main(int argc,char** argv)
 	hp = std::atoi(argv[5]);
 	dmg = std::atoi(argv[6]);
 	Unit player2(hp,dmg,player_name);
-	//vezerles.GameStart(player1,player2);
+	
 	
 	vezerles.Attack(player1,player2);
 	if (player1.GetHp() == 0)

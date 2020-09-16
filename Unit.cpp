@@ -2,24 +2,39 @@
 
 void Unit::SetHp(int HP)
 {
-	hp = HP;
+	if (HP < 0)
+	{
+		*p_hp = 0;
+	}
+	else
+	{
+		*p_hp = HP;
+	}
 }
 
-int Unit::GetHp()
+const int Unit::GetHp()
 {
 	return hp;
 }
 
-int Unit::GetDmg()
+const int Unit::GetDmg()
 {
 	return dmg;
 }
 
-std::string Unit::GetName()
+const std::string Unit::GetName()
 {
 	return name;
 }
 
-Unit::~Unit()
+const void Unit::TakeDamage(const int & damage)
 {
+
+	*p_hp -= damage;
+	if (*p_hp < 0)
+	{
+		*p_hp = 0;
+	}
 }
+
+
