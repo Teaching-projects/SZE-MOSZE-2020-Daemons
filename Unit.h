@@ -11,7 +11,7 @@ public:
 	const int getDmg();
 	const std::string getName();
 	void takeDamage(const int& damage);
-	Unit(int h, int d, std::string n) : hp(h), dmg(d), name(n){}
+	Unit(const int& h, const int& d, const std::string& n) : hp(h), dmg(d), name(n){}
 	
 };
 
