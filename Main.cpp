@@ -1,5 +1,6 @@
 #include "Unit.h"
 #include "Control.h"
+
 int main(int argc,char** argv)
 {
 	Control vezerles;
@@ -14,13 +15,13 @@ int main(int argc,char** argv)
 	
 	
 	vezerles.Attack(player1,player2);
-	if (player1.GetHp() == 0)
+	if (player1.getHp() == 0)
 	{
-		std::cout << player1.GetName() << " Died " << player2.GetName() << " Wins";
+		std::cout << player1.getName() << " Died " << player2.getName() << " Wins";
 	}
 	else 
 	{
-		std::cout << player2.GetName() << " Died " << player1.GetName() << " Wins";
+		std::cout << player2.getName() << " Died " << player1.getName() << " Wins";
 	}
 	
 

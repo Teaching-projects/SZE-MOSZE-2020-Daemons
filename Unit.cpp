@@ -1,39 +1,27 @@
 #include "Unit.h"
 
-void Unit::SetHp(int HP)
-{
-	if (HP < 0)
-	{
-		*p_hp = 0;
-	}
-	else
-	{
-		*p_hp = HP;
-	}
-}
-
-const int Unit::GetHp()
+const int Unit::getHp()
 {
 	return hp;
 }
 
-const int Unit::GetDmg()
+const int Unit::getDmg()
 {
 	return dmg;
 }
 
-const std::string Unit::GetName()
+const std::string Unit::getName()
 {
 	return name;
 }
 
-const void Unit::TakeDamage(const int & damage)
+void Unit::takeDamage(const int & damage)
 {
 
-	*p_hp -= damage;
-	if (*p_hp < 0)
+	hp -= damage;
+	if (hp < 0)
 	{
-		*p_hp = 0;
+		hp = 0;
 	}
 }
 
