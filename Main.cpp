@@ -12,18 +12,18 @@ int main(int argc,char** argv)
 	hp = std::atoi(argv[5]);
 	dmg = std::atoi(argv[6]);
 	Unit player2(hp,dmg,player_name);
-	
-	
+
+
 	vezerles.Attack(player1,player2);
 	if (player1.getHp() == 0)
 	{
-		std::cout << player1.getName() << " Died " << player2.getName() << " Wins";
+		std::cout << player1.getName() << " Died " << player2.getName() << " Wins\n";
 	}
-	else 
+	else
 	{
-		std::cout << player2.getName() << " Died " << player1.getName() << " Wins";
+		std::cout << player2.getName() << " Died " << player1.getName() << " Wins\n";
 	}
-	
+
 
 	return 0;
 }

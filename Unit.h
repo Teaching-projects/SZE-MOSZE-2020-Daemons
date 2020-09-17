@@ -7,11 +7,10 @@ private:
 	const int dmg;
 	const std::string name;
 public:
-	const int getHp();
-	const int getDmg();
-	const std::string getName();
-	void takeDamage(const int& damage);
+	int getHp() const;
+	int getDmg() const;
+	std::string getName() const;
+	void takeDamage(const Unit& enemy);
 	Unit(const int& h, const int& d, const std::string& n) : hp(h), dmg(d), name(n){}
-	
-};
 
+};

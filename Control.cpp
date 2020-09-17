@@ -4,43 +4,26 @@
 #include <sstream>
 #include <cassert>
 
-const void Control::Attack(Unit & firstplayer, Unit& secondplayer)
+void Control::Attack(Unit & firstplayer, Unit& secondplayer) const
 {
-	
-	int firsthp = firstplayer.getHp();
-	int secondhp = secondplayer.getHp();
-	int firstdmg = firstplayer.getDmg();
-	int seconddmg = secondplayer.getDmg();
-	std::string firstname = firstplayer.getName();
-	std::string secondname = secondplayer.getName();
 	Report(firstplayer, secondplayer);
 
-	while (firsthp > 0 && secondhp > 0)
+	while (firstplayer.getHp() > 0 && secondplayer.getHp() > 0)
 	{
-		std::cout << firstname << " ->" << secondname << std::endl;
-		//secondhp = secondhp - firstdmg;
-		//secondplayer.SetHp(secondhp);
-		secondplayer.takeDamage(firstdmg);
-		secondhp = secondplayer.getHp();
+		std::cout << firstplayer.getName() << " ->" << secondplayer.getName() << std::endl;
+		secondplayer.takeDamage(firstplayer);
 		Report(firstplayer, secondplayer);
-		if (secondhp > 0)
+		if (secondplayer.getHp() > 0)
 		{
-			std::cout << secondname << " ->" <<   firstname << std::endl;
-			//firsthp = firsthp - seconddmg;
-			//firstplayer.SetHp(firsthp);
-			firstplayer.takeDamage(seconddmg);
-			firsthp=firstplayer.getHp();
+			std::cout << secondplayer.getName() << " ->" <<   firstplayer.getName() << std::endl;
+			firstplayer.takeDamage(secondplayer);
 			Report(firstplayer, secondplayer);
 		}
 	}
 }
 
-const void Control::Report(Unit& firstplayer, Unit& secondplayer)
+void Control::Report(Unit& firstplayer, Unit& secondplayer) const
 {
 	std::cout << firstplayer.getName() << ":  HP: " << firstplayer.getHp() << " Damage: " << firstplayer.getDmg() << std::endl;
 	std::cout << secondplayer.getName() << ":  HP: " << secondplayer.getHp() << " Damage: " << secondplayer.getDmg() << std::endl;
 }
-
-
-	
-

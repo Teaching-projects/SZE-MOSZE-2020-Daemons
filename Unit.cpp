@@ -1,28 +1,26 @@
 #include "Unit.h"
 
-const int Unit::getHp()
+int Unit::getHp() const
 {
 	return hp;
 }
 
-const int Unit::getDmg()
+int Unit::getDmg() const
 {
 	return dmg;
 }
 
-const std::string Unit::getName()
+std::string Unit::getName() const
 {
 	return name;
 }
 
-void Unit::takeDamage(const int & damage)
+void Unit::takeDamage(const Unit& enemy)
 {
-
+	int damage = enemy.getDmg();
 	hp -= damage;
 	if (hp < 0)
 	{
 		hp = 0;
 	}
 }
-
-
