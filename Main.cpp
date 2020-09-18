@@ -3,7 +3,6 @@
 
 int main(int argc,char** argv)
 {
-	Control vezerles;
 	std::string player_name = argv[1];
 	int hp = std::atoi(argv[2]);
 	int dmg = std::atoi(argv[3]);
@@ -13,8 +12,7 @@ int main(int argc,char** argv)
 	dmg = std::atoi(argv[6]);
 	Unit player2(hp,dmg,player_name);
 
-
-	vezerles.Attack(player1,player2);
+	Control::Attack(player1,player2);
 	if (player1.getHp() == 0)
 	{
 		std::cout << player1.getName() << " Died " << player2.getName() << " Wins\n";

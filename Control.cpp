@@ -4,7 +4,8 @@
 #include <sstream>
 #include <cassert>
 
-void Control::Attack(Unit & firstplayer, Unit& secondplayer) const
+
+void Control::Attack(Unit & firstplayer,Unit& secondplayer)
 {
 	Report(firstplayer, secondplayer);
 
@@ -21,8 +22,7 @@ void Control::Attack(Unit & firstplayer, Unit& secondplayer) const
 		}
 	}
 }
-
-void Control::Report(Unit& firstplayer, Unit& secondplayer) const
+void Control::Report(const Unit& firstplayer,const Unit& secondplayer)
 {
 	std::cout << firstplayer.getName() << ":  HP: " << firstplayer.getHp() << " Damage: " << firstplayer.getDmg() << std::endl;
 	std::cout << secondplayer.getName() << ":  HP: " << secondplayer.getHp() << " Damage: " << secondplayer.getDmg() << std::endl;

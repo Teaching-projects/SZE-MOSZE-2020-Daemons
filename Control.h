@@ -4,8 +4,6 @@
 class Control
 {
 public:
-	void Attack(Unit& firstplayer, Unit& secondplayer) const;
-	void Report(Unit& firstplayer, Unit& secondplayer) const;
-	Control() {}
-
+	static void Attack(Unit& firstplayer, Unit& secondplayer);
+	static void Report(const Unit& firstplayer,const Unit& secondplayer);
 };
