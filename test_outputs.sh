@@ -9,6 +9,7 @@ done
 
 for filename in outputs/*.txt; do
 	outputfiles+=($filename)
+done
 
 differences=0
 
