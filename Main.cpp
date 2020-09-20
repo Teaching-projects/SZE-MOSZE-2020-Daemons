@@ -3,7 +3,10 @@
 
 int main(int argc,char** argv)
 {
-	std::string player_name = argv[1];
+	std::string firstFile = argv[1];
+	std::string secondFile = argv[2];
+	Unit* shit = Unit::parseUnit(firstFile);
+	/*std::string player_name = argv[1];
 	int hp = std::atoi(argv[2]);
 	int dmg = std::atoi(argv[3]);
 	Unit player1(hp,dmg,player_name);
@@ -21,7 +24,7 @@ int main(int argc,char** argv)
 	{
 		std::cout << player2.getName() << " Died " << player1.getName() << " Wins\n";
 	}
-
+	*/
 
 	return 0;
 }
