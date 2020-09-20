@@ -7,18 +7,13 @@
 
 void Control::Attack(Unit & firstplayer,Unit& secondplayer)
 {
-	Report(firstplayer, secondplayer);
 
 	while (firstplayer.getHp() > 0 && secondplayer.getHp() > 0)
 	{
-		std::cout << firstplayer.getName() << " ->" << secondplayer.getName() << std::endl;
 		secondplayer.takeDamage(firstplayer);
-		Report(firstplayer, secondplayer);
 		if (secondplayer.getHp() > 0)
 		{
-			std::cout << secondplayer.getName() << " ->" <<   firstplayer.getName() << std::endl;
 			firstplayer.takeDamage(secondplayer);
-			Report(firstplayer, secondplayer);
 		}
 	}
 }
