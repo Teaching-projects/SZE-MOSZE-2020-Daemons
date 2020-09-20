@@ -16,7 +16,9 @@ for goodfile in goodfiles
 do
 	for outputfile in outputfiles
 	do
-		differences+=`diff goodfile outputfile`
+		if [ "$goodfile" = "$outputfile" ]; then
+			differences+=`diff goodfile outputfile`
+		fi
 	done
 done
 
