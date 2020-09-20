@@ -17,9 +17,10 @@ do
 	for outputfile in outputfiles
 	do
 		if [ "$goodfile" = "$outputfile" ]; then
-			differences+=`diff goodfile outputfile`
+			otherdiffs=`diff goodfile outputfile`
+			differences=$((differences+otherdiffs))
 		fi
 	done
 done
 
-return differences
+exit $differences
