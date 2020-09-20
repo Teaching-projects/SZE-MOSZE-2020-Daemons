@@ -20,6 +20,7 @@ int main(int argc,char** argv)
 		{
 			std::cout << player1->getName() << " wins. Remaining HP: " << player1->getHp() << std::endl;
 		}
+		delete player1, player2;
 	}catch(std::exception &e){
 		std::cout << "Oops, " << e.what() << std::endl;
 	}
