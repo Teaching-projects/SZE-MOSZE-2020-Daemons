@@ -23,6 +23,7 @@ int main(int argc,char** argv)
 		delete player1, player2;
 	}catch(std::exception &e){
 		std::cout << "Oops, " << e.what() << std::endl;
+		return 1;
 	}
 
 	

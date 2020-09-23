@@ -45,6 +45,6 @@ Unit* Unit::parseUnit(const std::string& filename){
 		Unit* hi = new Unit(hp,dmg,name);
 		return hi;
 	}else{
-		throw std::runtime_error("File not found!");
+		throw std::runtime_error("File not found: "+filename);
 	}
 }
