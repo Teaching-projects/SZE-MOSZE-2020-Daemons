@@ -1,11 +1,10 @@
 #!/bin/bash
-
+cd ..
 declare -a files
 
-for filename in units/*.json; do
+for filename in test/units/*.json; do
 	files+=(`echo $filename | grep -o -P '(?<=units/).*(?=.json)'`)
 done
-cd ..
 
 fileCount=${#files[@]}
 
