@@ -12,8 +12,8 @@ for ((c=0;c<$((fileCount-1));c++))
 do
 	for ((i=$c;i<$((fileCount-1));i++))
 	do
-		rm outputs/${files[$((i+1))]}-${files[$c]}.txt
-		touch outputs/${files[$((i+1))]}-${files[$c]}.txt
+		rm ~/SZE-MOSZE-2020-Daemons/outputs/${files[$((i+1))]}-${files[$c]}.txt
+		touch ~/SZE-MOSZE-2020-Daemons/outputs/${files[$((i+1))]}-${files[$c]}.txt
 		echo `~/SZE-MOSZE-2020-Daemons/a.out units/${files[$((i+1))]}.json units/${files[$c]}.json` >> ~/SZE-MOSZE-2020-Daemons/test/outputs/${files[$((i+1))]}-${files[$c]}.txt
 		rm outputs/${files[$c]}-${files[$((i+1))]}.txt
 		touch outputs/${files[$c]}-${files[$((i+1))]}.txt
