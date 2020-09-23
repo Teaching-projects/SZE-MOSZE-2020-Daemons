@@ -10,7 +10,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the app
         run: g++ -std=c++17 *.cpp -o a.out
+        run: cd test/
       - name: Generate outputs from units
-        run: /test/generate_outputs.sh
+        run: ./generate_outputs.sh
       - name: Check if generated outputs are good
-        run: /test/test_outputs.sh
+        run: ./test_outputs.sh
