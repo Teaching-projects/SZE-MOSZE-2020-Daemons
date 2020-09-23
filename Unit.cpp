@@ -24,6 +24,12 @@ void Unit::takeDamage(const Unit& enemy)
 		hp = 0;
 	}
 }
+std::string extractName(const std::string line)
+{
+	std::string name = line.substr(line.find(":"));
+	name.erase(name.find_last_of('"'),name.length()-1);
+	return name.substr(name.find_first_of('"')+1);
+}
 
 Unit* Unit::parseUnit(const std::string& filename){
 	std::ifstream file(filename);
@@ -32,8 +38,7 @@ Unit* Unit::parseUnit(const std::string& filename){
 		std::getline(file, line);
 		//Read in the name
 		std::getline(file, line);
-		std::string name = line.substr(line.find(":")+1);
-		name = name.substr(name.find('"')+1, name.find_last_of('"')-2);
+		std::string name = extractName(line);
 		//Read in the hp value
 		std::getline(file, line);
 		std::string substring = line.substr(line.find(":")+1);
