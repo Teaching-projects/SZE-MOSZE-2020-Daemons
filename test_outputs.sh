@@ -1,27 +1,12 @@
 #!/bin/bash
 
-declare -a goodfiles
-declare -a outputfiles
-
-for filename in good_outputs/*.txt; do
-	goodfiles+=($filename)
-done
-
-for filename in outputs/*.txt; do
-	outputfiles+=($filename)
-done
-
 differences=0
 
-for goodfile in goodfiles
+for outputfile in outputs/*.txt
 do
-	for outputfile in outputfiles
-	do
-		if [ "$goodfile" = "$outputfile" ]; then
-			otherdiffs=`diff goodfile outputfile`
-			differences=$((differences+otherdiffs))
-		fi
-	done
+	#echo $"good_outputs${outputfile//outputs}"
+	otherdiffs=$(diff $"good_outputs${outputfile//outputs}" $outputfile)
+	differences=$((differences+otherdiffs))
 done
 
 exit $differences
