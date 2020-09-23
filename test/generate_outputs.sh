@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir outputs
+mkdir test/outputs
 declare -a files
 
 for filename in test/units/*.json; do
