@@ -5,8 +5,7 @@ cd test
 for outputfile in outputs/*.txt
 do
 	otherdiffs=`diff $"good_outputs${outputfile//outputs}" $outputfile`
-	differences=+$otherdiffs
-	
+	differences+=$otherdiffs
 done
 
 exit $differences
