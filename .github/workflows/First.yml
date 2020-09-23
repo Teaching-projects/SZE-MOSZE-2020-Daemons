@@ -11,6 +11,6 @@ jobs:
       - name: Build the app
         run: g++ -std=c++17 *.cpp -o a.out
       - name: Generate outputs from units
-        run: ./generate_outputs.sh
+        run: ./test/generate_outputs.sh
       - name: Check if generated outputs are good
-        run: ./test_outputs.sh
+        run: ./test/test_outputs.sh
