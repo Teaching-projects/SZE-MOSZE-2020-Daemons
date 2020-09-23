@@ -1,1 +1,1 @@
-Kakarott wins. Remaining HP: 300
+Kakarott wins. Remaining HP: 30000
