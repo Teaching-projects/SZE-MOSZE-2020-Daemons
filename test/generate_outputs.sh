@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ..
+
 declare -a files
 
 for filename in test/units/*.json; do
