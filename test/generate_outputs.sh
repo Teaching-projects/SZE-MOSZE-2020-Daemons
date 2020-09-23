@@ -17,6 +17,6 @@ do
 		echo `~/SZE-MOSZE-2020-Daemons/a.out units/${files[$((i+1))]}.json units/${files[$c]}.json` >> ~/SZE-MOSZE-2020-Daemons/test/outputs/${files[$((i+1))]}-${files[$c]}.txt
 		rm outputs/${files[$c]}-${files[$((i+1))]}.txt
 		touch outputs/${files[$c]}-${files[$((i+1))]}.txt
-		echo `~/SZE-MOSZE-2020-Daemons/a.out units/${files[$c]}.json units/${files[$((i+1))]}.json` >> ~/SZE-MOSZE-2020-Daemons/outputs/${files[$c]}-${files[$((i+1))]}.txt
+		echo `~/SZE-MOSZE-2020-Daemons/a.out units/${files[$c]}.json units/${files[$((i+1))]}.json` >> ~/SZE-MOSZE-2020-Daemons/test/outputs/${files[$c]}-${files[$((i+1))]}.txt
 	done
 done
