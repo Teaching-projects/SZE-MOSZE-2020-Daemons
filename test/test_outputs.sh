@@ -2,9 +2,9 @@
 
 differences=0
 cd test
-for outputfile in outputs/*.txt
+for outputfile in good_outputs/*.txt
 do
-	otherdiffs=`diff $"good_outputs${outputfile//outputs}" $outputfile`
+	otherdiffs=`diff $"${outputfile//good_}" $outputfile`
 	differences+=$otherdiffs
 done
 
