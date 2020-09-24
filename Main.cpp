@@ -13,7 +13,6 @@ int main(int argc,char** argv)
 
 	try{
 		 player1 = Unit::parseUnit(args[1]);
-		//Unit* player2 = Unit::parseUnit(args[2]);
 		
 	}catch(std::exception &e){
 		std::cout << "Oops, " << e.what() << std::endl;
