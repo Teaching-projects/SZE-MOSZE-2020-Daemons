@@ -1,27 +1,46 @@
 #include "Unit.h"
 #include "Control.h"
+#include <vector>
 
 int main(int argc,char** argv)
 {
-	std::string player_name = argv[1];
-	int hp = std::atoi(argv[2]);
-	int dmg = std::atoi(argv[3]);
-	Unit player1(hp,dmg,player_name);
-	player_name = argv[4];
-	hp = std::atoi(argv[5]);
-	dmg = std::atoi(argv[6]);
-	Unit player2(hp,dmg,player_name);
-
-	Control::Attack(player1,player2);
-	if (player1.getHp() == 0)
-	{
-		std::cout << player1.getName() << " Died " << player2.getName() << " Wins\n";
-	}
-	else
-	{
-		std::cout << player2.getName() << " Died " << player1.getName() << " Wins\n";
+	Unit* player1;
+	Unit* player2;
+	std::vector<std::string> args(argc);
+	for(int i=0; i<argc; ++i){
+		args[i] = argv[i];
 	}
 
+	try{
+		 player1 = Unit::parseUnit(args[1]);
+		
+	}catch(std::exception &e){
+		std::cout << "Oops, " << e.what() << std::endl;
+		return 1;
+	}
+
+	try{
+		 player2 = Unit::parseUnit(args[2]);
+
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Oops, " << e.what() << std::endl;
+		delete player1;
+		return 1;
+		
+	}
+
+	Control::Attack(*player1,*player2);
+		if (player1->getHp() == 0)
+		{
+			std::cout << player2->getName() << " wins. Remaining HP: " << player2->getHp() << std::endl;
+		}
+		else
+		{
+			std::cout << player1->getName() << " wins. Remaining HP: " << player1->getHp() << std::endl;
+		}
+		delete player1, player2;
 
 	return 0;
 }
