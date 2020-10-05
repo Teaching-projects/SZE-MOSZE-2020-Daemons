@@ -9,6 +9,10 @@ int Unit::getDmg() const
 {
 	return dmg;
 }
+double Unit::getAs() const
+{
+	return atkspeed;
+}
 
 std::string Unit::getName() const
 {
@@ -44,9 +48,50 @@ Unit* Unit::parseUnit(const std::string& filename){
 		std::getline(file, line);
 		substring = line.substr(line.find(":")+1);
 		int dmg = std::stoi(substring);
-		Unit* hi = new Unit(hp,dmg,name);
+
+		std::getline(file, line);
+		substring = line.substr(line.find(":")+1);
+		double atkspeed = std::stod(substring);
+
+		Unit* hi = new Unit(hp,dmg,name,atkspeed);
 		return hi;
 	}else{
 		throw std::runtime_error("File not found: "+filename);
 	}
+	
 }
+void Unit::Fight(Unit* enemy)
+	{
+		int i=1;
+		if(enemy-hp>0)
+		{
+			enemy->hp-=this->getDmg();
+		}
+		if(hp>0)
+		{
+			hp-=enemy->getDmg();
+		}
+		while(hp>0&&(enemy->hp>0))
+		{
+			if(atkspeed*i>(enemy->atkspeed*i))
+			{
+				enemy->hp-=this->getDmg();
+				
+
+			}
+			else if(atkspeed*i==(enemy->atkspeed*i))
+			{
+				enemy->hp-=this->getDmg();
+				hp-=enemy->getDmg();
+			}
+			else
+			{
+				hp-=enemy->getDmg();
+			}
+			
+			
+			i++;
+
+		}
+
+	}

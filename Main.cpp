@@ -31,7 +31,8 @@ int main(int argc,char** argv)
 		
 	}
 
-	Control::Attack(*player1,*player2);
+	//Control::Attack(*player1,*player2);
+	player1->Fight(player2);
 		if (player1->getHp() == 0)
 		{
 			std::cout << player2->getName() << " wins. Remaining HP: " << player2->getHp() << std::endl;
