@@ -11,7 +11,7 @@ int Unit::getDmg() const
 }
 double Unit::getAs() const
 {
-	return atkspeed;
+	return atkcooldown;
 }
 
 std::string Unit::getName() const
@@ -68,11 +68,11 @@ void Unit::Fight(Unit* enemy)
 		int i2=1;
 		double TmpNextAttack1=i1*this->getAs();
 		double TmpNextAttack2=i2*enemy->getAs();
-		if(enemy->getHp()>0)
+		if(enemy->getHp()>0&&this->hp>0)
 		{
 			enemy->takeDamage(* this );
 		}
-		if(hp>0)
+		if(enemy->getHp()>0&&this->hp>0)
 		{
 			this->takeDamage( * enemy);
 		}

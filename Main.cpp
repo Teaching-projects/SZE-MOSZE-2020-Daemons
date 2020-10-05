@@ -36,11 +36,11 @@ int main(int argc,char** argv)
 
 		if (player1->getHp() == 0)
 		{
-			std::cout << player2->getName() << " wins. Remaining HP: " << player2->getHp() << " atkspeed:"<<player2->getAs()<<" Nem megy Anya "<< std::endl;
+			std::cout << player2->getName() << " wins. Remaining HP: " << player2->getHp() << std::endl;
 		}
 		else	
 		{
-			std::cout << player1->getName() << " wins. Remaining HP: " << player1->getHp() << " atkspeed:"<<player1->getAs()<<" Nem megy Anya "<< std::endl;
+			std::cout << player1->getName() << " wins. Remaining HP: " << player1->getHp() << std::endl;
 		}
 		delete player1, player2;
 
