@@ -39,9 +39,11 @@ Unit* Unit::parseUnit(const std::string& filename){
 	std::ifstream file(filename);
 	if(file.good()){
 		std::string line;
+
 		std::getline(file, line);
 		std::getline(file, line);
 		std::string name = extractName(line);
+		
 		std::getline(file, line);
 		std::string substring = line.substr(line.find(":")+1);
 		int hp = std::stoi(substring);
@@ -74,7 +76,7 @@ void Unit::Fight(Unit* enemy)
 		{
 			this->takeDamage( * enemy);
 		}
-		while(hp>0&&(enemy->hp>0))
+		while(this->hp>0&&(enemy->getHp()>0))
 		{
 
 			if(TmpNextAttack1<TmpNextAttack2)
@@ -96,9 +98,6 @@ void Unit::Fight(Unit* enemy)
 				hp-=enemy->getDmg();
 				i2++;
 			}
-			
-			
-			
 			TmpNextAttack1=i1*this->getAs();
 			TmpNextAttack2=i2*enemy->getAs();
 

@@ -1,6 +1,6 @@
 {
     "name" : "Sully",
-    "hp" : 45,
+    "hp" : 100,
     "dmg" : 30,
     "attackspeed" : 0.1
 }
