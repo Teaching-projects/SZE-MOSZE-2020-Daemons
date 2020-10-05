@@ -62,35 +62,45 @@ Unit* Unit::parseUnit(const std::string& filename){
 }
 void Unit::Fight(Unit* enemy)
 	{
-		int i=1;
-		if(enemy-hp>0)
+		int i1=1;
+		int i2=1;
+		double TmpNextAttack1=i1*this->getAs();
+		double TmpNextAttack2=i2*enemy->getAs();
+		if(enemy->hp>0)
 		{
-			enemy->hp-=this->getDmg();
+			enemy->takeDamage(* this );
 		}
 		if(hp>0)
 		{
-			hp-=enemy->getDmg();
+			this->takeDamage( * enemy);
 		}
 		while(hp>0&&(enemy->hp>0))
 		{
-			if(atkspeed*i>(enemy->atkspeed*i))
+
+			if(TmpNextAttack1<TmpNextAttack2)
 			{
 				enemy->hp-=this->getDmg();
+				i1++;
 				
 
 			}
-			else if(atkspeed*i==(enemy->atkspeed*i))
+			else if(TmpNextAttack1==TmpNextAttack2)
 			{
 				enemy->hp-=this->getDmg();
 				hp-=enemy->getDmg();
+				i1++;
+				i2++;
 			}
 			else
 			{
 				hp-=enemy->getDmg();
+				i2++;
 			}
 			
 			
-			i++;
+			
+			TmpNextAttack1=i*this->getAs();
+			TmpNextAttack2=i*enemy->getAs();
 
 		}
 
