@@ -2,5 +2,5 @@
     "name" : "Sully",
     "hp" : 45,
     "dmg" : 30,
-    "attackspeed" : 1.5
+    "attackspeed" : 0.1
 }

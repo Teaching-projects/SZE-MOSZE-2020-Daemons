@@ -2,5 +2,5 @@
     "name" : "Maple",
     "hp" : 150,
     "dmg" : 10,
-    "attackspeed" : 3
+    "attackspeed" : 15
 }

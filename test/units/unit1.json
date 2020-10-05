@@ -2,5 +2,5 @@
     "name" : "Kakarott",
     "hp" : 30000,
     "dmg" : 9000,
-    "attackspeed" : 2
+    "attackspeed" : 10
 }

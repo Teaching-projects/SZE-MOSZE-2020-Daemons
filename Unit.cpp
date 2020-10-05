@@ -66,7 +66,7 @@ void Unit::Fight(Unit* enemy)
 		int i2=1;
 		double TmpNextAttack1=i1*this->getAs();
 		double TmpNextAttack2=i2*enemy->getAs();
-		if(enemy->hp>0)
+		if(enemy->getHp()>0)
 		{
 			enemy->takeDamage(* this );
 		}
@@ -99,8 +99,8 @@ void Unit::Fight(Unit* enemy)
 			
 			
 			
-			TmpNextAttack1=i*this->getAs();
-			TmpNextAttack2=i*enemy->getAs();
+			TmpNextAttack1=i1*this->getAs();
+			TmpNextAttack2=i2*enemy->getAs();
 
 		}
 

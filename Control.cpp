@@ -8,14 +8,14 @@
 void Control::Attack(Unit & firstplayer,Unit& secondplayer)
 {
 
-	while (firstplayer.getHp() > 0 && secondplayer.getHp() > 0)
+	/*while (firstplayer.getHp() > 0 && secondplayer.getHp() > 0)
 	{
 		secondplayer.takeDamage(firstplayer);
 		if (secondplayer.getHp() > 0)
 		{
 			firstplayer.takeDamage(secondplayer);
 		}
-	}
+	}*/
 }
 void Control::Report(const Unit& firstplayer,const Unit& secondplayer)
 {
