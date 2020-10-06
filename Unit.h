@@ -9,14 +9,14 @@
 class Unit
 {
 private:
-	int hp;
-	const int dmg;
+	double hp;
+	const double dmg;
 	const std::string name;
 public:
-	int getHp() const;
-	int getDmg() const;
+	double getHp() const;
+	double getDmg() const;
 	std::string getName() const;
 	void takeDamage(const Unit& enemy);
-	Unit(const int& h, const int& d, const std::string& n) : hp(h), dmg(d), name(n){}
+	Unit(const double& h, const double& d, const std::string& n) : hp(h), dmg(d), name(n){}
 	static Unit* parseUnit(const std::string& data);
 };
