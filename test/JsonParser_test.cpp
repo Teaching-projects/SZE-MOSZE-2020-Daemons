@@ -3,6 +3,8 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <fstream>
+#include <stdio>
 
 std::string createRandomNumberOfWhitespaces(){
   std::random_device rd;
@@ -55,6 +57,51 @@ TEST(JsonParserTest, string_parameter){
   "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
   +"}";
   std::map<std::string, std::string> result = JsonParser::parseJSON(testString);
+  std::string result_name = result["name"];
+  std::string result_hp = result["hp"];
+  std::string result_dmg = result["dmg"];
+  ASSERT_TRUE(result_name == "Mapleee");
+  ASSERT_TRUE(result_hp == std::to_string(hp));
+  ASSERT_TRUE(result_dmg == std::to_string(dmg));
+}
+
+TEST(JsonParserTest, file_parameter){
+  double hp = getRandomNumber();
+  double dmg = getRandomNumber();
+  std::string testString = "{\n"+createRandomNumberOfWhitespaces()+"\"name\""+
+  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\",\n"+
+  createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
+  "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
+  +"}";
+  std::ofstream out("test_output.json");
+  out << testString;
+  out.close();
+  std::map<std::string, std::string> result = JsonParser::parseJSON("test_output.json");
+  std::remove("test_output.json");
+  std::string result_name = result["name"];
+  std::string result_hp = result["hp"];
+  std::string result_dmg = result["dmg"];
+  ASSERT_TRUE(result_name == "Mapleee");
+  ASSERT_TRUE(result_hp == std::to_string(hp));
+  ASSERT_TRUE(result_dmg == std::to_string(dmg));
+}
+
+TEST(JsonParserTest, istream_parameter){
+  double hp = getRandomNumber();
+  double dmg = getRandomNumber();
+  std::string testString = "{\n"+createRandomNumberOfWhitespaces()+"\"name\""+
+  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\",\n"+
+  createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
+  "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
+  +"}";
+  std::ofstream out("test_output.json");
+  out << testString;
+  out.close();
+  std::filebuf fb;
+  fb.open("test_output.json", std::ios::in);
+  std::istream inputstream(fb);
+  std::map<std::string, std::string> result = JsonParser::parseJSON(inputstream);
+  std::remove("test_output.json");
   std::string result_name = result["name"];
   std::string result_hp = result["hp"];
   std::string result_dmg = result["dmg"];
