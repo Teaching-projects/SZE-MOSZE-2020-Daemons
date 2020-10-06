@@ -1,4 +1,5 @@
 #include "../JsonParser.h"
+#include <gtest/gtest.h>
 #include <iostream>
 #include <chrono>
 #include <random>
