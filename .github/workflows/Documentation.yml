@@ -1,7 +1,7 @@
 name: Documentation.yml
 
 on:
- push
+ push:
   branches: 
     -attackspeed
     -gh-pages 
