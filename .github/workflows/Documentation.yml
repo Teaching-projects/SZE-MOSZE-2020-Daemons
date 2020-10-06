@@ -1,4 +1,4 @@
-name: Documentation workflow
+name: Documentation.yml
 
 on:
  push:
