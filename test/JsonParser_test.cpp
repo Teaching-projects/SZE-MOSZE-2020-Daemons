@@ -4,7 +4,7 @@
 #include <chrono>
 #include <random>
 #include <fstream>
-#include <stdio>
+#include <stdio.h>
 
 std::string createRandomNumberOfWhitespaces(){
   std::random_device rd;
