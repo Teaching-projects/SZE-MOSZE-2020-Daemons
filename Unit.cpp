@@ -33,9 +33,6 @@ std::string extractName(const std::string line)
 
 Unit* Unit::parseUnit(const std::string& data){
 	std::map<std::string, std::string> returnedMap = JsonParser::parseJSON(data);
-	std::cout << returnedMap["hp"] << std::endl;
-	std::cout << returnedMap["dmg"] << std::endl;
-	std::cout << returnedMap["name"] << std::endl;
 	Unit* hi = new Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"]);
 	return hi;
 }
