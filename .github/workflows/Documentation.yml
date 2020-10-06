@@ -11,14 +11,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
            - uses: action/checkout@attackspeed
+          
+           - run: sudo apt-get install doxygen
+           - run: sudo apt-get install graphviz
+           - run: doxygen doxconf  
            - name: Install the Files and generate doxconf file
-             run: Documentation_generate.sh
-           
-    uses: sO/git-publish-subdir-action@v2.4.0
-    
-   env:
-    REPO: self
-    BRANCH: gh-pages
-    FOLDER: DOCS/html
-    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
+             uses: s0/git-publish-subdir-action@v2.4.0
+             env:
+             REPO: self
+             BRANCH: gh-pages
+             FOLDER: DOCS/html
+             GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
         
