@@ -4,9 +4,8 @@ differences=0
 cd test
 for outputfile in good_outputs/*.txt
 do
-	echo "`diff $"${outputfile//good_}" $outputfile`"
-	diff $"${outputfile//good_}" $outputfile > /dev/null 2>&1
-	differences+=$?
+	difference=`diff -U 0 $"${outputfile//good_}" $outputfile | grep ^@ | wc -l`
+	differences+=$difference
 done
 
 exit $differences
