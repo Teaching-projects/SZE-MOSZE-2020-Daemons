@@ -11,13 +11,15 @@ jobs:
   deploy:
    name: Deploy to Github Pages
    runs-on: ubuntu-latest
-   steps:
-      -uses: action/checkout@attackspeed
-      -name: Push git subdir as branch
-       run: sudo apt-get install doxygen
-       run: sudo apt-get install graphviz
-       run: doxygen doxconf
-      -uses: s0/git-publish-subdir-action@v2.4.0
+    steps:
+      - uses: action/checkout@attackspeed
+      - name: Push git subdir as branch
+        run: sudo apt-get install doxygen
+      - name: Generate outputs from units
+        run: sudo apt-get install graphviz
+      - name: Check if generated outputs are good
+        run: doxygen doxconf
+      - uses: s0/git-publish-subdir-action@v2.4.0
    env:
     REPO: self
     BRANCH: gh-pages
