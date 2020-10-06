@@ -5,8 +5,6 @@ on:
   branches: 
     -attackspeed
     -gh-pages 
-     
-  
 jobs:
   deploy:
    name: Deploy to Github Pages
