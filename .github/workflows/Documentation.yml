@@ -11,12 +11,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
            - uses: action/checkout@attackspeed
-           - name: Install Doxygen
-             run: sudo apt-get install doxygen
-           - name: Install graphviz
-             run: sudo apt-get install graphviz
-           - name: Create doxconf file
-             run: doxygen doxconf
+           - name: Install the Files and generate doxconf file
+             run: Documentation_generate.sh
+           
     uses: sO/git-publish-subdir-action@v2.4.0
     
    env:
