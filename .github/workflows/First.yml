@@ -1,7 +1,7 @@
 name: First workflow
 
 on:
-  push:
+  push
 
 jobs:
   build_n_test:
