@@ -50,8 +50,8 @@ TEST(JsonParserTest, string_parameter){
   double hp = getRandomNumber();
   double dmg = getRandomNumber();
   std::string testString = "{\n"+createRandomNumberOfWhitespaces()+"\"name\""+
-  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\"\n"+
-  createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+"\n"+createRandomNumberOfWhitespaces()+
+  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\",\n"+
+  createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
   "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
   +"}";
   std::map<std::string, std::string> result = JsonParser::parseJSON(testString);
