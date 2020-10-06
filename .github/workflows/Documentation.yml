@@ -6,19 +6,19 @@ on:
     -attackspeed
     -gh-pages 
 jobs:
-  deploy:
-   name: Deploy to Github Pages
-   runs-on: ubuntu-latest
-   steps:
-      - uses: action/checkout@attackspeed
-      - name: Install Doxygen
-        run: sudo apt-get install doxygen
-      - name: Install graphviz
-        run: sudo apt-get install graphviz
-      - name: Create doxconf file
-        run: doxygen doxconf
-      - name: Push git subdir as branch
-   uses: sO/git-publish-subdir-action@v2.4.0
+  GenerateDocument:
+        deploy:
+        runs-on: ubuntu-latest
+        steps:
+           - uses: action/checkout@attackspeed
+           - name: Install Doxygen
+           - run: sudo apt-get install doxygen
+           - name: Install graphviz
+           - run: sudo apt-get install graphviz
+           - name: Create doxconf file
+           - run: doxygen doxconf
+           - name: Push git subdir as branch
+    uses: sO/git-publish-subdir-action@v2.4.0
     
    env:
     REPO: self
