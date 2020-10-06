@@ -2,8 +2,6 @@
 mkdir test/outputs
 declare -a files
 
-rm -r test/outputs/
-
 for filename in test/units/*.json; do
 	files+=(`echo $filename | grep -o -P '(?<=units/).*(?=.json)'`)
 done
