@@ -20,6 +20,7 @@ jobs:
       - name: Check if generated outputs are good
         run: doxygen doxconf
       - uses: s0/git-publish-subdir-action@v2.4.0
+    
    env:
     REPO: self
     BRANCH: gh-pages
