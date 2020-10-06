@@ -9,7 +9,7 @@ jobs:
   deploy:
    name: Deploy to Github Pages
    runs-on: ubuntu-latest
-    steps:
+   steps:
       - uses: action/checkout@attackspeed
         run: sudo apt-get install doxygen
         run: sudo apt-get install graphviz
