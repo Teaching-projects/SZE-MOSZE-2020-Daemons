@@ -13,7 +13,7 @@ int main(int argc,char** argv)
 
 	try{
 		 player1 = Unit::parseUnit(args[1]);
-		
+
 	}catch(std::exception &e){
 		std::cout << "Oops, " << e.what() << std::endl;
 		return 1;
@@ -28,7 +28,7 @@ int main(int argc,char** argv)
 		std::cout << "Oops, " << e.what() << std::endl;
 		delete player1;
 		return 1;
-		
+
 	}
 
 	Control::Attack(*player1,*player2);
