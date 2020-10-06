@@ -11,7 +11,7 @@ jobs:
   deploy:
    name: Deploy to Github Pages
    runs-on: ubuntu-latest
-    steps:
+   steps:
       - uses: action/checkout@attackspeed
       - name: Push git subdir as branch
         run: sudo apt-get install doxygen
