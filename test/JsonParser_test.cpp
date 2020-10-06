@@ -99,7 +99,7 @@ TEST(JsonParserTest, istream_parameter){
   out.close();
   std::filebuf fb;
   fb.open("test_output.json", std::ios::in);
-  std::istream inputstream(fb);
+  std::istream inputstream(&fb);
   std::map<std::string, std::string> result = JsonParser::parseJSON(inputstream);
   std::remove("test_output.json");
   std::string result_name = result["name"];
