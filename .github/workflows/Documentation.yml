@@ -12,16 +12,15 @@ jobs:
    name: Deploy to Github Pages
    runs-on: ubuntu-latest
    steps:
-     -uses: action/checkout@attackspeed
-     -name: Push git subdir as branch
-     -run: sudo apt-get install doxygen
-     -run: sudo apt-get install graphviz
-     -run: doxygen doxconf
-        
-     -uses: s0/git-publish-subdir-action@v2.4.0
+      -uses: action/checkout@attackspeed
+      -name: Push git subdir as branch
+       run: sudo apt-get install doxygen
+       run: sudo apt-get install graphviz
+       run: doxygen doxconf
+      -uses: s0/git-publish-subdir-action@v2.4.0
    env:
-      REPO: self
-      BRANCH: gh-pages
-      FOLDER: DOCS/html
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
+    REPO: self
+    BRANCH: gh-pages
+    FOLDER: DOCS/html
+    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
         
