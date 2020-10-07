@@ -16,7 +16,7 @@ std::string Unit::getName() const
 	return name;
 }
 
-void Unit::takeDamage(const Unit& enemy)
+void Unit::takeDamage(Unit& enemy)
 {
 	int dmg_taken = hp;
 	int damage = enemy.getDmg();
@@ -26,15 +26,18 @@ void Unit::takeDamage(const Unit& enemy)
 		hp = 0;
 	}
 	dmg_taken = dmg_taken - hp;
-	boost_xp(dmg_taken);
+	enemy.boost_xp(dmg_taken);
+	
 }
 void Unit::boost_xp(const int& dmg)
 {
 	current_xp += dmg;
-	if((current_xp/100) > level){levelUp();}
+	float level_xp = current_xp/100.0;
+	if(level_xp >= level){levelUp();}
 }
 void Unit::levelUp()
 {
+	std::cout << "Level up for: " << this->getName() << "\n";
 	level++;
 	maxHP = round(maxHP * 1.1);
 	hp = maxHP;
