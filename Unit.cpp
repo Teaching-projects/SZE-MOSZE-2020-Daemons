@@ -26,17 +26,15 @@ void Unit::takeDamage(const Unit& enemy)
 		hp = 0;
 	}
 	dmg_taken = dmg_taken - hp;
-	std::cout << dmg_taken << "\n";
 	boost_xp(dmg_taken);
 }
 void Unit::boost_xp(const int& dmg)
 {
 	current_xp += dmg;
-	if(current_xp >= 100){levelUp();}
+	if((current_xp/100) > level){levelUp();}
 }
 void Unit::levelUp()
 {
-	std::cout << "Level up for: " << this->getName() << "\n";
 	level++;
 	maxHP = round(maxHP * 1.1);
 	hp = maxHP;
