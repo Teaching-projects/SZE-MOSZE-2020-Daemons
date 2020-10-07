@@ -13,4 +13,4 @@ jobs:
       - name: Generate outputs from units
         run: ./test/generate_outputs.sh
       - name: Check if generated outputs are good
-        run: ./test/test_outputs.sh
+        run: diff test/outputs.txt test/good_outputs.txt
