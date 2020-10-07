@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include <math.h>
 
 int Unit::getHp() const
 {
@@ -17,12 +18,29 @@ std::string Unit::getName() const
 
 void Unit::takeDamage(const Unit& enemy)
 {
+	int dmg_taken = hp;
 	int damage = enemy.getDmg();
 	hp -= damage;
 	if (hp < 0)
 	{
 		hp = 0;
 	}
+	dmg_taken = dmg_taken - hp;
+	std::cout << dmg_taken << "\n";
+	boost_xp(dmg_taken);
+}
+void Unit::boost_xp(const int& dmg)
+{
+	current_xp += dmg;
+	if(current_xp >= 100){levelUp();}
+}
+void Unit::levelUp()
+{
+	std::cout << "Level up for: " << this->getName() << "\n";
+	level++;
+	maxHP = round(maxHP * 1.1);
+	hp = maxHP;
+	dmg = round(dmg * 1.1);
 }
 std::string extractName(const std::string line)
 {
