@@ -37,7 +37,6 @@ void Unit::boost_xp(const int& dmg)
 }
 void Unit::levelUp()
 {
-	std::cout << "Level up for: " << this->getName() << "\n";
 	level++;
 	maxHP = round(maxHP * 1.1);
 	hp = maxHP;
