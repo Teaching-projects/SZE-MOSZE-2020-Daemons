@@ -31,11 +31,40 @@ private:
 	const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
 	void takeDamage(const Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 
 public:
-	int getHp() const; ///<Simple Getter for hp
-	int getDmg() const;///<Simple Getter for damage
-	std::string getName() const; ///<Simple Getter for name
-	double getAs() const; ///<Simple Getter for attackcooldown
-	void Fight( Unit* enemy);  ///<Method that implements the Fight between two Unit object
-	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a){}
-	static Unit* parseUnit(const std::string& filename);///<Method that parse Units Json files and return the generated Unit Object with the parsed data
+	int getHp() const; 
+	//! Simple Getter for hp
+    /*!
+      \param a an integer argument.
+      \param s a constant character pointer.
+      \return  const integer hp value
+     
+    */
+	int getDmg() const;
+	//! Simple Getter for damage
+    /*!
+	 \return  const integer damage value
+	*/
+	std::string getName() const;
+	//! Simple Getter for name
+    /*!
+	 \return const  string name  value
+	*/
+	double getAs() const; 
+	//! Simple Getter for atkcooldown
+    /*!
+	 \return   const double atkcooldown value
+	*/
+	void Fight( Unit* enemy/**[in] Unit Objects pointer */);  ///<Method that implements the Fight between two Unit object
+	//! Method that implements the Fight between two Unit object
+    /*!
+	 \return  double atkcooldown value
+	 \param enemy Unit Objects pointer
+	*/
+	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a){} ///<Constructor
+	static Unit* parseUnit(const std::string& filename/**[in] json file's name that the method parses*/);
+	//!Method that parse Units Json files and return the generated Unit Object with the parsed data
+	/*!
+	 \return  Unit Object with the parsed data
+	 \param filename json file's name that the method parses
+	*/
 };
