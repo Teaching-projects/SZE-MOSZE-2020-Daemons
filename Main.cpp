@@ -11,20 +11,11 @@ int main(int argc,char** argv)
 	}
 	try{
 		Unit::parseUnit(args[1]);
+		Unit::parseUnit(args[2]);
 		
 	}catch(std::exception &e){
 		std::cout << "Oops, " << e.what() << std::endl;
 		return 1;
-	}
-	try{
-		Unit::parseUnit(args[2]);
-
-	}
-	catch(std::exception &e)
-	{
-		std::cout << "Oops, " << e.what() << std::endl;
-		return 1;
-		
 	}
 	Unit player1 = Unit::parseUnit(args[1]);
 	Unit player2 = Unit::parseUnit(args[2]);
