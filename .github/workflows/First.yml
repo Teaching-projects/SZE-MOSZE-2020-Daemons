@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the app
-        run: g++ -std=c++17 *.cpp -o a.out
+        run: g++ -Wall -std=c++17 *.cpp -o a.out
       - name: Generate outputs from units
         run: ./test/generate_outputs.sh
       - name: Check if generated outputs are good
