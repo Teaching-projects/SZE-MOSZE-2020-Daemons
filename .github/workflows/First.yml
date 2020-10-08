@@ -9,7 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the app
-        run: g++ -Wall -std=c++17 *.cpp -o a.out
+        run: g++ -std=c++17 *.cpp -o a.out
+      - name: Check memora leaks
+        run: valgrind --leak-check=full --error-exitcode=1 ./a.out test/units/unit1.json test/units/unit2.json
       - name: Generate outputs from units
         run: ./test/generate_outputs.sh
       - name: Check if generated outputs are good
