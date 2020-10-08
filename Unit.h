@@ -9,9 +9,9 @@ class Unit
 private:
 	int hp;
 	int dmg;
-	int maxHP;
-	const std::string name;
 	unsigned int current_xp;
+	const std::string name;
+	int maxHP;
 	unsigned int level;
 public:
 	int getHp() const;
