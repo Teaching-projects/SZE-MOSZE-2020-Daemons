@@ -18,3 +18,8 @@ jobs:
         run: ./test/generate_outputs.sh
       - name: Check if generated outputs are good
         run: diff test/outputs.txt test/good_outputs.txt
+      - name: Run style and performance check
+        run: cppcheck *.cpp --enable=performance,style --output-file=performance_and_style_report.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./performance_and_style_report.txt
