@@ -49,7 +49,7 @@ std::string extractName(const std::string line)
 	return name.substr(name.find_first_of('"')+1);
 }
 
-Unit* Unit::parseUnit(const std::string& filename){
+Unit Unit::parseUnit(const std::string& filename){
 	std::ifstream file(filename);
 	if(file.good()){
 		std::string line;
@@ -62,8 +62,7 @@ Unit* Unit::parseUnit(const std::string& filename){
 		std::getline(file, line);
 		substring = line.substr(line.find(":")+1);
 		int dmg = std::stoi(substring);
-		Unit* hi = new Unit(hp,dmg,name);
-		return hi;
+		return Unit(hp,dmg,name);
 	}else{
 		throw std::runtime_error("File not found: "+filename);
 	}
