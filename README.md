@@ -5,6 +5,6 @@ If you don't have a customs JSON file you can use the example files from the uni
 For example: `./a.out test/units/unit1.json test/units/unit2.json`
 
 The end of the output should look something like this: `
-Kakarott wins. Remaining HP: 30000`
+Sully wins. Remaining HP: 275`
 #
 *Lázár Tamás, Kulcsár Bence, Mesics Mátyás*
