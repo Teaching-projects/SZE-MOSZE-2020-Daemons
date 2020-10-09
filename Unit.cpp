@@ -33,11 +33,15 @@ void Unit::boost_xp(const int& dmg)
 {
 	current_xp += dmg;
 	float level_xp = current_xp/100.0;
-	if(level_xp >= level){levelUp();}
+	if(level_xp >= level)
+	{
+		int level_step = round(level_xp - level);
+		levelUp(level_step);
+	}
 }
-void Unit::levelUp()
+void Unit::levelUp(const int lvl_step)
 {
-	level++;
+	level+=lvl_step;
 	maxHP = round(maxHP * 1.1);
 	hp = maxHP;
 	dmg = round(dmg * 1.1);
