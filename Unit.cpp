@@ -31,8 +31,8 @@ void Unit::takeDamage(Unit& enemy)
 }
 void Unit::boost_xp(const int& dmg)
 {
-	current_xp += dmg;
-	float level_xp = current_xp/100.0;
+	xp += dmg;
+	float level_xp = xp/100.0;
 	if(level_xp >= level)
 	{
 		int level_step = std::trunc(level_xp - level);
