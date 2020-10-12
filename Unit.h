@@ -7,12 +7,12 @@
 class Unit
 {
 private:
-	unsigned int current_xp;
-	unsigned int level;
 	int hp;
 	int dmg;
 	const std::string name;
 	int maxHP;
+	unsigned int current_xp;
+	unsigned int level;
 	void boost_xp(const int& dmg);
 	void levelUp();
 public:
