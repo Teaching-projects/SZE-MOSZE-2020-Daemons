@@ -111,7 +111,7 @@ TEST(JsonParserTest, wrong_input){
   std::filebuf fb;
   fb.open("test_output.json", std::ios::in);
   std::istream inputstream(&fb);
-  ASSERT_THROW(std::map<std::string, std::string> result = JsonParser::parseJSON(inputstream), std::runtime_error);
+  ASSERT_THROW(JsonParser::parseJSON(inputstream), std::runtime_error);
 }
 
 int main(int argc, char **argv) {
