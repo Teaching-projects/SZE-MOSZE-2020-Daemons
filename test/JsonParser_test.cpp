@@ -39,7 +39,7 @@ TEST(JsonParserTest, string_parameter){
   double hp = getRandomNumber();
   double dmg = getRandomNumber();
   std::string testString = "{\n"+createRandomNumberOfWhitespaces()+"\"name\""+
-  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\",\n"+
+  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Whitespaces in Name\",\n"+
   createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
   "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
   +"}";
@@ -47,7 +47,7 @@ TEST(JsonParserTest, string_parameter){
   std::string result_name = result["name"];
   std::string result_hp = result["hp"];
   std::string result_dmg = result["dmg"];
-  ASSERT_TRUE(result_name == "Mapleee");
+  ASSERT_TRUE(result_name == "Whitespaces in Name");
   ASSERT_TRUE(result_hp == std::to_string(hp));
   ASSERT_TRUE(result_dmg == std::to_string(dmg));
 }
