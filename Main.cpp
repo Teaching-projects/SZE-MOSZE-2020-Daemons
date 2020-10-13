@@ -9,16 +9,9 @@ int main(int argc,char** argv)
 		args[i] = argv[i];
 	}
 	try{
-		Unit::parseUnit(args[1]);
-		Unit::parseUnit(args[2]);
-		
-	}catch(std::exception &e){
-		std::cout << "Oops, " << e.what() << std::endl;
-		return 1;
-	}
-	Unit player1 = Unit::parseUnit(args[1]);
-	Unit player2 = Unit::parseUnit(args[2]);
-	Control::Attack(player1,player2);
+		Unit player1 = Unit::parseUnit(args[1]);
+		Unit player2 = Unit::parseUnit(args[2]);
+		Control::Attack(player1,player2);
 		if (player1.getHp() == 0)
 		{
 			std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHp() << std::endl;
@@ -27,6 +20,12 @@ int main(int argc,char** argv)
 		{
 			std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHp() << std::endl;
 		}
+		
+	}catch(std::exception &e){
+		std::cout << "Oops, " << e.what() << std::endl;
+		return 1;
+	}
+	
 
 	return 0;
 }
