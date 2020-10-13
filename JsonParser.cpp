@@ -24,13 +24,33 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
     }else{
       toParse = data;
     }
-    toParse.erase(remove_if(toParse.begin(), toParse.end(), isspace), toParse.end());
+    std::string new_str;
+    bool delete_spaces = true, start = false;
+    for(unsigned int i = 0; i < toParse.size(); ++i) {
+        if(toParse[i] == '\"') {
+            start ? start = false : start = true;
+            if(start) {
+                delete_spaces = false;
+            }
+        }
+        if(!start) {
+            delete_spaces = true;
+        }
+        if(delete_spaces) {
+            if(toParse[i] != ' ') {
+                new_str += toParse[i];
+            }
+        } else {
+            new_str += toParse[i];
+        }
+
+    }
     std::string charactersToRemove = "{}";
     for(auto& ch : charactersToRemove){
-      toParse.erase(std::remove(toParse.begin(), toParse.end(), ch));
+      new_str.erase(std::remove(new_str.begin(), new_str.end(), ch));
     }
 
-    std::string toProcess = toParse;
+    std::string toProcess = new_str;
 
     std::string key;
     std::string value;
