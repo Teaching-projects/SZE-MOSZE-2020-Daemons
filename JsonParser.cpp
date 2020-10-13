@@ -69,7 +69,6 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
         toReturn[key] = value;
       }
     }
-    std::cout << toProcess << std::endl;
     if( toReturn.find("name") == toReturn.end()){
       throw std::runtime_error("Name key not found");
     }
