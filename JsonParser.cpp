@@ -37,7 +37,7 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
             delete_spaces = true;
         }
         if(delete_spaces) {
-            if(toParse[i] != ' ') {
+            if(toParse[i] != ' ' && toParse[i] != '\n') {
                 new_str += toParse[i];
             }
         } else {
