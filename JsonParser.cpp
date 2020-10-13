@@ -58,10 +58,10 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
     if( toReturn.find("hp") == toReturn.end()){
       throw std::runtime_error("Hp key not found");
     }
-    if( toReturn["hp"] < 0 ){
+    if( std::stod(toReturn["hp"]) < 0 ){
       throw std::runtime_error("Invalid hp value");
     }
-    if( toReturn["dmg"] < 0 ){
+    if( std::stod(toReturn["dmg"]) < 0 ){
       throw std::runtime_error("Invalid dmg value");
     }
     return toReturn;
