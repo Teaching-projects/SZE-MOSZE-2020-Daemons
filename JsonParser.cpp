@@ -25,7 +25,9 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
       toParse = data;
     }
     toParse.erase(remove_if(toParse.begin(), toParse.begin() + JsonParser::nthOccurrence(toParse, "\"", 1), isspace), toParse.begin() + JsonParser::nthOccurrence(toParse, "\"", 1));
+    std::cout << "debug> " << toParse << std::endl;
     toParse.erase(remove_if(toParse.begin() + JsonParser::nthOccurrence(toParse, "\"", 2), toParse.end(), isspace), toParse.end());
+    std::cout << "debug 2> " << toParse << std::endl;
     std::string charactersToRemove = "{}";
     for(auto& ch : charactersToRemove){
       toParse.erase(std::remove(toParse.begin(), toParse.end(), ch));
