@@ -97,6 +97,23 @@ TEST(JsonParserTest, istream_parameter){
   ASSERT_TRUE(result_dmg == std::to_string(dmg));
 }
 
+TEST(JsonParserTest, wrong_input){
+  double hp = getRandomNumber();
+  double dmg = getRandomNumber();
+  std::string testString = "{\n"+createRandomNumberOfWhitespaces()+"\"nameee\""+
+  createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+"\"Mapleee\",\n"+
+  createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
+  "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
+  +"}";
+  std::ofstream out("test_output.json");
+  out << testString;
+  out.close();
+  std::filebuf fb;
+  fb.open("test_output.json", std::ios::in);
+  std::istream inputstream(&fb);
+  ASSERT_THROW(std::map<std::string, std::string> result = JsonParser::parseJSON(inputstream), std::runtime_error);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
