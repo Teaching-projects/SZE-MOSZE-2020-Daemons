@@ -49,6 +49,21 @@ std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data
         toReturn[key] = value;
       }
     }
+    if( toReturn.find("name") == toReturn.end()){
+      throw std::runtime_error("Name key not found");
+    }
+    if( toReturn.find("dmg") == toReturn.end()){
+      throw std::runtime_error("Dmg key not found");
+    }
+    if( toReturn.find("hp") == toReturn.end()){
+      throw std::runtime_error("Hp key not found");
+    }
+    if( toReturn["hp"] < 0 ){
+      throw std::runtime_error("Invalid hp value");
+    }
+    if( toReturn["dmg"] < 0 ){
+      throw std::runtime_error("Invalid dmg value");
+    }
     return toReturn;
   }catch(std::exception& e){
     throw std::runtime_error(e.what());
