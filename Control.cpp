@@ -5,7 +5,7 @@
 #include <cassert>
 
 
-void Control::Attack(Unit & firstplayer,Unit& secondplayer)
+void Control::Attack(Unit& firstplayer,Unit& secondplayer)
 {
 
 	while (firstplayer.getHp() > 0 && secondplayer.getHp() > 0)

@@ -8,13 +8,18 @@ class Unit
 {
 private:
 	int hp;
-	const int dmg;
+	int dmg;
 	const std::string name;
+	int maxHP;
+	unsigned int xp;
+	unsigned int level;
+	void boost_xp(const int& dmg);
+	void levelUp();
 public:
 	int getHp() const;
 	int getDmg() const;
 	std::string getName() const;
-	void takeDamage(const Unit& enemy);
-	Unit(const int& h, const int& d, const std::string& n) : hp(h), dmg(d), name(n){}
-	static Unit* parseUnit(const std::string& filename);
+	void takeDamage(Unit& enemy);
+	Unit(const int& h, const int& d, const std::string& n) : hp(h), dmg(d), name(n),maxHP(hp),xp(0),level(1){}
+	static Unit parseUnit(const std::string& filename);
 };

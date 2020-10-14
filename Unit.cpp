@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include <math.h>
 
 int Unit::getHp() const
 {
@@ -15,14 +16,35 @@ std::string Unit::getName() const
 	return name;
 }
 
-void Unit::takeDamage(const Unit& enemy)
+void Unit::takeDamage(Unit& enemy)
 {
+	int dmg_taken = hp;
 	int damage = enemy.getDmg();
 	hp -= damage;
 	if (hp < 0)
 	{
 		hp = 0;
 	}
+	dmg_taken = dmg_taken - hp;
+	enemy.boost_xp(dmg_taken);
+	
+}
+void Unit::boost_xp(const int& dmg)
+{
+	xp += dmg;
+	float level_xp = xp/100.0;
+	if(level_xp >= level)
+	{
+		int level_step = std::trunc(level_xp - level);
+		for(int i = 0;i<=level_step;i++){levelUp();}
+	}
+}
+void Unit::levelUp()
+{
+	level++;
+	maxHP = round(maxHP * 1.1);
+	hp = maxHP;
+	dmg = round(dmg * 1.1);
 }
 std::string extractName(const std::string line)
 {
@@ -31,7 +53,7 @@ std::string extractName(const std::string line)
 	return name.substr(name.find_first_of('"')+1);
 }
 
-Unit* Unit::parseUnit(const std::string& filename){
+Unit Unit::parseUnit(const std::string& filename){
 	std::ifstream file(filename);
 	if(file.good()){
 		std::string line;
@@ -44,8 +66,7 @@ Unit* Unit::parseUnit(const std::string& filename){
 		std::getline(file, line);
 		substring = line.substr(line.find(":")+1);
 		int dmg = std::stoi(substring);
-		Unit* hi = new Unit(hp,dmg,name);
-		return hi;
+		return Unit(hp,dmg,name);
 	}else{
 		throw std::runtime_error("File not found: "+filename);
 	}
