@@ -26,10 +26,15 @@ class Unit
 {
 private:
 	int hp; ///< the hp of the Unit
-	const int dmg; ///< the damage of the Unit
+    int dmg; ///< the damage of the Unit
 	const std::string name; ///<The name of the Unit
 	const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
-	void takeDamage(const Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 
+	void takeDamage(Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 
+	int maxHP;
+	unsigned int xp;
+	unsigned int level;
+	void boost_xp(const int& dmg);
+	void levelUp();
 public:
     //! Simple Getter for hp
     /*!
@@ -59,12 +64,12 @@ public:
 	*/
 	void Fight( Unit* enemy);  
 	
-	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a){} ///<Constructor
+	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a),maxHP(hp),xp(0),level(1){} ///<Constructor
 	//!Method that parse Units Json files and return the generated Unit Object with the parsed data
 	/*!
 	 \return  Unit Object with the parsed data
 	 \param filename json file's name that the method parses
 	*/
-	static Unit* parseUnit(const std::string& filename);
+	static Unit parseUnit(const std::string& filename);
 	
 };

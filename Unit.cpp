@@ -77,8 +77,7 @@ Unit Unit::parseUnit(const std::string& filename){
 		substring = line.substr(line.find(":")+1);
 		double atkspeed = std::stod(substring);
 
-		Unit* hi = new Unit(hp,dmg,name,atkspeed);
-		return *hi;
+		return Unit(hp,dmg,name,atkspeed);
 	}else{
 		throw std::runtime_error("File not found: "+filename);
 	}
