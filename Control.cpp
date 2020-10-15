@@ -5,9 +5,6 @@
 #include <cassert>
 
 
-void Control::Attack(Unit& firstplayer,Unit& secondplayer)
-{
-}
 
 void Control::Report(const Unit& firstplayer,const Unit& secondplayer)
 {
