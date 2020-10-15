@@ -10,12 +10,12 @@ class Unit
 {
 private:
 	double hp;
-	const double dmg;
+	double dmg;
 	const std::string name;
 	double maxHP;
 	unsigned int xp;
 	unsigned int level;
-	void boost_xp(const int& dmg);
+	void boost_xp(const double& dmg);
 	void levelUp();
 public:
 	double getHp() const;
