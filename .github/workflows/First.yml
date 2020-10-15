@@ -8,11 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install valgrind and cppcheck
+        run: sudo apt-get install -y valgrind cppcheck
       - name: Build the app
-        run: g++ -std=c++17 *.cpp -o a.out
+        run: ./buildcheck.sh
+      - name: Cppcheck
+        run: cppcheck *.cpp --enable=warning --error-exitcode=1
+      - name: Check memory leaks
+        run: valgrind --leak-check=full --error-exitcode=1 ./a.out test/units/unit1.json test/units/unit2.json
       - name: Generate outputs from units
         run: ./test/generate_outputs.sh
-      - name: Check if generated outputs are good
-        run: ./test/test_outputs.sh
       - name: Run JsonParser unit tests
         run: ./test/JsonParser_test
+      - name: Check if generated outputs are good
+        run: diff test/outputs.txt test/good_outputs.txt
+      - name: Run style and performance check
+        run: cppcheck *.cpp --enable=performance,style --output-file=performance_and_style_report.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./performance_and_style_report.txt
