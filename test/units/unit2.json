@@ -1,6 +1,6 @@
 {
     "name" : "Sully",
-    "hp" : 100,
-    "dmg" : 30,
+    "hp" : 250,
+    "dmg" : 75,
     "attackcooldown " : 0.1
 }
