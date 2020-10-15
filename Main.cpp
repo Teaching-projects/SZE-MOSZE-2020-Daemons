@@ -11,7 +11,7 @@ int main(int argc,char** argv)///< Main function, returns 1 if everything OK.
 	try{
 		Unit player1 = Unit::parseUnit(args[1]);
 		Unit player2 = Unit::parseUnit(args[2]);
-		Control::Attack(player1,player2);
+		player1.Fight(&player2);
 		if (player1.getHp() == 0)
 		{
 			std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHp() << std::endl;
