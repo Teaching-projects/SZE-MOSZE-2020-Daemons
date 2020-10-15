@@ -88,8 +88,8 @@ void Unit::Fight(Unit* enemy)
 	{
 		int i1=1;
 		int i2=1;
-		double NextAttackTimerFirstPlayer=i1*this->getAs();
-		double NextAttackTimerSecondPlayer=i2*enemy->getAs();
+		double TmpNextAttack1=i1*this->getAs();
+		double TmpNextAttack2=i2*enemy->getAs();
 		if(enemy->getHp()>0&&this->hp>0)
 		{
 			enemy->takeDamage(* this );
@@ -101,27 +101,27 @@ void Unit::Fight(Unit* enemy)
 		while(this->hp>0&&(enemy->getHp()>0))
 		{
 
-			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
+			if(TmpNextAttack1<TmpNextAttack2)
 			{
-				enemy->takeDamage(*this);
+				enemy->hp-=this->getDmg();
 				i1++;
 				
 
 			}
-			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
+			else if(TmpNextAttack1==TmpNextAttack2)
 			{
-				enemy->takeDamage(*this);
-				this->takeDamage( * enemy);
+				enemy->hp-=this->getDmg();
+				hp-=enemy->getDmg();
 				i1++;
 				i2++;
 			}
 			else
 			{
-				this->takeDamage( * enemy);
+				hp-=enemy->getDmg();
 				i2++;
 			}
-			NextAttackTimerFirstPlayer=i1*this->getAs();
-			NextAttackTimerSecondPlayer=i2*enemy->getAs();
+			TmpNextAttack1=i1*this->getAs();
+			TmpNextAttack2=i2*enemy->getAs();
 
 		}
 
