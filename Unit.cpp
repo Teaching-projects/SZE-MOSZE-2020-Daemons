@@ -1,5 +1,8 @@
 #include "Unit.h"
 #include <math.h>
+#include <map>
+#include <string>
+#include "JsonParser.h"
 
 int Unit::getHp() const
 {
@@ -50,24 +53,17 @@ void Unit::levelUp()
 	hp = maxHP;
 	dmg = round(dmg * 1.1);
 }
-std::string extractName(const std::string line)
-{
-	std::string name = line.substr(line.find(":"));
-	name.erase(name.find_last_of('"'),name.length()-1);
-	return name.substr(name.find_first_of('"')+1);
-}
-
-std::string extractName(const std::string line)
-{
-	std::string name = line.substr(line.find(":"));
-	name.erase(name.find_last_of('"'),name.length()-1);
-	return name.substr(name.find_first_of('"')+1);
-}
-
 
 Unit Unit::parseUnit(const std::string& data){
 	std::map<std::string, std::string> returnedMap = JsonParser::parseJSON(data);
-	return Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"]);
+	return Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"],std::stod(returnedMap["attackcooldown"]));
+}
+
+std::string extractName(const std::string line)
+{
+	std::string name = line.substr(line.find(":"));
+	name.erase(name.find_last_of('"'),name.length()-1);
+	return name.substr(name.find_first_of('"')+1);
 }
 
 void Unit::Fight(Unit* enemy)

@@ -2,5 +2,5 @@
     "name" : "Sully",
     "hp" : 250,
     "dmg" : 75,
-    "attackcooldown " : 0.1
+    "attackcooldown" : 0.1
 }
