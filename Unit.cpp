@@ -1,14 +1,18 @@
 #include "Unit.h"
 #include <math.h>
 
-double Unit::getHp() const
+int Unit::getHp() const
 {
 	return hp;
 }
 
-double Unit::getDmg() const
+int Unit::getDmg() const
 {
 	return dmg;
+}
+double Unit::getAs() const
+{
+	return atkcooldown;
 }
 
 std::string Unit::getName() const
@@ -18,8 +22,8 @@ std::string Unit::getName() const
 
 void Unit::takeDamage(Unit& enemy)
 {
-	double dmg_taken = hp;
-	double damage = enemy.getDmg();
+	int dmg_taken = hp;
+	int damage = enemy.getDmg();
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -29,10 +33,10 @@ void Unit::takeDamage(Unit& enemy)
 	enemy.boost_xp(dmg_taken);
 	
 }
-void Unit::boost_xp(const double& dmg)
+void Unit::boost_xp(const int& dmg)
 {
 	xp += dmg;
-	double level_xp = xp/100.0;
+	float level_xp = xp/100.0;
 	if(level_xp >= level)
 	{
 		int level_step = std::trunc(level_xp - level);
@@ -53,8 +57,63 @@ std::string extractName(const std::string line)
 	return name.substr(name.find_first_of('"')+1);
 }
 
+std::string extractName(const std::string line)
+{
+	std::string name = line.substr(line.find(":"));
+	name.erase(name.find_last_of('"'),name.length()-1);
+	return name.substr(name.find_first_of('"')+1);
+}
+
 
 Unit Unit::parseUnit(const std::string& data){
 	std::map<std::string, std::string> returnedMap = JsonParser::parseJSON(data);
 	return Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"]);
+}
+
+void Unit::Fight(Unit* enemy)
+{
+		int i1=1;
+		int i2=1;
+		double NextAttackTimerFirstPlayer=i1*this->getAs();
+		double NextAttackTimerSecondPlayer=i2*enemy->getAs();
+		if(enemy->getHp()>0&&this->hp>0)
+		{
+			enemy->takeDamage(* this );
+		}
+		if(enemy->getHp()>0&&this->hp>0)
+		{
+			this->takeDamage( * enemy);
+		}
+		while(this->hp>0&&(enemy->getHp()>0))
+		{
+
+			
+			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
+			{
+				
+				enemy->takeDamage(*this);
+				i1++;
+
+
+			}
+			
+			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
+			{
+				
+				enemy->takeDamage(*this);
+				this->takeDamage( * enemy);
+				i1++;
+				i2++;
+			}
+			else
+			{
+				
+				this->takeDamage( * enemy);
+				i2++;
+			}
+			
+			NextAttackTimerFirstPlayer=i1*this->getAs();
+			NextAttackTimerSecondPlayer=i2*enemy->getAs();
+
+		}
 }
