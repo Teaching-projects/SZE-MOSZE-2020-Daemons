@@ -10,6 +10,10 @@ int Unit::getDmg() const
 {
 	return dmg;
 }
+double Unit::getAs() const
+{
+	return atkcooldown;
+}
 
 std::string Unit::getName() const
 {
@@ -57,17 +61,74 @@ Unit Unit::parseUnit(const std::string& filename){
 	std::ifstream file(filename);
 	if(file.good()){
 		std::string line;
+
 		std::getline(file, line);
 		std::getline(file, line);
 		std::string name = extractName(line);
+		
 		std::getline(file, line);
 		std::string substring = line.substr(line.find(":")+1);
 		int hp = std::stoi(substring);
 		std::getline(file, line);
 		substring = line.substr(line.find(":")+1);
 		int dmg = std::stoi(substring);
-		return Unit(hp,dmg,name);
+
+		std::getline(file, line);
+		substring = line.substr(line.find(":")+1);
+		double atkspeed = std::stod(substring);
+
+		
+		return Unit(hp,dmg,name,atkspeed);
 	}else{
 		throw std::runtime_error("File not found: "+filename);
 	}
+
 }
+void Unit::Fight(Unit* enemy)
+	{
+		int i1=1;
+		int i2=1;
+		double NextAttackTimerFirstPlayer=i1*this->getAs();
+		double NextAttackTimerSecondPlayer=i2*enemy->getAs();
+		if(enemy->getHp()>0&&this->hp>0)
+		{
+			enemy->takeDamage(* this );
+		}
+		if(enemy->getHp()>0&&this->hp>0)
+		{
+			this->takeDamage( * enemy);
+		}
+		while(this->hp>0&&(enemy->getHp()>0))
+		{
+
+			
+			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
+			{
+				
+				enemy->takeDamage(*this);
+				i1++;
+
+
+			}
+			
+			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
+			{
+				
+				enemy->takeDamage(*this);
+				this->takeDamage( * enemy);
+				i1++;
+				i2++;
+			}
+			else
+			{
+				
+				this->takeDamage( * enemy);
+				i2++;
+			}
+			
+			NextAttackTimerFirstPlayer=i1*this->getAs();
+			NextAttackTimerSecondPlayer=i2*enemy->getAs();
+
+		}
+
+	}
