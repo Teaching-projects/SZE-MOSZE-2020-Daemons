@@ -18,6 +18,8 @@ jobs:
         run: valgrind --leak-check=full --error-exitcode=1 ./a.out test/units/unit1.json test/units/unit2.json
       - name: Generate outputs from units
         run: ./test/generate_outputs.sh
+      - name: Run JsonParser unit tests
+        run: ./test/JsonParser_test
       - name: Check if generated outputs are good
         run: diff test/outputs.txt test/good_outputs.txt
       - name: Run style and performance check

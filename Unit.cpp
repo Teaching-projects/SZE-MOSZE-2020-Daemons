@@ -1,5 +1,8 @@
 #include "Unit.h"
 #include <math.h>
+#include <map>
+#include <string>
+#include "JsonParser.h"
 
 int Unit::getHp() const
 {
@@ -50,6 +53,12 @@ void Unit::levelUp()
 	hp = maxHP;
 	dmg = round(dmg * 1.1);
 }
+
+Unit Unit::parseUnit(const std::string& data){
+	std::map<std::string, std::string> returnedMap = JsonParser::parseJSON(data);
+	return Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"],std::stod(returnedMap["attackcooldown"]));
+}
+
 std::string extractName(const std::string line)
 {
 	std::string name = line.substr(line.find(":"));
@@ -57,35 +66,8 @@ std::string extractName(const std::string line)
 	return name.substr(name.find_first_of('"')+1);
 }
 
-Unit Unit::parseUnit(const std::string& filename){
-	std::ifstream file(filename);
-	if(file.good()){
-		std::string line;
-
-		std::getline(file, line);
-		std::getline(file, line);
-		std::string name = extractName(line);
-		
-		std::getline(file, line);
-		std::string substring = line.substr(line.find(":")+1);
-		int hp = std::stoi(substring);
-		std::getline(file, line);
-		substring = line.substr(line.find(":")+1);
-		int dmg = std::stoi(substring);
-
-		std::getline(file, line);
-		substring = line.substr(line.find(":")+1);
-		double atkspeed = std::stod(substring);
-
-		
-		return Unit(hp,dmg,name,atkspeed);
-	}else{
-		throw std::runtime_error("File not found: "+filename);
-	}
-
-}
 void Unit::Fight(Unit* enemy)
-	{
+{
 		int i1=1;
 		int i2=1;
 		double NextAttackTimerFirstPlayer=i1*this->getAs();
@@ -130,5 +112,4 @@ void Unit::Fight(Unit* enemy)
 			NextAttackTimerSecondPlayer=i2*enemy->getAs();
 
 		}
-
-	}
+}
