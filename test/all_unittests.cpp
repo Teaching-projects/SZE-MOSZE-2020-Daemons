@@ -17,6 +17,14 @@ TEST(all_unitsTest,jsonPars_test)
     ASSERT_TRUE(std::stod(remap["dmg"]) == 25);
     ASSERT_TRUE(std::stod(remap["attackcooldown"]) == 10);
 }
+TEST(all_unitsTest,Unit_parser_get)
+{
+    Unit unit_one = Unit::parseUnit("units/unit1.json");
+    ASSERT_TRUE(unit_one.getName() == "Kakarott");
+    ASSERT_EQ(unit_one.getHp(),120);
+    ASSERT_EQ(unit_one.getDmg(),25);
+    ASSERT_DOUBLE_EQ(unit_one.getAs(),10.0);
+}
 TEST(all_unitsTest,Unit_edge_case_file)
 {
     std::map<std::string, std::string> remap = JsonParser::parseJSON("edge_case.json");
@@ -40,13 +48,10 @@ TEST(all_unitsTest,Unit_fight)
     unit_one.Fight(&unit_two);
     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
 }
-TEST(all_unitsTest,Unit_parser_get)
+TEST(all_unitsTest,Unit_boost)
 {
     Unit unit_one = Unit::parseUnit("units/unit1.json");
-    ASSERT_TRUE(unit_one.getName() == "Kakarott");
-    ASSERT_EQ(unit_one.getHp(),120);
-    ASSERT_EQ(unit_one.getDmg(),25);
-    ASSERT_DOUBLE_EQ(unit_one.getAs(),10.0);
+    
 }
 
 int main(int argc, char **argv) {
