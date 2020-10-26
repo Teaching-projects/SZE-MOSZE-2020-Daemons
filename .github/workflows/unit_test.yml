@@ -21,4 +21,4 @@ jobs:
       - name: Build the test
         run: cd test && make
       - name: Run the unit tests
-        run: ./coreunit_test
+        run: cd test && ./coreunit_test
