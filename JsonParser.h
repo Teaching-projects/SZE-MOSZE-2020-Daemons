@@ -30,8 +30,8 @@ private:
 //! Method that find the specific character in the str parameter
     /*!
 	 \param str String parameter
-   \param findMe const character that the method will find in the str parameter
-   \param nth 
+   \param findMe const string that the method will find in the str parameter
+   \param nth int parameter that represents how many findMe string we will find (default 1)
 	*/
   static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
 public:
