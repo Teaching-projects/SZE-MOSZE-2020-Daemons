@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.h
+iostream
+-
+Unit.h
+/home/matyko/SZE-MOSZE-2020-Daemons/Unit.h
+string
+-
+map
+-
+variant
+-
+fstream
+-
+algorithm
+-
+
+/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp
+Unit.h
+/home/matyko/SZE-MOSZE-2020-Daemons/Unit.h
+math.h
+-
+map
+-
+string
+-
+JsonParser.h
+/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.h
+
+/home/matyko/SZE-MOSZE-2020-Daemons/Unit.h
+string
+-
+fstream
+-
+sstream
+-
+iostream
+-
+

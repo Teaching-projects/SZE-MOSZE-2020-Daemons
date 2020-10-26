@@ -1,0 +1,2 @@
+/usr/bin/ar qc libparser.a  CMakeFiles/parser.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o
+/usr/bin/ranlib libparser.a

@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/jsonTest.dir/JsonParser_test.cpp.o CMakeFiles/jsonTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o CMakeFiles/jsonTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o  -o jsonTest 
