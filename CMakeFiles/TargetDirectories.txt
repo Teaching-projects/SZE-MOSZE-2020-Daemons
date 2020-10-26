@@ -1,3 +1,0 @@
-/home/matyko/SZE-MOSZE-2020-Daemons/CMakeFiles/rebuild_cache.dir
-/home/matyko/SZE-MOSZE-2020-Daemons/CMakeFiles/runTests.dir
-/home/matyko/SZE-MOSZE-2020-Daemons/CMakeFiles/edit_cache.dir

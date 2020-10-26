@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/parserTest.dir/all_unittests.cpp.o CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o  -o parserTest -Wl,-Bstatic -lgtest -Wl,-Bdynamic -lpthread 

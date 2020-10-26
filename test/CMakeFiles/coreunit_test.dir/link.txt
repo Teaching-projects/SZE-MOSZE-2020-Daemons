@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/coreunit_test.dir/all_unittests.cpp.o CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o  -o coreunit_test -Wl,-Bstatic -lgtest -Wl,-Bdynamic -lpthread 
