@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit',['Unit',['../classUnit.html',1,'Unit'],['../classUnit.html#a430b77293db0fadba666912bddbd2517',1,'Unit::Unit()']]]
+  ['sze_2dmosze_2d2020_2ddaemons',['SZE-MOSZE-2020-Daemons',['../autotoc_md0.html',1,'']]]
 ];
