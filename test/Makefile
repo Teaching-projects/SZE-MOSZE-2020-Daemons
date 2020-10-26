@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named parserTest
+# Target rules for targets named coreunit_test
 
 # Build rule for target.
-parserTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parserTest
-.PHONY : parserTest
+coreunit_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 coreunit_test
+.PHONY : coreunit_test
 
 # fast build rule for target.
-parserTest/fast:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
-.PHONY : parserTest/fast
+coreunit_test/fast:
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/build
+.PHONY : coreunit_test/fast
 
 all_unittests.o: all_unittests.cpp.o
 
@@ -129,7 +129,7 @@ all_unittests.o: all_unittests.cpp.o
 
 # target to build an object file
 all_unittests.cpp.o:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/all_unittests.cpp.o
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/all_unittests.cpp.o
 .PHONY : all_unittests.cpp.o
 
 all_unittests.i: all_unittests.cpp.i
@@ -138,7 +138,7 @@ all_unittests.i: all_unittests.cpp.i
 
 # target to preprocess a source file
 all_unittests.cpp.i:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/all_unittests.cpp.i
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/all_unittests.cpp.i
 .PHONY : all_unittests.cpp.i
 
 all_unittests.s: all_unittests.cpp.s
@@ -147,7 +147,7 @@ all_unittests.s: all_unittests.cpp.s
 
 # target to generate assembly for a file
 all_unittests.cpp.s:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/all_unittests.cpp.s
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/all_unittests.cpp.s
 .PHONY : all_unittests.cpp.s
 
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.o: home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o
@@ -156,7 +156,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.o: home/matyko/SZE-MOSZE-2020-Daem
 
 # target to build an object file
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.o
 
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.i: home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.i
@@ -165,7 +165,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.i: home/matyko/SZE-MOSZE-2020-Daem
 
 # target to preprocess a source file
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.i:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.i
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.i
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.i
 
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.s: home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.s
@@ -174,7 +174,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.s: home/matyko/SZE-MOSZE-2020-Daem
 
 # target to generate assembly for a file
 home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.s:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.s
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.s
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/JsonParser.cpp.s
 
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.o: home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o
@@ -183,7 +183,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/Unit.o: home/matyko/SZE-MOSZE-2020-Daemons/Un
 
 # target to build an object file
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.o
 
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.i: home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.i
@@ -192,7 +192,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/Unit.i: home/matyko/SZE-MOSZE-2020-Daemons/Un
 
 # target to preprocess a source file
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.i:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.i
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.i
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.i
 
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.s: home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.s
@@ -201,7 +201,7 @@ home/matyko/SZE-MOSZE-2020-Daemons/Unit.s: home/matyko/SZE-MOSZE-2020-Daemons/Un
 
 # target to generate assembly for a file
 home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.s:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.s
+	$(MAKE) -f CMakeFiles/coreunit_test.dir/build.make CMakeFiles/coreunit_test.dir/home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.s
 .PHONY : home/matyko/SZE-MOSZE-2020-Daemons/Unit.cpp.s
 
 # Help Target
@@ -211,7 +211,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... parserTest"
+	@echo "... coreunit_test"
 	@echo "... edit_cache"
 	@echo "... all_unittests.o"
 	@echo "... all_unittests.i"

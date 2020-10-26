@@ -8,13 +8,22 @@
 #include <fstream>
 #include <stdio.h>
 
-TEST(all_unitsTest,Unit_parser)
+
+TEST(all_unitsTest,jsonPars_test)
 {
-    Unit unit_one = Unit::parseUnit("units/unit1.json");
-    ASSERT_TRUE(unit_one.getName() == "Kakarott");
-    ASSERT_EQ(unit_one.getHp(),120);
-    ASSERT_EQ(unit_one.getDmg(),25);
-    ASSERT_DOUBLE_EQ(unit_one.getAs(),10.0);
+    std::map<std::string, std::string> remap = JsonParser::parseJSON("units/unit1.json");
+    ASSERT_TRUE(std::stod(remap["hp"]) == 120);
+    ASSERT_TRUE(remap["name"] == "Kakarott");
+    ASSERT_TRUE(std::stod(remap["dmg"]) == 25);
+    ASSERT_TRUE(std::stod(remap["attackcooldown"]) == 10);
+}
+TEST(all_unitsTest,Unit_edge_case_file)
+{
+    std::map<std::string, std::string> remap = JsonParser::parseJSON("units/edge_case.json");
+    ASSERT_TRUE(std::stod(remap["hp"]) == 120);
+    ASSERT_TRUE(remap["name"] == "Kakarott");
+    ASSERT_TRUE(std::stod(remap["dmg"]) == 25);
+    ASSERT_TRUE(std::stod(remap["attackcooldown"]) == 10);
 }
 TEST(all_unitsTest,typetest)
 {
@@ -31,7 +40,14 @@ TEST(all_unitsTest,Unit_fight)
     unit_one.Fight(&unit_two);
     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
 }
-TEST(all_unitsTest,)
+TEST(all_unitsTest,Unit_parser_get)
+{
+    Unit unit_one = Unit::parseUnit("units/unit1.json");
+    ASSERT_TRUE(unit_one.getName() == "Kakarott");
+    ASSERT_EQ(unit_one.getHp(),120);
+    ASSERT_EQ(unit_one.getDmg(),25);
+    ASSERT_DOUBLE_EQ(unit_one.getAs(),10.0);
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
