@@ -19,7 +19,7 @@ TEST(all_unitsTest,jsonPars_test)
 }
 TEST(all_unitsTest,Unit_edge_case_file)
 {
-    std::map<std::string, std::string> remap = JsonParser::parseJSON("units/edge_case.json");
+    std::map<std::string, std::string> remap = JsonParser::parseJSON("edge_case.json");
     ASSERT_TRUE(std::stod(remap["hp"]) == 120);
     ASSERT_TRUE(remap["name"] == "Kakarott");
     ASSERT_TRUE(std::stod(remap["dmg"]) == 25);
