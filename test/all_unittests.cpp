@@ -48,9 +48,9 @@ TEST(all_unitsTest,Unit_fight)
     unit_one.Fight(&unit_two);
     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
 }
-TEST(all_unitsTest,Unitparser_missingkeys)
+TEST(all_unitsTest,Unitparser_unit_notexists)
 {
-    ASSERT_THROW(Unit unit_one = Unit::parseUnit("units/unit1.json"),std::runtime_error);
+    ASSERT_THROW(Unit unit_one = Unit::parseUnit("units/unitnot_exists.json"),std::runtime_error);
 }
 TEST(all_unitsTest,Unit_stats)
 {
