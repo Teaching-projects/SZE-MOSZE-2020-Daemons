@@ -48,10 +48,19 @@ TEST(all_unitsTest,Unit_fight)
     unit_one.Fight(&unit_two);
     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
 }
-TEST(all_unitsTest,Unit_boost)
+TEST(all_unitsTest,Unitparser_missingkeys)
+{
+    ASSERT_THROW(Unit unit_one = Unit::parseUnit("units/unit1.json"),std::runtime_error);
+}
+TEST(all_unitsTest,Unit_stats)
 {
     Unit unit_one = Unit::parseUnit("units/unit1.json");
-    
+    Unit unit_two = Unit::parseUnit("units/unit2.json");
+    unit_one.Fight(&unit_two);
+    ASSERT_TRUE(unit_one.getHp() >= unit_two.getHp() || unit_one.getHp() < unit_two.getHp());
+    if(unit_one.getHp() < unit_two.getHp()) ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
+    else ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
+
 }
 
 int main(int argc, char **argv) {
