@@ -3,8 +3,7 @@ name: Documentation.yml
 on:
   push:	
     branches:	
-      - documentation
-      - gh-pages
+      - master
 
 jobs:
 
