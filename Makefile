@@ -13,7 +13,7 @@ DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
 UNTTEST:= ./test/JsonParser_test
 
-all: runMain cppchech cppcheckfile valgrind diff
+all: runMain cppcheck cppcheckfile valgrind diff
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
