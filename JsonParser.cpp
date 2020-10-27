@@ -10,7 +10,7 @@ std::map<std::string, std::string> JsonParser::parseJSON(std::istream& data){
   return JsonParser::parseJSON(toParse);
 }
 
-std::map<std::string, std::string> JsonParser::parseJSON(const std::string& data){
+std::map<std::string, std::string > JsonParser::parseJSON(const std::string& data){
   try{
     std::map<std::string, std::string> toReturn;
     std::ifstream test(data);
