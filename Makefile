@@ -32,7 +32,7 @@ cppcheckfile:
 	$(CPPRUN) $(CPPRUNOBJECTS) $(CPPRUNFLAGSFILE)
 valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
-diff:
+diff: generate_outputs
 	$(DFF) $(DFFOBJS)
 jsontst:
 	$(JSONTST)
