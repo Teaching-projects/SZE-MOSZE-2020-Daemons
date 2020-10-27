@@ -63,6 +63,9 @@ public:
 	 \param enemy Unit Objects pointer
 	*/
 	void Fight( Unit* enemy);  
+
+	// Getter only needed for unit tests
+	int getMaxHp() const;
 	
 	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a),maxHP(hp),xp(0),level(1){} ///<Constructor
 	//!Method that parse Units Json files and return the generated Unit Object with the parsed data

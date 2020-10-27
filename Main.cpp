@@ -2,7 +2,7 @@
 #include "Control.h"
 #include <vector>
 
-int main(int argc,char** argv)///< Main function, returns 1 if everything OK.
+int main(int argc,char** argv)///< Main function, returns 0 if everything OK.
 {
 	std::vector<std::string> args(argc);
 	for(int i=0; i<argc; ++i){
