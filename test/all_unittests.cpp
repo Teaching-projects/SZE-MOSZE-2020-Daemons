@@ -60,7 +60,12 @@ TEST(all_unitsTest,Unit_stats)
     ASSERT_TRUE(unit_one.getHp() >= unit_two.getHp() || unit_one.getHp() < unit_two.getHp());
     if(unit_one.getHp() < unit_two.getHp()) ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
     else ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
-
+}
+TEST(all_unitsTest,Constcheck)
+{
+    Unit unit_o(100,30,"Wukkie",20);
+    Unit unit_t(100,30,"Wukkie",20);
+    EXPECT_NO_THROW(unit_o.Fight(&unit_t));
 }
 
 int main(int argc, char **argv) {
