@@ -16,7 +16,7 @@ all: runMain cppchech cppcheckfile valgrind diff
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
-JsonParser.o: Parser.cpp
+JsonParser.o: JsonParser.cpp
 	$(RUN) $(CFLAGS) -c JsonParser.cpp
 Main.o: Main.cpp
 	$(RUN) $(CFLAGS) -c Main.cpp
