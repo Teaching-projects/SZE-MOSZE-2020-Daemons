@@ -12,8 +12,8 @@ DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
 JSONTST:= ./test/JsonParser_test
 OUTPTS:= ./test/generate_outputs.sh
-BLDCHECK:= ./buildcheck.sh
-all: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
+DCMNT:= doxygen doxconf
+alltest: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
@@ -33,11 +33,12 @@ valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 generate_outputs: runMain
 	$(OUTPTS)
-diff: generate_outputs buildcheck
+diff: generate_outputs 
 	$(DFF) $(DFFOBJS)
 jsontst:
 	$(JSONTST)
-buildcheck:
-	$(BLDCHECK)
+document:
+	$(DCMNT)
+
 
 
