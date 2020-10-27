@@ -1,7 +1,6 @@
 OBJS:=JsonParser.o Main.o Unit.o Control.o
 CLFLAGS:=-Wall -std=c++17
 RUN:= g++
-
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
 VLGRNDJSONS:=  ./runMain test/units/unit1.json test/units/unit2.json
@@ -13,7 +12,7 @@ DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
 JSONTST:= ./test/JsonParser_test
 OUTPTS:= ./test/generate_outputs.sh
-
+BLDCHECK:= ./buildcheck.sh
 all: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
 
 runMain:$(OBJS)
@@ -32,10 +31,13 @@ cppcheckfile:
 	$(CPPRUN) $(CPPRUNOBJECTS) $(CPPRUNFLAGSFILE)
 valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
-diff: generate_outputs
+generate_outputs: runMain
+	$(OUTPTS)
+diff: generate_outputs buildcheck
 	$(DFF) $(DFFOBJS)
 jsontst:
 	$(JSONTST)
-generate_outputs:
-	$(OUTPTS)
+buildcheck:
+	$(BLDCHECK)
+
 
