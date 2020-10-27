@@ -48,10 +48,6 @@ TEST(all_unitsTest,Unit_fight)
     unit_one.Fight(&unit_two);
     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
 }
-// TEST(all_unitsTest,Unitparser_unit_notexists)
-// {
-//     ASSERT_THROW(Unit unit_one = Unit::parseUnit("units/unitnot_exists.json"),std::runtime_error);
-// }
 TEST(all_unitsTest,Unit_stats)
 {
     Unit unit_one = Unit::parseUnit("units/unit1.json");
@@ -67,10 +63,19 @@ TEST(all_unitsTest,no_throw_check)
     Unit unit_t(100,30,"Wukkie",20);
     EXPECT_NO_THROW(unit_o.Fight(&unit_t));
 }
-TEST(all_unitsTEst,messed_up_json)
+TEST(all_unitsTest,missing_keys)
 {
     ASSERT_THROW(JsonParser::parseJSON("missing_keys.json"),std::runtime_error);
 }
+TEST(all_unitsTest,messed_up_keys)
+{
+    Unit unit_messedup = Unit::parseUnit("messedup_keys.json");
+    ASSERT_TRUE(unit_messedup.getName() == "Kakarott");
+    ASSERT_EQ(unit_messedup.getHp(),120);
+    ASSERT_EQ(unit_messedup.getDmg(),25);
+    ASSERT_DOUBLE_EQ(unit_messedup.getAs(),10.0);
+}
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
