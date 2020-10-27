@@ -11,6 +11,7 @@ CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
+UNTTEST:= ./test/JsonParser_test
 
 all: runMain cppchech cppcheckfile valgrind diff
 
@@ -32,4 +33,6 @@ valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 diff:
 	$(DFF) $(DFFOBJS)
+unittest:
+ $(UNTTEST)
 
