@@ -10,12 +10,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install valgrind and cppcheck
         run: sudo apt-get install -y valgrind cppcheck
-      - name: Build the app
-        run: ./buildcheck.sh
-      - name: Generate outputs from units
-        run: ./test/generate_outputs.sh
-      - name: Run JsonParser unit tests
-        run: ./test/JsonParser_test
       - name: run Makefile
         run: make all
       - uses: actions/upload-artifact@v2
