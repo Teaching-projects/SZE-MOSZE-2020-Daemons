@@ -95,7 +95,7 @@ TEST(all_unitsTest,test_levelup_logic)
     Unit unit_one = Unit::parseUnit("units/unit2.json");
     Unit unit_two = Unit::parseUnit("units/unit3.json");
     unit_one.Fight(&unit_two);
-    ASSERT_EQ(unit_one.getMaxHp(),280);
+    ASSERT_EQ(unit_two.getMaxHp(),280);
 }
 
 
