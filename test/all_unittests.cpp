@@ -61,11 +61,15 @@ TEST(all_unitsTest,Unit_stats)
     if(unit_one.getHp() < unit_two.getHp()) ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
     else ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
 }
-TEST(all_unitsTest,Constcheck)
+TEST(all_unitsTest,no_throw_check)
 {
     Unit unit_o(100,30,"Wukkie",20);
     Unit unit_t(100,30,"Wukkie",20);
     EXPECT_NO_THROW(unit_o.Fight(&unit_t));
+}
+TEST(all_unitsTEst,messed_up_json)
+{
+    ASSERT_THROW(JsonParser::parseJSON("missing_keys.json"),std::runtime_error);
 }
 
 int main(int argc, char **argv) {
