@@ -81,12 +81,6 @@ TEST(all_unitsTest,no_throw_fromUnitparser)
     EXPECT_NO_THROW(Unit::parseUnit("units/unit2.json"));
     EXPECT_NO_THROW(Unit::parseUnit("units/unit3.json"));
 }
-TEST(all_unitsTest,no_throw_fromJsonparser)
-{
-    EXPECT_NO_THROW(Unit::parseUnit("units/unit1.json"));
-    EXPECT_NO_THROW(Unit::parseUnit("units/unit2.json"));
-    EXPECT_NO_THROW(Unit::parseUnit("units/unit3.json"));
-}
 TEST(all_unitsTest,gameplay_logic)
 {
     Unit unit_o(100,30,"Wukkie",20);
@@ -95,6 +89,13 @@ TEST(all_unitsTest,gameplay_logic)
     ASSERT_TRUE(unit_o.getHp() == 0);
     ASSERT_TRUE(unit_o.getHp() < unit_t.getHp());
     ASSERT_TRUE(unit_o.getDmg() < unit_t.getDmg());
+}
+TEST(all_unitsTest,test_levelup_logic)
+{
+    Unit unit_one = Unit::parseUnit("units/unit2.json");
+    Unit unit_two = Unit::parseUnit("units/unit3.json");
+    unit_one.Fight(&unit_two);
+    ASSERT_EQ(unit_one.getMaxHp(),280);
 }
 
 

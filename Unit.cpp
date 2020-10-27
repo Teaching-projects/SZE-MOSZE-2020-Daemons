@@ -22,6 +22,10 @@ std::string Unit::getName() const
 {
 	return name;
 }
+int Unit::getMaxHp() const
+{
+	return maxHP;
+}
 
 void Unit::takeDamage(Unit& enemy)
 {
