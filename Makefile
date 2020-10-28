@@ -11,19 +11,19 @@ CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style
 DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
 JSONTST:= ./test/JsonParser_test
-OUTPTS:= ./test/generate_outputs.sh
+OUTPTS:= 
 DCMNT:= doxygen doxconf
 alltest: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
-JsonParser.o: JsonParser.cpp
+JsonParser.o: JsonParser.cpp JsonParser.h
 	$(RUN) $(CFLAGS) -c JsonParser.cpp
-Main.o: Main.cpp
+Main.o: Main.cpp 
 	$(RUN) $(CFLAGS) -c Main.cpp
-Unit.o: Unit.cpp
+Unit.o: Unit.cpp Unit.h
 	$(RUN) $(CFLAGS) -c Unit.cpp
-Control.o: Control.cpp
+Control.o: Control.cpp Control.h
 	$(RUN) $(CFLAGS) -c Control.cpp
 cppcheck: 
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
@@ -32,11 +32,11 @@ cppcheckfile:
 valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 generate_outputs: runMain
-	$(OUTPTS)
+	./test/generate_outputs.sh
 diff: generate_outputs 
 	$(DFF) $(DFFOBJS)
 jsontst:
-	$(JSONTST)
+	./test/JsonParser_test
 document:
 	$(DCMNT)
 
