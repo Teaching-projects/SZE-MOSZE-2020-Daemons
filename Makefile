@@ -16,9 +16,9 @@ runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
 JsonParser.o: JsonParser.cpp JsonParser.h
 	$(RUN) $(CFLAGS) -c JsonParser.cpp
-Main.o: Main.cpp 
+Main.o: Main.cpp Control.h Unit.h JsonParser.h
 	$(RUN) $(CFLAGS) -c Main.cpp
-Unit.o: Unit.cpp Unit.h
+Unit.o: Unit.cpp Unit.h JsonParser.h
 	$(RUN) $(CFLAGS) -c Unit.cpp
 Control.o: Control.cpp Control.h
 	$(RUN) $(CFLAGS) -c Control.cpp
