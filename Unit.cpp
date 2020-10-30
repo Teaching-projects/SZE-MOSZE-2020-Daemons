@@ -2,6 +2,7 @@
 #include <math.h>
 #include <map>
 #include <string>
+#include "Hero.h"
 
 int Unit::getHealthPoints() const
 {
@@ -30,10 +31,10 @@ bool Unit::isAlive() const
 	if(hp == 0) return false;
 	else return true;
 }
-int Unit::getLevel() const
-{
-	return level;
-}
+// int Unit::getLevel() const
+// {
+// 	return level;
+// }
 void Unit::takeDamage(Unit& enemy)
 {
 	int dmg_taken = hp;
@@ -44,70 +45,7 @@ void Unit::takeDamage(Unit& enemy)
 		hp = 0;
 	}
 	dmg_taken = dmg_taken - hp;
-	enemy.boost_xp(dmg_taken);
+	//enemy.boost_xp(dmg_taken);
 	
 }
-void Unit::boost_xp(const int& dmg)
-{
-	xp += dmg;
-	float level_xp = xp/100.0;
-	if(level_xp >= level)
-	{
-		int level_step = std::trunc(level_xp - level);
-		for(int i = 0;i<=level_step;i++){levelUp();}
-	}
-}
-void Unit::levelUp()
-{
-	level++;
-	maxHP = round(maxHP * 1.1);
-	hp = maxHP;
-	dmg = round(dmg * 1.1);
-}
-void Unit::fightTilDeath(Unit enemy)
-{
-		int i1=1;
-		int i2=1;
-		double NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
-		double NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
-		if(enemy.getHealthPoints()>0&&hp>0)
-		{
-			enemy.takeDamage(*this);
-		}
-		if(enemy.getHealthPoints()>0&&hp>0)
-		{
-			takeDamage(enemy);
-		}
-		while(hp>0&&(enemy.getHealthPoints()>0))
-		{
 
-			
-			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
-			{
-				
-				enemy.takeDamage(*this);
-				i1++;
-
-
-			}
-			
-			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
-			{
-				
-				enemy.takeDamage(*this);
-				takeDamage(enemy);
-				i1++;
-				i2++;
-			}
-			else
-			{
-				
-				takeDamage(enemy);
-				i2++;
-			}
-			
-			NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
-			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
-
-		}
-}

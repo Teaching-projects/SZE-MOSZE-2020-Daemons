@@ -24,17 +24,13 @@
 
 class Unit
 {
-private:
+protected:
 	int hp; ///< the hp of the Unit
     int dmg; ///< the damage of the Unit
 	const std::string name; ///<The name of the Unit
 	const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
-	void takeDamage(Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 
 	int maxHP;
-	unsigned int xp;
-	unsigned int level;
-	void boost_xp(const int& dmg);
-	void levelUp();
+	// void levelUp();
 public:
     //! Simple Getter for hp
     /*!
@@ -62,16 +58,16 @@ public:
 	 \return  double atkcooldown value
 	 \param enemy Unit Objects pointer
 	*/
-	void fightTilDeath( Unit enemy);  
 
 	// Getter only needed for unit tests
 	int getMaxHealthPoints() const;
 
 	bool isAlive() const;
 
+	virtual void takeDamage(Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 
 	int getLevel() const;
 	
-	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a),maxHP(hp),xp(0),level(1){} ///<Constructor
+	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a),maxHP(hp){} ///<Constructor
 	
 	
 };
