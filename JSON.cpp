@@ -1,7 +1,10 @@
 #include "JSON.h"
 
 JSON JSON::parseFromFile(const std::string& data){
-  return JSON::parseJSON(data);
+  std::filebuf fb;
+  fb.open(data, std::ios::in);
+  std::istream inputstream(&fb);
+  return JSON::parseJSON(inputstream);
 }
 
 JSON JSON::parseJSON(std::istream& data){
@@ -111,10 +114,6 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
 }
 
 bool JSON::count (const std::string& input){
-  for(auto it = data.cbegin(); it != data.cend(); ++it)
-  {
-      std::cout << it->first << " " << it->second << "\n";
-  }
-  return data.count(input) > 0;
+  return data.find(input)!=data.end();
 }
 
