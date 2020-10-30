@@ -73,21 +73,21 @@ JSON JSON::parseJSON(const std::string& data){
         toReturn[key] = value;
       }
     }
-    if( toReturn.find("name") == toReturn.end()){
-      throw ParseException("Name key not found");
-    }
-    if( toReturn.find("dmg") == toReturn.end()){
-      throw ParseException("Dmg key not found");
-    }
-    if( toReturn.find("hp") == toReturn.end()){
-      throw ParseException("Hp key not found");
-    }
-    if( std::stod(toReturn["hp"]) < 0 ){
-      throw ParseException("Invalid hp value");
-    }
-    if( std::stod(toReturn["dmg"]) < 0 ){
-      throw ParseException("Invalid dmg value");
-    }
+    // if( toReturn.find("name") == toReturn.end()){
+    //   throw ParseException("Name key not found");
+    // }
+    // if( toReturn.find("dmg") == toReturn.end()){
+    //   throw ParseException("Dmg key not found");
+    // }
+    // if( toReturn.find("hp") == toReturn.end()){
+    //   throw ParseException("Hp key not found");
+    // }
+    // if( std::stod(toReturn["hp"]) < 0 ){
+    //   throw ParseException("Invalid hp value");
+    // }
+    // if( std::stod(toReturn["dmg"]) < 0 ){
+    //   throw ParseException("Invalid dmg value");
+    // }
     return JSON(toReturn);
   }catch(std::exception& e){
     throw ParseException(e.what());
@@ -111,6 +111,10 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
 }
 
 bool JSON::count (const std::string& input){
-  return data.find(input)!=data.end();
+  for(auto it = data.cbegin(); it != data.cend(); ++it)
+  {
+      std::cout << it->first << " " << it->second << "\n";
+  }
+  return data.count(input) > 0;
 }
 
