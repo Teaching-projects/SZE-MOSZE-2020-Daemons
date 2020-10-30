@@ -46,7 +46,10 @@ public:
   }
 
   template <class T>
-  T get(const std::string& input);
+  T get(const std::string& input){
+    T toReturn = data[input];
+    return toReturn;
+  }
 //! Method that read in the lines from the Json file
     /*!
 

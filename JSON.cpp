@@ -109,3 +109,8 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
     }
     return pos;
 }
+
+bool JSON::count (const std::string& input){
+  return data.find(input)!=data.end();
+}
+

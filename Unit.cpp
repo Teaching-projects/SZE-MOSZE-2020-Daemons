@@ -68,24 +68,24 @@ void Unit::fightTilDeath(Unit enemy)
 {
 		int i1=1;
 		int i2=1;
-		double NextAttackTimerFirstPlayer=i1*this->getAttackCoolDown();
-		double NextAttackTimerSecondPlayer=i2*enemy->getAttackCoolDown();
-		if(enemy->getHealthPoints())>0&&this->hp>0)
+		double NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
+		double NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
+		if(enemy.getHealthPoints()>0&&hp>0)
 		{
-			enemy->takeDamage(* this );
+			enemy.takeDamage(*this);
 		}
-		if(enemy->getHealthPoints())>0&&this->hp>0)
+		if(enemy.getHealthPoints()>0&&hp>0)
 		{
-			this->takeDamage( * enemy);
+			takeDamage(enemy);
 		}
-		while(this->hp>0&&(enemy->getHealthPoints())>0))
+		while(hp>0&&(enemy.getHealthPoints()>0))
 		{
 
 			
 			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
 			{
 				
-				enemy->takeDamage(*this);
+				enemy.takeDamage(*this);
 				i1++;
 
 
@@ -94,20 +94,20 @@ void Unit::fightTilDeath(Unit enemy)
 			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
 			{
 				
-				enemy->takeDamage(*this);
-				this->takeDamage( * enemy);
+				enemy.takeDamage(*this);
+				takeDamage(enemy);
 				i1++;
 				i2++;
 			}
 			else
 			{
 				
-				this->takeDamage( * enemy);
+				takeDamage(enemy);
 				i2++;
 			}
 			
-			NextAttackTimerFirstPlayer=i1*this->getAttackCoolDown();
-			NextAttackTimerSecondPlayer=i2*enemy->getAttackCoolDown();
+			NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
+			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
 
 		}
 }
