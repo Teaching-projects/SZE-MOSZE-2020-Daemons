@@ -62,7 +62,7 @@ public:
 	 \return  double atkcooldown value
 	 \param enemy Unit Objects pointer
 	*/
-	void fightTilDeath( Unit* enemy);  
+	void fightTilDeath( Unit enemy);  
 
 	// Getter only needed for unit tests
 	int getMaxHealthPoints() const;

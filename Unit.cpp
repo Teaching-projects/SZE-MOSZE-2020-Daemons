@@ -64,7 +64,7 @@ void Unit::levelUp()
 	hp = maxHP;
 	dmg = round(dmg * 1.1);
 }
-void Unit::fightTilDeath(Unit* enemy)
+void Unit::fightTilDeath(Unit enemy)
 {
 		int i1=1;
 		int i2=1;
