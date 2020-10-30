@@ -41,12 +41,12 @@ public:
       \return  const integer hp value
      
     */
-	int getHp() const; 
+	int getHealthPoints() const; 
 	//! Simple Getter for damage
     /*!
 	 \return  const integer damage value
 	*/
-	int getDmg() const;
+	int getDamage() const;
 	//! Simple Getter for name
     /*!
 	 \return const  string name  value
@@ -56,23 +56,22 @@ public:
     /*!
 	 \return   const double atkcooldown value
 	*/
-	double getAs() const; 
+	double getAttackCoolDown() const; 
 	//! Method that implements the Fight between two Unit object
     /*!
 	 \return  double atkcooldown value
 	 \param enemy Unit Objects pointer
 	*/
-	void Fight( Unit* enemy);  
+	void fightTilDeath( Unit* enemy);  
 
 	// Getter only needed for unit tests
-	int getMaxHp() const;
+	int getMaxHealthPoints() const;
+
+	bool isAlive() const;
+
+	int getLevel() const;
 	
 	Unit(const int& h, const int& d, const std::string& n, const double& a) : hp(h), dmg(d), name(n), atkcooldown(a),maxHP(hp),xp(0),level(1){} ///<Constructor
-	//!Method that parse Units Json files and return the generated Unit Object with the parsed data
-	/*!
-	 \return  Unit Object with the parsed data
-	 \param filename json file's name that the method parses
-	*/
-	static Unit parseUnit(const std::string& filename);
+	
 	
 };

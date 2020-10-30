@@ -2,18 +2,17 @@
 #include <math.h>
 #include <map>
 #include <string>
-#include "JsonParser.h"
 
-int Unit::getHp() const
+int Unit::getHealthPoints() const
 {
 	return hp;
 }
 
-int Unit::getDmg() const
+int Unit::getDamage() const
 {
 	return dmg;
 }
-double Unit::getAs() const
+double Unit::getAttackCoolDown() const
 {
 	return atkcooldown;
 }
@@ -22,15 +21,23 @@ std::string Unit::getName() const
 {
 	return name;
 }
-int Unit::getMaxHp() const
+int Unit::getMaxHealthPoints() const
 {
 	return maxHP;
 }
-
+bool Unit::isAlive() const
+{
+	if(hp == 0) return false;
+	else return true;
+}
+int Unit::getLevel() const
+{
+	return level;
+}
 void Unit::takeDamage(Unit& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDmg();
+	int damage = enemy.getDamage();
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -57,27 +64,21 @@ void Unit::levelUp()
 	hp = maxHP;
 	dmg = round(dmg * 1.1);
 }
-
-Unit Unit::parseUnit(const std::string& data){
-	std::map<std::string, std::string> returnedMap = JsonParser::parseJSON(data);
-	return Unit(std::stod(returnedMap["hp"]),std::stod(returnedMap["dmg"]),returnedMap["name"],std::stod(returnedMap["attackcooldown"]));
-}
-
-void Unit::Fight(Unit* enemy)
+void Unit::fightTilDeath(Unit* enemy)
 {
 		int i1=1;
 		int i2=1;
-		double NextAttackTimerFirstPlayer=i1*this->getAs();
-		double NextAttackTimerSecondPlayer=i2*enemy->getAs();
-		if(enemy->getHp()>0&&this->hp>0)
+		double NextAttackTimerFirstPlayer=i1*this->getAttackCoolDown();
+		double NextAttackTimerSecondPlayer=i2*enemy->getAttackCoolDown();
+		if(enemy->getHealthPoints())>0&&this->hp>0)
 		{
 			enemy->takeDamage(* this );
 		}
-		if(enemy->getHp()>0&&this->hp>0)
+		if(enemy->getHealthPoints())>0&&this->hp>0)
 		{
 			this->takeDamage( * enemy);
 		}
-		while(this->hp>0&&(enemy->getHp()>0))
+		while(this->hp>0&&(enemy->getHealthPoints())>0))
 		{
 
 			
@@ -105,8 +106,8 @@ void Unit::Fight(Unit* enemy)
 				i2++;
 			}
 			
-			NextAttackTimerFirstPlayer=i1*this->getAs();
-			NextAttackTimerSecondPlayer=i2*enemy->getAs();
+			NextAttackTimerFirstPlayer=i1*this->getAttackCoolDown();
+			NextAttackTimerSecondPlayer=i2*enemy->getAttackCoolDown();
 
 		}
 }

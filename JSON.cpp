@@ -1,16 +1,20 @@
-#include "JsonParser.h"
+#include "JSON.h"
 
-std::map<std::string, std::string> JsonParser::parseJSON(std::istream& data){
+JSON JSON::parseFromFile(const std::string& data){
+  return JSON::parseJSON(data);
+}
+
+JSON JSON::parseJSON(std::istream& data){
   std::string toParse;
   std::string line;
   while(std::getline(data, line)){
     toParse += line;
   }
 
-  return JsonParser::parseJSON(toParse);
+  return JSON::parseJSON(toParse);
 }
 
-std::map<std::string, std::string > JsonParser::parseJSON(const std::string& data){
+JSON JSON::parseJSON(const std::string& data){
   try{
     std::map<std::string, std::string> toReturn;
     std::ifstream test(data);
@@ -54,43 +58,43 @@ std::map<std::string, std::string > JsonParser::parseJSON(const std::string& dat
 
     std::string key;
     std::string value;
-    while(JsonParser::nthOccurrence(toProcess, ",", 1) != -1){
-      key = toProcess.substr(0, JsonParser::nthOccurrence(toProcess, ":", 1));
+    while(JSON::nthOccurrence(toProcess, ",", 1) != -1){
+      key = toProcess.substr(0, JSON::nthOccurrence(toProcess, ":", 1));
       key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
-      value = toProcess.substr(JsonParser::nthOccurrence(toProcess, ":", 1)+1, JsonParser::nthOccurrence(toProcess, ",", 1)-JsonParser::nthOccurrence(toProcess, ":", 1)-1);
+      value = toProcess.substr(JSON::nthOccurrence(toProcess, ":", 1)+1, JSON::nthOccurrence(toProcess, ",", 1)-JSON::nthOccurrence(toProcess, ":", 1)-1);
       value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
       toReturn[key] = value;
-      toProcess = toProcess.substr(JsonParser::nthOccurrence(toProcess, ",", 1)+1);
-      if(JsonParser::nthOccurrence(toProcess, ",", 1) == -1){
-        key = toProcess.substr(0, JsonParser::nthOccurrence(toProcess, ":", 1));
+      toProcess = toProcess.substr(JSON::nthOccurrence(toProcess, ",", 1)+1);
+      if(JSON::nthOccurrence(toProcess, ",", 1) == -1){
+        key = toProcess.substr(0, JSON::nthOccurrence(toProcess, ":", 1));
         key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
-        value = toProcess.substr(JsonParser::nthOccurrence(toProcess, ":", 1)+1, JsonParser::nthOccurrence(toProcess, ",", 1)-JsonParser::nthOccurrence(toProcess, ":", 1)-1);
+        value = toProcess.substr(JSON::nthOccurrence(toProcess, ":", 1)+1, JSON::nthOccurrence(toProcess, ",", 1)-JSON::nthOccurrence(toProcess, ":", 1)-1);
         value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
         toReturn[key] = value;
       }
     }
     if( toReturn.find("name") == toReturn.end()){
-      throw std::runtime_error("Name key not found");
+      throw ParseException("Name key not found");
     }
     if( toReturn.find("dmg") == toReturn.end()){
-      throw std::runtime_error("Dmg key not found");
+      throw ParseException("Dmg key not found");
     }
     if( toReturn.find("hp") == toReturn.end()){
-      throw std::runtime_error("Hp key not found");
+      throw ParseException("Hp key not found");
     }
     if( std::stod(toReturn["hp"]) < 0 ){
-      throw std::runtime_error("Invalid hp value");
+      throw ParseException("Invalid hp value");
     }
     if( std::stod(toReturn["dmg"]) < 0 ){
-      throw std::runtime_error("Invalid dmg value");
+      throw ParseException("Invalid dmg value");
     }
-    return toReturn;
+    return JSON(toReturn);
   }catch(std::exception& e){
-    throw std::runtime_error(e.what());
+    throw ParseException(e.what());
   }
 }
 
-int JsonParser::nthOccurrence(const std::string& str, const std::string& findMe, int nth)
+int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int nth)
 {
     size_t  pos = 0;
     int     cnt = 0;
