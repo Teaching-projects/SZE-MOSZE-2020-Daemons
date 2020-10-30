@@ -34,12 +34,13 @@ private:
    \param nth int parameter that represents how many findMe string we will find (default 1)
    \return the method returns the position of the founded character 
 	*/
-  std::map<std::string, std::string> data;
   static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
-public:
-  JSON(const std::map<std::string, std::string>& dat) : data(dat){}
 
-  bool count(const std::string& input);
+  std::map<std::string, std::string> data;
+public:
+  JSON(std::map<std::string, std::string> data) : data(data){};
+
+  unsigned int count(const std::string& input);
 
   std::string operator [] (std::string key) {
     return data.find(key)->second;
@@ -56,7 +57,7 @@ public:
      \return Parsed lines in a Map 
 	   \param data  Json file 
 	*/
-  static JSON parseJSON(std::istream& data);
+  static JSON parseStream(std::istream& data);
   //! Method that parsed the the values from the lines which he get in parameter 
    //! it will throw runtime error if there is something it cant find. For Example: name-> Name key not found
     /*!

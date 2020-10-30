@@ -1,13 +1,16 @@
 #include "JSON.h"
 
-JSON JSON::parseFromFile(const std::string& data){
-  std::filebuf fb;
-  fb.open(data, std::ios::in);
-  std::istream inputstream(&fb);
-  return JSON::parseJSON(inputstream);
+JSON JSON::parseFromFile(const std::string &filename)
+{
+    std::ifstream file(filename);
+    if (file.fail())    {
+        throw ParseException("Error opening file");
+    }
+
+    return parseStream(file);
 }
 
-JSON JSON::parseJSON(std::istream& data){
+JSON JSON::parseStream(std::istream& data){
   std::string toParse;
   std::string line;
   while(std::getline(data, line)){
@@ -113,7 +116,7 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
     return pos;
 }
 
-bool JSON::count (const std::string& input){
-  return data.find(input)!=data.end();
+unsigned int JSON::count(const std::string& input){
+  return data.count(input);
 }
 
