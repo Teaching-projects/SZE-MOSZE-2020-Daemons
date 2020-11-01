@@ -1,6 +1,6 @@
 OBJS:=JSON.o Main.o Unit.o  Hero.o Monster.o
-CLFLAGS:=-Wall -std=c++17
-RUN:= g++
+CLFLAGS:=-Wall -std=c++17 -lstdc++fs 
+RUN:= g++-10
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
 VLGRNDJSONS:=  ./runMain test/units/unit1.json test/units/unit2.json
