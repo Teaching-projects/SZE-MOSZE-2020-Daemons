@@ -1,6 +1,6 @@
 OBJS:=JSON.o Main.o Unit.o  Hero.o Monster.o
-CLFLAGS:=-Wall -std=c++17 -lstdc++fs 
-RUN:= g++-10
+CLFLAGS:=-Wall -std=c++17 -lstdc++fs
+RUN:= g++-9
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
 VLGRNDJSONS:=  ./runMain test/units/unit1.json test/units/unit2.json
@@ -24,7 +24,7 @@ Hero.o: Hero.cpp Hero.h JSON.h Monster.h
 	$(RUN) $(CFLAGS) -c Hero.cpp
 Monster.o: Monster.cpp Monster.h JSON.h Hero.h
 	$(RUN) $(CFLAGS) -c Monster.cpp
-cppcheck: 
+cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
 cppcheckfile:
 	$(CPPRUN) $(CPPRUNOBJECTS) $(CPPRUNFLAGSFILE)
@@ -32,12 +32,9 @@ valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 generate_outputs: runMain
 	./test/generate_outputs.sh
-diff: generate_outputs 
+diff: generate_outputs
 	$(DFF) $(DFFOBJS)
 jsontst:
 	./test/JsonParser_test
 document:
 	doxygen doxconf
-
-
-
