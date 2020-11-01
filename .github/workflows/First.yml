@@ -12,8 +12,8 @@ jobs:
         run: sudo apt-get install -y valgrind cppcheck
       - name: build
         run: g++-9 -Wall -Wextra -Werror -std=c++17 -lstdc++fs *.cpp 
-      - name: run Makefile
-        run: make alltest
+      - name: run 
+        run: ./a.out scenario1.json
       - uses: actions/upload-artifact@v2
         with:
           path: ./performance_and_style_report.txt
