@@ -125,7 +125,21 @@ void Hero::fightTilDeath(Monster& enemy)
 			}
 			else
 			{
+				int enemy_before_fight_hp = enemy.getHealthPoints();
 				takeDamage(enemy);
+				if(enemy.getHealthPoints() == 0)
+				{
+					this->xp += enemy_before_fight_hp;
+				}
+				else
+				{
+					this->xp += this->dmg;
+				}
+				i1++;
+				if(xp>level*experience_per_level)
+				{
+					levelUp();
+				}
 				i2++;
 			}
 			NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
