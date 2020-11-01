@@ -13,7 +13,7 @@ jobs:
       - name: build
         run: clang++ -Wall -std=c++17 *.cpp 
       - name: run 
-        run: make alltest
+        run: ./a.out
       - uses: actions/upload-artifact@v2
         with:
           path: ./performance_and_style_report.txt
