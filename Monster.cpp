@@ -1,5 +1,4 @@
 #include "Monster.h"
-class Hero;
 #include "Hero.h"
 #include "JSON.h"
 #include <map>
@@ -20,13 +19,6 @@ void Monster::takeDamage(Hero& enemy)
 	}
 	dmg_taken = dmg_taken - hp;
 	enemy.boostxp(dmg_taken);
-	// std::cout << enemy.getName() << ": LVL" << enemy.getLevel() << std::endl
-	// 	<< "   HP: "<<enemy.getHealthPoints()<<"/"<<enemy.getMaxHealthPoints()<<std::endl
-	// 	<< "  DMG: "<<enemy.getDamage()<<std::endl
-	// 	<< "  ACD: "<<enemy.getAttackCoolDown()<<std::endl
-	// 	<< "  XP: " <<enemy.getXP() << std::endl
-	// 	<< "  MONSXP: " <<getHealthPoints() << std::endl
-	// 	;
 }
 int Monster::getHealthPoints() const
 {
