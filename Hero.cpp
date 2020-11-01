@@ -15,6 +15,14 @@ Hero Hero::parse(const std::string& data){
 	std::stod(returnedMap.get<std::string>("cooldown_multiplier_per_level"))
 	);
 }
+void Hero::boostxp(const int xp_to_boost)
+{
+	xp += xp_to_boost;
+	if((xp/20) >= level)
+	{
+		levelUp();
+	}
+}
 void Hero::levelUp()
 {
 	level++;
@@ -80,44 +88,17 @@ void Hero::fightTilDeath(Monster& enemy)
 		while(hp>0&&(enemy.getHealthPoints()>0))
 		{
 
-			
 			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
 			{
-				int enemy_before_fight_hp = enemy.getHealthPoints();
-				enemy.takeDamage(*this);
 				
-				if(enemy.getHealthPoints() == 0)
-				{
-					this->xp += enemy_before_fight_hp;
-				}
-				else
-				{
-					this->xp += this->dmg;
-				}
+				enemy.takeDamage(*this);
 				i1++;
-				if(xp>level*experience_per_level)
-				{
-					levelUp();
-				}
 
 			}
 			
 			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
 			{
-				int enemy_before_fight_hp = enemy.getHealthPoints();
 				enemy.takeDamage(*this);
-				if(enemy.getHealthPoints() == 0)
-				{
-					this->xp += enemy_before_fight_hp;
-				}
-				else
-				{
-					this->xp += this->dmg;
-				}
-				if(xp>level*experience_per_level)
-				{
-					levelUp();
-				}
 				takeDamage(enemy);
 				
 				i1++;
@@ -125,21 +106,7 @@ void Hero::fightTilDeath(Monster& enemy)
 			}
 			else
 			{
-				int enemy_before_fight_hp = enemy.getHealthPoints();
 				takeDamage(enemy);
-				if(enemy.getHealthPoints() == 0)
-				{
-					this->xp += enemy_before_fight_hp;
-				}
-				else
-				{
-					this->xp += this->dmg;
-				}
-				i1++;
-				if(xp>level*experience_per_level)
-				{
-					levelUp();
-				}
 				i2++;
 			}
 			NextAttackTimerFirstPlayer=i1*getAttackCoolDown();

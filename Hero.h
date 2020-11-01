@@ -75,6 +75,7 @@ class Hero
         \return  1 if hp>0 and 0 if else.
         */
         bool isAlive() const;
+        void boostxp(const int dmg);
 
         
 };
