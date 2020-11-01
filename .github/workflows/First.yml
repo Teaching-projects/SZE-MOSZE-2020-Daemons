@@ -11,7 +11,7 @@ jobs:
       - name: Install valgrind and cppcheck
         run: sudo apt-get install -y valgrind cppcheck
       - name: build
-        run: g++-9 -Wall -Wextra -Werror -std=c++17 *.cpp
+        run: g++-9 -Wall -Wextra -Werror -std=c++17 -lstdc++fs *.cpp 
       - name: run Makefile
         run: make alltest
       - uses: actions/upload-artifact@v2
