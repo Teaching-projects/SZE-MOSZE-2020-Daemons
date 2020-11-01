@@ -6,17 +6,17 @@ class Monster;
 class Hero
 {
     private:
-        int hp; ///< the hp of the Unit
-        int dmg; ///< the damage of the Unit
-        const std::string name; ///<The name of the Unit
-        double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
-        int maxHP;
-        unsigned int xp;
-	    unsigned int level;
-        unsigned int experience_per_level;
-        unsigned int health_point_bonus_per_level;
-        unsigned int damage_bonus_per_level;
-        double cooldown_multiplier_per_level;
+        int hp; ///< the hp of the Hero
+        int dmg; ///< the damage of the Hero
+        const std::string name; ///<The name of the Hero
+        double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
+        int maxHP; ///< the max HP of the Hero
+        unsigned int xp;///< the Experience of the Hero
+	    unsigned int level;///< the level of the Hero
+        unsigned int experience_per_level; ///< How many experience need the Hero to level up.
+        unsigned int health_point_bonus_per_level;///< How many bonus health he has per levelup.
+        unsigned int damage_bonus_per_level;///< How many bonus damage he has per levelup.
+        double cooldown_multiplier_per_level;///< A Number which you multiply with cooldown.
     public:
         Hero(const int& h, const int& d, const std::string& n, const double& a,
         const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
@@ -29,23 +29,34 @@ class Hero
         \param filename json file's name that the method parses
         */
         static Hero parse(const std::string& filename);
+        //!Method that represents the level up logic, and make the hero to max HP.
 	    virtual void levelUp();
+        //! Simple Getter for level
+        /*!
+        \return  integer level value
+        */
         int getLevel() const;
-
+        //! Method that represents the takeDamage logic from an enemy.
         void takeDamage(Monster& enemy);
-
-        void fightTilDeath(Monster& enemy);
+         //! Simple Getter for hp
+        /*!
+        \return  integer hp value
+        */
         int getHealthPoints() const; 
         //! Simple Getter for damage
         /*!
         \return  const integer damage value
         */
         int getDamage() const;
+         //! Simple Getter for XP
+        /*!
+        \return const  int XP  value
+        */
+        int getXP() const;
         //! Simple Getter for name
         /*!
         \return const  string name  value
         */
-        int getXP() const;
         std::string getName() const;
         //! Simple Getter for atkcooldown
         /*!
@@ -54,12 +65,15 @@ class Hero
         double getAttackCoolDown() const; 
         //! Method that implements the Fight between two Unit object
         /*!
-        \return  double atkcooldown value
-        \param enemy Unit Objects pointer
+        \param enemy Monster Object 
         */
+        void fightTilDeath(Monster& enemy);
         // Getter only needed for unit tests
         int getMaxHealthPoints() const;
-
+        //! Simple method that represents if the Hero is Alive or Not
+        /*!
+        \return  1 if hp>0 and 0 if else.
+        */
         bool isAlive() const;
 
         

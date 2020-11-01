@@ -18,10 +18,34 @@ class Monster
         \param filename json file's name that the method parses
         */
         static Monster parse(const std::string& filename);
+         //! Simple Getter for hp
+        /*!
+        \return  integer hp value
+        */
         int getHealthPoints() const; 
-        double getAttackCoolDown() const; 
+         //! Simple Getter for atkcooldown
+        /*!
+        \return   const double atkcooldown value
+        */
+        double getAttackCoolDown() const;
+        //! Simple Getter for damage
+        /*!
+        \return  const integer damage value
+        */
         int getDamage() const;
+        //! Simple method that represents if the Hero is Alive or Not
+        /*!
+        \return  1 if hp>0 and 0 if else.
+        */
         bool isAlive() const;
+        //! Simple Getter for name
+        /*!
+        \return const  string name  value
+        */
         std::string getName() const;
+         //! Method that represents the takeDamage logic from an enemy.
+          /*!
+        \param filename Hero Object Reference
+        */
         void takeDamage(Hero& enemy);
 };

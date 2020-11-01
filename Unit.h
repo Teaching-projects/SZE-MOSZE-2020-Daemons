@@ -61,7 +61,6 @@ public:
 
 	// Getter only needed for unit tests
 	int getMaxHealthPoints() const;
-
 	bool isAlive() const;
 
 	virtual void takeDamage(Unit& enemy); ///< private Method for takeDamage if the enemy attacked the Unit 

@@ -34,17 +34,17 @@ private:
    \return the method returns the position of the founded character 
 	*/
   static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
-
+  //! Map that stores the Json file 
   std::map<std::string, std::string> data;
 public:
-  JSON(std::map<std::string, std::string> data) : data(data){};
+  JSON(std::map<std::string, std::string> data) : data(data){}; //!constructor
 
   unsigned int count(const std::string& input);
 
   std::string operator [] (std::string key) {
     return data.find(key)->second;
   }
-
+  //! Template to get the data from the map in different types.
   template <class T>
   T get(const std::string& input){
     T toReturn = data[input];
@@ -64,8 +64,8 @@ public:
    \return Parsed Values in a Map
 	*/
   static JSON parseJSON(const std::string& data);
-
-  static JSON parseFromFile(const std::string& data);
+  //! Method that represents if the File can be open, or not.
+   static JSON parseFromFile(const std::string& data);
 
   class ParseException : public std::runtime_error{
     public:
