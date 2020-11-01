@@ -58,6 +58,12 @@ int main(int argc, char** argv){
                 << " vs "
                 << monsters.front().getName()
                 <<std::endl;
+            std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
+                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
+                  << "  DMG: "<<hero.getDamage()<<std::endl
+                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+                  << "  XP: "<<hero.getXP()<<std::endl
+                  ;
             hero.fightTilDeath(monsters.front());
             if (!monsters.front().isAlive()) monsters.pop_front();
         }

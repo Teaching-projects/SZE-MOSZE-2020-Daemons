@@ -18,12 +18,13 @@ void Monster::takeDamage(Hero& enemy)
 		hp = 0;
 	}
 	dmg_taken = dmg_taken - hp;
-	std::cout << getName() << ": LVL" << enemy.getLevel() << std::endl
-		<< "   HP: "<<enemy.getHealthPoints()<<"/"<<enemy.getMaxHealthPoints()<<std::endl
-		<< "  DMG: "<<enemy.getDamage()<<std::endl
-		<< "  ACD: "<<enemy.getAttackCoolDown()<<std::endl
-		<< "  XP: " <<enemy.getXP() << std::endl
-		;
+	// std::cout << enemy.getName() << ": LVL" << enemy.getLevel() << std::endl
+	// 	<< "   HP: "<<enemy.getHealthPoints()<<"/"<<enemy.getMaxHealthPoints()<<std::endl
+	// 	<< "  DMG: "<<enemy.getDamage()<<std::endl
+	// 	<< "  ACD: "<<enemy.getAttackCoolDown()<<std::endl
+	// 	<< "  XP: " <<enemy.getXP() << std::endl
+	// 	<< "  MONSXP: " <<getHealthPoints() << std::endl
+	// 	;
 }
 int Monster::getHealthPoints() const
 {

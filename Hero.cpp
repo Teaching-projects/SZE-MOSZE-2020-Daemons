@@ -46,8 +46,6 @@ void Hero::takeDamage(Monster& enemy)
 		hp = 0;
 	}
 	dmg_taken = dmg_taken - hp;
-	
-	
 }
 void Hero::fightTilDeath(Monster& enemy)
 {
@@ -121,16 +119,15 @@ void Hero::fightTilDeath(Monster& enemy)
 					levelUp();
 				}
 				takeDamage(enemy);
+				
 				i1++;
 				i2++;
 			}
 			else
 			{
-				
 				takeDamage(enemy);
 				i2++;
 			}
-			
 			NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
 			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
 
