@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 
-TEST(all_unitsTest,jsonPars_test)
+TEST(all_unitsTest,hero_load_test)
 {
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     ASSERT_TRUE(hero.getHealthPoints() == 30);
@@ -17,30 +17,31 @@ TEST(all_unitsTest,jsonPars_test)
     ASSERT_TRUE(hero.getDamage() == 3);
     ASSERT_TRUE(hero.getAttackCoolDown() == 1.1);
 }
-// TEST(all_unitsTest,Unit_parser_get)
-// {
-//     Unit unit_one = Unit::parseUnit("units/unit1.json");
-//     ASSERT_TRUE(unit_one.getName() == "Kakarott");
-//     ASSERT_EQ(unit_one.getHp(),120);
-//     ASSERT_EQ(unit_one.getDmg(),25);
-//     ASSERT_DOUBLE_EQ(unit_one.getAs(),10.0);
-// }
-// TEST(all_unitsTest,Unit_edge_case_file)
-// {
-//     std::map<std::string, std::string> remap = JSON::parseJSON("edge_case.json");
-//     ASSERT_TRUE(std::stod(remap["hp"]) == 120);
-//     ASSERT_TRUE(remap["name"] == "Kakarott");
-//     ASSERT_TRUE(std::stod(remap["dmg"]) == 25);
-//     ASSERT_TRUE(std::stod(remap["attackcooldown"]) == 10);
-// }
-// TEST(all_unitsTest,typetest)
-// {
-//     Unit unit_o(100,30,"Wukkie",20);
-//     EXPECT_EQ(typeid(int),typeid(unit_o.getHp()));
-//     EXPECT_EQ(typeid(int),typeid(unit_o.getDmg()));
-//     EXPECT_EQ(typeid(std::string),typeid(unit_o.getName()));
-//     EXPECT_EQ(typeid(double),typeid(unit_o.getAs()));
-// }
+TEST(all_unitsTest,Monster_load_test)
+{
+    Monster monster{Monster::parse("../Zombie.json")};
+    ASSERT_TRUE(monster.getHealthPoints() == 10);
+    ASSERT_TRUE(monster.getName() == "Zombie");
+    ASSERT_TRUE(monster.getDamage() == 1);
+    ASSERT_TRUE(monster.getAttackCoolDown() == 2.8);
+}
+TEST(all_unitsTest,Unit_edge_case_file)
+{
+    JSON scenario = JSON::parseFromFile("scenario1.json");
+    ASSERT_TRUE(scenario.count("hero") == true);
+    ASSERT_TRUE(scenario.count("monsters") == true);
+    std::string hero_name = scenario.get<std::string>("hero");
+    ASSERT_TRUE(hero_name == "Dark_Wanderer.json");
+}
+TEST(all_unitsTest,typetest)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    EXPECT_EQ(typeid(int),typeid(hero.getHealthPoints()));
+    EXPECT_EQ(typeid(std::string),typeid(hero.getName()));
+    EXPECT_EQ(typeid(double),typeid(hero.getAttackCoolDown()));
+    EXPECT_EQ(typeid(int),typeid(hero.getDamage()));
+    
+}
 // TEST(all_unitsTest,Unit_fight)
 // {
 //     Unit unit_one = Unit::parseUnit("units/unit1.json");
