@@ -49,21 +49,34 @@ TEST(all_unitsTest,Unit_fight)
     hero.fightTilDeath(monster);
     ASSERT_TRUE(monster.getHealthPoints() < hero.getHealthPoints());
 }
-// TEST(all_unitsTest,Unit_stats)
-// {
-//     Unit unit_one = Unit::parseUnit("units/unit1.json");
-//     Unit unit_two = Unit::parseUnit("units/unit2.json");
-//     unit_one.Fight(&unit_two);
-//     ASSERT_TRUE(unit_one.getHp() >= unit_two.getHp() || unit_one.getHp() < unit_two.getHp());
-//     if(unit_one.getHp() < unit_two.getHp()) ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
-//     else ASSERT_TRUE(unit_two.getDmg() > unit_one.getDmg());
-// }
-// TEST(all_unitsTest,no_throw_check)
-// {
-//     Unit unit_o(100,30,"Wukkie",20);
-//     Unit unit_t(100,30,"Wukkie",20);
-//     EXPECT_NO_THROW(unit_o.Fight(&unit_t));
-// }
+TEST(all_unitsTest,Unit_stats)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    JSON scenario = JSON::parseFromFile("../scenario1.json");
+    std::list<std::string> monster_files;
+    std::list<Monster> monsters;
+    std::istringstream monsters(scenario.get<std::string>("monsters"));
+    std::copy(std::istream_iterator<std::string>(monsters),
+        std::istream_iterator<std::string>(),
+        std::back_inserter(monster_files));
+    for (const auto& monster_file : monster_files)
+        monsters.push_back(Monster::parse(monster_file));
+    
+    while (hero.isAlive() && !monsters.empty()) {
+        hero.fightTilDeath(monsters.front());
+        if (!monsters.front().isAlive()) monsters.pop_front();
+    }
+    ASSERT_TRUE(hero.getHealthPoints() == 57);
+    ASSERT_TRUE(hero.getLevel() == 9)
+    ASSERT_DOUBLE_EQ(hero.getAttackCoolDown(),0.526127);
+
+}
+TEST(all_unitsTest,no_throw_check)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    Monster monster{Monster::parse("../Zombie.json")};
+    EXPECT_NO_THROW(hero.fightTilDeath(monster));
+}
 // TEST(all_unitsTest,missing_keys)
 // {
 //     ASSERT_THROW(JSON::parseJSON("missing_keys.json"),std::runtime_error);
