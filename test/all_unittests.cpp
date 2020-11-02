@@ -27,7 +27,7 @@ TEST(all_unitsTest,Monster_load_test)
 }
 TEST(all_unitsTest,Unit_edge_case_file)
 {
-    JSON scenario = JSON::parseFromFile("scenario1.json");
+    JSON scenario = JSON::parseFromFile("../scenario1.json");
     ASSERT_TRUE(scenario.count("hero") == true);
     ASSERT_TRUE(scenario.count("monsters") == true);
     std::string hero_name = scenario.get<std::string>("hero");
@@ -42,13 +42,13 @@ TEST(all_unitsTest,typetest)
     EXPECT_EQ(typeid(int),typeid(hero.getDamage()));
     
 }
-// TEST(all_unitsTest,Unit_fight)
-// {
-//     Unit unit_one = Unit::parseUnit("units/unit1.json");
-//     Unit unit_two = Unit::parseUnit("units/unit2.json");
-//     unit_one.Fight(&unit_two);
-//     ASSERT_TRUE(unit_one.getHp() == 0 || unit_two.getHp() == 0);
-// }
+TEST(all_unitsTest,Unit_fight)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    Monster monster{Monster::parse("../Zombie.json")};
+    hero.fightTilDeath(monster);
+    ASSERT_TRUE(monster.getHealthPoints() < hero.getHealthPoints());
+}
 // TEST(all_unitsTest,Unit_stats)
 // {
 //     Unit unit_one = Unit::parseUnit("units/unit1.json");
