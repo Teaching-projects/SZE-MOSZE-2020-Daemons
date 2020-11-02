@@ -2,7 +2,9 @@
 #include "../Hero.h"
 #include "../Monster.h"
 #include <gtest/gtest.h>
+#include <list>
 #include <iostream>
+#include <iterator>
 #include <chrono>
 #include <random>
 #include <fstream>
@@ -67,7 +69,7 @@ TEST(all_unitsTest,Unit_stats)
         if (!monsters.front().isAlive()) monsters.pop_front();
     }
     ASSERT_TRUE(hero.getHealthPoints() == 57);
-    ASSERT_TRUE(hero.getLevel() == 9)
+    ASSERT_TRUE(hero.getLevel() == 9);
     ASSERT_DOUBLE_EQ(hero.getAttackCoolDown(),0.526127);
 
 }
