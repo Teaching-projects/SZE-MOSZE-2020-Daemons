@@ -52,26 +52,19 @@ TEST(all_unitsTest,Unit_fight)
     hero.fightTilDeath(monster);
     ASSERT_TRUE(monster.getHealthPoints() < hero.getHealthPoints());
 }
-TEST(all_unitsTest,Unit_stats)
+TEST(all_unitsTest,Generate_hero)
 {
-    Hero hero{Hero::parse("../Dark_Wanderer.json")};
-    JSON scenario = JSON::parseFromFile("../scenario1.json");
-    std::list<std::string> monster_files;
-    std::list<Monster> monsters;
-    std::istringstream monsters(scenario.get<std::string>("monsters"));
-    std::copy(std::istream_iterator<std::string>(monsters),
-        std::istream_iterator<std::string>(),
-        std::back_inserter(monster_files));
-    for (const auto& monster_file : monster_files)
-        monsters.push_back(Monster::parse(monster_file));
-    
-    while (hero.isAlive() && !monsters.empty()) {
-        hero.fightTilDeath(monsters.front());
-        if (!monsters.front().isAlive()) monsters.pop_front();
-    }
-    ASSERT_TRUE(hero.getHealthPoints() == 57);
-    ASSERT_TRUE(hero.getLevel() == 9);
-    ASSERT_DOUBLE_EQ(hero.getAttackCoolDown(),0.526127);
+    Hero hero(30,10,"Hero_of_the_heroes",1.202,2,5,1,0.011);
+    Monster monster(30,10,"Enemy",0.02);
+    ASSERT_EQ(hero.getName(),"Hero_of_the_heroes");
+    ASSERT_EQ(hero.getHealthPoints(),30);
+    ASSERT_EQ(hero.getDamage(),10);
+    ASSERT_EQ(hero.getAttackCoolDown(),1.202);
+
+    ASSERT_EQ(monster.getName(),"Enemy");
+    ASSERT_EQ(monster.getHealthPoints(),30);
+    ASSERT_EQ(monster.getDamage(),10);
+    ASSERT_EQ(monster.getAttackCoolDown(),0.02);
 
 }
 TEST(all_unitsTest,no_throw_check)
@@ -80,16 +73,16 @@ TEST(all_unitsTest,no_throw_check)
     Monster monster{Monster::parse("../Zombie.json")};
     EXPECT_NO_THROW(hero.fightTilDeath(monster));
 }
-// TEST(all_unitsTest,missing_keys)
-// {
-//     ASSERT_THROW(JSON::parseJSON("missing_keys.json"),std::runtime_error);
-// }
+TEST(all_unitsTest,missing_keys)
+{
+    ASSERT_THROW(JSON::parseJSON("missing_keys.json"),std::runtime_error);
+}
 // TEST(all_unitsTest,messed_up_keys)
 // {
-//     Unit unit_messedup = Unit::parseUnit("messedup_keys.json");
+//     Monster unit_messedup{Monster::parse("messedup_keys.json")};
 //     ASSERT_TRUE(unit_messedup.getName() == "Kakarott");
-//     ASSERT_EQ(unit_messedup.getHp(),120);
-//     ASSERT_EQ(unit_messedup.getDmg(),25);
+//     ASSERT_EQ(unit_messedup.getHealthPoints(),120);
+//     ASSERT_EQ(unit_messedup.),25);
 //     ASSERT_DOUBLE_EQ(unit_messedup.getAs(),10.0);
 // }
 // TEST(all_unitsTest,no_throw_fromUnitparser)
