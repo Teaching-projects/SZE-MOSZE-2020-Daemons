@@ -1,4 +1,5 @@
 #include "../JSON.h"
+#include "../Hero.h"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <chrono>
@@ -43,7 +44,7 @@ TEST(JsonParserTest, string_parameter){
   createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
   "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
   +"}";
-  std::map<std::string, std::string> result = JSON::parseJSON(testString);
+  JSON result = JSON::parseJSON(testString);
   std::string result_name = result.get<std::string>("name");
   std::string result_hp = result.get<std::string>("hp");
   std::string result_dmg = result.get<std::string>("dmg");
@@ -63,7 +64,7 @@ TEST(JsonParserTest, file_parameter){
   std::ofstream out("test_output.json");
   out << testString;
   out.close();
-  std::map<std::string, std::string> result = JSON::parseFromFile("test_output.json");
+  JSON result = JSON::parseFromFile("test_output.json");
   std::remove("test_output.json");
   std::string result_name = result.get<std::string>("name");
   std::string result_hp = result.get<std::string>("hp");
@@ -87,7 +88,7 @@ TEST(JsonParserTest, istream_parameter){
   std::filebuf fb;
   fb.open("test_output.json", std::ios::in);
   std::istream inputstream(&fb);
-  std::map<std::string, std::string> result = JSON::parseStream(inputstream);
+  JSON result = JSON::parseStream(inputstream);
   std::remove("test_output.json");
   std::string result_name = result.get<std::string>("name");
   std::string result_hp = result.get<std::string>("hp");
@@ -105,13 +106,7 @@ TEST(JsonParserTest, wrong_input){
   createRandomNumberOfWhitespaces()+"\"hp\""+createRandomNumberOfWhitespaces()+":"+createRandomNumberOfWhitespaces()+std::to_string(hp)+",\n"+createRandomNumberOfWhitespaces()+
   "\"dmg\":"+createRandomNumberOfWhitespaces()+std::to_string(dmg)+"\n"
   +"}";
-  std::ofstream out("test_output.json");
-  out << testString;
-  out.close();
-  std::filebuf fb;
-  fb.open("test_output.json", std::ios::in);
-  std::istream inputstream(&fb);
-  ASSERT_THROW(JSON::parseStream(inputstream), std::runtime_error);
+  ASSERT_THROW(Hero::parse(testString), JSON::ParseException);
 }
 
 int main(int argc, char **argv) {
