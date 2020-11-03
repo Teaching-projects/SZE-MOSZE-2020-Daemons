@@ -35,7 +35,7 @@ generate_outputs: runMain
 diff: generate_outputs
 	$(DFF) $(DFFOBJS)
 jsontst:
-	chmod +x test/JsonParser_test /
+	sudo test/JsonParser_test
 	./test/JsonParser_test
 document:
 	doxygen doxconf
