@@ -30,7 +30,7 @@ cppcheckfile:
 valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 generate_outputs: runMain
-	./test/generate_outputs.sh
+	sudo ./test/generate_outputs.sh
 diff: generate_outputs
 	$(DFF) $(DFFOBJS)
 jsontst:
