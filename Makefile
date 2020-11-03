@@ -33,7 +33,7 @@ generate_outputs: runMain
 	sudo ./test/generate_outputs.sh
 diff: generate_outputs
 	$(DFF) $(DFFOBJS)
-jsontst:
-	./test/JsonParser_test
+# jsontst:
+# 	./test/JsonParser_test
 document:
 	doxygen doxconf
