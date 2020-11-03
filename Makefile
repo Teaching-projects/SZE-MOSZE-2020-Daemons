@@ -11,7 +11,8 @@ CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
 DFFOBJS:= test/outputs.txt test/good_outputs.txt
-alltest: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
+#alltest: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
+alltest: runMain cppcheck cppcheckfile valgrind diff generate_outputs
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
