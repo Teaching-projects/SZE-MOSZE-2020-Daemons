@@ -70,38 +70,35 @@ TEST(all_unitsTest,no_throw_check)
 }
 TEST(all_unitsTest,missing_keys)
 {
-    ASSERT_THROW(JSON::parseJSON("missing_keys.json"),std::runtime_error);
+    EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
 }
-// TEST(all_unitsTest,messed_up_keys)
-// {
-//     Monster unit_messedup{Monster::parse("messedup_keys.json")};
-//     ASSERT_TRUE(unit_messedup.getName() == "Kakarott");
-//     ASSERT_EQ(unit_messedup.getHealthPoints(),120);
-//     ASSERT_EQ(unit_messedup.),25);
-//     ASSERT_DOUBLE_EQ(unit_messedup.getAs(),10.0);
-// }
-// TEST(all_unitsTest,no_throw_fromUnitparser)
-// {
-//     EXPECT_NO_THROW(Unit::parseUnit("units/unit1.json"));
-//     EXPECT_NO_THROW(Unit::parseUnit("units/unit2.json"));
-//     EXPECT_NO_THROW(Unit::parseUnit("units/unit3.json"));
-// }
-// TEST(all_unitsTest,gameplay_logic)
-// {
-//     Unit unit_o(100,30,"Wukkie",20);
-//     Unit unit_t(1000,300,"Big Wukkie",200);
-//     unit_o.Fight(&unit_t);
-//     ASSERT_TRUE(unit_o.getHp() == 0);
-//     ASSERT_TRUE(unit_o.getHp() < unit_t.getHp());
-//     ASSERT_TRUE(unit_o.getDmg() < unit_t.getDmg());
-// }
-// TEST(all_unitsTest,test_levelup_logic)
-// {
-//     Unit unit_one = Unit::parseUnit("units/unit2.json");
-//     Unit unit_two = Unit::parseUnit("units/unit3.json");
-//     unit_one.Fight(&unit_two);
-//     ASSERT_EQ(unit_two.getMaxHp(),280);
-// }
+TEST(all_unitsTest,messed_up_keys)
+{
+    Monster unit_messedup{Monster::parse("messedup_keys.json")};
+    ASSERT_TRUE(unit_messedup.getName() == "Kakarott");
+    ASSERT_EQ(unit_messedup.getHealthPoints(),120);
+    ASSERT_EQ(unit_messedup.getDamage(),25);
+    ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),10.0);
+}
+TEST(all_unitsTest,no_throw_fromUnitparser)
+{
+    EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
+    EXPECT_NO_THROW(Monster::parse("../Fallen.json"));
+    EXPECT_NO_THROW(Monster::parse("../Zombie.json"));
+}
+TEST(all_unitsTest,Monster_wins)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    Monster monster{Monster::parse("../Zombie.json")};
+    hero.fightTilDeath(monster);
+    ASSERT_TRUE(monster.getHealthPoints() < monster.getHealthPoints());
+}
+TEST(all_unitsTest,test_levelup_logic)
+{
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    hero.levelUp();
+    ASSERT_TRUE(hero.getLevel() == 2);
+}
 
 
 int main(int argc, char **argv) {
