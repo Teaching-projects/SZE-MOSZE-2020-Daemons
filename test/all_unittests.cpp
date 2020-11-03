@@ -91,7 +91,7 @@ TEST(all_unitsTest,Monster_wins)
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     Monster monster{Monster::parse("../Zombie.json")};
     hero.fightTilDeath(monster);
-    ASSERT_TRUE(monster.getHealthPoints() < monster.getHealthPoints());
+    ASSERT_TRUE(hero.getHealthPoints() < monster.getHealthPoints());
 }
 TEST(all_unitsTest,test_levelup_logic)
 {
