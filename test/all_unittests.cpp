@@ -76,9 +76,9 @@ TEST(all_unitsTest,messed_up_keys)
 {
     Monster unit_messedup{Monster::parse("messedup_keys.json")};
     ASSERT_TRUE(unit_messedup.getName() == "Blood Raven");
-    ASSERT_EQ(unit_messedup.getHealthPoints(),120);
-    ASSERT_EQ(unit_messedup.getDamage(),25);
-    ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),10.0);
+    ASSERT_EQ(unit_messedup.getHealthPoints(),113);
+    ASSERT_EQ(unit_messedup.getDamage(),8);
+    ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),1.2);
 }
 TEST(all_unitsTest,no_throw_fromUnitparser)
 {
