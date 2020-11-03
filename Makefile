@@ -1,6 +1,7 @@
 OBJS:=JSON.o Main.o  Hero.o Monster.o
-CXXLAGS:=-Wall -std=c++17
-RUN:= clang++
+CFLAGS:=-Wall  -Werror -std=c++17
+RUN:= g++-10
+
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
 VLGRNDJSONS:=  ./runMain scenario1.json
