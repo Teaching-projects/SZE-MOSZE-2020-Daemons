@@ -75,7 +75,7 @@ TEST(all_unitsTest,missing_keys)
 TEST(all_unitsTest,messed_up_keys)
 {
     Monster unit_messedup{Monster::parse("messedup_keys.json")};
-    ASSERT_TRUE(unit_messedup.getName() == "Kakarott");
+    ASSERT_TRUE(unit_messedup.getName() == "Blood Raven");
     ASSERT_EQ(unit_messedup.getHealthPoints(),120);
     ASSERT_EQ(unit_messedup.getDamage(),25);
     ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),10.0);
@@ -91,7 +91,7 @@ TEST(all_unitsTest,Monster_wins)
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     Monster monster{Monster::parse("../Zombie.json")};
     hero.fightTilDeath(monster);
-    ASSERT_TRUE(hero.getHealthPoints() < monster.getHealthPoints());
+    ASSERT_TRUE(hero.getHealthPoints() > monster.getHealthPoints());
 }
 TEST(all_unitsTest,test_levelup_logic)
 {
