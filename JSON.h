@@ -41,7 +41,7 @@ public:
 
   unsigned int count(const std::string& input);
 
-  std::string operator [] (std::string key) {
+  std::variant<std::string, int, double> operator [] (std::string key) {
     return data.find(key)->second;
   }
   //! Template to get the data from the map in different types.
