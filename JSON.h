@@ -47,7 +47,7 @@ public:
   //! Template to get the data from the map in different types.
   template <class T>
   T get(const std::string& input){
-    T toReturn = std::get<T>(data[input]);
+    T toReturn = std::get<T>(data_map[input]);
     return toReturn;
   }
 //! Method that read in the lines from the Json file
