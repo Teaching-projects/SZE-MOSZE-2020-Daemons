@@ -20,6 +20,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <cassert>
 #include <variant>
 #include <fstream>
 #include <algorithm>
