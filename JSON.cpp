@@ -69,13 +69,18 @@ JSON JSON::parseJSON(const std::string& data){
       key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
       value = toProcess.substr(JSON::nthOccurrence(toProcess, ":", 1)+1, JSON::nthOccurrence(toProcess, ",", 1)-JSON::nthOccurrence(toProcess, ":", 1)-1);
       value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
-      toReturn[key] = value;
+      if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return std::isdigit(c);})) toReturn[key] = std::stoi(value);
+      else if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return ((std::isdigit(c) || c == '.') ? true : false);})) toReturn[key] = std::stod(value);
+      else toReturn[key] = value;
       toProcess = toProcess.substr(JSON::nthOccurrence(toProcess, ",", 1)+1);
       if(JSON::nthOccurrence(toProcess, ",", 1) == -1){
         key = toProcess.substr(0, JSON::nthOccurrence(toProcess, ":", 1));
         key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
         value = toProcess.substr(JSON::nthOccurrence(toProcess, ":", 1)+1, JSON::nthOccurrence(toProcess, ",", 1)-JSON::nthOccurrence(toProcess, ":", 1)-1);
         value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
+        if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return std::isdigit(c);})) toReturn[key] = std::stoi(value);
+        else if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return ((std::isdigit(c) || c == '.') ? true : false);})) toReturn[key] = std::stod(value);
+        else toReturn[key] = value;
         toReturn[key] = value;
       }
     }
@@ -104,4 +109,3 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
 unsigned int JSON::count(const std::string& input){
   return data_map.count(input);
 }
-
