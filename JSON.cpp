@@ -81,7 +81,6 @@ JSON JSON::parseJSON(const std::string& data){
         if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return std::isdigit(c);})) toReturn[key] = std::stoi(value);
         else if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return ((std::isdigit(c) || c == '.') ? true : false);})) toReturn[key] = std::stod(value);
         else toReturn[key] = value;
-        toReturn[key] = value;
       }
     }
     return JSON(toReturn);
