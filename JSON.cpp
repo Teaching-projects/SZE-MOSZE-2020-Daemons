@@ -22,7 +22,7 @@ JSON JSON::parseStream(std::istream& data){
 
 JSON JSON::parseJSON(const std::string& data){
   try{
-    std::map<std::string, std::string> toReturn;
+    std::map<std::string,std::variant<std::string, int, double>>  toReturn;
     std::ifstream test(data);
     std::string toParse = "";
 
@@ -79,21 +79,6 @@ JSON JSON::parseJSON(const std::string& data){
         toReturn[key] = value;
       }
     }
-    // if( toReturn.find("name") == toReturn.end()){
-    //   throw ParseException("Name key not found");
-    // }
-    // if( toReturn.find("dmg") == toReturn.end()){
-    //   throw ParseException("Dmg key not found");
-    // }
-    // if( toReturn.find("hp") == toReturn.end()){
-    //   throw ParseException("Hp key not found");
-    // }
-    // if( std::stod(toReturn["hp"]) < 0 ){
-    //   throw ParseException("Invalid hp value");
-    // }
-    // if( std::stod(toReturn["dmg"]) < 0 ){
-    //   throw ParseException("Invalid dmg value");
-    // }
     return JSON(toReturn);
   }catch(std::exception& e){
     throw ParseException(e.what());

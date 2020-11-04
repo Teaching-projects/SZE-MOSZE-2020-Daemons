@@ -5,14 +5,14 @@
 
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
-	return Hero(std::stod(returnedMap.get<std::string>("base_health_points")),
-	std::stod(returnedMap.get<std::string>("base_damage")),
+	return Hero(returnedMap.get<int>("base_health_points"),
+	returnedMap.get<int>("base_damage"),
 	returnedMap.get<std::string>("name"),
-	std::stod(returnedMap.get<std::string>("base_attack_cooldown")),
-	std::stod(returnedMap.get<std::string>("experience_per_level")),
-	std::stod(returnedMap.get<std::string>("health_point_bonus_per_level")),
-	std::stod(returnedMap.get<std::string>("damage_bonus_per_level")),
-	std::stod(returnedMap.get<std::string>("cooldown_multiplier_per_level"))
+	returnedMap.get<double>("base_attack_cooldown"),
+	returnedMap.get<int>("experience_per_level"),
+	returnedMap.get<int>("health_point_bonus_per_level"),
+	returnedMap.get<int>("damage_bonus_per_level"),
+	returnedMap.get<double>("cooldown_multiplier_per_level")
 	);
 }
 void Hero::boostxp(const int xp_to_boost)

@@ -35,9 +35,9 @@ private:
 	*/
   static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
   //! Map that stores the Json file 
-  std::map<std::string, std::string> data;
+  std::map <std::string, std::variant<std::string, int, double>> data;
 public:
-  JSON(std::map<std::string, std::string> data) : data(data){}; //!constructor
+  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data(data){}; //!constructor
 
   unsigned int count(const std::string& input);
 
@@ -47,7 +47,7 @@ public:
   //! Template to get the data from the map in different types.
   template <class T>
   T get(const std::string& input){
-    T toReturn = data[input];
+    T toReturn = std::get<T>(data[input]);
     return toReturn;
   }
 //! Method that read in the lines from the Json file
