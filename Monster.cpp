@@ -5,7 +5,10 @@
 
 Monster Monster::parse(const std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
-	return Monster(std::stod(returnedMap.get<std::string>("health_points")),std::stod(returnedMap.get<std::string>("damage")),returnedMap.get<std::string>("name"),std::stod(returnedMap.get<std::string>("attack_cooldown")));
+	return Monster(returnedMap.get<int>("health_points"),
+	returnedMap.get<int>("damage"),
+	returnedMap.get<std::string>("name"),
+	returnedMap.get<double>("attack_cooldown"));
 	
 }
 void Monster::takeDamage(Hero& enemy)
