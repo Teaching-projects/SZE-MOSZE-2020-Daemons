@@ -46,7 +46,7 @@ public:
     return data_map.find(key)->second;
   }
   //! Template to get the data from the map in different types.
-  template <class T>
+  template <typename T>
   T get(const std::string& input){
     T toReturn = std::get<T>(data_map[input]);
     return toReturn;
