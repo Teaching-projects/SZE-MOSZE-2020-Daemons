@@ -1,8 +1,8 @@
 
 /**
- * \class JsonParser
+ * \class JSON
  * 
- * \brief  JsonParser class
+ * \brief  JSON class
  * 
  * This class Parses the Json Files into data, that stored in  Unit Class
  * 
@@ -35,14 +35,14 @@ private:
 	*/
   static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
   //! Map that stores the Json file 
-  std::map <std::string, std::variant<std::string, int, double>> data;
+  std::map <std::string, std::variant<std::string, int, double>> data_map;
 public:
-  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data(data){}; //!constructor
+  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
 
   unsigned int count(const std::string& input);
 
   std::variant<std::string, int, double> operator [] (std::string key) {
-    return data.find(key)->second;
+    return data_map.find(key)->second;
   }
   //! Template to get the data from the map in different types.
   template <class T>

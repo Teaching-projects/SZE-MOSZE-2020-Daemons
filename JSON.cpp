@@ -102,6 +102,6 @@ int JSON::nthOccurrence(const std::string& str, const std::string& findMe, int n
 }
 
 unsigned int JSON::count(const std::string& input){
-  return data.count(input);
+  return data_map.count(input);
 }
 
