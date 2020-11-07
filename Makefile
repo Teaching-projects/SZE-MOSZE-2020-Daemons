@@ -30,10 +30,10 @@ cppcheckfile:
 valgrind:
 	$(VLGRND) $(VLGRNDFLAGS) $(VLGRNDJSONS)
 generate_outputs: runMain
-	sudo ./test/generate_outputs.sh
+	./test/generate_outputs.sh
 diff: generate_outputs
 	$(DFF) $(DFFOBJS)
 jsontst:
-	sudo ./test/JsonParser_test
+	./test/JsonParser_test
 document:
 	doxygen doxconf

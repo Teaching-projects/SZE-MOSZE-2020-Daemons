@@ -9,7 +9,9 @@ jobs:
     container: mesmatyas/mosze_main:latest
     steps:
       - uses: actions/checkout@v2
-      - name: run 
+      - name: change permissions
+        run:  chmod +x test/generate_outputs.sh
+      - name: run
         run: make alltest
       - uses: actions/upload-artifact@v2
         with:

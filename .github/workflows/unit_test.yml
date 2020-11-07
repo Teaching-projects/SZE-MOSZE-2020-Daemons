@@ -10,7 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Make build environment
-        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && make
+      - name: change permissions
+        run:  chmod +x test/all_unittests.cpp
       - name: Make references
         run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a && sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - name: Make build environment for the test
