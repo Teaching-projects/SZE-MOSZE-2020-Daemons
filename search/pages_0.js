@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2ddaemons',['SZE-MOSZE-2020-Daemons',['../autotoc_md0.html',1,'']]]
+  ['sze_2dmosze_2d2020_2ddaemons_49',['SZE-MOSZE-2020-Daemons',['../md_README.html',1,'']]]
 ];
