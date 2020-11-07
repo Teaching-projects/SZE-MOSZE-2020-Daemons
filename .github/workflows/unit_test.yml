@@ -6,10 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: mesmatyas/mosze_main:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: sudo apt install libgtest-dev && sudo apt install cmake
       - name: Make build environment
         run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
       - name: Make references
