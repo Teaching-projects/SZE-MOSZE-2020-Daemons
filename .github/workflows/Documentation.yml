@@ -3,6 +3,7 @@ name: Documentation.yml
 on:
   push:	
     branches:	
+      - docker
       - master
 
 jobs:
