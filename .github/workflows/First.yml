@@ -6,6 +6,7 @@ on:
 jobs:
   build_n_test:
     runs-on: ubuntu-latest
+    container: mesmatyas/mosze_main:latest
     steps:
       - uses: actions/checkout@v2
       - name: Install valgrind and cppcheck
