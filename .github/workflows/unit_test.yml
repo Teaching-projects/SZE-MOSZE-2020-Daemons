@@ -6,14 +6,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: mesmatyas/mosze_main:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: sudo apt install libgtest-dev && sudo apt install cmake
       - name: Make build environment
-        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+        run: cd /usr/src/gtest && cmake CMakeLists.txt && make
+      - name: change permissions
+        run:  chmod +x test/all_unittests.cpp
       - name: Make references
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a && sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+        run: ln -st /usr/lib/ /usr/src/gtest/libgtest.a && ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - name: Make build environment for the test
         run: cmake test/CMakeLists.txt
       - name: Build the test

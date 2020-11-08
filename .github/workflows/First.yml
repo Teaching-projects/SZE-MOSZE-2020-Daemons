@@ -6,11 +6,10 @@ on:
 jobs:
   build_n_test:
     runs-on: ubuntu-latest
+    container: mesmatyas/mosze_main:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install valgrind and cppcheck
-        run: sudo apt-get install -y valgrind cppcheck
-      - name: run 
+      - name: run
         run: make alltest
       - uses: actions/upload-artifact@v2
         with:
