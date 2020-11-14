@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <regex>
 #include <cctype>
+#include <list>
 #include <type_traits>
 
 
