@@ -40,7 +40,7 @@ const JSON JSON::parseJSON(const std::string& data){
   else if (data.substr(data.size()-1, 1) != "}"){
       throw ParseException("Missing { at the end.");
   }
-
+  std::string dataTwo = data;
   while(std::regex_search(data, allMatches, regexForParse)){
       if (allMatches[1] == "") {
           throw ParseException("Incorrect key");
@@ -55,10 +55,10 @@ const JSON JSON::parseJSON(const std::string& data){
           if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return std::isdigit(c);})) map_store[allMatches[1]] = std::stoi(value);
           else if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return ((std::isdigit(c) || c == '.') ? true : false);})) map_store[allMatches[1]] = std::stod(value);
           else map_store[allMatches[1]] = value;
-          data = allMatches.suffix().str();
+          dataTwo = allMatches.suffix().str();
       }
   }
-  if(std::regex_search(data, allMatchesList, regexForList)){
+  if(std::regex_search(dataTwo, allMatchesList, regexForList)){
       std::string values = allMatchesList[2];
       while (values.find(",")!=std::string::npos)
           values.erase(values.find(","),1);
@@ -67,7 +67,7 @@ const JSON JSON::parseJSON(const std::string& data){
           values.erase(values.find("\""),1);
 
       map_store[allMatchesList[1]]=values;
-      data = allMatchesList.suffix().str();
+      dataTwo = allMatchesList.suffix().str();
   }
   return JSON(map_store);
 }
