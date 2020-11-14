@@ -74,7 +74,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
 	 \param data Parsed lines in a Map
    \return Parsed Values in a Map
 	*/
-  static const JSON parseJSON(std::string& data);
+  static const JSON parseJSON(const std::string& data);
   //! Method that represents if the File can be open, or not.
    static const JSON parseFromFile(const std::string& data);
 

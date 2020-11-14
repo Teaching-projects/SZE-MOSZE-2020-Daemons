@@ -28,7 +28,7 @@ const JSON JSON::parseStream(std::istream& data){
   return parseJSON(toParse);
 }
 
-const JSON JSON::parseJSON(std::string& data){
+const JSON JSON::parseJSON(const std::string& data){
   static const std::regex regexForParse("\\s*\"([\\w]*)\"\\s*:\\s*\"?([\\s\\w\\.]*)\"?\\s*[,}]\\s*");
   static const std::regex regexForList("\\s*\"([\\w]*)\"\\s*:\\s*\"?\\[?\\s*([\\w\\.\"?,?\\s*]*)\"?\\s*[,\\]}]");
   std::smatch allMatches;
