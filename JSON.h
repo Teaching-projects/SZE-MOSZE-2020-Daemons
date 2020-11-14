@@ -32,16 +32,9 @@
 
 class JSON{
 private:
-//! Method that find the specific character in the str parameter
-    /*!
-	 \param str String parameter
-   \param findMe const string that the method will find in the str parameter
-   \param nth int parameter that represents how many findMe string we will find (default 1)
-   \return the method returns the position of the founded character
-	*/
-  static int nthOccurrence(const std::string& str, const std::string& findMe, int nth);
+
   //! Map that stores the Json file
-  std::map <std::string, std::variant<std::string, int, double>> data_map;
+  std::map<std::string, std::variant<std::string, int, double>> data_map;
 public:
   JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
   typedef std::list<std::variant<std::string, int, double>> list;
@@ -53,15 +46,15 @@ public:
 	inline typename std::enable_if<std::is_same<T, JSON::list>::value, T>::type
   get(const std::string& key)
   {
-	if (!count(key)){
-    throw ParseException("The given key doesnt exist in our map");
-  } else{
-      list toReturn;
-      std::istringstream values(std::get<std::string>(data_map[key]));
-      std::copy(std::istream_iterator<std::string>(values), std::istream_iterator<std::string>(), std::back_inserter(toReturn));
-      return toReturn;
+  	if (!count(key)){
+      throw ParseException("The given key doesnt exist in our map");
+    } else{
+        list toReturn;
+        std::istringstream values(std::get<std::string>(data_map[key]));
+        std::copy(std::istream_iterator<std::string>(values), std::istream_iterator<std::string>(), std::back_inserter(toReturn));
+        return toReturn;
+    }
   }
-}
 
 template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
 	get(const std::string& key){

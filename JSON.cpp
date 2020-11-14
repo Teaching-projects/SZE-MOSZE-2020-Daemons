@@ -10,7 +10,7 @@ JSON JSON::parseFromFile(std::string filename)
     std::smatch allMatches;
     static const std::regex fnameCheck("([\\w]*).json$");
     if(std::regex_search(filename, allMatches, fnameCheck)){
-      std::map <std::string, std::variant<std::string, int, double>> toReturn = parseStream(file).data_map;
+      std::map<std::string, std::variant<std::string, int, double>> toReturn = JSON::parseStream(file).data_map;
       file.close();
       return JSON(toReturn);
     }else{
