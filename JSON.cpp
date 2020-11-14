@@ -1,6 +1,6 @@
 #include "JSON.h"
 
-const JSON JSON::parseFromFile(std::string filename)
+const JSON JSON::parseFromFile(const std::string& filename)
 {
     std::ifstream file(filename);
     if (file.fail())    {
@@ -18,7 +18,7 @@ const JSON JSON::parseFromFile(std::string filename)
     }
 }
 
-const JSON JSON::parseStream(std::istream data){
+const JSON JSON::parseStream(std::istream& data){
   std::string toParse;
   std::string line;
   while(std::getline(data, line)){

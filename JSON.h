@@ -67,7 +67,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
      \return Parsed lines in a Map
 	   \param data  Json file
 	*/
-  static const JSON parseStream(std::istream data);
+  static const JSON parseStream(std::istream& data);
   //! Method that parsed the the values from the lines which he get in parameter
    //! it will throw runtime error if there is something it cant find. For Example: name-> Name key not found
     /*!
@@ -76,7 +76,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
 	*/
   static const JSON parseJSON(std::string data);
   //! Method that represents if the File can be open, or not.
-   static const JSON parseFromFile(std::string data);
+   static const JSON parseFromFile(const std::string& data);
 
 
   class ParseException : public std::runtime_error{
