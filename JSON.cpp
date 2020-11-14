@@ -1,6 +1,6 @@
 #include "JSON.h"
 
-JSON JSON::parseFromFile(std::string filename)
+const JSON JSON::parseFromFile(std::string filename)
 {
     std::ifstream file(filename);
     if (file.fail())    {
@@ -18,7 +18,7 @@ JSON JSON::parseFromFile(std::string filename)
     }
 }
 
-JSON JSON::parseStream(std::istream data){
+const JSON JSON::parseStream(std::istream data){
   std::string toParse;
   std::string line;
   while(std::getline(data, line)){
@@ -28,7 +28,7 @@ JSON JSON::parseStream(std::istream data){
   return parseJSON(toParse);
 }
 
-JSON JSON::parseJSON(std::string data){
+const JSON JSON::parseJSON(std::string data){
   static const std::regex regexForParse("\\s*\"([\\w]*)\"\\s*:\\s*\"?([\\s\\w\\.]*)\"?\\s*[,}]\\s*");
   static const std::regex regexForList("\\s*\"([\\w]*)\"\\s*:\\s*\"?\\[?\\s*([\\w\\.\"?,?\\s*]*)\"?\\s*[,\\]}]");
   std::smatch allMatches;
