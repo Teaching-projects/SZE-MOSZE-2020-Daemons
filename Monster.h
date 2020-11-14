@@ -17,12 +17,12 @@ class Monster
         \return  Monster Object with the parsed data
         \param filename json file's name that the method parses
         */
-        static Monster parse(const std::string& filename);
+        static Monster parse(std::string& filename);
          //! Simple Getter for hp
         /*!
         \return  integer hp value
         */
-        int getHealthPoints() const; 
+        int getHealthPoints() const;
          //! Simple Getter for atkcooldown
         /*!
         \return   const double atkcooldown value

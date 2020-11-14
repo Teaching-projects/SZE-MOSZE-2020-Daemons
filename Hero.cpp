@@ -3,7 +3,7 @@
 #include <map>
 #include <math.h>
 
-Hero Hero::parse(const std::string& data){
+Hero Hero::parse(std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
 	return Hero(returnedMap.get<int>("base_health_points"),
 	returnedMap.get<int>("base_damage"),
@@ -61,23 +61,23 @@ void Hero::fightTilDeath(Monster& enemy)
 		int i2=1;
 		double NextAttackTimerFirstPlayer=i1*getAttackCoolDown();
 		double NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
-	
+
 		while(hp>0&&(enemy.getHealthPoints()>0))
 		{
 
 			if(NextAttackTimerFirstPlayer<NextAttackTimerSecondPlayer)
 			{
-				
+
 				enemy.takeDamage(*this);
 				i1++;
 
 			}
-			
+
 			else if(NextAttackTimerFirstPlayer==NextAttackTimerSecondPlayer)
 			{
 				enemy.takeDamage(*this);
 				takeDamage(enemy);
-				
+
 				i1++;
 				i2++;
 			}

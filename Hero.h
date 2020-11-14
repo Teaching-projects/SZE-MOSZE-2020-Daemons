@@ -20,7 +20,7 @@ class Hero
     public:
         Hero(const int& h, const int& d, const std::string& n, const double& a,
         const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
-        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level) 
+        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level)
         : hp(h),dmg(d),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
         damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level){}
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
@@ -28,7 +28,7 @@ class Hero
         \return  Hero Object with the parsed data
         \param filename json file's name that the method parses
         */
-        static Hero parse(const std::string& filename);
+        static Hero parse(std::string& filename);
         //!Method that represents the level up logic, and make the hero to max HP.
 	    virtual void levelUp();
         //! Simple Getter for level
@@ -42,7 +42,7 @@ class Hero
         /*!
         \return  integer hp value
         */
-        int getHealthPoints() const; 
+        int getHealthPoints() const;
         //! Simple Getter for damage
         /*!
         \return  const integer damage value
@@ -62,10 +62,10 @@ class Hero
         /*!
         \return   const double atkcooldown value
         */
-        double getAttackCoolDown() const; 
+        double getAttackCoolDown() const;
         //! Method that implements the Fight between two Unit object
         /*!
-        \param enemy Monster Object 
+        \param enemy Monster Object
         */
         void fightTilDeath(Monster& enemy);
         // Getter only needed for unit tests
@@ -77,5 +77,5 @@ class Hero
         bool isAlive() const;
         void boostxp(const int dmg);
 
-        
+
 };
