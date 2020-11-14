@@ -67,6 +67,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
 	get(const std::string& key){
       if (!count(key)) throw ParseException("The given key doesnt exist in our map");
       else return std::get<T>(data_map[key]);
+  }
 //! Method that read in the lines from the Json file
     /*!
 
@@ -88,6 +89,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
    get(const std::string& key){
          if (!count(key)) throw ParseException("The given key doesnt exist in our map");
          else return std::get<T>(data_map[key]);
+       }
 
   class ParseException : public std::runtime_error{
     public:
