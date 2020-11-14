@@ -3,7 +3,7 @@
 #include "JSON.h"
 #include <map>
 
-Monster Monster::parse(std::string& data){
+Monster Monster::parse(const std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
 	return Monster(returnedMap.get<int>("health_points"),
 	returnedMap.get<int>("damage"),
