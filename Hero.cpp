@@ -3,7 +3,7 @@
 #include <map>
 #include <math.h>
 
-Hero Hero::parse(std::string& data){
+Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
 	return Hero(returnedMap.get<int>("base_health_points"),
 	returnedMap.get<int>("base_damage"),
