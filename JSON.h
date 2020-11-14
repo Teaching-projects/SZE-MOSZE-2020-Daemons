@@ -76,7 +76,7 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
 	*/
   static const JSON parseJSON(std::string& data);
   //! Method that represents if the File can be open, or not.
-   static const JSON parseFromFile(std::string& data);
+   static const JSON parseFromFile(const std::string& data);
 
 
   class ParseException : public std::runtime_error{
