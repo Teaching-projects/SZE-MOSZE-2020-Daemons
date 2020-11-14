@@ -28,7 +28,7 @@ class Hero
         \return  Hero Object with the parsed data
         \param filename json file's name that the method parses
         */
-        static Hero parse(const std::string& filename);
+        static Hero parse(std::string& filename);
         //!Method that represents the level up logic, and make the hero to max HP.
 	    virtual void levelUp();
         //! Simple Getter for level
