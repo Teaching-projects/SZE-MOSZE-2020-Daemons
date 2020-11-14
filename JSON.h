@@ -85,11 +85,6 @@ template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list
   //! Method that represents if the File can be open, or not.
    static JSON parseFromFile(const std::string& data);
 
-   template <typename T> inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
-   get(const std::string& key){
-         if (!count(key)) throw ParseException("The given key doesnt exist in our map");
-         else return std::get<T>(data_map[key]);
-       }
 
   class ParseException : public std::runtime_error{
     public:
