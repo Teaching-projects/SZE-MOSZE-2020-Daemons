@@ -41,7 +41,7 @@ const JSON JSON::parseJSON(const std::string& data){
       throw ParseException("Missing { at the end.");
   }
   std::string dataTwo = data;
-  while(std::regex_search(data, allMatches, regexForParse)){
+  while(std::regex_search(dataTwo, allMatches, regexForParse)){
       if (allMatches[1] == "") {
           throw ParseException("Incorrect key");
       }
