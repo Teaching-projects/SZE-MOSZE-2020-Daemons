@@ -2,29 +2,29 @@
 
 const JSON JSON::parseFromFile(const std::string& filename)
 {
-    std::ifstream file(filename);
-    if (file.fail())    {
-        throw ParseException("Error opening file");
-    }
-
     std::smatch allMatches;
     static const std::regex fnameCheck("([\\w]*).json$");
     if(std::regex_search(filename, allMatches, fnameCheck)){
-      std::map<std::string, std::variant<std::string, int, double>> toReturn = JSON::parseStream(file).data_map;
-      file.close();
-      return JSON(toReturn);
+      std::ifstream file;
+      file.open(filename);
+      if(file.fail()){
+        throw ParseException("File does not exist!");
+      }else{
+        std::map<std::string, std::variant<std::string, int, double>> toReturn = parseStream(file).data_map;
+        file.close();
+        return JSON(toReturn);
+      }
     }else{
       return parseJSON(filename);
     }
 }
 
 const JSON JSON::parseStream(std::istream& data){
-  std::string toParse;
+  std::string toParse = "";
   std::string line;
   while(std::getline(data, line)){
     toParse += line;
   }
-
   return parseJSON(toParse);
 }
 
@@ -38,7 +38,7 @@ const JSON JSON::parseJSON(const std::string& data){
       throw ParseException("Missing { at the start.");
   }
   else if (data.substr(data.size()-1, 1) != "}"){
-      throw ParseException("Missing { at the end.");
+      throw ParseException("Missing } at the end.");
   }
   std::string dataTwo = data;
   while(std::regex_search(dataTwo, allMatches, regexForParse)){
@@ -72,6 +72,6 @@ const JSON JSON::parseJSON(const std::string& data){
   return JSON(map_store);
 }
 
-unsigned int JSON::count(const std::string& input){
-  return data_map.count(input);
+const int JSON::count(const std::string& input){
+  return ((data_map.find(input) != data_map.end()) ? 1 : 0);
 }

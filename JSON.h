@@ -39,7 +39,7 @@ public:
   JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
   typedef std::list<std::variant<std::string, int, double>> list;
 
-  unsigned int count(const std::string& input);
+  const int count(const std::string& input);
 
   //! Template to get the data from the map in different types.
   template <typename T>

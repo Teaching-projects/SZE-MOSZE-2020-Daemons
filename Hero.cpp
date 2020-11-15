@@ -4,8 +4,7 @@
 #include <math.h>
 
 Hero Hero::parse(const std::string& data){
-	JSON returnedMap = JSON::parseJSON(data);
-	// return Hero(10,2,"My_name",0.01,3,3,6,0.02); Dummy values
+	JSON returnedMap = JSON::parseFromFile(data);
 	return Hero(returnedMap.get<int>("base_health_points"),
 	returnedMap.get<int>("base_damage"),
 	returnedMap.get<std::string>("name"),
