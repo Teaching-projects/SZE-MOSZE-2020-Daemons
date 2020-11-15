@@ -4,12 +4,12 @@
 #include <map>
 
 Monster Monster::parse(const std::string& data){
-	JSON returnedMap = JSON::parseJSON(data);
+	JSON returnedMap = JSON::parseFromFile(data);
 	return Monster(returnedMap.get<int>("health_points"),
 	returnedMap.get<int>("damage"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("attack_cooldown"));
-	
+
 }
 void Monster::takeDamage(Hero& enemy)
 {

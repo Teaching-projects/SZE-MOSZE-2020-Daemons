@@ -1,4 +1,13 @@
 {
     "hero" : "hero_mons/Dark_Wanderer.json",
-    "monsters" : " hero_mons/Fallen.json  hero_mons/Fallen.json  Zombie.json  hero_mons/Fallen.json  hero_mons/Fallen.json  Zombie.json  hero_mons/Fallen.json  hero_mons/Blood_Raven.json "
+    "monsters" : [
+        "hero_mons/Fallen.json",
+        "hero_mons/Fallen.json",
+        "hero_mons/Zombie.json",
+        "hero_mons/Fallen.json",
+        "hero_mons/Fallen.json",
+        "hero_mons/Zombie.json",
+        "hero_mons/Fallen.json",
+        "hero_mons/Blood_Raven.json"
+    ]
 }

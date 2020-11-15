@@ -22,7 +22,7 @@ class Monster
         /*!
         \return  integer hp value
         */
-        int getHealthPoints() const; 
+        int getHealthPoints() const;
          //! Simple Getter for atkcooldown
         /*!
         \return   const double atkcooldown value
