@@ -1,6 +1,6 @@
 OBJS:=JSON.o Main.o  Hero.o Monster.o
 CFLAGS:=-Wall  -Werror -std=c++17
-RUN:= g++-8 *.cpp -std=c++17 -lstdc++fs
+RUN:= g++-10
 
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1

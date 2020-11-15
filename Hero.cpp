@@ -5,6 +5,7 @@
 
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseJSON(data);
+	// return Hero(10,2,"My_name",0.01,3,3,6,0.02); Dummy values
 	return Hero(returnedMap.get<int>("base_health_points"),
 	returnedMap.get<int>("base_damage"),
 	returnedMap.get<std::string>("name"),
@@ -12,8 +13,7 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<int>("experience_per_level"),
 	returnedMap.get<int>("health_point_bonus_per_level"),
 	returnedMap.get<int>("damage_bonus_per_level"),
-	returnedMap.get<double>("cooldown_multiplier_per_level")
-	);
+	returnedMap.get<double>("cooldown_multiplier_per_level"));
 }
 void Hero::boostxp(const int xp_to_boost)
 {
