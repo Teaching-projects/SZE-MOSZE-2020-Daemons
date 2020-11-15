@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dmg_2',['dmg',['../classMonster.html#a23d6a9678d6df28b540c3be9f102daea',1,'Monster']]]
+  ['fighttildeath_2',['fightTilDeath',['../classHero.html#a3ec8b42ccf51bd4609bc130bb24610c0',1,'Hero']]]
 ];

@@ -65,6 +65,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classJSON-members.html">List of all members</a>  </div>
@@ -83,36 +84,43 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON_1_1ParseException.html">ParseException</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a200052290120970f650695312ad847b7"><td class="memItemLeft" align="right" valign="top"><a id="a200052290120970f650695312ad847b7"></a>
+typedef std::list&lt; std::variant&lt; std::string, int, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">list</a></td></tr>
+<tr class="memdesc:a200052290120970f650695312ad847b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor <br /></td></tr>
+<tr class="separator:a200052290120970f650695312ad847b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa01e26294300ef22c5423792274a1eb1"><td class="memItemLeft" align="right" valign="top"><a id="aa01e26294300ef22c5423792274a1eb1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>JSON</b> (std::map&lt; std::string, std::variant&lt; std::string, int, double &gt;&gt; data)</td></tr>
 <tr class="separator:aa01e26294300ef22c5423792274a1eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6544b985def049f769418a96da405e5a"><td class="memItemLeft" align="right" valign="top"><a id="a6544b985def049f769418a96da405e5a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a6544b985def049f769418a96da405e5a">count</a> (const std::string &amp;input)</td></tr>
-<tr class="memdesc:a6544b985def049f769418a96da405e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor <br /></td></tr>
-<tr class="separator:a6544b985def049f769418a96da405e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac66fc80fb7ae640f3a7a23e1c09eb3a"><td class="memItemLeft" align="right" valign="top"><a id="aac66fc80fb7ae640f3a7a23e1c09eb3a"></a>
-std::variant&lt; std::string, int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::string key)</td></tr>
-<tr class="separator:aac66fc80fb7ae640f3a7a23e1c09eb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad167565a9f520b4ba81aaff01fa2e909"><td class="memTemplParams" colspan="2"><a id="ad167565a9f520b4ba81aaff01fa2e909"></a>
+<tr class="memitem:a0cdec887241335563d573ad4740f6d20"><td class="memItemLeft" align="right" valign="top"><a id="a0cdec887241335563d573ad4740f6d20"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::string &amp;input)</td></tr>
+<tr class="separator:a0cdec887241335563d573ad4740f6d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memTemplParams" colspan="2"><a id="a437b5cd773c3ad6c5761ff29ebd76a8c"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad167565a9f520b4ba81aaff01fa2e909"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#ad167565a9f520b4ba81aaff01fa2e909">get</a> (const std::string &amp;input)</td></tr>
-<tr class="memdesc:ad167565a9f520b4ba81aaff01fa2e909"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template to get the data from the map in different types. <br /></td></tr>
-<tr class="separator:ad167565a9f520b4ba81aaff01fa2e909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a437b5cd773c3ad6c5761ff29ebd76a8c">get</a> (const std::string &amp;key)</td></tr>
+<tr class="memdesc:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template to get the data from the map in different types. <br /></td></tr>
+<tr class="separator:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplParams" colspan="2"><a id="a2e3d7b3d03297c4b09ce1f64ad4187d7"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
+<tr class="separator:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:acb40f05342fddc7e824d4e98e3431ba7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#acb40f05342fddc7e824d4e98e3431ba7">parseStream</a> (std::istream &amp;data)</td></tr>
-<tr class="memdesc:acb40f05342fddc7e824d4e98e3431ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that read in the lines from the Json file.  <a href="classJSON.html#acb40f05342fddc7e824d4e98e3431ba7">More...</a><br /></td></tr>
-<tr class="separator:acb40f05342fddc7e824d4e98e3431ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac380a685d2ce69d8b81f2ad0e4b06fd2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#ac380a685d2ce69d8b81f2ad0e4b06fd2">parseJSON</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:ac380a685d2ce69d8b81f2ad0e4b06fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">it will throw runtime error if there is something it cant find. For Example: name-&gt; Name key not found  <a href="classJSON.html#ac380a685d2ce69d8b81f2ad0e4b06fd2">More...</a><br /></td></tr>
-<tr class="separator:ac380a685d2ce69d8b81f2ad0e4b06fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a314820f32b6dde334885620d355b53ee"><td class="memItemLeft" align="right" valign="top"><a id="a314820f32b6dde334885620d355b53ee"></a>
-static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a314820f32b6dde334885620d355b53ee">parseFromFile</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:a314820f32b6dde334885620d355b53ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that represents if the File can be open, or not. <br /></td></tr>
-<tr class="separator:a314820f32b6dde334885620d355b53ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba6a05b163f4996b14b333333c6a063"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a5ba6a05b163f4996b14b333333c6a063">parseStream</a> (std::istream &amp;data)</td></tr>
+<tr class="memdesc:a5ba6a05b163f4996b14b333333c6a063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that read in the lines from the Json file.  <a href="classJSON.html#a5ba6a05b163f4996b14b333333c6a063">More...</a><br /></td></tr>
+<tr class="separator:a5ba6a05b163f4996b14b333333c6a063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5a517237b73dd4d9c3184f8296541b"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a1b5a517237b73dd4d9c3184f8296541b">parseJSON</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a1b5a517237b73dd4d9c3184f8296541b"><td class="mdescLeft">&#160;</td><td class="mdescRight">it will throw runtime error if there is something it cant find. For Example: name-&gt; Name key not found  <a href="classJSON.html#a1b5a517237b73dd4d9c3184f8296541b">More...</a><br /></td></tr>
+<tr class="separator:a1b5a517237b73dd4d9c3184f8296541b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a261f4663df09375641ed8b865409056a"><td class="memItemLeft" align="right" valign="top"><a id="a261f4663df09375641ed8b865409056a"></a>
+static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a261f4663df09375641ed8b865409056a">parseFromFile</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a261f4663df09375641ed8b865409056a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that represents if the File can be open, or not. <br /></td></tr>
+<tr class="separator:a261f4663df09375641ed8b865409056a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classJSON.html" title="JSON class.">JSON</a> class. </p>
@@ -122,8 +130,8 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
 <dl class="section date"><dt>Date</dt><dd>2020/10/026 13:09</dd></dl>
 <p>Created on 2020/10/26 13:09 </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac380a685d2ce69d8b81f2ad0e4b06fd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac380a685d2ce69d8b81f2ad0e4b06fd2">&#9670;&nbsp;</a></span>parseJSON()</h2>
+<a id="a1b5a517237b73dd4d9c3184f8296541b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b5a517237b73dd4d9c3184f8296541b">&#9670;&nbsp;</a></span>parseJSON()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +140,7 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classJSON.html">JSON</a> JSON::parseJSON </td>
+          <td class="memname">const <a class="el" href="classJSON.html">JSON</a> JSON::parseJSON </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -147,8 +155,7 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
 </div><div class="memdoc">
 
 <p>it will throw runtime error if there is something it cant find. For Example: name-&gt; Name key not found </p>
-<p>Method that parsed the the values from the lines which he get in parameter <br  />
-</p>
+<p>Method that parsed the the values from the lines which he get in parameter</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Parsed lines in a Map </td></tr>
@@ -159,8 +166,8 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
 
 </div>
 </div>
-<a id="acb40f05342fddc7e824d4e98e3431ba7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb40f05342fddc7e824d4e98e3431ba7">&#9670;&nbsp;</a></span>parseStream()</h2>
+<a id="a5ba6a05b163f4996b14b333333c6a063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ba6a05b163f4996b14b333333c6a063">&#9670;&nbsp;</a></span>parseStream()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +176,7 @@ static <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="memItem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classJSON.html">JSON</a> JSON::parseStream </td>
+          <td class="memname">const <a class="el" href="classJSON.html">JSON</a> JSON::parseStream </td>
           <td>(</td>
           <td class="paramtype">std::istream &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
