@@ -6,8 +6,12 @@ class Monster;
 class Hero
 {
     private:
+        struct Damage {
+
+            int physical;
+            int magical;
+        }; Damage damage;
         int hp; ///< the hp of the Hero
-        int dmg; ///< the damage of the Hero
         const std::string name; ///<The name of the Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
         int maxHP; ///< the max HP of the Hero
@@ -21,11 +25,11 @@ class Hero
         double defense_bonus_per_level;
         
     public:
-        Hero(const int& h, const int& d, const std::string& n, const double& a,
+        Hero(const int& h,  const std::string& n, const double& a,
         const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
-        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus)
-        : hp(h),dmg(d),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
-        damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(defense),defense_bonus_per_level(defbonus){}
+        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus,const int& phys_d, const int& magic_d)
+        : hp(h),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
+        damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(defense),defense_bonus_per_level(defbonus),damage{phys_d,magic_d }{}
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!
         \return  Hero Object with the parsed data
@@ -50,7 +54,8 @@ class Hero
         /*!
         \return  const integer damage value
         */
-        int getDamage() const;
+        int getphysDamage() const;
+        int getmagicDamage() const;
          //! Simple Getter for XP
         /*!
         \return const  int XP  value
@@ -80,6 +85,8 @@ class Hero
         bool isAlive() const;
         void boostxp(const int dmg);
         double getDefense() const;
+        
+        
 
 
 };

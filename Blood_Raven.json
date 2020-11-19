@@ -5,6 +5,7 @@
     "health_points"   : 113,
     "damage"          : 8,
     "attack_cooldown" : 1.2,
+    "magical-damage"  : 1,
     "defense": 2,
     "race" : "undead"
 }

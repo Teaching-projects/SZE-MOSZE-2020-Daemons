@@ -9,14 +9,16 @@ Monster Monster::parse(const std::string& data){
 	returnedMap.get<int>("damage"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("attack_cooldown"),
-	returnedMap.get<double>("defense")
+	returnedMap.get<double>("defense"),
+	returnedMap.get<int>("damage"),
+	returnedMap.get<int>("magical-damage")
 	);
 
 }
 void Monster::takeDamage(Hero& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage()-defense;
+	int damage = enemy.getphysDamage()-defense;
 	if(damage<0)
 	{
 		 damage=0;
@@ -37,9 +39,13 @@ double Monster::getAttackCoolDown() const
 {
 	return atkcooldown;
 }
-int Monster::getDamage() const
+int Monster::getphysDamage() const
 {
-	return dmg;
+	return damage.physical;
+}
+int Monster::getphysDamage() const
+{
+	return damage.magical;
 }
 bool Monster::isAlive() const
 {

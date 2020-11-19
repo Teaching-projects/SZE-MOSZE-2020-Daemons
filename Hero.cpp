@@ -6,7 +6,6 @@
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
 	return Hero(returnedMap.get<int>("base_health_points"),
-	returnedMap.get<int>("base_damage"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("base_attack_cooldown"),
 	returnedMap.get<int>("experience_per_level"),
@@ -14,7 +13,10 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<int>("damage_bonus_per_level"),
 	returnedMap.get<double>("cooldown_multiplier_per_level"),
 	returnedMap.get<double>("defense"),
-	returnedMap.get<double>("defense_bonus_per_level")
+	returnedMap.get<double>("defense_bonus_per_level"),
+	returnedMap.get<int>("damage"),
+	returnedMap.get<int>("magical-damage")
+	
 	);
 	
 }
@@ -30,7 +32,7 @@ void Hero::levelUp()
 {
 	level++;
 	maxHP += health_point_bonus_per_level;
-	dmg += damage_bonus_per_level;
+	damage.physical += damage_bonus_per_level;
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
 	defense +=defense_bonus_per_level;
@@ -42,6 +44,7 @@ bool Hero::isAlive() const
 }
 int Hero::getLevel() const
 {
+	
 	return level;
 }
 int Hero::getXP() const
@@ -51,7 +54,7 @@ int Hero::getXP() const
 void Hero::takeDamage(Monster& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage()-defense;
+	int damage = enemy.getphysDamage()-defense;
 	if(damage<0)
 	{
 		 damage=0;
@@ -98,7 +101,7 @@ void Hero::fightTilDeath(Monster& enemy)
 			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
 
 		}
-		if(hp != 0) hp -= enemy.getDamage();
+		if(hp != 0) hp -= enemy.getphysDamage();
 }
 int Hero::getHealthPoints() const
 {
@@ -108,9 +111,13 @@ double Hero::getAttackCoolDown() const
 {
 	return atkcooldown;
 }
-int Hero::getDamage() const
+int Hero::getphysDamage() const
 {
-	return dmg;
+	return damage.physical ;
+}
+int Hero::getmagicDamage() const
+{
+	return damage.magical ;
 }
 
 int Hero::getMaxHealthPoints() const

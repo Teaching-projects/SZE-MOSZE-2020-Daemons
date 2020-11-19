@@ -6,13 +6,20 @@ class Hero;
 class Monster
 {
     protected:
+        struct Damage {
+
+            int physical;
+
+            int magical;
+
+        }; Damage damage;
         int hp; ///< the hp of the Unit
         int dmg; ///< the damage of the Unit
         const std::string name; ///<The name of the Unit
         const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
         const double defense;
     public:
-        Monster(const int& h, const int& d, const std::string& n, const double& a,const double& def) : hp(h),dmg(d),name(n),atkcooldown(a),defense(def){}
+        Monster(const int& h, const int& d, const std::string& n, const double& a,const double& def,const int& phys_d, const int& magic_d) : hp(h),dmg(d),name(n),atkcooldown(a),defense(def),damage{phys_d,magic_d }{}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
         /*!
         \return  Monster Object with the parsed data
@@ -33,7 +40,8 @@ class Monster
         /*!
         \return  const integer damage value
         */
-        int getDamage() const;
+        int getphysDamage() const;
+        int getmagicDamage() const;
         //! Simple method that represents if the Hero is Alive or Not
         /*!
         \return  1 if hp>0 and 0 if else.
@@ -50,4 +58,5 @@ class Monster
         */
         void takeDamage(Hero& enemy);
         double getDefense() const;
+        
 };
