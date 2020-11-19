@@ -10,7 +10,7 @@ class Hero
 
             int physical;
             int magical;
-        }; Damage damage;
+        }; Damage damage= {0,0};
         int hp; ///< the hp of the Hero
         const std::string name; ///<The name of the Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
