@@ -12,7 +12,11 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<int>("experience_per_level"),
 	returnedMap.get<int>("health_point_bonus_per_level"),
 	returnedMap.get<int>("damage_bonus_per_level"),
-	returnedMap.get<double>("cooldown_multiplier_per_level"));
+	returnedMap.get<double>("cooldown_multiplier_per_level"),
+	returnedMap.get<double>("defense"),
+	returnedMap.get<double>("defense_bonus_per_level")
+	);
+	
 }
 void Hero::boostxp(const int xp_to_boost)
 {
@@ -29,6 +33,7 @@ void Hero::levelUp()
 	dmg += damage_bonus_per_level;
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
+	defense +=defense_bonus_per_level;
 }
 bool Hero::isAlive() const
 {
@@ -46,7 +51,11 @@ int Hero::getXP() const
 void Hero::takeDamage(Monster& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage();
+	int damage = enemy.getDamage()-defense;
+	if(damage<0)
+	{
+		 damage=0;
+	}
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -112,4 +121,8 @@ int Hero::getMaxHealthPoints() const
 std::string Hero::getName() const
 {
 	return name;
+}
+double Hero::getDefense() const
+{
+	return defense;
 }

@@ -8,13 +8,19 @@ Monster Monster::parse(const std::string& data){
 	return Monster(returnedMap.get<int>("health_points"),
 	returnedMap.get<int>("damage"),
 	returnedMap.get<std::string>("name"),
-	returnedMap.get<double>("attack_cooldown"));
+	returnedMap.get<double>("attack_cooldown"),
+	returnedMap.get<double>("defense")
+	);
 
 }
 void Monster::takeDamage(Hero& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage();
+	int damage = enemy.getDamage()-defense;
+	if(damage<0)
+	{
+		 damage=0;
+	}
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -42,5 +48,10 @@ bool Monster::isAlive() const
 }
 std::string Monster::getName() const
 {
+
 	return name;
+}
+double Monster::getDefense() const
+{
+	return defense;
 }
