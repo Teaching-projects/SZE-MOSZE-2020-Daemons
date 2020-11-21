@@ -1,21 +1,23 @@
 #pragma once
 #include "Map.h"
 #include "Hero.h"
+#include "Monster.h"
 #include <string>
+#include <list>
 
 
 class Game{
 
 private:
-    std::vector<std::pair<int,int>> enemy_location;
-    std::pair<int,int> hero_location;
     Map map;
+    std::vector<std::pair<Hero,std::pair<int,int>>> hero_location;
+    std::vector<std::pair<Monster,std::pair<int,int>>> monster_locations;
 
 public:
     Game();
     Game(std::string mapfilename);
     void setMap(Map map);
-    void putHero(Hero hero, int x,int y);
+    void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);
     void run();
     void mapPrinter();
