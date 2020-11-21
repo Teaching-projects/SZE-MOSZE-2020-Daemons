@@ -3,13 +3,11 @@
 #include <string>
 
 
-// Game::Game(std::string mapfilename)
-// {
-//     Map::Map(mapfilename) map;
-// }
+Game::Game(std::string mapfilename) : map(mapfilename) {};
+
 void Game::setMap(Map map)
 {
-
+    
 }
 void Game::putHero(Hero hero,int x,int y)
 {
