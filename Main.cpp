@@ -10,6 +10,7 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Game.h"
 
 
 
@@ -50,21 +51,50 @@ int main(int argc, char** argv){
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
 
-        while (hero.isAlive() && !monsters.empty()) {
-            std::cout
-                << hero.getName() << "(" << hero.getLevel()<<")"
-                << " vs "
-                << monsters.front().getName()
-                <<std::endl;
-            hero.fightTilDeath(monsters.front());
-            if (!monsters.front().isAlive()) monsters.pop_front();
+        // while (hero.isAlive() && !monsters.empty()) {
+        //     std::cout
+        //         << hero.getName() << "(" << hero.getLevel()<<")"
+        //         << " vs "
+        //         << monsters.front().getName()
+        //         <<std::endl;
+        //     hero.fightTilDeath(monsters.front());
+        //     if (!monsters.front().isAlive()) monsters.pop_front();
+        // }
+        // std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
+        // std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
+        //           << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
+        //           << "  DMG: "<<hero.getDamage()<<std::endl
+        //           << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+        //           ;
+
+        //TODO: Add try catch block for the inputs
+        std::cout << "Give a path to the map file !\n";
+        std::string mapfile;
+        //std::cin >> mapfile;
+        Game game("map.txt");
+        for(const auto& iter : monsters)
+        {
+            std::cout << "Give a location for the " << iter.getName() << "monster(Like: 3 5): \n";
+            std::string coords,x,y;
+            std::cin >> coords;
+            x = coords.at(0);
+            y = coords.at(2);
+            int xc = std::stoi(x);
+            int xy = std::stoi(y);
+            game.putMonster(iter,xc,xy);
         }
-        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-                  << "  DMG: "<<hero.getDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-                  ;
+        std::cout << "Give a location for the " << hero.getName() << "Hero (Like: 3 5): \n";
+        std::string coords,x,y;
+        std::cin >> coords;
+        x = coords.at(0);
+        y = coords.at(2);
+        int xc = std::stoi(x);
+        int xy = std::stoi(y);
+        game.putHero(hero,xc,xy);
+
+        game.run();
+
+
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }

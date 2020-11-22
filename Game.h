@@ -10,7 +10,7 @@
 class Game{
 
 private:
-    Map map;
+    Map *map;
     Hero *hero;
     std::pair<int,int> hero_location;
     std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
@@ -43,6 +43,7 @@ public:
     ~Game()
     {
         if(this->hero != nullptr) delete this->hero;
+        if(this->map != nullptr) delete this->map;
     }
 
     class OccupiedException : virtual public std::runtime_error {

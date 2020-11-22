@@ -1,9 +1,11 @@
 #include "Map.h"
 #include <fstream>
 #include <string>
+#include <iostream>
 
 Map::Map(std::string filename) {
     std::ifstream stream(filename);
+    std::cout << "Hello from Map!";
     if(!stream.good()) throw std::runtime_error("File not found: " + filename);
 
     std::string currentLine;
