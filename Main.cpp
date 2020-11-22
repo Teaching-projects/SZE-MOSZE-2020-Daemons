@@ -68,6 +68,7 @@ int main(int argc, char** argv){
         //           ;
 
         //TODO: Add try catch block for the inputs
+
         std::cout << "Give a path to the map file !\n";
         std::string mapfile;
         //std::cin >> mapfile;
@@ -75,22 +76,20 @@ int main(int argc, char** argv){
         for(const auto& iter : monsters)
         {
             std::cout << "Give a location for the " << iter.getName() << "monster(Like: 3 5): \n";
-            std::string coords,x,y;
-            std::cin >> coords;
-            x = coords.at(0);
-            y = coords.at(2);
-            int xc = std::stoi(x);
-            int xy = std::stoi(y);
-            game.putMonster(iter,xc,xy);
+            // std::string x,y;
+            // std::cin >> x;
+            // std::cin >> y;
+            // int xc = std::stoi(x);
+            // int xy = std::stoi(y);
+            game.putMonster(iter,2,1);
         }
         std::cout << "Give a location for the " << hero.getName() << "Hero (Like: 3 5): \n";
-        std::string coords,x,y;
-        std::cin >> coords;
-        x = coords.at(0);
-        y = coords.at(2);
-        int xc = std::stoi(x);
-        int xy = std::stoi(y);
-        game.putHero(hero,xc,xy);
+        // std::string coords,x,y;
+        // std::cin >> x;
+        // std::cin >> y;
+        // int xc = std::stoi(x);
+        // int xy = std::stoi(y);
+        game.putHero(hero,3,5);
 
         game.run();
 
