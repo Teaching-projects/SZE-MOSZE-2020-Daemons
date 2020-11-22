@@ -36,7 +36,7 @@ void Game::stepOn(int x, int y)
     
         if(hero->isAlive())
         {
-            // Delete monster;
+            monster_locations.erase(iter);
         }
         else
         {
@@ -78,7 +78,7 @@ void Game::run()
 }
 bool Game::checkForMonsters(int x,int y) const
 {
-    for(auto iter = monster_locations.begin();iter < monster_locations.end();iter++)
+    for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
         if(iter->second.first == x && iter->second.second == y) return true;
 
     return false;
@@ -113,7 +113,7 @@ void Game::mapPrinter()
         for(int x = 0;x < map.getRowWidth(y);x++)
         {
             if(checkForMonsters(x,y)) std::cout << MONSTER;
-            else if (checkForHero);
+            else if (checkForHero(x,y));
             else if (map.get(x,y) == Map::Wall) std::cout << WALL_FIELD;
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
         }

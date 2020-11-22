@@ -13,7 +13,7 @@ private:
     Map map;
     Hero *hero;
     std::pair<int,int> hero_location;
-    std::vector<std::pair<Monster,std::pair<int,int>>> monster_locations;
+    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
     bool game_running;
 
     const std::string TOP_LEFT = "\u2554";
