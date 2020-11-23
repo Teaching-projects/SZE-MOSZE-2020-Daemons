@@ -7,20 +7,21 @@ class Monster;
 class Hero
 {
     private:
-        Damage damage;
+        
         int hp; ///< the hp of the Hero
         const std::string name; ///<The name of the Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
-        int maxHP; ///< the max HP of the Hero
-        unsigned int xp;///< the Experience of the Hero
-	    unsigned int level;///< the level of the Hero
         unsigned int experience_per_level; ///< How many experience need the Hero to level up.
         unsigned int health_point_bonus_per_level;///< How many bonus health he has per levelup.
         unsigned int damage_bonus_per_level;///< How many bonus damage he has per levelup.
         double cooldown_multiplier_per_level;///< A Number which you multiply with cooldown.
         double defense;
         double defbonus_per_level;
+        Damage damage;
         unsigned int magical_damage_bonus_per_level;
+        int maxHP; ///< the max HP of the Hero
+        unsigned int xp;///< the Experience of the Hero
+	    unsigned int level;///< the level of the Hero
         
     public:
         Hero(
@@ -33,7 +34,7 @@ class Hero
         const double& cooldown_multiplier_per_level,
         double& def ,
         const double& defbonus,
-        Damage& dmg,
+        Damage dmg,
         const unsigned int& magic_damage_bonus
         )
         : hp(h),
