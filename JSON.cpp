@@ -55,6 +55,8 @@ const JSON JSON::parseJSON(const std::string& data){
           if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return std::isdigit(c);})) map_store[allMatches[1]] = std::stoi(value);
           else if (!value.empty() && std::all_of(value.begin(), value.end(), [](char c){return ((std::isdigit(c) || c == '.') ? true : false);})) map_store[allMatches[1]] = std::stod(value);
           else map_store[allMatches[1]] = value;
+          std::cout<<"Ezt nézzük"<<std::endl;
+          std::cout<<allMatches[1]<<std::endl;
           dataTwo = allMatches.suffix().str();
       }
   }
