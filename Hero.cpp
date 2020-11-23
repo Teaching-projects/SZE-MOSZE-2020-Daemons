@@ -21,7 +21,6 @@ Hero Hero::parse(const std::string& data){
 	// /*std::cout << typeid(returnedMap.get<int>("defense")).name()<<std::endl;
 	// std::cout << typeid(returnedMap.get<int>("defense_bonus_per_level")).name()<<std::endl;
 	// std::cout << typeid(returnedMap.get<int>("magical_damage_bonus_per_level")).name()<<std::endl;*/
-	// std::cout<<damage;
 
 	return Hero(
 	returnedMap.get<int>("base_health_points"),
