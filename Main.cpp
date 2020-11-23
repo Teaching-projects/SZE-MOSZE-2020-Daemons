@@ -35,6 +35,7 @@ int main(int argc, char** argv){
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
+        std::cout<<"első valami"<<std::endl;
         JSON scenario = JSON::parseFromFile(argv[1]);
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
@@ -45,11 +46,12 @@ int main(int argc, char** argv){
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     try {
+         std::cout<<"második valami"<<std::endl;
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
-
+            std::cout<<"harmadik valami"<<std::endl; 
         while (hero.isAlive() && !monsters.empty()) {
             std::cout
                 << hero.getName() << "(" << hero.getLevel()<<")"
