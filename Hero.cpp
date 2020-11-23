@@ -13,6 +13,7 @@ Hero Hero::parse(const std::string& data){
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
 	std::cout << "Ide kéne irnod ami benne van"<<std::endl;
+	std::cout << returnedMap.get<double>("defense")<<std::endl;
 	std::cout << returnedMap.get<std::string>("name")<<std::endl;
 	std::cout << returnedMap.get<double>("defense")<<std::endl;
 	std::cout << returnedMap.get<double>("defense_bonus_per_level")<<std::endl;
