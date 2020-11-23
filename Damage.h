@@ -1,4 +1,5 @@
  #pragma once
+ #include <ostream>
  struct Damage {
 
             int physical;
