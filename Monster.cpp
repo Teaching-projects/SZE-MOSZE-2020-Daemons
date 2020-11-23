@@ -14,7 +14,7 @@ Monster Monster::parse(const std::string& data){
 	return Monster(returnedMap.get<int>("health_points"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("attack_cooldown"),
-	returnedMap.get<double>("defense"),
+	returnedMap.get<int>("defense"),
 	damage
 	);
 
