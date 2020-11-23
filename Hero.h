@@ -27,7 +27,7 @@ class Hero
         Hero(
         const int& h, 
         const std::string& n, 
-        double& a,
+        double a,
         const unsigned int& experience_per_level,
         const unsigned int& health_point_bonus_per_level,
         const unsigned int& damage_bonus_per_level, 
