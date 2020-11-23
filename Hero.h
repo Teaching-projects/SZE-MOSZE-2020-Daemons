@@ -56,7 +56,7 @@ class Hero
     public:
         Hero(const int& h,  const std::string& n, const double& a,
         const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
-        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus,const int& phys_d, const int& magic_d
+        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus,const int& phys_d, const int& magic_d,
         const unsigned int& magical_damage_bonus_per_level)
         : hp(h),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
         damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(defense),defense_bonus_per_level(defbonus),damage{phys_d,magic_d },
