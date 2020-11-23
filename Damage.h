@@ -24,7 +24,10 @@
                 this->magical *= other.magical;
                 return *this;
             }
-
+            friend std::ostream& operator<<(std::ostream& out, const Damage& dmg){
+            out<<"Physical: "<<dmg.physical<<", Magical: "<<dmg.magical;
+            return out;
+        }
 
 
         }; 
