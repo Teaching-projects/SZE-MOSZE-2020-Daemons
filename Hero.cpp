@@ -12,17 +12,17 @@ Hero Hero::parse(const std::string& data){
 
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
-	std::cout << "Ide kéne irnod ami benne van"<<std::endl;
-	std::cout << returnedMap.get<int>("magical_damage_bonus_per_level")<<std::endl;
-	std::cout << returnedMap.get<int>("defense")<<std::endl;
-	std::cout << returnedMap.get<std::string>("name")<<std::endl;
-	std::cout << returnedMap.get<int>("defense")<<std::endl;
-	std::cout << returnedMap.get<int>("defense_bonus_per_level")<<std::endl;
-	/*std::cout << typeid(returnedMap.get<int>("defense")).name()<<std::endl;
-	std::cout << typeid(returnedMap.get<int>("defense_bonus_per_level")).name()<<std::endl;
-	std::cout << typeid(returnedMap.get<int>("magical_damage_bonus_per_level")).name()<<std::endl;*/
-	std::cout<<damage;
-	std::cout << "Idáig kéne irnod ami benne van"<<std::endl;
+	// std::cout << "Ide kéne irnod ami benne van"<<std::endl;
+	// std::cout << returnedMap.get<int>("magical_damage_bonus_per_level")<<std::endl;
+	// std::cout << returnedMap.get<int>("defense")<<std::endl;
+	// std::cout << returnedMap.get<std::string>("name")<<std::endl;
+	// std::cout << returnedMap.get<int>("defense")<<std::endl;
+	// std::cout << returnedMap.get<int>("defense_bonus_per_level")<<std::endl;
+	// /*std::cout << typeid(returnedMap.get<int>("defense")).name()<<std::endl;
+	// std::cout << typeid(returnedMap.get<int>("defense_bonus_per_level")).name()<<std::endl;
+	// std::cout << typeid(returnedMap.get<int>("magical_damage_bonus_per_level")).name()<<std::endl;*/
+	// std::cout<<damage;
+	// std::cout << "Idáig kéne irnod ami benne van"<<std::endl;
 
 	return Hero(
 	returnedMap.get<int>("base_health_points"),
