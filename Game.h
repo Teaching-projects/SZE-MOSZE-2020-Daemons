@@ -40,6 +40,7 @@ public:
     void stepOn(int x,int y);
     bool checkForMonsters(int x,int y) const;
     bool checkForHero(int x,int y) const;
+    bool freetoStep(int x,int y) const;
     ~Game()
     {
         if(this->hero != nullptr) delete this->hero;
