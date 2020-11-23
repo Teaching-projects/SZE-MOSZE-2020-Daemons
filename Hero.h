@@ -45,7 +45,8 @@ class Hero
         damage_bonus_per_level(damage_bonus_per_level),
         cooldown_multiplier_per_level(cooldown_multiplier_per_level),
         defense(def),
-        defbonus_per_level(defbonus),damage(dmg) ,
+        defbonus_per_level(defbonus),
+        damage(dmg) ,
         magical_damage_bonus_per_level(magic_damage_bonus)
         {
         maxHP=h;
@@ -66,7 +67,7 @@ class Hero
         */
         int getLevel() const;
         //! Method that represents the takeDamage logic from an enemy.
-        void takeDamage(Monster& enemy);
+        void takeDamage(const Monster& enemy);
          //! Simple Getter for hp
         /*!
         \return  integer hp value

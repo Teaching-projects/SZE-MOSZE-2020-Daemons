@@ -12,8 +12,7 @@ Hero Hero::parse(const std::string& data){
 
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
-
-	
+	std::cout<< typeid(returnedMap.get<int>("name"));
 	return Hero(
 	returnedMap.get<int>("base_health_points"),
 	returnedMap.get<std::string>("name"),
@@ -61,7 +60,7 @@ int Hero::getXP() const
 {
 	return xp;
 }
-void Hero::takeDamage(Monster& enemy)
+void Hero::takeDamage(const Monster&  enemy)
 {
 	int dmg_taken = hp;
 	int damage = enemy.getphysDamage()-defense;
