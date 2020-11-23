@@ -29,7 +29,6 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
-    std::cout<<"nulladik valami"<<std::endl;
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
@@ -47,12 +46,10 @@ int main(int argc, char** argv){
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     try {
-         std::cout<<"második valami"<<std::endl;
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
-            std::cout<<"harmadik valami"<<std::endl; 
         while (hero.isAlive() && !monsters.empty()) {
             std::cout
                 << hero.getName() << "(" << hero.getLevel()<<")"
