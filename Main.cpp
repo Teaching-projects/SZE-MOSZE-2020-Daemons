@@ -29,13 +29,14 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
+    std::cout<<"nulladik valami"<<std::endl;
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
-        std::cout<<"első valami"<<std::endl;
+        
         JSON scenario = JSON::parseFromFile(argv[1]);
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
