@@ -33,6 +33,7 @@ void Hero::levelUp()
 	level++;
 	maxHP += health_point_bonus_per_level;
 	damage.physical += damage_bonus_per_level;
+	damage.magical  += magical_damage_bonus_per_level;
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
 	defense +=defense_bonus_per_level;
@@ -59,6 +60,7 @@ void Hero::takeDamage(Monster& enemy)
 	{
 		 damage=0;
 	}
+	damage+=enemy.getmagicDamage();
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -101,7 +103,9 @@ void Hero::fightTilDeath(Monster& enemy)
 			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
 
 		}
-		if(hp != 0) hp -= enemy.getphysDamage();
+		if(hp != 0) {
+			takeDamage(enemy);
+		}
 }
 int Hero::getHealthPoints() const
 {

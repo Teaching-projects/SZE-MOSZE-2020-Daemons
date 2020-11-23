@@ -10,7 +10,35 @@ class Hero
 
             int physical;
             int magical;
-        }; Damage damage= {0,0};
+
+
+             Damage operator+(const Damage& other){
+                    Damage dmgToReturn;
+                    dmgToReturn.physical = this->physical + other.physical;
+                    dmgToReturn.magical = this->magical + other.magical;
+
+                    return dmgToReturn;
+        }
+
+             Damage& operator+=(const Damage& other){
+                this->physical += other.physical;
+                this->magical += other.magical;
+                return *this;
+             }
+
+            Damage& operator*=(const Damage& other){
+                this->physical *= other.physical;
+                this->magical *= other.magical;
+                return *this;
+            }
+
+            friend std::ostream& operator<<(std::ostream& out, const Damage& dmg){
+                out<<"Physical: "<<dmg.physical<<", Magical: "<<dmg.magical;
+                return out;
+            }
+
+        }; Damage damage={0,0};
+
         int hp; ///< the hp of the Hero
         const std::string name; ///<The name of the Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
@@ -23,13 +51,16 @@ class Hero
         double cooldown_multiplier_per_level;///< A Number which you multiply with cooldown.
         double defense;
         double defense_bonus_per_level;
+        unsigned int magical_damage_bonus_per_level;
         
     public:
         Hero(const int& h,  const std::string& n, const double& a,
         const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
-        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus,const int& phys_d, const int& magic_d)
+        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& defense ,const double& defbonus,const int& phys_d, const int& magic_d
+        const unsigned int& magical_damage_bonus_per_level)
         : hp(h),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
-        damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(defense),defense_bonus_per_level(defbonus),damage{phys_d,magic_d }{}
+        damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(defense),defense_bonus_per_level(defbonus),damage{phys_d,magic_d },
+        magical_damage_bonus_per_level(magical_damage_bonus_per_level){}
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!
         \return  Hero Object with the parsed data

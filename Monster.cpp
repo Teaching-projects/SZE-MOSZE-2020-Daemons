@@ -22,6 +22,7 @@ void Monster::takeDamage(Hero& enemy)
 	{
 		 damage=0;
 	}
+	damage+=enemy.getmagicDamage();
 	hp -= damage;
 	if (hp < 0)
 	{
