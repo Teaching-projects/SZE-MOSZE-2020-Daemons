@@ -1,0 +1,5 @@
+[Hero.cpp:82]: (style) Variable 'dmg_taken' is assigned a value that is never used.
+[JSON.h:39]: (style) Class 'JSON' has a constructor with 1 argument that is not explicit.
+[JSON.h:84]: (style) Class 'ParseException' has a constructor with 1 argument that is not explicit.
+[JSON.h:39]: (performance) Function parameter 'data' should be passed by reference.
+[JSON.cpp:70]: (style) Variable 'dataTwo' is assigned a value that is never used.
