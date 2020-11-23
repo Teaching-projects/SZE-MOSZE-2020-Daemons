@@ -39,14 +39,18 @@ class Hero
         : hp(h),
         name(n),
         atkcooldown(a),
-        maxHP(h),
-         xp(0), level(1),
         experience_per_level(experience_per_level), 
         health_point_bonus_per_level(health_point_bonus_per_level),
         damage_bonus_per_level(damage_bonus_per_level),
-        cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(def),
+        cooldown_multiplier_per_level(cooldown_multiplier_per_level),
+        defense(def),
         defbonus_per_level(defbonus),damage(dmg) ,
-        magical_damage_bonus_per_level(magic_damage_bonus){}
+        magical_damage_bonus_per_level(magic_damage_bonus)
+        {
+        maxHP=h;
+        xp=0; 
+        level=1;
+        }
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!
         \return  Hero Object with the parsed data
