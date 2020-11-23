@@ -43,7 +43,7 @@ int Monster::getphysDamage() const
 {
 	return damage.physical;
 }
-int Monster::getphysDamage() const
+int Monster::getmagicDamage() const
 {
 	return damage.magical;
 }
