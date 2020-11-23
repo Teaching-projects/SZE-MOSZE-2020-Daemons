@@ -7,7 +7,7 @@ class Monster;
 class Hero
 {
     private:
-        Damage damage={0,0};
+        Damage damage;
         int hp; ///< the hp of the Hero
         const std::string name; ///<The name of the Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
@@ -23,12 +23,29 @@ class Hero
         unsigned int magical_damage_bonus_per_level;
         
     public:
-        Hero(const int& h,  const std::string& n, const double& a,
-        const unsigned int& experience_per_level, const unsigned int& health_point_bonus_per_level,
-        const unsigned int& damage_bonus_per_level, const double& cooldown_multiplier_per_level,const double& def ,const double& defbonus,const int& phys_d, const int& magic_d,
-        const unsigned int& magic_damage_bonus)
-        : hp(h),name(n),atkcooldown(a),maxHP(h), xp(0), level(1), experience_per_level(experience_per_level), health_point_bonus_per_level(health_point_bonus_per_level),
-        damage_bonus_per_level(damage_bonus_per_level), cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(def),defense_bonus_per_level(defbonus),damage{phys_d,magic_d },
+        Hero(
+        const int& h, 
+        const std::string& n, 
+        double& a,
+        const unsigned int& experience_per_level,
+        const unsigned int& health_point_bonus_per_level,
+        const unsigned int& damage_bonus_per_level, 
+        const double& cooldown_multiplier_per_level,
+        const double& def ,
+        const double& defbonus,
+        Damage dmg,
+        const unsigned int& magic_damage_bonus
+        )
+        : hp(h),
+        name(n),
+        atkcooldown(a),
+        maxHP(h),
+         xp(0), level(1),
+        experience_per_level(experience_per_level), 
+        health_point_bonus_per_level(health_point_bonus_per_level),
+        damage_bonus_per_level(damage_bonus_per_level),
+        cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(def),
+        defense_bonus_per_level(defbonus),damage(dmg) ,
         magical_damage_bonus_per_level(magic_damage_bonus){}
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!

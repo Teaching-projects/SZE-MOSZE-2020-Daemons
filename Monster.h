@@ -8,7 +8,7 @@ class Monster
 {
     protected:
        
-        Damage damage= {0,0};
+        Damage damage;
         int hp; ///< the hp of the Unit
         int dmg; ///< the damage of the Unit
         const std::string name; ///<The name of the Unit

@@ -5,7 +5,17 @@
 
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
-	return Hero(returnedMap.get<int>("base_health_points"),
+	Damage damage;
+
+	if(returnedMap.count("damage")) damage.physical = returnedMap.get<int>("damage");
+	else damage.physical = 0;
+
+	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
+	else damage.magical = 0;
+
+	
+	return Hero(
+	returnedMap.get<int>("base_health_points"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("base_attack_cooldown"),
 	returnedMap.get<int>("experience_per_level"),
@@ -14,9 +24,8 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<double>("cooldown_multiplier_per_level"),
 	returnedMap.get<double>("defense"),
 	returnedMap.get<double>("defense_bonus_per_level"),
-	returnedMap.get<int>("damage"),
-	returnedMap.get<int>("magical-damage")
-	
+	damage,
+	returnedMap.get<int>("magical_damage_bonus_per_level")
 	);
 	
 }
