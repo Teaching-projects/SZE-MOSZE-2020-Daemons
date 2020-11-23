@@ -5,12 +5,17 @@
 
 Monster Monster::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
+	Damage damage;
+	if(returnedMap.count("damage")) damage.physical = returnedMap.get<int>("damage");
+	else damage.physical = 0;
+	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
+	else damage.magical = 0;
+	
 	return Monster(returnedMap.get<int>("health_points"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("attack_cooldown"),
 	returnedMap.get<double>("defense"),
-	returnedMap.get<int>("damage"),
-	returnedMap.get<int>("magical-damage")
+	damage
 	);
 
 }

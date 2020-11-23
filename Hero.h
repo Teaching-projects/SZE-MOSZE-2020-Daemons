@@ -33,7 +33,7 @@ class Hero
         const double& cooldown_multiplier_per_level,
         const double& def ,
         const double& defbonus,
-        Damage dmg,
+        Damage& dmg,
         const unsigned int& magic_damage_bonus
         )
         : hp(h),
