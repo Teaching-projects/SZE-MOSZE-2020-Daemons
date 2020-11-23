@@ -1,0 +1,18 @@
+JSON.h:39:3: style: Class 'JSON' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
+  ^
+JSON.h:84:7: style: Class 'ParseException' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+      ParseException(const std::string& err) : std::runtime_error(err){}
+      ^
+JSON.h:39:71: performance: Function parameter 'data' should be passed by const reference. [passedByValue]
+  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
+                                                                      ^
+Hero.cpp:15:9: style: Consider using std::any_of, std::all_of, std::none_of, or std::accumulate algorithm instead of a raw loop. [useStlAlgorithm]
+   okay = false;
+        ^
+Hero.cpp:87:12: style: Variable 'dmg_taken' is assigned a value that is never used. [unreadVariable]
+ dmg_taken = dmg_taken - hp;
+           ^
+Main.cpp:44:31: style: Consider using std::transform algorithm instead of a raw loop. [useStlAlgorithm]
+                monster_files.push_back(std::get<std::string>(monster_file));
+                              ^
