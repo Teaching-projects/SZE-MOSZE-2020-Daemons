@@ -12,7 +12,7 @@ Hero Hero::parse(const std::string& data){
 
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
-	std::cout<< typeid(returnedMap.get<int>("name"));
+	std::cout << typeid(returnedMap.get<std::string>("name"));
 	return Hero(
 	returnedMap.get<int>("base_health_points"),
 	returnedMap.get<std::string>("name"),
