@@ -32,8 +32,8 @@ class Hero
         const unsigned int& health_point_bonus_per_level,
         const unsigned int& damage_bonus_per_level, 
         const double& cooldown_multiplier_per_level,
-        double def ,
-        const double& defbonus,
+        const int& def ,
+        const unsigned int& defbonus,
         Damage dmg,
         const unsigned int& magic_damage_bonus
         )

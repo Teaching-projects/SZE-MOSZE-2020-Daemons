@@ -32,10 +32,12 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<int>("health_point_bonus_per_level"),
 	returnedMap.get<int>("damage_bonus_per_level"),
 	returnedMap.get<double>("cooldown_multiplier_per_level"),
-	returnedMap.get<double>("defense"),
-	returnedMap.get<double>("defense_bonus_per_level"),
+	returnedMap.get<int>("defense"),
+	returnedMap.get<int>("defense_bonus_per_level"),
 	damage,
 	returnedMap.get<int>("magical_damage_bonus_per_level")
+	
+	
 	);
 	
 }
