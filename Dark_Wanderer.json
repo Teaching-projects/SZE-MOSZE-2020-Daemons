@@ -2,13 +2,13 @@
     "name" : "Prince Aidan of Khanduras",
     "base_health_points" : 30,
     "damage" : 3,
-    "magical-damage": 1,
+    "magical-damage": 2,
     "base_attack_cooldown" : 1.1,
     "experience_per_level" : 20,
     "health_point_bonus_per_level" : 5,
-    "damage_bonus_per_level" : 1,
-    "magical_damage_bonus_per_level" : 1,
+    "damage_bonus_per_level" : 2,
+    "magical_damage_bonus_per_level" : 2,
     "cooldown_multiplier_per_level": 0.9,
-    "defense": 1,
-    "defense_bonus_per_level": 1
+    "defense": 2,
+    "defense_bonus_per_level": 2
 }
