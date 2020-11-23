@@ -21,7 +21,7 @@ TEST(all_unitsTest,Monster_load_test)
     Monster monster{Monster::parse("../Zombie.json")};
     ASSERT_TRUE(monster.getHealthPoints() == 10);
     ASSERT_TRUE(monster.getName() == "Zombie");
-    ASSERT_TRUE(monster.getphysDamage() == 1);
+    ASSERT_TRUE(monster.getphysDamage() ==2);
     ASSERT_TRUE(monster.getAttackCoolDown() == 2.8);
 }
 TEST(all_unitsTest,Unit_edge_case_file)
@@ -57,14 +57,6 @@ TEST(all_unitsTest,no_throw_check)
 TEST(all_unitsTest,missing_keys)
 {
     EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
-}
-TEST(all_unitsTest,messed_up_keys)
-{
-    Monster unit_messedup{Monster::parse("messedup_keys.json")};
-    ASSERT_TRUE(unit_messedup.getName() == "Blood Raven");
-    ASSERT_EQ(unit_messedup.getHealthPoints(),113);
-    ASSERT_EQ(unit_messedup.getphysDamage(),8);
-    ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),1.2);
 }
 TEST(all_unitsTest,no_throw_fromUnitparser)
 {
