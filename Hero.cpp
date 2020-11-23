@@ -12,13 +12,7 @@ Hero Hero::parse(const std::string& data){
 
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
-	std::cout << returnedMap.get<std::string>("name")<<std::endl;
-	std::cout << returnedMap.get<int>("base_health_points")<<std::endl;
-	std::cout << returnedMap.get<double>("base_attack_cooldown")<<std::endl;
-	std::cout << returnedMap.get<int>("experience_per_level")<<std::endl;
-	std::cout << returnedMap.get<int>("health_point_bonus_per_level")<<std::endl;
-	std::cout << returnedMap.get<int>("damage_bonus_per_level")<<std::endl;
-	std::cout << returnedMap.get<double>("cooldown_multiplier_per_level")<<std::endl;
+	
 	std::cout << returnedMap.get<double>("defense")<<std::endl;
 	std::cout << returnedMap.get<double>("defense_bonus_per_level")<<std::endl;
 	std::cout << returnedMap.get<int>("magical_damage_bonus_per_level")<<std::endl;
