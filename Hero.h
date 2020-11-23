@@ -19,7 +19,7 @@ class Hero
         unsigned int damage_bonus_per_level;///< How many bonus damage he has per levelup.
         double cooldown_multiplier_per_level;///< A Number which you multiply with cooldown.
         double defense;
-        double defense_bonus_per_level;
+        double defbonus_per_level;
         unsigned int magical_damage_bonus_per_level;
         
     public:
@@ -45,7 +45,7 @@ class Hero
         health_point_bonus_per_level(health_point_bonus_per_level),
         damage_bonus_per_level(damage_bonus_per_level),
         cooldown_multiplier_per_level(cooldown_multiplier_per_level),defense(def),
-        defense_bonus_per_level(defbonus),damage(dmg) ,
+        defbonus_per_level(defbonus),damage(dmg) ,
         magical_damage_bonus_per_level(magic_damage_bonus){}
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!

@@ -45,7 +45,7 @@ void Hero::levelUp()
 	damage.magical  += magical_damage_bonus_per_level;
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
-	defense +=defense_bonus_per_level;
+	defense +=defbonus_per_level;
 }
 bool Hero::isAlive() const
 {

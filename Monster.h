@@ -13,7 +13,7 @@ class Monster
         int dmg; ///< the damage of the Unit
         const std::string name; ///<The name of the Unit
         const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
-        const double defense;
+        double defense;
     public:
         Monster(const int& h, const std::string& n, const double& a,const double& def,Damage dmg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg){}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
