@@ -15,6 +15,9 @@ TEST(all_unitsTest,hero_load_test)
     ASSERT_TRUE(hero.getName() == "Prince Aidan of Khanduras");
     ASSERT_TRUE(hero.getphysDamage() == 3);
     ASSERT_TRUE(hero.getAttackCoolDown() == 1.1);
+    ASSERT_TRUE(hero.getDefense()== 2);
+    ASSERT_TRUE(hero.getmagicDamage()== 2);
+    ASSERT_TRUE(hero.getXP())== 0); 
 }
 TEST(all_unitsTest,Monster_load_test)
 {
@@ -23,6 +26,8 @@ TEST(all_unitsTest,Monster_load_test)
     ASSERT_TRUE(monster.getName() == "Zombie");
     ASSERT_TRUE(monster.getphysDamage() ==2);
     ASSERT_TRUE(monster.getAttackCoolDown() == 2.8);
+    ASSERT_TRUE(monster.getDefense()== 2);
+    ASSERT_TRUE(monster.getmagicDamage()== 2);
 }
 TEST(all_unitsTest,Unit_edge_case_file)
 {
@@ -47,6 +52,7 @@ TEST(all_unitsTest,Unit_fight)
     Monster monster{Monster::parse("../Zombie.json")};
     hero.fightTilDeath(monster);
     ASSERT_TRUE(monster.getHealthPoints() < hero.getHealthPoints());
+    ASSERT_EQ(hero.isAlive(),1);
 }
 TEST(all_unitsTest,no_throw_check)
 {
@@ -63,8 +69,9 @@ TEST(all_unitsTest,no_throw_fromUnitparser)
     EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
     EXPECT_NO_THROW(Monster::parse("../Fallen.json"));
     EXPECT_NO_THROW(Monster::parse("../Zombie.json"));
+    EXPECT_NO_THROW(Monster::parse("../Blood_Raven.json"));
 }
-TEST(all_unitsTest,Monster_wins)
+TEST(all_unitsTest,Monster_lost)
 {
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     Monster monster{Monster::parse("../Zombie.json")};
@@ -77,7 +84,12 @@ TEST(all_unitsTest,test_levelup_logic)
     hero.levelUp();
     ASSERT_TRUE(hero.getLevel() == 2);
 }
-
+TEST(unittests, mapClassTest){
+    ASSERT_NO_THROW(Map("map.txt"));
+    ASSERT_THROW(Map("Nosuchmap.txt"),std::runtime_error);
+    Map test("map.txt");
+    ASSERT_THROW(test.get(3500,3500),Map::WrongIndexException);       
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

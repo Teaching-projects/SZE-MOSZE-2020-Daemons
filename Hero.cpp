@@ -146,7 +146,7 @@ std::string Hero::getName() const
 {
 	return name;
 }
-double Hero::getDefense() const
+int Hero::getDefense() const
 {
 	return defense;
 }

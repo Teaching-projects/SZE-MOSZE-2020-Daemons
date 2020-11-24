@@ -107,7 +107,7 @@ class Hero
         */
         bool isAlive() const;
         void boostxp(const int dmg);
-        double getDefense() const;
+        int getDefense() const;
         
         
 

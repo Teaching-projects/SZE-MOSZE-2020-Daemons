@@ -62,7 +62,7 @@ std::string Monster::getName() const
 
 	return name;
 }
-double Monster::getDefense() const
+int Monster::getDefense() const
 {
 	return defense;
 }

@@ -1,4 +1,4 @@
-OBJS:=JSON.o Main.o  Hero.o Monster.o
+OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o
 CFLAGS:=-Wall  -Werror -std=c++17
 RUN:= g++-10
 
@@ -6,7 +6,7 @@ VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
 VLGRNDJSONS:=  ./runMain scenario1.json
 CPPRUN:= cppcheck
-CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp
+CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp
 CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
@@ -24,6 +24,9 @@ Hero.o: Hero.cpp Hero.h JSON.h Monster.h
 	$(RUN) $(CFLAGS) -c Hero.cpp
 Monster.o: Monster.cpp Monster.h JSON.h Hero.h
 	$(RUN) $(CFLAGS) -c Monster.cpp
+Map.o: Map.cpp Map.h
+	$(RUN) $(CFLAGS) -c Map.cpp
+
 cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
 cppcheckfile:

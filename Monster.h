@@ -53,6 +53,6 @@ class Monster
         \param filename Hero Object Reference
         */
         void takeDamage(Hero& enemy);
-        double getDefense() const;
+        int getDefense() const;
         
 };
