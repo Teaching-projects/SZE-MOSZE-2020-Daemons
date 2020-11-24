@@ -24,6 +24,10 @@ Hero.o: Hero.cpp Hero.h JSON.h Monster.h
 	$(RUN) $(CFLAGS) -c Hero.cpp
 Monster.o: Monster.cpp Monster.h JSON.h Hero.h
 	$(RUN) $(CFLAGS) -c Monster.cpp
+Map.o: Map.cpp Map.h
+	$(RUN) $(CFLAGS) -c Map.cpp
+Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
+	$(RUN) $(CFLAGS) -c Game.cpp
 cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
 cppcheckfile:

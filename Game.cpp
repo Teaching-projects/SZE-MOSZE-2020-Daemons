@@ -108,7 +108,7 @@ bool Game::checkForHero(int x,int y) const
 {
     if((x == hero_location.first-1 && y == hero_location.second))
     {
-        std::cout << "┣┫";
+        std::cout << HERO;
         return true;
     }
     return false;
@@ -127,11 +127,11 @@ void Game::mapPrinter()
         std::cout << VERTICAL;
         for(int x = 0;x < map.getRowWidth(y);x++)
         {
-            if(checkForMonsters(x,y) == 1) std::cout << "M░";
-            else if(checkForMonsters(x,y) == 2) std::cout << "MM";
+            if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
+            else if(checkForMonsters(x,y) == 2) std::cout << MONSTERTWO;
             else if (checkForHero(x,y));
-            else if (map.get(x,y) == Map::Wall) std::cout << "██";
-            else if (map.get(x,y) == Map::Free) std::cout << "░░";
+            else if (map.get(x,y) == Map::Wall) std::cout << WALL_FIELD;
+            else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
         }
         std::cout << VERTICAL << "\n";
     }
