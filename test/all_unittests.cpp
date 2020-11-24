@@ -103,7 +103,7 @@ TEST(all_unitsTest,test_levelup_logic)
 TEST(all_unitsTest, mapClassTest){
     ASSERT_NO_THROW(Map("../map.txt"));
     ASSERT_THROW(Map("nosuchmap.txt"),std::runtime_error);
-    Map test("Map.txt");
+    Map test("../map.txt");
     ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
 }
 
