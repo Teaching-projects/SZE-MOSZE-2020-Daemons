@@ -108,6 +108,7 @@ class Hero
         bool isAlive() const;
         void boostxp(const int dmg);
         int getDefense() const;
+        Damage getDamage() const { return damage; }
         
         
 

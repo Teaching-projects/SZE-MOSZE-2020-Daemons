@@ -16,13 +16,13 @@ alltest: runMain cppcheck cppcheckfile valgrind diff jsontst generate_outputs
 
 runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
-JSON.o: JSON.cpp JSON.h
+JSON.o: JSON.cpp JSON.h Damage.h
 	$(RUN) $(CFLAGS) -c JSON.cpp
-Main.o: Main.cpp JSON.h Hero.h Monster.h
+Main.o: Main.cpp JSON.h Hero.h Monster.h Damage.h
 	$(RUN) $(CFLAGS) -c Main.cpp
-Hero.o: Hero.cpp Hero.h JSON.h Monster.h
+Hero.o: Hero.cpp Hero.h JSON.h Monster.h Damage.h
 	$(RUN) $(CFLAGS) -c Hero.cpp
-Monster.o: Monster.cpp Monster.h JSON.h Hero.h
+Monster.o: Monster.cpp Monster.h JSON.h Hero.h Damage.h
 	$(RUN) $(CFLAGS) -c Monster.cpp
 Map.o: Map.cpp Map.h
 	$(RUN) $(CFLAGS) -c Map.cpp
