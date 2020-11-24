@@ -1,6 +1,7 @@
 #include "../JSON.h"
 #include "../Hero.h"
 #include "../Monster.h"
+#include "../Map.h"
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <iostream>
@@ -98,6 +99,12 @@ TEST(all_unitsTest,test_levelup_logic)
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     hero.levelUp();
     ASSERT_TRUE(hero.getLevel() == 2);
+}
+TEST(unittests, mapClassTest){
+    ASSERT_NO_THROW(Map("map.txt"));
+    ASSERT_THROW(Map("nosuchmap.txt"),std::runtime_error);
+    Map test("Map.txt");
+    ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
 }
 
 
