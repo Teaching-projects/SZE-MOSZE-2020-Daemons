@@ -29,8 +29,8 @@ private:
     const std::string MONSTERTWO = "\u004D\u004D";
 
 public:
-    Game();
-    Game(std::string mapfilename);
+    Game() : map(nullptr),hero(nullptr),game_running(false){};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},game_running(false) {};
     void setMap(Map map);
     virtual void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);

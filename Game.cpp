@@ -1,8 +1,6 @@
 #include "Game.h"
 #include "Map.h"
 
-Game::Game(std::string mapfilename) : map(mapfilename) {}
-
 void Game::setMap(Map map)
 {
     

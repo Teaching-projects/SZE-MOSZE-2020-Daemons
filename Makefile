@@ -1,9 +1,9 @@
-OBJS:=JSON.o Main.o  Hero.o Monster.o
+OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o Game.o
 CFLAGS:=-Wall  -Werror -std=c++17
-RUN:= g++-10
+RUN:= g++-9
 
 VLGRND:= valgrind
-VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
+VLGRNDFLAGS:= --error-exitcode=1
 VLGRNDJSONS:=  ./runMain scenario2.json < test/maptest.txt
 CPPRUN:= cppcheck
 CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp
