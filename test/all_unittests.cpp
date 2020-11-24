@@ -2,6 +2,7 @@
 #include "../Hero.h"
 #include "../Monster.h"
 #include "../Damage.h"
+#include "../Map.h"
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <iostream>
@@ -17,7 +18,7 @@ TEST(all_unitsTest,hero_load_test)
     ASSERT_TRUE(hero.getAttackCoolDown() == 1.1);
     ASSERT_TRUE(hero.getDefense()== 2);
     ASSERT_TRUE(hero.getmagicDamage()== 2);
-    ASSERT_TRUE(hero.getXP())== 0); 
+    ASSERT_TRUE(hero.getXP()== 0); 
 }
 TEST(all_unitsTest,Monster_load_test)
 {
