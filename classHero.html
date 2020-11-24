@@ -74,9 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e0c587617ae90d1f4a9616f5e7ba5ed"><td class="memItemLeft" align="right" valign="top"><a id="a2e0c587617ae90d1f4a9616f5e7ba5ed"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b> (const int &amp;h, const int &amp;d, const std::string &amp;n, const double &amp;a, const unsigned int &amp;experience_per_level, const unsigned int &amp;health_point_bonus_per_level, const unsigned int &amp;damage_bonus_per_level, const double &amp;cooldown_multiplier_per_level)</td></tr>
-<tr class="separator:a2e0c587617ae90d1f4a9616f5e7ba5ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec58157022cd019111328ea4944bcc5"><td class="memItemLeft" align="right" valign="top"><a id="a0ec58157022cd019111328ea4944bcc5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b> (const int &amp;h, const std::string &amp;n, double a, const unsigned int &amp;experience_per_level, const unsigned int &amp;health_point_bonus_per_level, const unsigned int &amp;damage_bonus_per_level, const double &amp;cooldown_multiplier_per_level, const int &amp;def, const unsigned int &amp;defbonus, <a class="el" href="structDamage.html">Damage</a> dmg, const unsigned int &amp;magic_damage_bonus)</td></tr>
+<tr class="separator:a0ec58157022cd019111328ea4944bcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef06e69ebb7d2d18c640af5e6746dff6"><td class="memItemLeft" align="right" valign="top"><a id="aef06e69ebb7d2d18c640af5e6746dff6"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#aef06e69ebb7d2d18c640af5e6746dff6">levelUp</a> ()</td></tr>
 <tr class="memdesc:aef06e69ebb7d2d18c640af5e6746dff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that represents the level up logic, and make the hero to max HP. <br /></td></tr>
@@ -84,16 +84,19 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a17e77f3769e62aeb4e1807bbfc720f47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a17e77f3769e62aeb4e1807bbfc720f47">getLevel</a> () const</td></tr>
 <tr class="memdesc:a17e77f3769e62aeb4e1807bbfc720f47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for level.  <a href="classHero.html#a17e77f3769e62aeb4e1807bbfc720f47">More...</a><br /></td></tr>
 <tr class="separator:a17e77f3769e62aeb4e1807bbfc720f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1634892fee1946f30d8ca43bb0fdff1c"><td class="memItemLeft" align="right" valign="top"><a id="a1634892fee1946f30d8ca43bb0fdff1c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a1634892fee1946f30d8ca43bb0fdff1c">takeDamage</a> (<a class="el" href="classMonster.html">Monster</a> &amp;enemy)</td></tr>
-<tr class="memdesc:a1634892fee1946f30d8ca43bb0fdff1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that represents the takeDamage logic from an enemy. <br /></td></tr>
-<tr class="separator:a1634892fee1946f30d8ca43bb0fdff1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a766298e3acd58f9615c31e9b59e58c84"><td class="memItemLeft" align="right" valign="top"><a id="a766298e3acd58f9615c31e9b59e58c84"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a766298e3acd58f9615c31e9b59e58c84">takeDamage</a> (const <a class="el" href="classMonster.html">Monster</a> &amp;enemy)</td></tr>
+<tr class="memdesc:a766298e3acd58f9615c31e9b59e58c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that represents the takeDamage logic from an enemy. <br /></td></tr>
+<tr class="separator:a766298e3acd58f9615c31e9b59e58c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aadd48c951afef60e3e725353fbb2d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a1aadd48c951afef60e3e725353fbb2d3">getHealthPoints</a> () const</td></tr>
 <tr class="memdesc:a1aadd48c951afef60e3e725353fbb2d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for hp.  <a href="classHero.html#a1aadd48c951afef60e3e725353fbb2d3">More...</a><br /></td></tr>
 <tr class="separator:a1aadd48c951afef60e3e725353fbb2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d4d731bdacb38a39813aa65090bb25d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a4d4d731bdacb38a39813aa65090bb25d">getDamage</a> () const</td></tr>
-<tr class="memdesc:a4d4d731bdacb38a39813aa65090bb25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for damage.  <a href="classHero.html#a4d4d731bdacb38a39813aa65090bb25d">More...</a><br /></td></tr>
-<tr class="separator:a4d4d731bdacb38a39813aa65090bb25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07ce9283b892ab3579e648b95bd484f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a07ce9283b892ab3579e648b95bd484f7">getphysDamage</a> () const</td></tr>
+<tr class="memdesc:a07ce9283b892ab3579e648b95bd484f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for damage.  <a href="classHero.html#a07ce9283b892ab3579e648b95bd484f7">More...</a><br /></td></tr>
+<tr class="separator:a07ce9283b892ab3579e648b95bd484f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98910c140ef82a71cd4c1c36872610a0"><td class="memItemLeft" align="right" valign="top"><a id="a98910c140ef82a71cd4c1c36872610a0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getmagicDamage</b> () const</td></tr>
+<tr class="separator:a98910c140ef82a71cd4c1c36872610a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac796e16c81d8dd9e0cdbb22c1cef5e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#aac796e16c81d8dd9e0cdbb22c1cef5e3">getXP</a> () const</td></tr>
 <tr class="memdesc:aac796e16c81d8dd9e0cdbb22c1cef5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for XP.  <a href="classHero.html#aac796e16c81d8dd9e0cdbb22c1cef5e3">More...</a><br /></td></tr>
 <tr class="separator:aac796e16c81d8dd9e0cdbb22c1cef5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +118,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxHealthPoints</b>
 <tr class="memitem:a5af9ecae859c5e22276544857e6600d0"><td class="memItemLeft" align="right" valign="top"><a id="a5af9ecae859c5e22276544857e6600d0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>boostxp</b> (const int dmg)</td></tr>
 <tr class="separator:a5af9ecae859c5e22276544857e6600d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdda699d8cdf7458eca37617bc250f56"><td class="memItemLeft" align="right" valign="top"><a id="afdda699d8cdf7458eca37617bc250f56"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDefense</b> () const</td></tr>
+<tr class="separator:afdda699d8cdf7458eca37617bc250f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e35435f28a8ca4175245b98d2f643a"><td class="memItemLeft" align="right" valign="top"><a id="a16e35435f28a8ca4175245b98d2f643a"></a>
+<a class="el" href="structDamage.html">Damage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDamage</b> () const</td></tr>
+<tr class="separator:a16e35435f28a8ca4175245b98d2f643a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -166,26 +175,6 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Simple Getter for atkcooldown. </p>
 <dl class="section return"><dt>Returns</dt><dd>const double atkcooldown value </dd></dl>
-
-</div>
-</div>
-<a id="a4d4d731bdacb38a39813aa65090bb25d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d4d731bdacb38a39813aa65090bb25d">&#9670;&nbsp;</a></span>getDamage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Hero::getDamage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Simple Getter for damage. </p>
-<dl class="section return"><dt>Returns</dt><dd>const integer damage value </dd></dl>
 
 </div>
 </div>
@@ -246,6 +235,26 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Simple Getter for name. </p>
 <dl class="section return"><dt>Returns</dt><dd>const string name value </dd></dl>
+
+</div>
+</div>
+<a id="a07ce9283b892ab3579e648b95bd484f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ce9283b892ab3579e648b95bd484f7">&#9670;&nbsp;</a></span>getphysDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Hero::getphysDamage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simple Getter for damage. </p>
+<dl class="section return"><dt>Returns</dt><dd>const integer damage value </dd></dl>
 
 </div>
 </div>
