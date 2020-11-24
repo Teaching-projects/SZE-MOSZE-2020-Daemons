@@ -100,7 +100,7 @@ TEST(all_unitsTest,test_levelup_logic)
     hero.levelUp();
     ASSERT_TRUE(hero.getLevel() == 2);
 }
-TEST(unittests, mapClassTest){
+TEST(all_unitsTest, mapClassTest){
     ASSERT_NO_THROW(Map("map.txt"));
     ASSERT_THROW(Map("nosuchmap.txt"),std::runtime_error);
     Map test("Map.txt");
