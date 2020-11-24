@@ -38,7 +38,7 @@ public:
     void run();
     void mapPrinter();
     void stepOn(int x,int y);
-    bool checkForMonsters(int x,int y) const;
+    unsigned int checkForMonsters(int x,int y) const;
     bool checkForHero(int x,int y) const;
     bool freetoStep(int x,int y) const;
     ~Game()

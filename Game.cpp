@@ -11,14 +11,14 @@ void Game::putHero(Hero hero,int x,int y)
 {
     if(map.get(x,y) == Map::Free && Game::freetoStep(x,y))
     {
-        hero_location = std::make_pair(x,y);
+        hero_location = std::make_pair(x+1,y);
         this->hero = new Hero(hero);
     }
     else throw Game::OccupiedException("Location is not avaibile! \n");
 }
 void Game::putMonster(Monster monster,int x, int y)
 {
-    if(map.get(x,y) == Map::Free && Game::freetoStep(x,y))
+    if(map.get(x,y) == Map::Free && (Game::checkForMonsters(x,y) == 1 || Game::checkForMonsters(x,y) == 0))
         monster_locations.push_back(std::make_pair(monster,std::make_pair(x,y)));
 
     else throw Game::OccupiedException("Location is not avaibile! \n");
@@ -41,17 +41,20 @@ void Game::stepOn(int x, int y)
 
     for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
     {
-        if(iter->second.first == x-1 && iter->second.second == y)
+        if(iter->second.first == x - 1 && iter->second.second == y)
         {
             this->hero->fightTilDeath(iter->first);
             if(hero->isAlive())
             {
-                monster_locations.erase(iter);
+                iter = monster_locations.erase(iter);
             }
-            else
+        }
+        if(iter->second.first +1 == x && iter->second.second == y)
+        {
+            this->hero->fightTilDeath(iter->first);
+            if(hero->isAlive())
             {
-                std::cout << "The hero died.\n";
-                break;
+                iter = monster_locations.erase(iter);
             }
         }
     }
@@ -86,16 +89,19 @@ void Game::run()
         else throw Game::InvalidDirection("Input contains invalid direction !\n");
         Game::mapPrinter();
     }
-    std::cout << (hero->isAlive() ? "The hero won." : "The hero died.") << std::endl;
+    if(hero->isAlive())
+        std::cout << hero->getName() << " cleared the map !\n";
+    else std::cout << "Hero died !\n";  
 
 
 }
-bool Game::checkForMonsters(int x,int y) const
+unsigned int Game::checkForMonsters(int x,int y) const
 {
+    int i = 0;
     for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
-        if(iter->second.first == x && iter->second.second == y) return true;
+        if(iter->second.first == x && iter->second.second == y) i++;
 
-    return false;
+    return i;
 }
 bool Game::checkForHero(int x,int y) const
 {
@@ -120,7 +126,8 @@ void Game::mapPrinter()
         std::cout << VERTICAL;
         for(int x = 0;x < map.getRowWidth(y);x++)
         {
-            if(checkForMonsters(x,y)) std::cout << "M░";
+            if(checkForMonsters(x,y) == 1) std::cout << "M░";
+            else if(checkForMonsters(x,y) == 2) std::cout << "MM";
             else if (checkForHero(x,y));
             else if (map.get(x,y) == Map::Wall) std::cout << "██";
             else if (map.get(x,y) == Map::Free) std::cout << "░░";

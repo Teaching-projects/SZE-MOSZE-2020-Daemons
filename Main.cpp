@@ -71,24 +71,26 @@ int main(int argc, char** argv){
 
         std::cout << "Give a path to the map file !\n";
         std::string mapfile;
-        //std::cin >> mapfile;
-        Game game("map.txt");
+        std::getline(std::cin,mapfile);
+        Game game(mapfile);
         for(const auto& iter : monsters)
         {
             game.mapPrinter();
             std::cout << "Give a location for the " << iter.getName() << " monster(Like: 3 5): \n";
-             std::string x,y;
-            std::cin >> x;
-            std::cin >> y;
+            std::string xy,x,y;
+            std::getline(std::cin,xy);
+            x = xy.at(0);
+            y = xy.at(2);
             int xc = std::stoi(x);
             int yc = std::stoi(y);
             game.putMonster(iter,xc,yc);
         }
         game.mapPrinter();
         std::cout << "Give a location for the " << hero.getName() << " Hero (Like: 3 5): \n";
-        std::string coords,x,y;
-        std::cin >> x;
-        std::cin >> y;
+        std::string xy,x,y;
+        std::getline(std::cin,xy);
+        x = xy.at(0);
+        y = xy.at(2);
         int xc = std::stoi(x);
         int yc = std::stoi(y);
         game.putHero(hero,xc,yc);
