@@ -33,7 +33,7 @@ public:
     Game();
     Game(std::string mapfilename);
     void setMap(Map map);
-    void putHero(Hero hero,int x,int y);
+    virtual void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);
     void run();
     void mapPrinter();
@@ -41,35 +41,30 @@ public:
     unsigned int checkForMonsters(int x,int y) const;
     bool checkForHero(int x,int y) const;
     bool freetoStep(int x,int y) const;
-    ~Game()
+
+    virtual ~Game()
     {
-        if(this->hero != nullptr) delete this->hero;
-        // if(this->map != nullptr) delete this->map;
+        delete this->hero;
     }
 
     class OccupiedException : virtual public std::runtime_error {
         public:
-            
         OccupiedException(const std::string &err) : std::runtime_error( err) {}
     };
     class AlreadyHasHeroException : virtual public std::runtime_error {
         public:
-            
         AlreadyHasHeroException(const std::string &err) : std::runtime_error( err) {}
     };
     class AlreadyHasUnitsException : virtual public std::runtime_error {
         public:
-            
         AlreadyHasUnitsException(const std::string &err) : std::runtime_error( err) {}
     };
     class GameAlreadyStartedException : virtual public std::runtime_error {
         public:
-            
         GameAlreadyStartedException(const std::string &err) : std::runtime_error( err) {}
     };
     class InvalidDirection : virtual public std::runtime_error {
         public:
-            
         InvalidDirection(const std::string &err) : std::runtime_error( err) {}
     };
 
