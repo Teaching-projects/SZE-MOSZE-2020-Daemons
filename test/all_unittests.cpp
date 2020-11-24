@@ -85,12 +85,6 @@ TEST(all_unitsTest,test_levelup_logic)
     hero.levelUp();
     ASSERT_TRUE(hero.getLevel() == 2);
 }
-TEST(unittests, mapClassTest){
-    ASSERT_NO_THROW(Map("map.txt"));
-    ASSERT_THROW(Map("Nosuchmap.txt"),std::runtime_error);
-    Map test("map.txt");
-    ASSERT_THROW(test.get(3500,3500),Map::WrongIndexException);       
-}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
