@@ -4,9 +4,9 @@ RUN:= g++-10
 
 VLGRND:= valgrind
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1
-VLGRNDJSONS:=  ./runMain scenario1.json
+VLGRNDJSONS:=  ./runMain scenario2.json < test/maptest.txt
 CPPRUN:= cppcheck
-CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp
+CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp
 CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
