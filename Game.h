@@ -34,7 +34,7 @@ private:
     bool checkForHero(int x,int y) const;
 
 public:
-    Game() : map(Map()),mapset(false),game_running(false),heroset(false){};
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     void setMap(Map map);
     virtual void putHero(Hero hero,int x,int y);
