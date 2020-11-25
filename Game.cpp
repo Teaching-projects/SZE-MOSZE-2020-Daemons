@@ -81,6 +81,7 @@ void Game::run()
     if(hero->isAlive())
         std::cout << hero->getName() << " cleared the map !\n";
     else std::cout << "Hero died !\n";
+    game_running = false;
 
 
 
