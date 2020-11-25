@@ -7,7 +7,7 @@ void Game::setMap(Map map)
 }
 void Game::putHero(Hero hero,int x,int y)
 {
-    if(map.get(x,y) == Map::Free && Game::freetoStep(x,y))
+    if(map.get(x,y) == Map::Free)
     {
         hero_location = std::make_pair(x+1,y);
         this->hero = new Hero(hero);
@@ -16,7 +16,7 @@ void Game::putHero(Hero hero,int x,int y)
 }
 void Game::putMonster(Monster monster,int x, int y)
 {
-    if(map.get(x,y) == Map::Free && (Game::checkForMonsters(x,y) == 1 || Game::checkForMonsters(x,y) == 0))
+    if(map.get(x,y) == Map::Free && Game::checkForMonsters(x,y) < 2)
         monster_locations.push_back(std::make_pair(monster,std::make_pair(x,y)));
 
     else throw Game::OccupiedException("Location is not avaibile! \n");
@@ -64,6 +64,7 @@ void Game::run()
     if(game_running) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
     Game::mapPrinter();
+    Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
     {
         std::string move_direction;
