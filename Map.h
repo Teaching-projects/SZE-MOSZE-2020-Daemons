@@ -12,6 +12,7 @@ private:
  public:
         enum type {Free, Wall};
         Map(std::string filename);
+        Map(){};
         Map::type get(unsigned int x, unsigned int y) const;
         int getHeight() const;
         int getRowWidth(unsigned int row) const;

@@ -51,28 +51,12 @@ int main(int argc, char** argv){
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
 
-        // while (hero.isAlive() && !monsters.empty()) {
-        //     std::cout
-        //         << hero.getName() << "(" << hero.getLevel()<<")"
-        //         << " vs "
-        //         << monsters.front().getName()
-        //         <<std::endl;
-        //     hero.fightTilDeath(monsters.front());
-        //     if (!monsters.front().isAlive()) monsters.pop_front();
-        // }
-        // std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        // std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-        //           << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-        //           << "  DMG: "<<hero.getDamage()<<std::endl
-        //           << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-        //           ;
-
-        //TODO: Add try catch block for the inputs
-
         std::cout << "Give a path to the map file !\n";
         std::string mapfile;
         std::getline(std::cin,mapfile);
-        Game game(mapfile);
+        Map map(mapfile);
+        Game game{};
+        game.setMap(map);
         for(const auto& iter : monsters)
         {
             game.mapPrinter();

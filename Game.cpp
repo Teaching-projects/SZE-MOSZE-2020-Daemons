@@ -3,35 +3,30 @@
 
 void Game::setMap(Map map)
 {
+    if(!mapset)
+    {
+        this->map = map;
+        mapset = true;
+    }
+    else Game::MapAlreadySet("Map already set!");
     
 }
 void Game::putHero(Hero hero,int x,int y)
 {
-    if(map.get(x,y) == Map::Free)
+    if(map.get(x,y) == Map::Free && !heroset && mapset)
     {
         hero_location = std::make_pair(x+1,y);
         this->hero = new Hero(hero);
+        heroset = true;
     }
     else throw Game::OccupiedException("Location is not avaibile! \n");
 }
 void Game::putMonster(Monster monster,int x, int y)
 {
-    if(map.get(x,y) == Map::Free && Game::checkForMonsters(x,y) < 2)
+    if(map.get(x,y) == Map::Free && Game::checkForMonsters(x,y) < 2 && mapset)
         monster_locations.push_back(std::make_pair(monster,std::make_pair(x,y)));
 
     else throw Game::OccupiedException("Location is not avaibile! \n");
-}
-bool Game::freetoStep(int x,int y) const
-{
-    for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
-    {
-        if(iter->second.first == x && iter->second.second == y)
-            return false;
-    }
-    if((hero_location.first == x && hero_location.second == y) || (hero_location.first-1 == x && hero_location.second == y))
-        return false;
-    
-    return true;
 }
 void Game::stepOn(int x, int y)
 {
@@ -61,7 +56,7 @@ void Game::stepOn(int x, int y)
 void Game::run()
 {
     
-    if(game_running) Game::GameAlreadyStartedException("Game is alredy running !\n");
+    if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
     Game::mapPrinter();
     Game::stepOn(hero_location.first,hero_location.second);
@@ -115,8 +110,13 @@ bool Game::checkForHero(int x,int y) const
 
 void Game::mapPrinter()
 {
+    int maxwidth = 0;
+    for(int i = 0;i < map.getHeight();i++)
+        if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
+
+
     std::cout << TOP_LEFT;
-    for(int i = 0;i < map.getRowWidth(0);i++)
+    for(int i = 0;i < maxwidth;i++)
         std::cout << HORIZONTAL;
     
     std::cout << TOP_RIGHT << "\n";
@@ -129,14 +129,15 @@ void Game::mapPrinter()
             if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
             else if(checkForMonsters(x,y) == 2) std::cout << MONSTERTWO;
             else if (checkForHero(x,y));
-            else if (map.get(x,y) == Map::Wall) std::cout << WALL_FIELD;
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
+            else std::cout << WALL_FIELD;
         }
+        for(int i = 0;i<(maxwidth - map.getRowWidth(y));i++)
+            std::cout << WALL_FIELD;
         std::cout << VERTICAL << "\n";
     }
     std::cout << BOTTOM_LEFT;
-    int height = map.getHeight() -1;
-    for(int i = 0;i < map.getRowWidth(height);i++)
+    for(int i = 0;i < maxwidth;i++)
         std::cout << HORIZONTAL;
     
     std::cout << BOTTOM_RIGHT << "\n";

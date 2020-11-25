@@ -14,7 +14,9 @@ private:
     Hero *hero;
     std::pair<int,int> hero_location;
     std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
+    bool mapset;
     bool game_running;
+    bool heroset;
 
     const std::string TOP_LEFT = "\u2554";
 	const std::string TOP_RIGHT = "\u2557";
@@ -27,18 +29,18 @@ private:
 	const std::string HERO = "\u2523\u252B";
 	const std::string MONSTERONE = "\u004D\u2591";
     const std::string MONSTERTWO = "\u004D\u004D";
+    void stepOn(int x,int y);
+    unsigned int checkForMonsters(int x,int y) const;
+    bool checkForHero(int x,int y) const;
 
 public:
-    Game() : map(nullptr),hero(nullptr),game_running(false){};
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},game_running(false) {};
+    Game() : map(Map()),mapset(false),game_running(false),heroset(false){};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     void setMap(Map map);
     virtual void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);
     void run();
     void mapPrinter();
-    void stepOn(int x,int y);
-    unsigned int checkForMonsters(int x,int y) const;
-    bool checkForHero(int x,int y) const;
     bool freetoStep(int x,int y) const;
 
     virtual ~Game()
@@ -46,25 +48,29 @@ public:
         delete this->hero;
     }
 
-    class OccupiedException : virtual public std::runtime_error {
+    class OccupiedException : virtual public std::runtime_error{
         public:
         OccupiedException(const std::string &err) : std::runtime_error( err) {}
     };
-    class AlreadyHasHeroException : virtual public std::runtime_error {
+    class AlreadyHasHeroException : virtual public std::runtime_error{
         public:
         AlreadyHasHeroException(const std::string &err) : std::runtime_error( err) {}
     };
-    class AlreadyHasUnitsException : virtual public std::runtime_error {
+    class AlreadyHasUnitsException : virtual public std::runtime_error{
         public:
         AlreadyHasUnitsException(const std::string &err) : std::runtime_error( err) {}
     };
-    class GameAlreadyStartedException : virtual public std::runtime_error {
+    class GameAlreadyStartedException : virtual public std::runtime_error{
         public:
         GameAlreadyStartedException(const std::string &err) : std::runtime_error( err) {}
     };
-    class InvalidDirection : virtual public std::runtime_error {
+    class InvalidDirection : virtual public std::runtime_error{
         public:
         InvalidDirection(const std::string &err) : std::runtime_error( err) {}
+    };
+    class MapAlreadySet : virtual public std::runtime_error{
+        public:
+        MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
 
 };
