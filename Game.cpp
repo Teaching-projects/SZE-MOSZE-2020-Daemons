@@ -15,7 +15,7 @@ void Game::putHero(Hero hero,int x,int y)
 {
     if(map.get(x,y) == Map::Free && !heroset && mapset)
     {
-        hero_location = std::make_pair(x+1,y);
+        hero_location = std::make_pair(x,y);
         this->hero = new Hero(hero);
         heroset = true;
     }
@@ -23,33 +23,26 @@ void Game::putHero(Hero hero,int x,int y)
 }
 void Game::putMonster(Monster monster,int x, int y)
 {
-    if(map.get(x,y) == Map::Free && Game::checkForMonsters(x,y) < 2 && mapset)
+    if(map.get(x,y) == Map::Free && mapset)
         monster_locations.push_back(std::make_pair(monster,std::make_pair(x,y)));
 
     else throw Game::OccupiedException("Location is not avaibile! \n");
 }
 void Game::stepOn(int x, int y)
 {
-    if(map.get(x-1,y) == Map::Wall) throw Game::OccupiedException("Can't move here there is a Wall !\n");
+    if(map.get(x,y) == Map::Wall) throw Game::OccupiedException("Can't move here there is a Wall !\n");
 
-    for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
+    auto iter = monster_locations.begin();
+    while (iter != monster_locations.end())
     {
-        if(iter->second.first == x - 1 && iter->second.second == y)
+        if(iter->second.first == x && iter->second.second == y)
         {
             this->hero->fightTilDeath(iter->first);
+
             if(hero->isAlive())
-            {
                 iter = monster_locations.erase(iter);
-            }
         }
-        if(iter->second.first +1 == x && iter->second.second == y)
-        {
-            this->hero->fightTilDeath(iter->first);
-            if(hero->isAlive())
-            {
-                iter = monster_locations.erase(iter);
-            }
-        }
+        else iter++;
     }
     hero_location = std::make_pair(x,y);
 }
@@ -62,6 +55,7 @@ void Game::run()
     Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
     {
+        std::cout << "Enter a heading to move ! (north, east, south, west)\n";
         std::string move_direction;
         std::cin >> move_direction;
         if(move_direction == "east")
@@ -80,7 +74,7 @@ void Game::run()
         {
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
-        else throw Game::InvalidDirection("Input contains invalid direction !\n");
+        else throw Game::InvalidDirection("Input contains invalid heading !\n");
         Game::mapPrinter();
     }
     if(hero->isAlive())
@@ -100,7 +94,7 @@ unsigned int Game::checkForMonsters(int x,int y) const
 }
 bool Game::checkForHero(int x,int y) const
 {
-    if((x == hero_location.first-1 && y == hero_location.second))
+    if((x == hero_location.first && y == hero_location.second && this->hero != nullptr))
     {
         std::cout << HERO;
         return true;
@@ -126,9 +120,9 @@ void Game::mapPrinter()
         std::cout << VERTICAL;
         for(int x = 0;x < map.getRowWidth(y);x++)
         {
-            if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
-            else if(checkForMonsters(x,y) == 2) std::cout << MONSTERTWO;
-            else if (checkForHero(x,y));
+            if (checkForHero(x,y));
+            else if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
+            else if(checkForMonsters(x,y) >= 2) std::cout << MONSTERTWO;
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
         }

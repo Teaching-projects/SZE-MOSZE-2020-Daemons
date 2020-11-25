@@ -3,6 +3,8 @@
     "monsters" : [
         "Fallen.json",
         "Fallen.json",
+        "Zombie.json",
+        "Zombie.json",
         "Zombie.json"
     ]
 }
