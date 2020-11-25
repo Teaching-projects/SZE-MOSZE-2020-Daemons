@@ -33,7 +33,7 @@ void Game::stepOn(int x, int y)
     if(map.get(x,y) == Map::Wall) throw Game::OccupiedException("Can't move here there is a Wall !\n");
 
     auto iter = monster_locations.begin();
-    while (iter != monster_locations.end())
+    while (iter != monster_locations.end() && !monster_locations.empty())
     {
         if(iter->second.first == x && iter->second.second == y)
         {
@@ -41,6 +41,7 @@ void Game::stepOn(int x, int y)
 
             if(hero->isAlive())
                 iter = monster_locations.erase(iter);
+            else break;
         }
         else iter++;
     }
