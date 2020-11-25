@@ -2,6 +2,7 @@
 #include "../Hero.h"
 #include "../Monster.h"
 #include "../Map.h"
+#include "../Game.h"
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <iostream>
@@ -106,6 +107,23 @@ TEST(all_unitsTest, mapClassTest){
     Map test("../map.txt");
     ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
 }
+TEST(all_unitsTest, map_put_test){
+    Game game{};
+    Map map("../map.txt");
+    ASSERT_NO_THROW(game.setMap(map));
+    game.setMap(map);
+    ASSERT_THROW(game.setMap(map),std::runtime_error);
+}
+TEST(all_unitsTest, heroPuTest){
+    Game game{};
+    Map map("../map.txt");
+    game.setMap(map);
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    ASSERT_NO_THROW(game.putHero(hero,1,1));
+    game.putHero(hero,1,1);
+    ASSERT_THROW(game.putHero(hero,1,1),std::runtime_error);
+}
+
 
 
 int main(int argc, char **argv) {
