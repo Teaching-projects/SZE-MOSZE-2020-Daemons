@@ -57,13 +57,6 @@ TEST(all_unitsTest,missing_keys)
 {
     EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
 }
-TEST(all_unitsTest,messed_up_keys)
-{
-    Monster unit_messedup{Monster::parse("messedup_keys.json")};
-    ASSERT_TRUE(unit_messedup.getName() == "Blood Raven");
-    ASSERT_EQ(unit_messedup.getHealthPoints(),113);
-    ASSERT_DOUBLE_EQ(unit_messedup.getAttackCoolDown(),1.2);
-}
 TEST(all_unitsTest,no_throw_fromUnitparser)
 {
     EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
