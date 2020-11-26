@@ -53,6 +53,7 @@ class Hero
         xp=0; 
         level=1;
         }
+        virtual ~Hero(){};
         //!Method that parse Hero Json files and return the generated Hero Object with the parsed data
         /*!
         \return  Hero Object with the parsed data

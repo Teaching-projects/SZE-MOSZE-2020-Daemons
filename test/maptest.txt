@@ -1,0 +1,4 @@
+map.txt
+1 1
+1 2
+north

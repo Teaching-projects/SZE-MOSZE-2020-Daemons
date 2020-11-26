@@ -1,8 +1,8 @@
 #include "../JSON.h"
 #include "../Hero.h"
 #include "../Monster.h"
-#include "../Damage.h"
 #include "../Map.h"
+#include "../Game.h"
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <iostream>
@@ -47,14 +47,6 @@ TEST(all_unitsTest,typetest)
     EXPECT_EQ(typeid(int),typeid(hero.getphysDamage()));
     
 }
-TEST(all_unitsTest,Unit_fight)
-{
-    Hero hero{Hero::parse("../Dark_Wanderer.json")};
-    Monster monster{Monster::parse("../Zombie.json")};
-    hero.fightTilDeath(monster);
-    ASSERT_TRUE(monster.getHealthPoints() < hero.getHealthPoints());
-    ASSERT_EQ(hero.isAlive(),1);
-}
 TEST(all_unitsTest,no_throw_check)
 {
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
@@ -70,9 +62,8 @@ TEST(all_unitsTest,no_throw_fromUnitparser)
     EXPECT_NO_THROW(Hero::parse("../Dark_Wanderer.json"));
     EXPECT_NO_THROW(Monster::parse("../Fallen.json"));
     EXPECT_NO_THROW(Monster::parse("../Zombie.json"));
-    EXPECT_NO_THROW(Monster::parse("../Blood_Raven.json"));
 }
-TEST(all_unitsTest,Monster_lost)
+TEST(all_unitsTest,Monster_wins)
 {
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     Monster monster{Monster::parse("../Zombie.json")};
@@ -85,7 +76,24 @@ TEST(all_unitsTest,test_levelup_logic)
     hero.levelUp();
     ASSERT_TRUE(hero.getLevel() == 2);
 }
-
+TEST(all_unitsTest, mapClassTest){
+    ASSERT_NO_THROW(Map("../map.txt"));
+    ASSERT_THROW(Map("nosuchmap.txt"),std::runtime_error);
+    Map test("../map.txt");
+    ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
+}
+TEST(all_unitsTest, map_put_test){
+    Game game{};
+    Map map("../map.txt");
+    ASSERT_NO_THROW(game.setMap(map));
+}
+TEST(all_unitsTest, heroPuTest){
+    Game game{};
+    Map map("../map.txt");
+    game.setMap(map);
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    ASSERT_NO_THROW(game.putHero(hero,1,1));
+}
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

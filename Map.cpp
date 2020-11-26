@@ -26,4 +26,13 @@ Map::type Map::get(unsigned int x, unsigned int y) const {
         return Map::type::Wall;
     else
         return Map::type::Free;
-} 
+}
+int Map::getHeight() const
+{
+    return vectormap.size();
+}
+int Map::getRowWidth(unsigned int row) const
+{
+    if(row > vectormap.size()) return 0;
+    else return vectormap[row].length();
+}
