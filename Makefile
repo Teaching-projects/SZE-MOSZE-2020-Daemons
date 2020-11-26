@@ -28,6 +28,7 @@ Map.o: Map.cpp Map.h
 	$(RUN) $(CFLAGS) -c Map.cpp
 Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
 	$(RUN) $(CFLAGS) -c Game.cpp
+
 cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
 cppcheckfile:

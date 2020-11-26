@@ -5,16 +5,29 @@
 
 Monster Monster::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
+	Damage damage;
+	if(returnedMap.count("damage")) damage.physical = returnedMap.get<int>("damage");
+	else damage.physical = 0;
+	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
+	else damage.magical = 0;
+	
 	return Monster(returnedMap.get<int>("health_points"),
-	returnedMap.get<int>("damage"),
 	returnedMap.get<std::string>("name"),
-	returnedMap.get<double>("attack_cooldown"));
+	returnedMap.get<double>("attack_cooldown"),
+	returnedMap.get<int>("defense"),
+	damage
+	);
 
 }
 void Monster::takeDamage(Hero& enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage();
+	int damage = enemy.getphysDamage()-defense;
+	if(damage<0)
+	{
+		 damage=0;
+	}
+	damage+=enemy.getmagicDamage();
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -31,9 +44,13 @@ double Monster::getAttackCoolDown() const
 {
 	return atkcooldown;
 }
-int Monster::getDamage() const
+int Monster::getphysDamage() const
 {
-	return dmg;
+	return damage.physical;
+}
+int Monster::getmagicDamage() const
+{
+	return damage.magical;
 }
 bool Monster::isAlive() const
 {
@@ -42,5 +59,10 @@ bool Monster::isAlive() const
 }
 std::string Monster::getName() const
 {
+
 	return name;
+}
+int Monster::getDefense() const
+{
+	return defense;
 }

@@ -5,14 +5,30 @@
 
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
-	return Hero(returnedMap.get<int>("base_health_points"),
-	returnedMap.get<int>("base_damage"),
+	Damage damage;
+
+	if(returnedMap.count("damage")) damage.physical = returnedMap.get<int>("damage");
+	else damage.physical = 0;
+
+	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
+	else damage.magical = 0;
+	
+	return Hero(
+	returnedMap.get<int>("base_health_points"),
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("base_attack_cooldown"),
 	returnedMap.get<int>("experience_per_level"),
 	returnedMap.get<int>("health_point_bonus_per_level"),
 	returnedMap.get<int>("damage_bonus_per_level"),
-	returnedMap.get<double>("cooldown_multiplier_per_level"));
+	returnedMap.get<double>("cooldown_multiplier_per_level"),
+	returnedMap.get<int>("defense"),
+	returnedMap.get<int>("defense_bonus_per_level"),
+	damage,
+	returnedMap.get<int>("magical_damage_bonus_per_level")
+	
+	
+	);
+	
 }
 void Hero::boostxp(const int xp_to_boost)
 {
@@ -26,9 +42,11 @@ void Hero::levelUp()
 {
 	level++;
 	maxHP += health_point_bonus_per_level;
-	dmg += damage_bonus_per_level;
+	damage.physical += damage_bonus_per_level;
+	damage.magical  += magical_damage_bonus_per_level;
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
+	defense +=defbonus_per_level;
 }
 bool Hero::isAlive() const
 {
@@ -37,16 +55,22 @@ bool Hero::isAlive() const
 }
 int Hero::getLevel() const
 {
+	
 	return level;
 }
 int Hero::getXP() const
 {
 	return xp;
 }
-void Hero::takeDamage(Monster& enemy)
+void Hero::takeDamage(const Monster&  enemy)
 {
 	int dmg_taken = hp;
-	int damage = enemy.getDamage();
+	int damage = enemy.getphysDamage()-defense;
+	if(damage<0)
+	{
+		 damage=0;
+	}
+	damage+=enemy.getmagicDamage();
 	hp -= damage;
 	if (hp < 0)
 	{
@@ -89,7 +113,9 @@ void Hero::fightTilDeath(Monster& enemy)
 			NextAttackTimerSecondPlayer=i2*enemy.getAttackCoolDown();
 
 		}
-		if(hp != 0) hp -= enemy.getDamage();
+		if(hp != 0) {
+			takeDamage(enemy);
+		}
 }
 int Hero::getHealthPoints() const
 {
@@ -99,9 +125,13 @@ double Hero::getAttackCoolDown() const
 {
 	return atkcooldown;
 }
-int Hero::getDamage() const
+int Hero::getphysDamage() const
 {
-	return dmg;
+	return damage.physical ;
+}
+int Hero::getmagicDamage() const
+{
+	return damage.magical ;
 }
 
 int Hero::getMaxHealthPoints() const
@@ -112,4 +142,8 @@ int Hero::getMaxHealthPoints() const
 std::string Hero::getName() const
 {
 	return name;
+}
+int Hero::getDefense() const
+{
+	return defense;
 }

@@ -1,17 +1,21 @@
 #pragma once
 class Hero;
 #include "Hero.h"
+#include "Damage.h"
 #include <string>
 
 class Monster
 {
     protected:
+       
+       
         int hp; ///< the hp of the Unit
-        int dmg; ///< the damage of the Unit
         const std::string name; ///<The name of the Unit
         const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
+        int defense;
+        Damage damage;
     public:
-        Monster(const int& h, const int& d, const std::string& n, const double& a) : hp(h),dmg(d),name(n),atkcooldown(a){}
+        Monster(const int& h, const std::string& n, const double& a,const int& def,Damage dmg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg){}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
         /*!
         \return  Monster Object with the parsed data
@@ -32,7 +36,8 @@ class Monster
         /*!
         \return  const integer damage value
         */
-        int getDamage() const;
+        int getphysDamage() const;
+        int getmagicDamage() const;
         //! Simple method that represents if the Hero is Alive or Not
         /*!
         \return  1 if hp>0 and 0 if else.
@@ -48,4 +53,6 @@ class Monster
         \param filename Hero Object Reference
         */
         void takeDamage(Hero& enemy);
+        int getDefense() const;
+        
 };

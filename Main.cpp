@@ -50,7 +50,7 @@ int main(int argc, char** argv){
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
-
+      
         std::cout << "Give a path to the map file !\n";
         std::string mapfile;
         std::getline(std::cin,mapfile);

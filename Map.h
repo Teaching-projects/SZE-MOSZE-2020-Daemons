@@ -1,8 +1,9 @@
 #pragma once
 
-#include <map>
+
 #include <string>
 #include <vector>
+#include <fstream>
 
 class Map{
 
@@ -18,7 +19,8 @@ private:
         int getRowWidth(unsigned int row) const;
 
     
-    class WrongIndexException : virtual public std::runtime_error {
+ 
+        class WrongIndexException : public std::runtime_error{
         public:
         WrongIndexException(const std::string &err) : std::runtime_error( err) {}
     };
