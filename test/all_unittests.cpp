@@ -3,6 +3,7 @@
 #include "../Monster.h"
 #include "../Map.h"
 #include "../Game.h"
+#include "../MarkedMap.h"
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <iostream>
@@ -93,6 +94,13 @@ TEST(all_unitsTest, heroPuTest){
     game.setMap(map);
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     ASSERT_NO_THROW(game.putHero(hero,1,1));
+}
+TEST(all_unitsTest, hero_pose_test){
+    MarkedMap map("../map.txt");
+    std::pair<int,int> hero_pos(2,1);
+    std::pair<int,int> hero = map.getHeroPosition();
+    ASSERT_TRUE(hero.first == hero_pos.first);
+    ASSERT_TRUE(hero.second == hero_pos.second);
 }
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
