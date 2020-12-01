@@ -13,7 +13,7 @@ class MarkedMap: Map
     public:
     
     std::pair<int,int> getHeroPosition() const;
-    std::list<std::pair<std::string,std::pair<int,int>>> getMonsterPositions(char c) const;
+    std::vector<std::pair<int,int>> getMonsterPositions(char c) const;
     MarkedMap(std::string filename);
     MarkedMap(){};
 };

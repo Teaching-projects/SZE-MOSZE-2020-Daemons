@@ -46,7 +46,19 @@ MarkedMap::MarkedMap(std::string filename) {
     }
     stream.close();
 }
-std::list<std::pair<std::string,std::pair<int,int>>> MarkedMap::getMonsterPositions(char c) const 
+std::vector<std::pair<int,int>> MarkedMap::getMonsterPositions(char c) const 
 {
-    return monsters;
+
+    std::vector<std::pair<int,int>> monster_loc;
+    std::pair<int,int> coordinates;
+    for(int i = 0;i < vectormap.size();i++)
+    {
+        for(int j = 0; j < vectormap[i].length();j++)
+        {
+            if(vectormap[i][j] == c)
+                monster_loc.push_back(std::make_pair(i,j));
+        }
+    }
+    
+    return monster_loc;
 }

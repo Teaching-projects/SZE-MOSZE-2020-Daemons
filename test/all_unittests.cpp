@@ -101,11 +101,9 @@ TEST(all_unitsTest, marked_map_pose_test){
     ASSERT_TRUE(hero.first == 2);
     ASSERT_TRUE(hero.second == 1);
 
-    std::list<std::pair<std::string,std::pair<int,int>>> monsters = map.getMonsterPositions('c');
-    std::pair<std::string,std::pair<int,int>> fi_monster = monsters.front();
-    ASSERT_TRUE(fi_monster.first == "Fallen");
-    ASSERT_TRUE(fi_monster.second.first == 6);
-    ASSERT_TRUE(fi_monster.second.second == 2);
+    std::vector<std::pair<int,int>> monsters = map.getMonsterPositions('2');
+    ASSERT_TRUE(monsters[0].first == 6);
+    ASSERT_TRUE(monsters[0].second == 2);
 
 }
 int main(int argc, char **argv) {
