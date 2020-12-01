@@ -105,7 +105,7 @@ TEST(all_unitsTest, marked_map_pose_test){
     std::pair<std::string,std::pair<int,int>> fi_monster = monsters.front();
     ASSERT_TRUE(fi_monster.first == "Fallen");
     ASSERT_TRUE(fi_monster.second.first == 6);
-    ASSERT_TRUE(fi_monster.second.second == 3);
+    ASSERT_TRUE(fi_monster.second.second == 2);
 
 }
 int main(int argc, char **argv) {
