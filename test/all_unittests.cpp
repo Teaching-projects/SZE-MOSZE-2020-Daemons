@@ -97,12 +97,15 @@ TEST(all_unitsTest, heroPuTest){
 }
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
-    std::pair<int,int> hero_pos(2,1);
     std::pair<int,int> hero = map.getHeroPosition();
-    std::cout << hero.first << " " << hero.second <<"\n";
-    ASSERT_TRUE(hero.first == hero_pos.first);
-    ASSERT_TRUE(hero.second == hero_pos.second);
+    ASSERT_TRUE(hero.first == 2);
+    ASSERT_TRUE(hero.second == 1);
 
+    std::list<std::pair<std::string,std::pair<int,int>>> monsters = map.getMonsterPositions('c');
+    std::pair<std::string,std::pair<int,int>> fi_monster = monsters.front();
+    ASSERT_TRUE(fi_monster.first == "Fallen");
+    ASSERT_TRUE(fi_monster.second.first == 6);
+    ASSERT_TRUE(fi_monster.second.second == 3);
 
 }
 int main(int argc, char **argv) {

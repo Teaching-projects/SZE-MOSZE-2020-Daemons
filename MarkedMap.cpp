@@ -20,7 +20,7 @@ MarkedMap::MarkedMap(std::string filename) {
         {
             if(vectormap[y][x] == 'H')
                 hero = std::make_pair(x,y);
-                
+
             else if(vectormap[y][x] == '1')
             {
                 std::pair<int,int> coordinates;
@@ -49,6 +49,4 @@ MarkedMap::MarkedMap(std::string filename) {
 std::list<std::pair<std::string,std::pair<int,int>>> MarkedMap::getMonsterPositions(char c) const 
 {
     return monsters;
-
-
 }
