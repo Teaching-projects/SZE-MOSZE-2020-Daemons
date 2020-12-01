@@ -98,8 +98,8 @@ TEST(all_unitsTest, heroPuTest){
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero = map.getHeroPosition();
-    ASSERT_TRUE(hero.first == 2);
-    ASSERT_TRUE(hero.second == 1);
+    ASSERT_TRUE(hero.first == 1);
+    ASSERT_TRUE(hero.second == 2);
 
     std::vector<std::pair<int,int>> monsters = map.getMonsterPositions('2');
     std::cout << monsters[0].first << " " << monsters[0].second << "\n";

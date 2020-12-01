@@ -7,9 +7,6 @@
 
 class MarkedMap: Map
 {
-    private:
-     std::list<std::pair<std::string,std::pair<int,int>>> monsters;
-     std::pair<int,int> hero;
     public:
     
     std::pair<int,int> getHeroPosition() const;
