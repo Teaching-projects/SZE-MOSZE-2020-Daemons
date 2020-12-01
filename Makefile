@@ -1,4 +1,4 @@
-OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o Game.o
+OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o Game.o Markedmap.o
 CFLAGS:=-Wall  -Werror -std=c++17
 RUN:= g++-9
 
@@ -6,7 +6,7 @@ VLGRND:= valgrind
 VLGRNDFLAGS:= --error-exitcode=1
 VLGRNDJSONS:=  ./runMain scenario2.json < test/maptest.txt
 CPPRUN:= cppcheck
-CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp
+CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp Markedmap.cpp
 CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
