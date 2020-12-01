@@ -14,9 +14,9 @@ MarkedMap::MarkedMap(std::string filename) {
     while(std::getline(stream, currentLine)){
         vectormap.push_back(currentLine);
     }
-    for(int y=0;y<vectormap.size();y++)
+    for(unsigned int y=0;y<vectormap.size();y++)
     {
-        for(int x = 0;x < vectormap[y].length();x++)
+        for(unsigned int  x = 0;x < vectormap[y].length();x++)
         {
             if(vectormap[y][x] == '1')
             {

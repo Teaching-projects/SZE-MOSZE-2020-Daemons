@@ -18,6 +18,8 @@ runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
 JSON.o: JSON.cpp JSON.h
 	$(RUN) $(CFLAGS) -c JSON.cpp
+Markedmap.o: Map.cpp Map.h Markedmap.h Markedmap.cpp 
+	$(RUN) $(CFLAGS) -c Markedmap.cpp
 Main.o: Main.cpp JSON.h Hero.h Monster.h Game.h Markedmap.h
 	$(RUN) $(CFLAGS) -c Main.cpp
 Hero.o: Hero.cpp Hero.h JSON.h Monster.h
@@ -28,8 +30,7 @@ Map.o: Map.cpp Map.h
 	$(RUN) $(CFLAGS) -c Map.cpp
 Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
 	$(RUN) $(CFLAGS) -c Game.cpp
-Markedmap.o: Map.cpp Map.h Markedmap.h Markedmap.cpp 
-	$(RUN) $(CFLAGS) -c Markedmap.cpp
+
 
 cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)
