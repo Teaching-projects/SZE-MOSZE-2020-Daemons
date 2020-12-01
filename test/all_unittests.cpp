@@ -95,10 +95,11 @@ TEST(all_unitsTest, heroPuTest){
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     ASSERT_NO_THROW(game.putHero(hero,1,1));
 }
-TEST(all_unitsTest, hero_pose_test){
+TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero_pos(2,1);
     std::pair<int,int> hero = map.getHeroPosition();
+    std::cout << hero.first << " " << hero.second <<"\n";
     ASSERT_TRUE(hero.first == hero_pos.first);
     ASSERT_TRUE(hero.second == hero_pos.second);
 

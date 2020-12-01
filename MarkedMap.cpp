@@ -18,21 +18,24 @@ MarkedMap::MarkedMap(std::string filename) {
     {
         for(unsigned int  x = 0;x < vectormap[y].length();x++)
         {
-            if(vectormap[y][x] == '1')
+            if(vectormap[y][x] == 'H')
+                hero = std::make_pair(x,y);
+                
+            else if(vectormap[y][x] == '1')
             {
                 std::pair<int,int> coordinates;
                 coordinates=std::make_pair(x,y);
                 monsters.push_back(std::make_pair("Zombie",coordinates));
                
             }
-            if(vectormap[y][x] == '2')
+            else if(vectormap[y][x] == '2')
             {
                 std::pair<int,int> coordinates;
                 coordinates=std::make_pair(x,y);
                 monsters.push_back(std::make_pair("Fallen",coordinates));
                
             }
-            if(vectormap[y][x] == '3')
+            else if(vectormap[y][x] == '3')
             {
                 std::pair<int,int> coordinates;
                 coordinates=std::make_pair(x,y);
