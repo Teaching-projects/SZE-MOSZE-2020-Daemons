@@ -41,6 +41,7 @@ public:
     void putMonster(Monster monster,int x, int y);
     void run();
     void mapPrinter();
+    void mapPrinterWithLightRadius();
     bool freetoStep(int x,int y) const;
 
     virtual ~Game()
