@@ -51,9 +51,9 @@ std::vector<std::pair<int,int>> MarkedMap::getMonsterPositions(char c) const
 
     std::vector<std::pair<int,int>> monster_loc;
     std::pair<int,int> coordinates;
-    for(int i = 0;i < vectormap.size();i++)
+    for(int i = 0;i < (int) vectormap.size();i++)
     {
-        for(int j = 0; j < vectormap[i].length();j++)
+        for(int j = 0; j < (int) vectormap[i].length();j++)
         {
             if(vectormap[i][j] == c)
                 monster_loc.push_back(std::make_pair(i,j));
