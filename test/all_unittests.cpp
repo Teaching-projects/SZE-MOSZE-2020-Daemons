@@ -96,11 +96,13 @@ TEST(all_unitsTest, heroPuTest){
     ASSERT_NO_THROW(game.putHero(hero,1,1));
 }
 TEST(all_unitsTest, hero_pose_test){
-    MarkedMap map("../map.txt");
+    MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero_pos(2,1);
     std::pair<int,int> hero = map.getHeroPosition();
     ASSERT_TRUE(hero.first == hero_pos.first);
     ASSERT_TRUE(hero.second == hero_pos.second);
+
+
 }
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
