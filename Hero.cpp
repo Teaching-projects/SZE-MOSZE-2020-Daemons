@@ -53,6 +53,7 @@ void Hero::levelUp()
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
 	defense +=defbonus_per_level;
+	light_radius+=light_radius_bonus_per_level;
 }
 bool Hero::isAlive() const
 {
@@ -152,4 +153,8 @@ std::string Hero::getName() const
 int Hero::getDefense() const
 {
 	return defense;
+}
+int Hero::getLightRadius() const
+{
+	return light_radius;
 }

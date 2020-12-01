@@ -113,17 +113,17 @@ void Game::mapPrinterWithLightRadius()
     int maxheight=map.getHeight();                                     
     int hero_x=hero_location.first;
     int hero_y=hero_location.second; 
-    int print_x_min=hero_x-2;
-    int print_x_max=hero_x+2;
-    int print_y_min=hero_y-2;
-    int print_y_max=hero_y+2;
+    int print_x_min=hero_x-hero->getLightRadius();
+    int print_x_max=hero_x+hero->getLightRadius();
+    int print_y_min=hero_y-hero->getLightRadius();
+    int print_y_max=hero_y+hero->getLightRadius();
     int width;
     for(int i = 0;i < map.getHeight();i++)
         if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
     if(print_x_min<0)
     {
         print_x_min=0;
-        width=hero_x+3;
+        width=hero_x+hero->getLightRadius()+1;
     }
     else
     {
