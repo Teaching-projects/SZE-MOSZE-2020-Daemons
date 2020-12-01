@@ -102,8 +102,9 @@ TEST(all_unitsTest, marked_map_pose_test){
     ASSERT_TRUE(hero.second == 1);
 
     std::vector<std::pair<int,int>> monsters = map.getMonsterPositions('2');
-    ASSERT_TRUE(monsters[0].first == 6);
-    ASSERT_TRUE(monsters[0].second == 2);
+    std::cout << monsters[0].first << " " << monsters[0].second << "\n";
+    ASSERT_TRUE(monsters[0].first == 2);
+    ASSERT_TRUE(monsters[0].second == 6);
 
 }
 int main(int argc, char **argv) {
