@@ -3,15 +3,19 @@
 #include <map>
 #include <math.h>
 
+
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
 	Damage damage;
+	int light_radius_bonus;
 
 	if(returnedMap.count("damage")) damage.physical = returnedMap.get<int>("damage");
 	else damage.physical = 0;
 
 	if(returnedMap.count("magical-damage")) damage.magical = returnedMap.get<int>("magical-damage");
 	else damage.magical = 0;
+	if(returnedMap.count("light_radius_bonus_per_level")) light_radius_bonus=returnedMap.get<int>("light_radius_bonus_per_level");
+	else light_radius_bonus=1;
 	
 	return Hero(
 	returnedMap.get<int>("base_health_points"),
@@ -24,7 +28,10 @@ Hero Hero::parse(const std::string& data){
 	returnedMap.get<int>("defense"),
 	returnedMap.get<int>("defense_bonus_per_level"),
 	damage,
-	returnedMap.get<int>("magical_damage_bonus_per_level")
+	returnedMap.get<int>("magical_damage_bonus_per_level"),
+	returnedMap.get<int>("light_radius"),
+	light_radius_bonus
+
 	
 	
 	);
@@ -33,10 +40,11 @@ Hero Hero::parse(const std::string& data){
 void Hero::boostxp(const int xp_to_boost)
 {
 	xp += xp_to_boost;
-	if((xp/experience_per_level) >= level)
+	while((xp/experience_per_level) >= level)
 	{
 		levelUp();
 	}
+	
 }
 void Hero::levelUp()
 {
@@ -47,6 +55,7 @@ void Hero::levelUp()
 	atkcooldown *= cooldown_multiplier_per_level;
 	hp = maxHP;
 	defense +=defbonus_per_level;
+	light_radius+=light_radius_bonus_per_level;
 }
 bool Hero::isAlive() const
 {
@@ -146,4 +155,8 @@ std::string Hero::getName() const
 int Hero::getDefense() const
 {
 	return defense;
+}
+int Hero::getLightRadius() const
+{
+	return light_radius;
 }

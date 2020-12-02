@@ -4,6 +4,8 @@ class Monster;
 #include "Damage.h"
 #include <string>
 
+
+
 class Hero
 {
     private:
@@ -22,6 +24,8 @@ class Hero
         int maxHP; ///< the max HP of the Hero
         unsigned int xp;///< the Experience of the Hero
 	    unsigned int level;///< the level of the Hero
+        unsigned int light_radius;
+        unsigned int light_radius_bonus_per_level;
         
     public:
         Hero(
@@ -35,7 +39,9 @@ class Hero
         const int& def ,
         const unsigned int& defbonus,
         Damage dmg,
-        const unsigned int& magic_damage_bonus
+        const unsigned int& magic_damage_bonus,
+        const unsigned int& light_radius,
+        const unsigned int& light_radius_bonus_per_level
         )
         : hp(h),
         name(n),
@@ -47,7 +53,9 @@ class Hero
         defense(def),
         defbonus_per_level(defbonus),
         damage(dmg) ,
-        magical_damage_bonus_per_level(magic_damage_bonus)
+        magical_damage_bonus_per_level(magic_damage_bonus),
+        light_radius(light_radius),
+        light_radius_bonus_per_level(light_radius_bonus_per_level)
         {
         maxHP=h;
         xp=0; 
@@ -110,6 +118,7 @@ class Hero
         void boostxp(const int dmg);
         int getDefense() const;
         Damage getDamage() const { return damage; }
+        int getLightRadius() const;
         
         
 

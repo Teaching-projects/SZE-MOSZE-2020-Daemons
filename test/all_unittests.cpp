@@ -95,6 +95,12 @@ TEST(all_unitsTest, heroPuTest){
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     ASSERT_NO_THROW(game.putHero(hero,1,1));
 }
+TEST(all_unitsTest, light_radius_test){
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    ASSERT_TRUE(hero.getLightRadius() == 2);
+    hero.levelUp();
+    ASSERT_TRUE(hero.getLightRadius() == 4);
+}
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero = map.getHeroPosition();
@@ -105,7 +111,6 @@ TEST(all_unitsTest, marked_map_pose_test){
     std::cout << monsters[0].first << " " << monsters[0].second << "\n";
     ASSERT_TRUE(monsters[0].first == 2);
     ASSERT_TRUE(monsters[0].second == 6);
-
 }
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
