@@ -11,6 +11,7 @@ void Game::setMap(Map map)
     else Game::MapAlreadySet("Map already set!");
     
 }
+
 void Game::putHero(Hero hero,int x,int y)
 {
     if(map.get(x,y) == Map::Free && !heroset && mapset)
@@ -153,18 +154,19 @@ void Game::mapPrinterWithLightRadius()
             else if (map.get(j,i) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
         }
-        std::cout << VERTICAL << "\n";
+        // if(print_x_max >= map.getRowWidth(i))
+        // {
+        //     for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
+        //         std::cout << WALL_FIELD;
+        // }
+        // std::cout << VERTICAL << "\n";
     }
-
-
 
     std::cout << BOTTOM_LEFT;
     for(int i = 0;i < width;i++)
         std::cout << HORIZONTAL;
     
     std::cout << BOTTOM_RIGHT << "\n";
-
-    
 
 }
 void Game::mapPrinter()
@@ -191,8 +193,8 @@ void Game::mapPrinter()
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
         }
-        for(int i = 0;i<(maxwidth - map.getRowWidth(y));i++)
-            std::cout << WALL_FIELD;
+        // for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
+        //     std::cout << WALL_FIELD;
         std::cout << VERTICAL << "\n";
     }
     std::cout << BOTTOM_LEFT;

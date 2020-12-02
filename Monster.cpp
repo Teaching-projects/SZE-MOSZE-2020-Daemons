@@ -19,6 +19,8 @@ Monster Monster::parse(const std::string& data){
 	);
 
 }
+
+
 void Monster::takeDamage(Hero& enemy)
 {
 	int dmg_taken = hp;

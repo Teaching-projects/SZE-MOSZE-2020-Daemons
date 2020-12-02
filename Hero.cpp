@@ -3,6 +3,7 @@
 #include <map>
 #include <math.h>
 
+
 Hero Hero::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
 	Damage damage;

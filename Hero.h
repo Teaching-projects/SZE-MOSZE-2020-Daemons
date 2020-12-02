@@ -4,6 +4,8 @@ class Monster;
 #include "Damage.h"
 #include <string>
 
+
+
 class Hero
 {
     private:
