@@ -141,3 +141,33 @@ void Game::mapPrinter()
 
 
 }
+PreparedGame::PreparedGame(std::string markedmap)
+{
+    JSON remakredmap = JSON::parseFromFile(markedmap);
+    std::string mapfile = remakredmap.get<std::string>("map");
+    std::string herof = remakredmap.get<std::string>("hero");
+    std::vector<std::string> monsters_of;
+    monsters_of.push_back(remakredmap.get<std::string>("monster-1"));
+    monsters_of.push_back(remakredmap.get<std::string>("monster-2"));
+    monsters_of.push_back(remakredmap.get<std::string>("monster-3"));
+
+    MarkedMap map(mapfile);
+    std::pair<int,int> hero_pos = map.getHeroPosition();
+    Hero hero{Hero::parse(herof)};
+    putHero(hero,hero_pos.first,hero_pos.second);
+
+    for(int i = 0;i < (int) monsters_of.size();i++)
+    {
+        char m = i+1;
+        std::vector<std::pair<int,int>> monster = map.getMonsterPositions(m);
+        Monster monsterone {Monster::parse(monsters_of[i])};
+        for(const auto m : monster)
+        {
+            putMonster(monsterone,m.first,m.second);
+        }
+    }
+
+
+    
+
+}

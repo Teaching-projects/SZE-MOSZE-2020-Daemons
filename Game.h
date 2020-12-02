@@ -2,6 +2,8 @@
 #include "Map.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "JSON.h"
+#include "MarkedMap.h"
 #include <string>
 #include <list>
 #include <iostream>
@@ -32,22 +34,14 @@ private:
     void stepOn(int x,int y);
     unsigned int checkForMonsters(int x,int y) const;
     bool checkForHero(int x,int y) const;
-
-public:
     Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     void setMap(Map map);
     virtual void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);
-    void run();
     void mapPrinter();
     bool freetoStep(int x,int y) const;
-
-    virtual ~Game()
-    {
-        delete this->hero;
-    }
-
+    
     class OccupiedException : virtual public std::runtime_error{
         public:
         OccupiedException(const std::string &err) : std::runtime_error( err) {}
@@ -73,4 +67,18 @@ public:
         MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
 
+    virtual ~Game()
+    {
+        delete this->hero;
+    }
+
+public:
+    void run();
+
+};
+
+class PreparedGame : public Game
+{
+    public:
+        PreparedGame(std::string markedmap);
 };
