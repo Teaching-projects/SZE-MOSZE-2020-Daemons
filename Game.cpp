@@ -77,8 +77,6 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
-        //mapPrinter();
-        //std::cout<<"\n\n\n";
         mapPrinterWithLightRadius();
 
     }
@@ -146,20 +144,19 @@ void Game::mapPrinterWithLightRadius()
     for(int i=print_y_min;   i<print_y_max   ;i++)
     {
         std::cout << VERTICAL;
-        for(int j=print_x_min;  j<=print_x_max;   j++)
+        int j=print_x_min;
+        while(j <= print_x_max && j < map.getRowWidth(i))
         {
             if (checkForHero(j,i));
             else if(checkForMonsters(j,i) == 1) std::cout << MONSTERONE;
             else if(checkForMonsters(j,i) >= 2) std::cout << MONSTERTWO;
             else if (map.get(j,i) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
+            j++;
         }
-        // if(print_x_max >= map.getRowWidth(i))
-        // {
-        //     for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-        //         std::cout << WALL_FIELD;
-        // }
-        // std::cout << VERTICAL << "\n";
+        for(int m = map.getRowWidth(i);m<=print_x_max;m++)
+            std::cout << WALL_FIELD;
+        std::cout << VERTICAL << "\n";
     }
 
     std::cout << BOTTOM_LEFT;
@@ -193,8 +190,8 @@ void Game::mapPrinter()
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
         }
-        // for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-        //     std::cout << WALL_FIELD;
+        for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
+            std::cout << WALL_FIELD;
         std::cout << VERTICAL << "\n";
     }
     std::cout << BOTTOM_LEFT;
