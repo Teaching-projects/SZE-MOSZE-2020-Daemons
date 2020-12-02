@@ -1,0 +1,20 @@
+[Map.h:15]: (style) Class 'Map' has a constructor with 1 argument that is not explicit.
+[Map.h:25]: (style) Class 'WrongIndexException' has a constructor with 1 argument that is not explicit.
+[JSON.h:39]: (style) Class 'JSON' has a constructor with 1 argument that is not explicit.
+[JSON.h:84]: (style) Class 'ParseException' has a constructor with 1 argument that is not explicit.
+[MarkedMap.h:14]: (style) Class 'MarkedMap' has a constructor with 1 argument that is not explicit.
+[Game.h:33]: (style) Class 'OccupiedException' has a constructor with 1 argument that is not explicit.
+[Game.h:37]: (style) Class 'AlreadyHasHeroException' has a constructor with 1 argument that is not explicit.
+[Game.h:41]: (style) Class 'AlreadyHasUnitsException' has a constructor with 1 argument that is not explicit.
+[Game.h:45]: (style) Class 'GameAlreadyStartedException' has a constructor with 1 argument that is not explicit.
+[Game.h:49]: (style) Class 'InvalidDirection' has a constructor with 1 argument that is not explicit.
+[Game.h:53]: (style) Class 'MapAlreadySet' has a constructor with 1 argument that is not explicit.
+[Game.h:88]: (style) Class 'PreparedGame' has a constructor with 1 argument that is not explicit.
+[JSON.h:39]: (performance) Function parameter 'data' should be passed by reference.
+[Game.cpp:4]: (performance) Function parameter 'map' should be passed by reference.
+[Game.cpp:165]: (performance) Prefer prefix ++/-- operators for non-primitive types.
+[Hero.cpp:79]: (style) Variable 'dmg_taken' is assigned a value that is never used.
+[JSON.cpp:70]: (style) Variable 'dataTwo' is assigned a value that is never used.
+[Map.cpp:20]: (style) Checking if unsigned variable 'y' is less than zero.
+[Map.cpp:23]: (style) Checking if unsigned variable 'x' is less than zero.
+[MarkedMap.cpp:33]: (style) Unused variable: coordinates

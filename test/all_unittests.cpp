@@ -84,16 +84,8 @@ TEST(all_unitsTest, mapClassTest){
     ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
 }
 TEST(all_unitsTest, map_put_test){
-    Game game{};
-    Map map("../map.txt");
-    ASSERT_NO_THROW(game.setMap(map));
-}
-TEST(all_unitsTest, heroPuTest){
-    Game game{};
-    Map map("../map.txt");
-    game.setMap(map);
-    Hero hero{Hero::parse("../Dark_Wanderer.json")};
-    ASSERT_NO_THROW(game.putHero(hero,1,1));
+    PreparedGame game("../preparedgame.json");
+    ASSERT_NO_THROW(game.run());
 }
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");

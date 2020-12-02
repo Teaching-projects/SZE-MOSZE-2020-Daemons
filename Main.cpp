@@ -35,7 +35,6 @@ int main(int argc, char** argv){
 
     try {
         PreparedGame game(argv[1]);
-
         game.run();
 
     } catch (const JSON::ParseException& e) {bad_exit(4);}

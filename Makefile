@@ -4,7 +4,7 @@ RUN:= g++-9
 
 VLGRND:= valgrind
 VLGRNDFLAGS:= --error-exitcode=1
-VLGRNDJSONS:=  ./runMain scenario2.json < test/maptest.txt
+VLGRNDJSONS:=  ./runMain preparedgame.json < test/maptest.txt
 CPPRUN:= cppcheck
 CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp MarkedMap.cpp
 CPPRUNFLAGS:=  --enable=warning --error-exitcode=1

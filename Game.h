@@ -13,12 +13,6 @@ class Game{
 
 private:
     Map map;
-    Hero *hero;
-    std::pair<int,int> hero_location;
-    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
-    bool mapset;
-    bool game_running;
-    bool heroset;
 
     const std::string TOP_LEFT = "\u2554";
 	const std::string TOP_RIGHT = "\u2557";
@@ -31,17 +25,9 @@ private:
 	const std::string HERO = "\u2523\u252B";
 	const std::string MONSTERONE = "\u004D\u2591";
     const std::string MONSTERTWO = "\u004D\u004D";
-    void stepOn(int x,int y);
-    unsigned int checkForMonsters(int x,int y) const;
-    bool checkForHero(int x,int y) const;
-    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
-    void setMap(Map map);
-    virtual void putHero(Hero hero,int x,int y);
-    void putMonster(Monster monster,int x, int y);
-    void mapPrinter();
-    bool freetoStep(int x,int y) const;
     
+protected:
+
     class OccupiedException : virtual public std::runtime_error{
         public:
         OccupiedException(const std::string &err) : std::runtime_error( err) {}
@@ -66,6 +52,25 @@ private:
         public:
         MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
+
+    Hero *hero;
+    std::pair<int,int> hero_location;
+    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
+    bool mapset;
+    bool game_running;
+    bool heroset;
+    
+    void stepOn(int x,int y);
+    unsigned int checkForMonsters(int x,int y) const;
+    bool checkForHero(int x,int y) const;
+    void setMap(Map map);
+    void mapPrinter();
+    bool freetoStep(int x,int y) const;
+
+    virtual void putHero(Hero hero,int x,int y);
+    void putMonster(Monster monster,int x, int y);
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
 
     virtual ~Game()
     {

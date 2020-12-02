@@ -1,6 +1,7 @@
 #include "Map.h"
 #include <fstream>
 #include <string>
+#include <iostream>
 
 Map::Map(std::string filename) {
     std::ifstream stream(filename);
