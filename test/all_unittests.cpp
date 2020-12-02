@@ -83,10 +83,6 @@ TEST(all_unitsTest, mapClassTest){
     Map test("../map.txt");
     ASSERT_THROW(test.get(2689,3543),Map::WrongIndexException);       
 }
-TEST(all_unitsTest, map_put_test){
-    PreparedGame game("../preparedgame.json");
-    ASSERT_NO_THROW(game.run());
-}
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero = map.getHeroPosition();

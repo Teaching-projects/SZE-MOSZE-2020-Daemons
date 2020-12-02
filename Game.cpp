@@ -167,8 +167,4 @@ PreparedGame::PreparedGame(std::string markedmap)
             putMonster(monsterone,it->second,it->first);
         }
     }
-
-
-    
-
 }
