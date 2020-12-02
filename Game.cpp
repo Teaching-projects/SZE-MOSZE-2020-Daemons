@@ -147,9 +147,16 @@ PreparedGame::PreparedGame(std::string markedmap)
     std::string mapfile = remakredmap.get<std::string>("map");
     std::string herof = remakredmap.get<std::string>("hero");
     std::vector<std::string> monsters_of;
-    monsters_of.push_back(remakredmap.get<std::string>("monster-1"));
-    monsters_of.push_back(remakredmap.get<std::string>("monster-2"));
-    monsters_of.push_back(remakredmap.get<std::string>("monster-3"));
+
+    int mc = 1;
+    while(true)
+    {
+        std::string search = "monster-" + std::to_string(mc);
+        if(remakredmap.count(search))
+            monsters_of.push_back(remakredmap.get<std::string>(search));
+        else break;
+        mc++;
+    }
 
     MarkedMap map(mapfile);
     std::pair<int,int> hero_pos = map.getHeroPosition();

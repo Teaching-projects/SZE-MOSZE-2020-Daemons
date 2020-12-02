@@ -13,6 +13,17 @@ class Game{
 
 private:
     Map map;
+    Hero *hero;
+    std::pair<int,int> hero_location;
+    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
+    bool mapset;
+    bool game_running;
+    bool heroset;
+    void stepOn(int x,int y);
+    unsigned int checkForMonsters(int x,int y) const;
+    bool checkForHero(int x,int y) const;
+    void mapPrinter();
+    bool freetoStep(int x,int y) const;
 
     const std::string TOP_LEFT = "\u2554";
 	const std::string TOP_RIGHT = "\u2557";
@@ -26,7 +37,7 @@ private:
 	const std::string MONSTERONE = "\u004D\u2591";
     const std::string MONSTERTWO = "\u004D\u004D";
     
-protected:
+public:
 
     class OccupiedException : virtual public std::runtime_error{
         public:
@@ -53,24 +64,13 @@ protected:
         MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
 
-    Hero *hero;
-    std::pair<int,int> hero_location;
-    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;
-    bool mapset;
-    bool game_running;
-    bool heroset;
     
-    void stepOn(int x,int y);
-    unsigned int checkForMonsters(int x,int y) const;
-    bool checkForHero(int x,int y) const;
-    void setMap(Map map);
-    void mapPrinter();
-    bool freetoStep(int x,int y) const;
 
     virtual void putHero(Hero hero,int x,int y);
     void putMonster(Monster monster,int x, int y);
     Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
+    void setMap(Map map);
 
     virtual ~Game()
     {
@@ -82,8 +82,9 @@ public:
 
 };
 
-class PreparedGame : public Game
+class PreparedGame : private Game
 {
     public:
         PreparedGame(std::string markedmap);
+        using Game::run;
 };
