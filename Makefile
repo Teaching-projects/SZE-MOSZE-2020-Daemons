@@ -1,4 +1,4 @@
-OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o Game.o
+OBJS:=JSON.o Main.o  Hero.o Monster.o Map.o Game.o MarkedMap.o
 CFLAGS:=-Wall  -Werror -std=c++17
 RUN:= g++-9
 
@@ -6,7 +6,7 @@ VLGRND:= valgrind
 VLGRNDFLAGS:= --error-exitcode=1
 VLGRNDJSONS:=  ./runMain scenario2.json < test/maptest.txt
 CPPRUN:= cppcheck
-CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp
+CPPRUNOBJECTS:=JSON.cpp Main.cpp Unit.cpp  Hero.cpp Monster.cpp Map.cpp Game.cpp MarkedMap.cpp
 CPPRUNFLAGS:=  --enable=warning --error-exitcode=1
 CPPRUNFLAGSFILE:= --enable=performance,style --output-file=performance_and_style_report.txt
 DFF:=diff
@@ -18,7 +18,9 @@ runMain:$(OBJS)
 	$(RUN) $(CFLAGS) -o runMain $(OBJS)
 JSON.o: JSON.cpp JSON.h
 	$(RUN) $(CFLAGS) -c JSON.cpp
-Main.o: Main.cpp JSON.h Hero.h Monster.h
+MarkedMap.o: Map.cpp Map.h MarkedMap.h MarkedMap.cpp  
+	$(RUN) $(CFLAGS) -c MarkedMap.cpp
+Main.o: Main.cpp JSON.h Hero.h Monster.h Game.h MarkedMap.h
 	$(RUN) $(CFLAGS) -c Main.cpp
 Hero.o: Hero.cpp Hero.h JSON.h Monster.h
 	$(RUN) $(CFLAGS) -c Hero.cpp
@@ -28,6 +30,7 @@ Map.o: Map.cpp Map.h
 	$(RUN) $(CFLAGS) -c Map.cpp
 Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
 	$(RUN) $(CFLAGS) -c Game.cpp
+
 
 cppcheck:
 	$(CPPRUN) $(CPPRUNOBJECTS)  $(CPPRUNFLAGS)

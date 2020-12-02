@@ -11,7 +11,6 @@ void Game::setMap(Map map)
     else Game::MapAlreadySet("Map already set!");
     
 }
-
 void Game::putHero(Hero hero,int x,int y)
 {
     if(map.get(x,y) == Map::Free && !heroset && mapset)
@@ -54,6 +53,7 @@ void Game::run()
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
     mapPrinter();
+    Game::mapPrinter();
     Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
     {
@@ -77,6 +77,7 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
+
         mapPrinterWithLightRadius();
 
     }

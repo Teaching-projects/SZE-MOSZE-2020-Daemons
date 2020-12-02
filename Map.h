@@ -9,7 +9,7 @@
 
 class Map{
 
-private:
+protected:
  std::vector<std::string> vectormap;
  
  public:
