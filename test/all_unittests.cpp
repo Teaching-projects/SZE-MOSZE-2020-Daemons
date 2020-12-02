@@ -94,6 +94,13 @@ TEST(all_unitsTest, heroPuTest){
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     ASSERT_NO_THROW(game.putHero(hero,1,1));
 }
+TEST(all_unitsTest, light_radius_test){
+    Hero hero{Hero::parse("../Dark_Wanderer.json")};
+    ASSERT_TRUE(hero.getLightRadius() == 2);
+    hero.levelUp();
+    ASSERT_TRUE(hero.getLightRadius() == 4);
+
+}
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
