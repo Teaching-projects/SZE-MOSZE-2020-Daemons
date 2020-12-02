@@ -100,6 +100,7 @@ TEST(all_unitsTest, light_radius_test){
     ASSERT_TRUE(hero.getLightRadius() == 2);
     hero.levelUp();
     ASSERT_TRUE(hero.getLightRadius() == 4);
+}
 TEST(all_unitsTest, marked_map_pose_test){
     MarkedMap map("../markedmap.txt");
     std::pair<int,int> hero = map.getHeroPosition();
