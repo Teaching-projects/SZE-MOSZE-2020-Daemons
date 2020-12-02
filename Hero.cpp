@@ -40,10 +40,11 @@ Hero Hero::parse(const std::string& data){
 void Hero::boostxp(const int xp_to_boost)
 {
 	xp += xp_to_boost;
-	if((xp/experience_per_level) >= level)
+	while((xp/experience_per_level) >= level)
 	{
 		levelUp();
 	}
+	
 }
 void Hero::levelUp()
 {
