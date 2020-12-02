@@ -13,7 +13,6 @@ Map::Map(std::string filename) {
 
     stream.close();
 }
-
 Map::type Map::get(unsigned int x, unsigned int y) const {
     
     if(y >= vectormap.size() || y < 0)

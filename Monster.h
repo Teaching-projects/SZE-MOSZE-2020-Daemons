@@ -4,6 +4,8 @@ class Hero;
 #include "Damage.h"
 #include <string>
 
+
+
 class Monster
 {
     protected:

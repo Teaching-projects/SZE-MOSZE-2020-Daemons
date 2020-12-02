@@ -52,6 +52,7 @@ void Game::run()
     
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
+    mapPrinter();
     Game::mapPrinter();
     Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
@@ -76,7 +77,9 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
-        Game::mapPrinter();
+
+        mapPrinterWithLightRadius();
+
     }
     if(hero->isAlive())
         std::cout << hero->getName() << " cleared the map !\n";
@@ -104,6 +107,68 @@ bool Game::checkForHero(int x,int y) const
     return false;
 }
 
+void Game::mapPrinterWithLightRadius()
+{
+    int maxwidth = 0;             
+    int maxheight=map.getHeight();                                     
+    int hero_x=hero_location.first;
+    int hero_y=hero_location.second; 
+    int print_x_min=hero_x-hero->getLightRadius();
+    int print_x_max=hero_x+hero->getLightRadius();
+    int print_y_min=hero_y-hero->getLightRadius();
+    int print_y_max=hero_y+hero->getLightRadius();
+    int width;
+    for(int i = 0;i < map.getHeight();i++)
+        if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
+    if(print_x_min<0)
+    {
+        print_x_min=0;
+        width=hero_x+hero->getLightRadius()+1;
+    }
+    else
+    {
+        width=print_x_max-print_x_min+1;
+    }
+    if(print_x_max>maxwidth) print_x_max=maxwidth;
+    if(print_y_min<0)
+    {
+        print_y_min=0;
+    }
+    if(print_y_max>maxheight) print_y_max=maxheight;
+    std::cout << TOP_LEFT;
+    for(int i = 0;i < width;i++)
+        std::cout << HORIZONTAL;
+    
+    std::cout << TOP_RIGHT << "\n";
+
+
+    int i=print_y_min; 
+    while(i <= print_y_max && i < map.getHeight())
+    {
+        std::cout << VERTICAL;
+        int j=print_x_min;
+        while(j <= print_x_max && j < map.getRowWidth(i))
+        {
+            if (checkForHero(j,i));
+            else if(checkForMonsters(j,i) == 1) std::cout << MONSTERONE;
+            else if(checkForMonsters(j,i) >= 2) std::cout << MONSTERTWO;
+            else if (map.get(j,i) == Map::Free) std::cout << FREE_FIELD;
+            else std::cout << WALL_FIELD;
+            j++;
+        }
+        for(int m = map.getRowWidth(i);m<=print_x_max;m++)
+            std::cout << WALL_FIELD;
+        std::cout << VERTICAL << "\n";
+        i++;
+    }
+
+    std::cout << BOTTOM_LEFT;
+    for(int i = 0;i < width;i++)
+        std::cout << HORIZONTAL;
+    
+    std::cout << BOTTOM_RIGHT << "\n";
+
+}
 void Game::mapPrinter()
 {
     int maxwidth = 0;
@@ -128,7 +193,7 @@ void Game::mapPrinter()
             else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
             else std::cout << WALL_FIELD;
         }
-        for(int i = 0;i<(maxwidth - map.getRowWidth(y));i++)
+        for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
             std::cout << WALL_FIELD;
         std::cout << VERTICAL << "\n";
     }

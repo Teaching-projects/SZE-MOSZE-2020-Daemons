@@ -19,6 +19,7 @@ const JSON JSON::parseFromFile(const std::string& filename)
     }
 }
 
+
 const JSON JSON::parseStream(std::istream& data){
   std::string toParse = "";
   std::string line;
