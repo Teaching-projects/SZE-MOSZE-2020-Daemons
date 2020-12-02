@@ -24,6 +24,7 @@ private:
     unsigned int checkForMonsters(int x,int y) const;
     bool checkForHero(int x,int y) const;
     void mapPrinter();
+    void mapPrinterWithLightRadius();
     bool freetoStep(int x,int y) const;
 
     const std::string TOP_LEFT = "\u2554";

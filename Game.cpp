@@ -136,8 +136,12 @@ void Game::mapPrinterWithLightRadius()
     }
     if(print_y_max>maxheight) print_y_max=maxheight;
     std::cout << TOP_LEFT;
-    for(int i = 0;i < width;i++)
+    int w = 0;
+    while(w < width && w  <= map.getRowWidth(0))
+    {
         std::cout << HORIZONTAL;
+        w++;
+    }
     
     std::cout << TOP_RIGHT << "\n";
 
@@ -163,7 +167,8 @@ void Game::mapPrinterWithLightRadius()
     }
 
     std::cout << BOTTOM_LEFT;
-    for(int i = 0;i < width;i++)
+    
+    for(int i = 0;i<w;i++)
         std::cout << HORIZONTAL;
     
     std::cout << BOTTOM_RIGHT << "\n";
