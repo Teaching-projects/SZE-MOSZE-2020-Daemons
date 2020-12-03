@@ -4,7 +4,22 @@ class Monster;
 #include "Damage.h"
 #include <string>
 
-
+/*!
+ * \class Hero
+ * 
+ * \brief Hero class
+ * 
+ * 
+ * 
+ * 
+ * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
+ * 
+ * \version 4.0
+ * 
+ * \date 2020/12/03 10:46
+ * 
+ * Created on 2020/12/03 10:46
+ */
 
 class Hero
 {
@@ -15,17 +30,17 @@ class Hero
         double atkcooldown; ///<The atkcooldown of the Hero, which is a number, represents how many second between to attacks.
         unsigned int experience_per_level; ///< How many experience need the Hero to level up.
         unsigned int health_point_bonus_per_level;///< How many bonus health he has per levelup.
-        unsigned int damage_bonus_per_level;///< How many bonus damage he has per levelup.
+        unsigned int damage_bonus_per_level;///< How many bonus physical damage he has per levelup.
         double cooldown_multiplier_per_level;///< A Number which you multiply with cooldown.
-        double defense;
-        double defbonus_per_level;
-        Damage damage;
-        unsigned int magical_damage_bonus_per_level;
+        double defense;///< The defense of the Hero
+        double defbonus_per_level;///< The bonus defense for each levelup of the Hero
+        Damage damage;///<Struct that contains the physical and magic damage of the Hero
+        unsigned int magical_damage_bonus_per_level;///< How many bonus magical damage he has per levelup.
         int maxHP; ///< the max HP of the Hero
         unsigned int xp;///< the Experience of the Hero
 	    unsigned int level;///< the level of the Hero
-        unsigned int light_radius;
-        unsigned int light_radius_bonus_per_level;
+        unsigned int light_radius;///< How many land the hero sees of the map
+        unsigned int light_radius_bonus_per_level;///<How many bonus bonus light radius the Hero has per levelup
         
     public:
         Hero(
@@ -82,11 +97,15 @@ class Hero
         \return  integer hp value
         */
         int getHealthPoints() const;
-        //! Simple Getter for damage
+        //! Simple Getter for physical damage
         /*!
-        \return  const integer damage value
+        \return  const integer physical damage value
         */
         int getphysDamage() const;
+        //! Simple Getter for magical damage
+        /*!
+        \return  const integer magical damage value
+        */
         int getmagicDamage() const;
          //! Simple Getter for XP
         /*!
@@ -115,9 +134,25 @@ class Hero
         \return  1 if hp>0 and 0 if else.
         */
         bool isAlive() const;
+        //! Method that add the damage the Hero attacks to XP
+        /*!
+        \param const  integer dmg
+        */
         void boostxp(const int dmg);
+        //!Simple Getter for Defense
+        /*!
+        \return const integer defense value
+        */
         int getDefense() const;
+        ///!Simple Getter for Damage struct
+        /*!
+        \return damage struct
+        */
         Damage getDamage() const { return damage; }
+        ///!Simple Getter for light radiuss
+        /*!
+        \return light radius
+        */
         int getLightRadius() const;
         
         
