@@ -1,4 +1,5 @@
 #include "MarkedMap.h"
+#include <iostream>
 
 std::pair<int,int> MarkedMap::getHeroPosition() const
 {
@@ -13,6 +14,8 @@ std::pair<int,int> MarkedMap::getHeroPosition() const
     }
     return hero;
 }
+
+
 MarkedMap::MarkedMap(std::string filename) {
     std::ifstream stream(filename);
     if(!stream.good()) throw std::runtime_error("File not found: " + filename);

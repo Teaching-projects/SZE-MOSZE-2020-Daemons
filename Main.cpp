@@ -31,52 +31,8 @@ int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-    std::string hero_file;
-    std::list<std::string> monster_files;
     try {
-        JSON scenario = JSON::parseFromFile(argv[1]);
-        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
-        else {
-            hero_file=scenario.get<std::string>("hero");
-            JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
-            for(auto monster_file : monster_file_list)
-                monster_files.push_back(std::get<std::string>(monster_file));
-        }
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
-    try {
-        Hero hero{Hero::parse(hero_file)};
-        std::list<Monster> monsters;
-        for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));
-      
-        std::cout << "Give a path to the map file !\n";
-        std::string mapfile;
-        std::getline(std::cin,mapfile);
-        Map map(mapfile);
-        Game game{};
-        game.setMap(map);
-        for(const auto& iter : monsters)
-        {
-            game.mapPrinter();
-            std::cout << "Give a location for the " << iter.getName() << " monster(Like: 3 5): \n";
-            std::string xy,x,y;
-            std::getline(std::cin,xy);
-            x = xy.at(0);
-            y = xy.at(2);
-            int xc = std::stoi(x);
-            int yc = std::stoi(y);
-            game.putMonster(iter,xc,yc);
-        }
-        game.mapPrinter();
-        std::cout << "Give a location for the " << hero.getName() << " Hero (Like: 3 5): \n";
-        std::string xy,x,y;
-        std::getline(std::cin,xy);
-        x = xy.at(0);
-        y = xy.at(2);
-        int xc = std::stoi(x);
-        int yc = std::stoi(y);
-        game.putHero(hero,xc,yc);
-
+        PreparedGame game(argv[1]);
         game.run();
 
     } catch (const JSON::ParseException& e) {bad_exit(4);}

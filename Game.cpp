@@ -136,8 +136,12 @@ void Game::mapPrinterWithLightRadius()
     }
     if(print_y_max>maxheight) print_y_max=maxheight;
     std::cout << TOP_LEFT;
-    for(int i = 0;i < width;i++)
+    int w = 0;
+    while(w < width && w  <= map.getRowWidth(0))
+    {
         std::cout << HORIZONTAL;
+        w++;
+    }
     
     std::cout << TOP_RIGHT << "\n";
 
@@ -163,7 +167,8 @@ void Game::mapPrinterWithLightRadius()
     }
 
     std::cout << BOTTOM_LEFT;
-    for(int i = 0;i < width;i++)
+    
+    for(int i = 0;i<w;i++)
         std::cout << HORIZONTAL;
     
     std::cout << BOTTOM_RIGHT << "\n";
@@ -205,4 +210,38 @@ void Game::mapPrinter()
 
 
 
+}
+PreparedGame::PreparedGame(std::string markedmap)
+{
+    JSON remakredmap = JSON::parseFromFile(markedmap);
+    std::string mapfile = remakredmap.get<std::string>("map");
+    std::string herof = remakredmap.get<std::string>("hero");
+    std::vector<std::string> monsters_of;
+
+    int mc = 1;
+    while(true)
+    {
+        std::string search = "monster-" + std::to_string(mc);
+        if(remakredmap.count(search))
+            monsters_of.push_back(remakredmap.get<std::string>(search));
+        else break;
+        mc++;
+    }
+
+    MarkedMap map(mapfile);
+    std::pair<int,int> hero_pos = map.getHeroPosition();
+    Hero hero{Hero::parse(herof)};
+    setMap(map);
+    putHero(hero,hero_pos.second,hero_pos.first);
+
+    for(int i = 0;i < (int) monsters_of.size();i++)
+    {
+        char c = '0' + (i+1);
+        std::vector<std::pair<int,int>> monster = map.getMonsterPositions(c);
+        Monster monsterone {Monster::parse(monsters_of[i])};
+        for(std::vector<std::pair<int,int>>::const_iterator it = monster.begin();it != monster.end();it++)
+        {
+            putMonster(monsterone,it->second,it->first);
+        }
+    }
 }

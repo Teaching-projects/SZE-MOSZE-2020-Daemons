@@ -5,7 +5,7 @@
 #include <fstream>
 #include <list>
 
-class MarkedMap: Map
+class MarkedMap: public Map
 {
     public:
     

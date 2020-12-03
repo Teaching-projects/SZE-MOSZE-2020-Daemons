@@ -2,6 +2,8 @@
 #include "Map.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "JSON.h"
+#include "MarkedMap.h"
 #include <string>
 #include <list>
 #include <iostream>
@@ -18,6 +20,12 @@ private:
     bool mapset;
     bool game_running;
     bool heroset;
+    void stepOn(int x,int y);
+    unsigned int checkForMonsters(int x,int y) const;
+    bool checkForHero(int x,int y) const;
+    void mapPrinter();
+    void mapPrinterWithLightRadius();
+    bool freetoStep(int x,int y) const;
 
     const std::string TOP_LEFT = "\u2554";
 	const std::string TOP_RIGHT = "\u2557";
@@ -30,25 +38,8 @@ private:
 	const std::string HERO = "\u2523\u252B";
 	const std::string MONSTERONE = "\u004D\u2591";
     const std::string MONSTERTWO = "\u004D\u004D";
-    void stepOn(int x,int y);
-    unsigned int checkForMonsters(int x,int y) const;
-    bool checkForHero(int x,int y) const;
-
+    
 public:
-    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
-    void setMap(Map map);
-    virtual void putHero(Hero hero,int x,int y);
-    void putMonster(Monster monster,int x, int y);
-    void run();
-    void mapPrinter();
-    void mapPrinterWithLightRadius();
-    bool freetoStep(int x,int y) const;
-
-    virtual ~Game()
-    {
-        delete this->hero;
-    }
 
     class OccupiedException : virtual public std::runtime_error{
         public:
@@ -75,4 +66,27 @@ public:
         MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
 
+    
+
+    virtual void putHero(Hero hero,int x,int y);
+    void putMonster(Monster monster,int x, int y);
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
+    void setMap(Map map);
+
+    virtual ~Game()
+    {
+        delete this->hero;
+    }
+
+public:
+    void run();
+
+};
+
+class PreparedGame : private Game
+{
+    public:
+        PreparedGame(std::string markedmap);
+        using Game::run;
 };
