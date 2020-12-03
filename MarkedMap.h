@@ -10,7 +10,7 @@
  * 
  * \brief MarkedMap class
  * 
- * 
+ * This is the MarkedMap class, we use it when the user gave us a map with monsters and Hero on it.
  * 
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
