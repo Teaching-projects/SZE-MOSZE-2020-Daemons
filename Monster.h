@@ -32,6 +32,7 @@ class Monster
         int defense;///< The defense of the Monster it lowers the physical attack of the hero when it attack it
         Damage damage;///< Struct that contains the physical attack damage, and magic attack damage of the Monster
     public:
+        //! Constructor for the Monster, it set all the member of the Monster
         Monster(const int& h, const std::string& n, const double& a,const int& def,Damage dmg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg){}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
         /*!

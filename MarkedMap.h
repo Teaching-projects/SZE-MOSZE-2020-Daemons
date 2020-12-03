@@ -41,5 +41,6 @@ class MarkedMap: public Map
     \param filename Text file that contains a map with Hero, and Monsters on it.
     */
     MarkedMap(std::string filename);
+    //!Simple Constructor for MarkedMap
     MarkedMap(){};
 };

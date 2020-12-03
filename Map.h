@@ -34,6 +34,7 @@ protected:
         \param filename Valid txt file that contains a map
         */
         Map(std::string filename);
+        //!Simple Constructor of the map
         Map(){};
         //!Simple getter for an exact spot of the map
         /*!

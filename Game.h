@@ -51,11 +51,6 @@ private:
     void mapPrinter();
     //!Method that prints an exact range of the map around Hero.
     void mapPrinterWithLightRadius();
-    //!
-    /*!
-    \return
-    */
-
     const std::string TOP_LEFT = "\u2554";///<String value that stores a unicode character to print the map correctly
 	const std::string TOP_RIGHT = "\u2557";///<String value that stores a unicode character to print the map correctly
 	const std::string VERTICAL = "\u2551";///<String value that stores a unicode character to print the map correctly
@@ -103,9 +98,6 @@ public:
     ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map 
     Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
     ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
-    /*!
-
-    */
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
@@ -141,6 +133,7 @@ public:
 class PreparedGame : private Game
 {
     public:
+        //! Constructor for PreparedGame class
         PreparedGame(std::string markedmap);
         using Game::run;
 };
