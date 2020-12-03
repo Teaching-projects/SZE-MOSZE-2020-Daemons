@@ -8,7 +8,7 @@
  *
  * \author  mesmatyi, kulcsarbence, Lazar-Source
  *
- * \version 1.0
+ * \version 4.0
  *
  * \date 2020/10/026 13:09
  *
@@ -35,7 +35,8 @@ private:
   //! Map that stores the Json file
   std::map<std::string, std::variant<std::string, int, double>> data_map;
 public:
-  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; //!constructor
+  //!constructor
+  JSON(std::map <std::string, std::variant<std::string, int, double>> data) : data_map(data){}; 
   typedef std::list<std::variant<std::string, int, double>> list;
 
   const int count(const std::string& input);

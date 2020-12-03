@@ -3,7 +3,22 @@ class Hero;
 #include "Hero.h"
 #include "Damage.h"
 #include <string>
-
+/*!
+ * \class Monster
+ * 
+ * \brief Monster class
+ * 
+ * 
+ * 
+ * 
+ * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
+ * 
+ * \version 4.0
+ * 
+ * \date 2020/12/03 10:25
+ * 
+ * Created on 2020/12/03 10:25
+ */
 
 
 class Monster
@@ -11,12 +26,13 @@ class Monster
     protected:
        
        
-        int hp; ///< the hp of the Unit
-        const std::string name; ///<The name of the Unit
-        const double atkcooldown; ///<The atkcooldown of the Unit, which is a number, represents how many second between to attacks.
-        int defense;
-        Damage damage;
+        int hp; ///< the hp of the Monster
+        const std::string name; ///<The name of the Monster
+        const double atkcooldown; ///<The atkcooldown of the Monster, which is a number, represents how many second between to attacks.
+        int defense;///< The defense of the Monster it lowers the physical attack of the hero when it attack it
+        Damage damage;///< Struct that contains the physical attack damage, and magic attack damage of the Monster
     public:
+        //! Constructor for the Monster, it set all the member of the Monster
         Monster(const int& h, const std::string& n, const double& a,const int& def,Damage dmg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg){}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
         /*!
@@ -34,11 +50,15 @@ class Monster
         \return   const double atkcooldown value
         */
         double getAttackCoolDown() const;
-        //! Simple Getter for damage
+        //! Simple Getter for physical damage
         /*!
-        \return  const integer damage value
+        \return  const integer  physical damage value
         */
         int getphysDamage() const;
+        //! Simple Getter for magical damage
+        /*!
+        \return  const integer magical damage value
+        */
         int getmagicDamage() const;
         //! Simple method that represents if the Hero is Alive or Not
         /*!
@@ -55,6 +75,10 @@ class Monster
         \param filename Hero Object Reference
         */
         void takeDamage(Hero& enemy);
+        //!Simple Getter for Defense
+        /*!
+        \return const integer defense value
+        */
         int getDefense() const;
         
 };

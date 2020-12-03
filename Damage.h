@@ -1,10 +1,27 @@
  #pragma once
  #include <ostream>
+ /*!
+ * \struct Damage
+ * 
+ * \brief Damage struct
+ * 
+ * 
+ * 
+ * 
+ * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
+ * 
+ * \version 4.0
+ * 
+ * \date 2020/12/03 11:47
+ * 
+ * Created on 2020/12/03 11:47
+ */
+
  struct Damage {
 
-            int physical;
+            int physical; ///<physical damage of a Unit (Monster or Hero)
 
-            int magical;
+            int magical; ///<magical damage of a Unit
 
             Damage operator+(const Damage& other){
                     Damage dmgToReturn;
