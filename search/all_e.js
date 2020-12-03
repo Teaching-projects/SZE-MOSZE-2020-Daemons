@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wrongindexexception_35',['WrongIndexException',['../classMap_1_1WrongIndexException.html',1,'Map']]]
+  ['sze_2dmosze_2d2020_2ddaemons_47',['SZE-MOSZE-2020-Daemons',['../md_README.html',1,'']]],
+  ['setmap_48',['setMap',['../classGame.html#ab83e25f737717d7bb4ec95b22efc82d9',1,'Game']]]
 ];

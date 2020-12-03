@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['invaliddirection_16',['InvalidDirection',['../classGame_1_1InvalidDirection.html',1,'Game']]],
-  ['isalive_17',['isAlive',['../classHero.html#aa0128b13c37754f13ee242fd4982c58c',1,'Hero::isAlive()'],['../classMonster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster::isAlive()']]]
+  ['hero_24',['Hero',['../classHero.html',1,'Hero'],['../classHero.html#a85085e1df6fe7406668016a456f08229',1,'Hero::Hero()']]],
+  ['hp_25',['hp',['../classMonster.html#a8f5512ea0cd543721acb551d3d963486',1,'Monster']]]
 ];

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RPG Game for MOSZE
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">4.0</span>
    </div>
    <div id="projectbrief">This is a description for us.</div>
   </td>
@@ -87,26 +87,26 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a200052290120970f650695312ad847b7"><td class="memItemLeft" align="right" valign="top"><a id="a200052290120970f650695312ad847b7"></a>
-typedef std::list&lt; std::variant&lt; std::string, int, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">list</a></td></tr>
-<tr class="memdesc:a200052290120970f650695312ad847b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor <br /></td></tr>
+typedef std::list&lt; std::variant&lt; std::string, int, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>list</b></td></tr>
 <tr class="separator:a200052290120970f650695312ad847b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa01e26294300ef22c5423792274a1eb1"><td class="memItemLeft" align="right" valign="top"><a id="aa01e26294300ef22c5423792274a1eb1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>JSON</b> (std::map&lt; std::string, std::variant&lt; std::string, int, double &gt;&gt; data)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#aa01e26294300ef22c5423792274a1eb1">JSON</a> (std::map&lt; std::string, std::variant&lt; std::string, int, double &gt;&gt; data)</td></tr>
+<tr class="memdesc:aa01e26294300ef22c5423792274a1eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor <br /></td></tr>
 <tr class="separator:aa01e26294300ef22c5423792274a1eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cdec887241335563d573ad4740f6d20"><td class="memItemLeft" align="right" valign="top"><a id="a0cdec887241335563d573ad4740f6d20"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::string &amp;input)</td></tr>
 <tr class="separator:a0cdec887241335563d573ad4740f6d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memTemplParams" colspan="2"><a id="a437b5cd773c3ad6c5761ff29ebd76a8c"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a437b5cd773c3ad6c5761ff29ebd76a8c">get</a> (const std::string &amp;key)</td></tr>
+<tr class="memitem:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_same&lt; T, JSON::list &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a437b5cd773c3ad6c5761ff29ebd76a8c">get</a> (const std::string &amp;key)</td></tr>
 <tr class="memdesc:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template to get the data from the map in different types. <br /></td></tr>
 <tr class="separator:a437b5cd773c3ad6c5761ff29ebd76a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplParams" colspan="2"><a id="a2e3d7b3d03297c4b09ce1f64ad4187d7"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
+<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_same&lt; T, JSON::list &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
 <tr class="separator:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -126,7 +126,7 @@ static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="m
 <div class="textblock"><p><a class="el" href="classJSON.html" title="JSON class.">JSON</a> class. </p>
 <p>This class Parses the Json Files into data, that stored in Unit Class</p>
 <dl class="section author"><dt>Author</dt><dd>mesmatyi, kulcsarbence, Lazar-Source</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>4.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/10/026 13:09</dd></dl>
 <p>Created on 2020/10/26 13:09 </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -158,11 +158,11 @@ static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="m
 <p>Method that parsed the the values from the lines which he get in parameter</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>Parsed lines in a <a class="el" href="classMap.html">Map</a> </td></tr>
+    <tr><td class="paramname">data</td><td>Parsed lines in a <a class="el" href="classMap.html" title="Map class.">Map</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Parsed Values in a <a class="el" href="classMap.html">Map</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Parsed Values in a <a class="el" href="classMap.html" title="Map class.">Map</a> </dd></dl>
 
 </div>
 </div>
@@ -191,7 +191,7 @@ static const <a class="el" href="classJSON.html">JSON</a>&#160;</td><td class="m
 </div><div class="memdoc">
 
 <p>Method that read in the lines from the Json file. </p>
-<dl class="section return"><dt>Returns</dt><dd>Parsed lines in a <a class="el" href="classMap.html">Map</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Parsed lines in a <a class="el" href="classMap.html" title="Map class.">Map</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Json file </td></tr>
