@@ -12,7 +12,7 @@
  * 
  * \brief Game class
  * 
- * 
+ * This is the Game Class that controls the game when you are running it.
  * 
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
@@ -56,17 +56,17 @@ private:
     \return
     */
 
-    const std::string TOP_LEFT = "\u2554";///<String value to print the map correctly
-	const std::string TOP_RIGHT = "\u2557";
-	const std::string VERTICAL = "\u2551";
-	const std::string BOTTOM_LEFT = "\u255A";
-	const std::string BOTTOM_RIGHT = "\u255D";
-	const std::string HORIZONTAL = "\u2550\u2550";
-	const std::string FREE_FIELD = "\u2591\u2591";
-	const std::string WALL_FIELD = "\u2588\u2588";
-	const std::string HERO = "\u2523\u252B";
-	const std::string MONSTERONE = "\u004D\u2591";
-    const std::string MONSTERTWO = "\u004D\u004D";
+    const std::string TOP_LEFT = "\u2554";///<String value that stores a unicode character to print the map correctly
+	const std::string TOP_RIGHT = "\u2557";///<String value that stores a unicode character to print the map correctly
+	const std::string VERTICAL = "\u2551";///<String value that stores a unicode character to print the map correctly
+	const std::string BOTTOM_LEFT = "\u255A";///<String value that stores a unicode character to print the map correctly
+	const std::string BOTTOM_RIGHT = "\u255D";///<String value that stores a unicode character to print the map correctly
+	const std::string HORIZONTAL = "\u2550\u2550";///<String value that stores a unicode character to print the map correctly
+	const std::string FREE_FIELD = "\u2591\u2591";///<String value that stores a unicode character to print the map correctly
+	const std::string WALL_FIELD = "\u2588\u2588";///<String value that stores a unicode character to print the map correctly
+	const std::string HERO = "\u2523\u252B";///<String value that stores a unicode character to print the map correctly
+	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
+    const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
     
 public:
 
@@ -100,7 +100,12 @@ public:
     virtual void putHero(Hero hero,int x,int y);
     //!Method that puts Monsters on the map at the start of the game
     void putMonster(Monster monster,int x, int y);
+    ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map 
     Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
+    ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
+    /*!
+
+    */
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
@@ -122,7 +127,7 @@ public:
  * 
  * \brief PreparedGame class
  * 
- * 
+ * This is the PreparedGame class, it uses the Game::run method, and in its constructor it waits for a file name that contains map, hero and monsters.
  * 
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás

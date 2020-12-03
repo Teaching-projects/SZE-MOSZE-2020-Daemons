@@ -9,7 +9,7 @@ class Monster;
  * 
  * \brief Hero class
  * 
- * 
+ * This is the Hero Class it stores all of the member that the Hero need, and all of the methods.
  * 
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
@@ -43,6 +43,7 @@ class Hero
         unsigned int light_radius_bonus_per_level;///<How many bonus bonus light radius the Hero has per levelup
         
     public:
+        //! Constructor of the Hero Class it set all the member the Hero has
         Hero(
         const int& h, 
         const std::string& n, 
