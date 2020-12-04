@@ -109,6 +109,7 @@ std::string Game::getMonsterSVG(std::pair<int,int> loc) const
     for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
         if(iter->second.first == loc.first && iter->second.second == loc.second)
             return iter->first.getSVG();
+    return "";
 }
 bool Game::checkForHero(int x,int y)
 {

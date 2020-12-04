@@ -1,5 +1,4 @@
 #pragma once
-class Renderer;
 #include "Renderer.h"
 #include "Game.h"
 
@@ -13,4 +12,6 @@ class TextRenderer : public Renderer
         void setOutputStream(const std::ostream&);
 
         virtual void render(Game& gm) const = 0;
+
+        virtual ~TextRenderer(){}
 };
