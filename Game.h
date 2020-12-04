@@ -120,10 +120,6 @@ public:
     virtual ~Game()
     {
         delete this->hero;
-        for(auto&& r : renderers){
-            delete r;
-        }
-        renderers.clear();
     }
 
 public:
