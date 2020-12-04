@@ -7,6 +7,6 @@
 class HeroTextRenderer : public TextRenderer{
     private:
     public:
-        HeroTextRenderer() : TextRenderer(){}
+        HeroTextRenderer(std::ostream& o = std::cout) : TextRenderer(o){}
         void render(Game& gm) const;
 };

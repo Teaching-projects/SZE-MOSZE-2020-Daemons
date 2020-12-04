@@ -7,7 +7,7 @@ class TextRenderer : public Renderer
     protected:
         std::ostream& out_stream;
     public:
-        TextRenderer() : out_stream(std::cout){}
+        TextRenderer(std::ostream& o = std::cout) : out_stream(o){}
 
         void setOutputStream(const std::ostream&);
 

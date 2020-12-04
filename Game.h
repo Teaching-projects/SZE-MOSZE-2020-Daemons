@@ -149,7 +149,7 @@ public:
  * 
  * Created on 2020/12/03 10:49
  */
-class PreparedGame : private Game
+class PreparedGame : public Game
 {
     public:
         //! Constructor for PreparedGame class

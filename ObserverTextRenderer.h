@@ -5,6 +5,6 @@
 class ObserverTextRenderer : public TextRenderer{
     private:
     public:
-        ObserverTextRenderer() : TextRenderer() {}
+        ObserverTextRenderer(std::ostream& o = std::cout) : TextRenderer(o) {}
         void render(Game& gm) const;
 };

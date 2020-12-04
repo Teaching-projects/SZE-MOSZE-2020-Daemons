@@ -197,15 +197,15 @@ std::string Game::mapPrinterSVG(){
 
     std::string heroSVG = hero->getHeroSVG();
     if(!std::filesystem::exists(heroSVG)){
-        heroSVG = "textures/not_found.svg";
+        heroSVG = "not_found.svg";
     }
-    std::string wall_field_svg = "textures/wall_field.svg";
+    std::string wall_field_svg = "wall_field.svg";
     if(!std::filesystem::exists(wall_field_svg)){
-        wall_field_svg = "textures/not_found.svg";
+        wall_field_svg = "not_found.svg";
     }
-    std::string free_field_svg = "textures/free_field.svg";
+    std::string free_field_svg = "free_field.svg";
     if(!std::filesystem::exists(free_field_svg)){
-        free_field_svg = "textures/not_found.svg";
+        free_field_svg = "not_found.svg";
     }
 
     int maxwidth = 0;
@@ -240,7 +240,7 @@ std::string Game::mapPrinterSVG(){
             o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(i*10)+"\" "+
                 "y=\""+std::to_string(y*10)+"\" />";
     }
-
+    o_str += "</svg>";
     return o_str;
 
 
@@ -254,15 +254,15 @@ std::string Game::mapPrinterSVGWithLightRadius(){
 
     std::string heroSVG = hero->getHeroSVG();
     if(!std::filesystem::exists(heroSVG)){
-        heroSVG = "textures/not_found.svg";
+        heroSVG = "not_found.svg";
     }
-    std::string wall_field_svg = "textures/wall_field.svg";
+    std::string wall_field_svg = "wall_field.svg";
     if(!std::filesystem::exists(wall_field_svg)){
-        wall_field_svg = "textures/not_found.svg";
+        wall_field_svg = "not_found.svg";
     }
-    std::string free_field_svg = "textures/free_field.svg";
+    std::string free_field_svg = "free_field.svg";
     if(!std::filesystem::exists(free_field_svg)){
-        free_field_svg = "textures/not_found.svg";
+        free_field_svg = "not_found.svg";
     }
 
     std::string o_str;
@@ -293,7 +293,7 @@ std::string Game::mapPrinterSVGWithLightRadius(){
     }
     if(print_y_max>maxheight) print_y_max=maxheight;
 
-     o_str = "<svg version=\"1.1\" baseProfile=\"full\" width=\""+std::to_string(width*10)+"\" height=\""+std::to_string(print_y_max*10)+"\" xmlns=\"http://www.w3.org/2000/svg\">";
+     o_str = "<svg version=\"1.1\" baseProfile=\"full\" width=\""+std::to_string((width+1)*10)+"\" height=\""+std::to_string((print_y_max+1)*10)+"\" xmlns=\"http://www.w3.org/2000/svg\">";
 
     int i=print_y_min; 
     while(i <= print_y_max && i < map.getHeight())
@@ -321,6 +321,7 @@ std::string Game::mapPrinterSVGWithLightRadius(){
                 "y=\""+std::to_string(i*10)+"\" />";
         i++;
     }
+    o_str += "</svg>";
     return o_str;
 
 }

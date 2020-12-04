@@ -7,6 +7,11 @@
 #include <iterator>
 #include <list>
 
+#include "CharacterSVGRenderer.h"
+#include "ObserverSVGRenderer.h"
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
+
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
@@ -33,6 +38,11 @@ int main(int argc, char** argv){
 
     try {
         PreparedGame game(argv[1]);
+        std::ofstream stream = std::ofstream("log.txt");
+        std::string svgrend = "pretty.svg";
+        game.registerRenderer(new HeroTextRenderer());  
+        game.registerRenderer(new ObserverTextRenderer(stream));
+        game.registerRenderer(new CharacterSVGRenderer(svgrend));
         game.run();
 
     } catch (const JSON::ParseException& e) {bad_exit(4);}
