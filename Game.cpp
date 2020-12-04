@@ -293,7 +293,7 @@ std::string Game::mapPrinterSVGWithLightRadius(){
     }
     if(print_y_max>maxheight) print_y_max=maxheight;
 
-     o_str = "<svg version=\"1.1\" baseProfile=\"full\" width=\""+std::to_string(maxwidth*10)+"\" height=\""+std::to_string(maxheight*10)+"\" xmlns=\"http://www.w3.org/2000/svg\">";
+     o_str = "<svg version=\"1.1\" baseProfile=\"full\" width=\""+std::to_string(width*10)+"\" height=\""+std::to_string(print_y_max*10)+"\" xmlns=\"http://www.w3.org/2000/svg\">";
 
     int i=print_y_min; 
     while(i <= print_y_max && i < map.getHeight())
