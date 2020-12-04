@@ -9,5 +9,5 @@ class CharacterSVGRenderer : public SVGRenderer{
 
         void render(Game&) const override;
 
-        virtual ~CharacterSVGRenderer(){};
+        //virtual ~CharacterSVGRenderer(){};
 };

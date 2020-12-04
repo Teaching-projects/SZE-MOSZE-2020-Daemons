@@ -7,5 +7,5 @@ class ObserverTextRenderer : public TextRenderer{
     public:
         ObserverTextRenderer(std::ostream& o = std::cout) : TextRenderer(o) {}
         void render(Game& gm) const override;
-        virtual ~ObserverTextRenderer(){};
+        //virtual ~ObserverTextRenderer(){};
 };

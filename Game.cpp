@@ -246,7 +246,7 @@ std::string Game::mapPrinterSVG(){
 
 }
 
-void Game::registerRenderer(Renderer* r){
+void PreparedGame::registerRenderer(Renderer* r){
     this->renderers.push_back(r);
 }
 

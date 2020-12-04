@@ -48,5 +48,6 @@ int main(int argc, char** argv){
         game.run();
 
     } catch (const JSON::ParseException& e) {bad_exit(4);}
+    
     return 0;
 }

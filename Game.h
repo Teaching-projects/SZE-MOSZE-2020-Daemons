@@ -1,10 +1,10 @@
 #pragma once
+class Renderer;
 #include "Map.h"
 #include "Hero.h"
 #include "Monster.h"
 #include "JSON.h"
 #include "MarkedMap.h"
-class Renderer;
 #include "Renderer.h"
 #include <string>
 #include <list>
@@ -65,11 +65,10 @@ private:
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
     
     bool checkForHeroSVG(int x, int y);
-
+protected:
     std::list<Renderer*> renderers;
 public:
     
-    void registerRenderer(Renderer*);
 
     //!Method that prints the entire map of the game
     void mapPrinter(std::ostream&);
@@ -119,10 +118,11 @@ public:
 
     virtual ~Game()
     {
+        //delete renderers.front();
         delete this->hero;
-        for(auto&& rendero : renderers) {
-            delete rendero;
-        }
+        // for(std::list<Renderer*>::iterator it = renderers.begin();it != renderers.end();it++) {
+        //     delete *it;
+        // }
     }
 
 public:
@@ -154,4 +154,11 @@ class PreparedGame : public Game
         //! Constructor for PreparedGame class
         PreparedGame(std::string markedmap);
         using Game::run;
+        void registerRenderer(Renderer* r);
+        virtual ~PreparedGame()
+        {
+            for(auto &&render : renderers)
+                delete render;
+            
+        }
 };
