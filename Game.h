@@ -47,7 +47,9 @@ private:
     /*!
     \return  true if the hero is there, and false if not
     */
+    
     bool checkForHero(int x,int y);
+    std::string getMonsterSVG(std::pair<int,int> loc) const;
 
     const std::string TOP_LEFT = "\u2554";///<String value that stores a unicode character to print the map correctly
 	const std::string TOP_RIGHT = "\u2557";///<String value that stores a unicode character to print the map correctly
@@ -61,13 +63,21 @@ private:
 	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
     
-    
+    bool checkForHeroSVG(int x, int y);
+
+    std::list<Renderer*> renderers;
 public:
     
+    void registerRenderer(Renderer*);
+
     //!Method that prints the entire map of the game
     void mapPrinter(std::ostream&);
     //!Method that prints an exact range of the map around Hero.
     void mapPrinterWithLightRadius(std::ostream&);
+
+    std::string mapPrinterSVG();
+
+    std::string mapPrinterSVGWithLightRadius();
 
     class OccupiedException : virtual public std::runtime_error{
         public:
@@ -109,6 +119,9 @@ public:
     virtual ~Game()
     {
         delete this->hero;
+        for(auto r : renderers){
+            delete r;
+        }
     }
 
 public:

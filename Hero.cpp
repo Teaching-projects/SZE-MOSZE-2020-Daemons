@@ -30,9 +30,8 @@ Hero Hero::parse(const std::string& data){
 	damage,
 	returnedMap.get<int>("magical_damage_bonus_per_level"),
 	returnedMap.get<int>("light_radius"),
-	light_radius_bonus
-
-	
+	light_radius_bonus,
+	returnedMap.get<std::string>("texture")
 	
 	);
 	
@@ -70,6 +69,10 @@ int Hero::getLevel() const
 int Hero::getXP() const
 {
 	return xp;
+}
+std::string getHeroSVG() const
+{
+	return svg;
 }
 void Hero::takeDamage(const Monster&  enemy)
 {
