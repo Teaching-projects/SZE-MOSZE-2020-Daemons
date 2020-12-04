@@ -8,5 +8,5 @@ class HeroTextRenderer : public TextRenderer{
     private:
     public:
         HeroTextRenderer() : TextRenderer(){}
-        void render(const Game&) const override;
-}
+        void render(Game& gm);
+};

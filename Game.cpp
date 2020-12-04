@@ -52,8 +52,8 @@ void Game::run()
     
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
-    mapPrinter();
-    Game::mapPrinter();
+    //mapPrinter();
+    //Game::mapPrinter();
     Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
     {
@@ -89,7 +89,7 @@ void Game::run()
 
 
 }
-unsigned int Game::checkForMonsters(int x,int y) const
+unsigned int Game::checkForMonsters(int x,int y)
 {
     int i = 0;
     for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
@@ -97,7 +97,7 @@ unsigned int Game::checkForMonsters(int x,int y) const
 
     return i;
 }
-bool Game::checkForHero(int x,int y) const
+bool Game::checkForHero(int x,int y)
 {
     if((x == hero_location.first && y == hero_location.second && this->hero != nullptr))
     {
@@ -107,7 +107,7 @@ bool Game::checkForHero(int x,int y) const
     return false;
 }
 
-void Game::mapPrinterWithLightRadius()
+void Game::mapPrinterWithLightRadius(std::ostream& o_str)
 {
     int maxwidth = 0;             
     int maxheight=map.getHeight();                                     
@@ -135,78 +135,78 @@ void Game::mapPrinterWithLightRadius()
         print_y_min=0;
     }
     if(print_y_max>maxheight) print_y_max=maxheight;
-    std::cout << TOP_LEFT;
+    o_str << TOP_LEFT;
     int w = 0;
     while(w < width && w  <= map.getRowWidth(0))
     {
-        std::cout << HORIZONTAL;
+        o_str << HORIZONTAL;
         w++;
     }
     
-    std::cout << TOP_RIGHT << "\n";
+    o_str << TOP_RIGHT << "\n";
 
 
     int i=print_y_min; 
     while(i <= print_y_max && i < map.getHeight())
     {
-        std::cout << VERTICAL;
+        o_str << VERTICAL;
         int j=print_x_min;
         while(j <= print_x_max && j < map.getRowWidth(i))
         {
             if (checkForHero(j,i));
-            else if(checkForMonsters(j,i) == 1) std::cout << MONSTERONE;
-            else if(checkForMonsters(j,i) >= 2) std::cout << MONSTERTWO;
-            else if (map.get(j,i) == Map::Free) std::cout << FREE_FIELD;
-            else std::cout << WALL_FIELD;
+            else if(checkForMonsters(j,i) == 1) o_str << MONSTERONE;
+            else if(checkForMonsters(j,i) >= 2) o_str << MONSTERTWO;
+            else if (map.get(j,i) == Map::Free) o_str << FREE_FIELD;
+            else o_str << WALL_FIELD;
             j++;
         }
         for(int m = map.getRowWidth(i);m<=print_x_max;m++)
-            std::cout << WALL_FIELD;
-        std::cout << VERTICAL << "\n";
+            o_str << WALL_FIELD;
+        o_str << VERTICAL << "\n";
         i++;
     }
 
-    std::cout << BOTTOM_LEFT;
+    o_str << BOTTOM_LEFT;
     
     for(int i = 0;i<w;i++)
-        std::cout << HORIZONTAL;
+        o_str << HORIZONTAL;
     
-    std::cout << BOTTOM_RIGHT << "\n";
+    o_str << BOTTOM_RIGHT << "\n";
 
 }
-void Game::mapPrinter()
+void Game::mapPrinter(std::ostream& o_str)
 {
     int maxwidth = 0;
     for(int i = 0;i < map.getHeight();i++)
         if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
 
 
-    std::cout << TOP_LEFT;
+    o_str << TOP_LEFT;
     for(int i = 0;i < maxwidth;i++)
-        std::cout << HORIZONTAL;
+        o_str << HORIZONTAL;
     
-    std::cout << TOP_RIGHT << "\n";
+    o_str << TOP_RIGHT << "\n";
 
     for(int y = 0;y < map.getHeight();y++)
     {
-        std::cout << VERTICAL;
+        o_str << VERTICAL;
         for(int x = 0;x < map.getRowWidth(y);x++)
         {
             if (checkForHero(x,y));
-            else if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
-            else if(checkForMonsters(x,y) >= 2) std::cout << MONSTERTWO;
-            else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
-            else std::cout << WALL_FIELD;
+            else if(checkForMonsters(x,y) == 1) o_str << MONSTERONE;
+            else if(checkForMonsters(x,y) >= 2) o_str << MONSTERTWO;
+            else if (map.get(x,y) == Map::Free) o_str << FREE_FIELD;
+            else o_str << WALL_FIELD;
         }
         for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-            std::cout << WALL_FIELD;
-        std::cout << VERTICAL << "\n";
+            o_str << WALL_FIELD;
+        o_str << VERTICAL << "\n";
     }
-    std::cout << BOTTOM_LEFT;
+    o_str << BOTTOM_LEFT;
     for(int i = 0;i < maxwidth;i++)
-        std::cout << HORIZONTAL;
+        o_str << HORIZONTAL;
     
-    std::cout << BOTTOM_RIGHT << "\n";
+    o_str << BOTTOM_RIGHT << "\n";
 
 
 

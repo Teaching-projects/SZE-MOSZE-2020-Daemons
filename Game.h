@@ -5,6 +5,7 @@
 #include "JSON.h"
 #include "MarkedMap.h"
 #include <string>
+#include "TextRenderer.h"
 #include <list>
 #include <iostream>
 /*!
@@ -41,16 +42,13 @@ private:
     /*!
     \return  the index of which Monster is on the spot of the monster_locations list.
     */
-    unsigned int checkForMonsters(int x,int y) const;
+    unsigned int checkForMonsters(int x,int y);
     //! Method that send the HERO string to the cout if the hero is on an exact spot
     /*!
     \return  true if the hero is there, and false if not
     */
-    bool checkForHero(int x,int y) const;
-    //!Method that prints the entire map of the game
-    void mapPrinter();
-    //!Method that prints an exact range of the map around Hero.
-    void mapPrinterWithLightRadius();
+    bool checkForHero(int x,int y);
+
     const std::string TOP_LEFT = "\u2554";///<String value that stores a unicode character to print the map correctly
 	const std::string TOP_RIGHT = "\u2557";///<String value that stores a unicode character to print the map correctly
 	const std::string VERTICAL = "\u2551";///<String value that stores a unicode character to print the map correctly
@@ -63,7 +61,13 @@ private:
 	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
     
+    
 public:
+    
+    //!Method that prints the entire map of the game
+    void mapPrinter(std::ostream&);
+    //!Method that prints an exact range of the map around Hero.
+    void mapPrinterWithLightRadius(std::ostream&);
 
     class OccupiedException : virtual public std::runtime_error{
         public:
