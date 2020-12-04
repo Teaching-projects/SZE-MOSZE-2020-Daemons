@@ -8,5 +8,5 @@
     "magical-damage"  : 2,
     "defense": 2,
     "race" : "undead",
-    "texture" : "textures/blood_raven.svg"
+    "texture" : "blood_raven.svg"
 }

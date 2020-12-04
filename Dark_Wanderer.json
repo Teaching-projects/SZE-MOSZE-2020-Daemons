@@ -13,5 +13,5 @@
     "magical_damage_bonus_per_level" : 2,
     "light_radius": 2,
     "light_radius_bonus_per_level": 2,
-    "texture" : "textures/dark_wanderer.svg"
+    "texture" : "dark_wanderer.svg"
 }
