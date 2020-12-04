@@ -7,5 +7,5 @@ class CharacterSVGRenderer : public SVGRenderer{
     private:
         CharacterSVGRenderer(std::string& fname) : SVGRenderer(fname){}
 
-        void render(Game&);
+        void render(Game&) const;
 };

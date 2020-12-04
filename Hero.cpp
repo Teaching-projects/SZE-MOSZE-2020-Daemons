@@ -70,9 +70,9 @@ int Hero::getXP() const
 {
 	return xp;
 }
-std::string getHeroSVG() const
+std::string Hero::getHeroSVG() const
 {
-	return svg;
+	return svg_file;
 }
 void Hero::takeDamage(const Monster&  enemy)
 {

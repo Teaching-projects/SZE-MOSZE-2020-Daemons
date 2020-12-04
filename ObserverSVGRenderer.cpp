@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-void ObserverSVGRenderer::render(Game& gm){
+void ObserverSVGRenderer::render(Game& gm) const{
     
     std::string svg_output = gm.mapPrinterSVG();
 

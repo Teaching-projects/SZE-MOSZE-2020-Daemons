@@ -41,7 +41,7 @@ class Hero
 	    unsigned int level;///< the level of the Hero
         unsigned int light_radius;///< How many land the hero sees of the map
         unsigned int light_radius_bonus_per_level;///<How many bonus bonus light radius the Hero has per levelup
-        std::string svg;
+        std::string svg_file;
         
     public:
         //! Constructor of the Hero Class it set all the member the Hero has
@@ -59,7 +59,7 @@ class Hero
         const unsigned int& magic_damage_bonus,
         const unsigned int& light_radius,
         const unsigned int& light_radius_bonus_per_level,
-        std::string svg_c
+        std::string svg_file
         )
         : hp(h),
         name(n),
@@ -74,7 +74,7 @@ class Hero
         magical_damage_bonus_per_level(magic_damage_bonus),
         light_radius(light_radius),
         light_radius_bonus_per_level(light_radius_bonus_per_level),
-        svg(svg_c)
+        svg_file(svg_file)
         {
         maxHP=h;
         xp=0; 

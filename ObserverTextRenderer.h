@@ -6,5 +6,5 @@ class ObserverTextRenderer : public TextRenderer{
     private:
     public:
         ObserverTextRenderer() : TextRenderer() {}
-        void render(Game& gm);
-}
+        void render(Game& gm) const;
+};

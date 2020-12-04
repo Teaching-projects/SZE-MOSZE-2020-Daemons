@@ -4,9 +4,9 @@
 #include "Monster.h"
 #include "JSON.h"
 #include "MarkedMap.h"
-#include <string>
-#include "TextRenderer.h"
+class Renderer;
 #include "Renderer.h"
+#include <string>
 #include <list>
 #include <iostream>
 /*!
@@ -120,9 +120,10 @@ public:
     virtual ~Game()
     {
         delete this->hero;
-        for(auto r : renderers){
+        for(auto&& r : renderers){
             delete r;
         }
+        renderers.clear();
     }
 
 public:

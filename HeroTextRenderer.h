@@ -8,5 +8,5 @@ class HeroTextRenderer : public TextRenderer{
     private:
     public:
         HeroTextRenderer() : TextRenderer(){}
-        void render(Game& gm);
+        void render(Game& gm) const;
 };

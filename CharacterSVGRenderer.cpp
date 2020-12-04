@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-void CharacterSVGRenderer::render(Game& gm){
+void CharacterSVGRenderer::render(Game& gm) const{
     
     std::string svg_output = gm.mapPrinterSVGWithLightRadius();
 

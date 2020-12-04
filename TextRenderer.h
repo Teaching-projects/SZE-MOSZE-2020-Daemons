@@ -12,5 +12,5 @@ class TextRenderer : public Renderer
 
         void setOutputStream(const std::ostream&);
 
-        virtual void render(Game&) const = 0;
+        virtual void render(Game& gm) const = 0;
 };

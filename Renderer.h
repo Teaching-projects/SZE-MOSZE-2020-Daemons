@@ -1,9 +1,11 @@
 #pragma once
-#include "Game.h"
 class Game;
+#include "Game.h"
+
 
 class Renderer{
     private:
     public:
-        virtual void render(Game&) const = 0;
+        virtual void render(Game& gm) const = 0;
+        virtual ~Renderer(){}
 };

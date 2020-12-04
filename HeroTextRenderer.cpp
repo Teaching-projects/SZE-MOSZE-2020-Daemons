@@ -2,6 +2,6 @@
 
 
 
-void HeroTextRenderer::render(Game& gm) {
+void HeroTextRenderer::render(Game& gm) const {
     gm.mapPrinterWithLightRadius(out_stream);
 }
