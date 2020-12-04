@@ -274,7 +274,6 @@ std::string Game::mapPrinterSVGWithLightRadius(){
     int print_x_max=hero_x+hero->getLightRadius();
     int print_y_min=hero_y-hero->getLightRadius();
     int print_y_max=hero_y+hero->getLightRadius();
-    int width;
     for(int i = 0;i < map.getHeight();i++)
         if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
     if(print_x_min<0)
