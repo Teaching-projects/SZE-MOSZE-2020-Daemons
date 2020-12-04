@@ -8,6 +8,6 @@ class HeroTextRenderer : public TextRenderer{
     private:
     public:
         HeroTextRenderer(std::ostream& o = std::cout) : TextRenderer(o){}
-        void render(Game& gm) const;
+        void render(Game& gm) const override;
         virtual ~HeroTextRenderer(){}
 };

@@ -40,9 +40,11 @@ int main(int argc, char** argv){
         PreparedGame game(argv[1]);
         std::ofstream stream = std::ofstream("log.txt");
         std::string svgrend = "pretty.svg";
+        std::string svgrend2 = "pretty_observer.svg";
         game.registerRenderer(new HeroTextRenderer());  
         game.registerRenderer(new ObserverTextRenderer(stream));
         game.registerRenderer(new CharacterSVGRenderer(svgrend));
+        game.registerRenderer(new ObserverSVGRenderer(svgrend2));
         game.run();
 
     } catch (const JSON::ParseException& e) {bad_exit(4);}

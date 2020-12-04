@@ -3,11 +3,11 @@
 #include "SVGRenderer.h"
 
 class ObserverSVGRenderer : public SVGRenderer{
-    public:
     private:
+    public:
         ObserverSVGRenderer(std::string& fname) : SVGRenderer(fname){}
 
-        void render(Game&) const;
+        void render(Game&) const override;
 
         virtual ~ObserverSVGRenderer(){}
 };
