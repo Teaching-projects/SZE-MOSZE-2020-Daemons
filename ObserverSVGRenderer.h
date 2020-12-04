@@ -9,5 +9,5 @@ class ObserverSVGRenderer : public SVGRenderer{
 
         void render(Game&) const override;
 
-        virtual ~ObserverSVGRenderer(){}
+        virtual ~ObserverSVGRenderer(){};
 };

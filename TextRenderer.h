@@ -13,5 +13,5 @@ class TextRenderer : public Renderer
 
         virtual void render(Game& gm) const = 0;
 
-        virtual ~TextRenderer(){}
+        virtual ~TextRenderer(){};
 };

@@ -7,5 +7,5 @@ class Renderer{
     private:
     public:
         virtual void render(Game& gm) const = 0;
-        virtual ~Renderer(){}
+        virtual ~Renderer(){};
 };
