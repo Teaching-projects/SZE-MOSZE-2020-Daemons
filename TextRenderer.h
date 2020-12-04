@@ -1,7 +1,10 @@
 #pragma once
+class Renderer;
 #include "Renderer.h"
+#include "Game.h"
 
-class TextRenderer : public Renderer{
+class TextRenderer : public Renderer
+{
     protected:
         std::ostream& out_stream;
     public:

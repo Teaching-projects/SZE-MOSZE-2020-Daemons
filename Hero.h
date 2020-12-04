@@ -59,7 +59,7 @@ class Hero
         const unsigned int& magic_damage_bonus,
         const unsigned int& light_radius,
         const unsigned int& light_radius_bonus_per_level,
-        std::string svg;
+        std::string svg_c
         )
         : hp(h),
         name(n),
@@ -74,7 +74,7 @@ class Hero
         magical_damage_bonus_per_level(magic_damage_bonus),
         light_radius(light_radius),
         light_radius_bonus_per_level(light_radius_bonus_per_level),
-        svg(svg)
+        svg(svg_c)
         {
         maxHP=h;
         xp=0; 
