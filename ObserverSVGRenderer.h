@@ -8,4 +8,4 @@ class ObserverSVGRenderer : public SVGRenderer{
         ObserverSVGRenderer(std::string& fname) : SVGRenderer(fname){}
 
         void render(Game&);
-}
+};

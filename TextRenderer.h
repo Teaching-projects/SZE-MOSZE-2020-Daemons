@@ -9,5 +9,5 @@ class TextRenderer : public Renderer{
 
         void setOutputStream(const std::ostream&);
 
-        virtual void render(const Game&) const = 0;
+        virtual void render(Game&) const = 0;
 };

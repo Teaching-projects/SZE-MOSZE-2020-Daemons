@@ -4,5 +4,5 @@
 class Renderer{
     private:
     public:
-        virtual void render(const Game&) const = 0;
+        virtual void render(Game&) const = 0;
 };

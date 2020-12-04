@@ -9,5 +9,5 @@ class SVGRenderer : public Renderer{
     public:
         SVGRenderer(std::string& fname) : file_name(fname){}
 
-        virtual void render(const Game&) const = 0;
+        virtual void render(Game&) const = 0;
 };

@@ -8,4 +8,4 @@ class CharacterSVGRenderer : public SVGRenderer{
         CharacterSVGRenderer(std::string& fname) : SVGRenderer(fname){}
 
         void render(Game&);
-}
+};

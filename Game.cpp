@@ -236,7 +236,7 @@ std::string Game::mapPrinterSVG(){
                 "y=\""+std::to_string(y*10)+"\" />";
         }
         for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(x*10)+"\" "+
+            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(i*10)+"\" "+
                 "y=\""+std::to_string(y*10)+"\" />";
     }
 

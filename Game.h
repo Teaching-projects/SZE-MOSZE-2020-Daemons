@@ -6,6 +6,7 @@
 #include "MarkedMap.h"
 #include <string>
 #include "TextRenderer.h"
+#include "Renderer.h"
 #include <list>
 #include <iostream>
 /*!
