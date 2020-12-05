@@ -236,9 +236,13 @@ std::string Game::mapPrinterSVG(){
             else o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(x*10)+"\" "+
                 "y=\""+std::to_string(y*10)+"\" />";
         }
+        int w = map.getRowWidth(y);
         for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(i*10)+"\" "+
+        {
+            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(w*10)+"\" "+
                 "y=\""+std::to_string(y*10)+"\" />";
+            w++;
+        }
     }
     o_str += "</svg>";
     return o_str;
@@ -316,9 +320,13 @@ std::string Game::mapPrinterSVGWithLightRadius(){
                 "y=\""+std::to_string(i*10)+"\" />";
             j++;
         }
-        for(int m = map.getRowWidth(i);m<=print_x_max;m++)
-            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(j*10)+"\" "+
+        int w = map.getRowWidth(i);
+        for(int g = 0;g<=(maxwidth - map.getRowWidth(i)-1);g++)
+        {
+            o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(w*10)+"\" "+
                 "y=\""+std::to_string(i*10)+"\" />";
+            w++;
+        }
         i++;
     }
     o_str += "</svg>";
