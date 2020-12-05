@@ -165,10 +165,4 @@ class PreparedGame : public Game
         PreparedGame(std::string markedmap);
         using Game::run;
         void registerRenderer(Renderer* r);
-        virtual ~PreparedGame()
-        {
-            for(auto &&render : renderers)
-                delete render;
-
-        }
 };
