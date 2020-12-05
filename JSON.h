@@ -8,7 +8,7 @@
  *
  * \author  mesmatyi, kulcsarbence, Lazar-Source
  *
- * \version 4.0
+ * \version 5.0
  *
  * \date 2020/10/026 13:09
  *
