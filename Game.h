@@ -29,28 +29,11 @@ class Renderer;
 
 class Game{
 
-private:
-    Map map;///<Map object
-    Hero *hero;///<Hero object
-    std::pair<int,int> hero_location;///< Hero location on the map
-    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;///<Monsters locations of the map
-    bool mapset;///<The map was set or not
-    bool game_running;///<The game is running or not
-    bool heroset;///<The hero was set or not
-    //!Method that move the hero, and if he is stepping on a Monster, they fight till death
-    void stepOn(int x,int y);
-    //! Method that sees if a Monster is on an exact spot of the map or not.
-    /*!
-    \return  the index of which Monster is on the spot of the monster_locations list.
-    */
-    unsigned int checkForMonsters(int x,int y);
-    //! Method that send the HERO string to the cout if the hero is on an exact spot
-    /*!
-    \return  true if the hero is there, and false if not
-    */
 
-    bool checkForHero(int x,int y);
-    std::string getMonsterSVG(std::pair<int,int> loc) const;
+
+protected:
+    std::list<Renderer*> renderers;
+public:
 
     const std::string TOP_LEFT = "\u2554";///<String value that stores a unicode character to print the map correctly
 	const std::string TOP_RIGHT = "\u2557";///<String value that stores a unicode character to print the map correctly
@@ -63,12 +46,18 @@ private:
 	const std::string HERO = "\u2523\u252B";///<String value that stores a unicode character to print the map correctly
 	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
-
     bool checkForHeroSVG(int x, int y);
-protected:
-    std::list<Renderer*> renderers;
-public:
+    std::string getMonsterSVG(std::pair<int,int> loc) const;
+    std::pair<int,int> hero_location;///< Hero location on the map
+    Map map;///<Map object
+    Hero *hero;///<Hero object
+    unsigned int checkForMonsters(int x,int y);
+    //! Method that send the HERO string to the cout if the hero is on an exact spot
+    /*!
+    \return  true if the hero is there, and false if not
+    */
 
+    bool checkForHero(int x,int y);
 
     //!Method that prints the entire map of the game
     void mapPrinter(std::ostream&);
@@ -130,6 +119,17 @@ public:
           checked_delete(r);
         }
     }
+private:
+    std::list<std::pair<Monster,std::pair<int,int>>> monster_locations;///<Monsters locations of the map
+    bool mapset;///<The map was set or not
+    bool game_running;///<The game is running or not
+    bool heroset;///<The hero was set or not
+    //!Method that move the hero, and if he is stepping on a Monster, they fight till death
+    void stepOn(int x,int y);
+    //! Method that sees if a Monster is on an exact spot of the map or not.
+    /*!
+    \return  the index of which Monster is on the spot of the monster_locations list.
+    */
 
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
