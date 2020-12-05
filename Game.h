@@ -11,18 +11,18 @@ class Renderer;
 #include <iostream>
 /*!
  * \class Game
- * 
+ *
  * \brief Game class
- * 
+ *
  * This is the Game Class that controls the game when you are running it.
- * 
- * 
+ *
+ *
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
- * 
+ *
  * \version 4.0
- * 
+ *
  * \date 2020/12/03 10:49
- * 
+ *
  * Created on 2020/12/03 10:49
  */
 
@@ -48,7 +48,7 @@ private:
     /*!
     \return  true if the hero is there, and false if not
     */
-    
+
     bool checkForHero(int x,int y);
     std::string getMonsterSVG(std::pair<int,int> loc) const;
 
@@ -63,12 +63,12 @@ private:
 	const std::string HERO = "\u2523\u252B";///<String value that stores a unicode character to print the map correctly
 	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
-    
+
     bool checkForHeroSVG(int x, int y);
 protected:
     std::list<Renderer*> renderers;
 public:
-    
+
 
     //!Method that prints the entire map of the game
     void mapPrinter(std::ostream&);
@@ -104,22 +104,32 @@ public:
         MapAlreadySet(const std::string &err) : std::runtime_error( err) {}
     };
 
-    
+
     //!Method that puts the Hero on the map at the start of the game
     virtual void putHero(Hero hero,int x,int y);
     //!Method that puts Monsters on the map at the start of the game
     void putMonster(Monster monster,int x, int y);
-    ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map 
+    ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map
     Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
     ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
 
+    template<class T> inline void checked_delete(T * x)
+    {
+        typedef char type_must_be_complete[ sizeof(T)? 1: -1 ];
+        (void) sizeof(type_must_be_complete);
+        delete x;
+    }
+
     virtual ~Game()
     {
         //delete renderers.front();
         delete this->hero;
+        for (auto r : renderers){
+          checked_delete(r);
+        }
         // for(std::list<Renderer*>::iterator it = renderers.begin();it != renderers.end();it++) {
         //     delete *it;
         // }
@@ -134,18 +144,18 @@ public:
 
 /*!
  * \class PreparedGame
- * 
+ *
  * \brief PreparedGame class
- * 
+ *
  * This is the PreparedGame class, it uses the Game::run method, and in its constructor it waits for a file name that contains map, hero and monsters.
- * 
- * 
+ *
+ *
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
- * 
+ *
  * \version 4.0
- * 
+ *
  * \date 2020/12/03 10:49
- * 
+ *
  * Created on 2020/12/03 10:49
  */
 class PreparedGame : public Game
@@ -159,6 +169,6 @@ class PreparedGame : public Game
         {
             for(auto &&render : renderers)
                 delete render;
-            
+
         }
 };
