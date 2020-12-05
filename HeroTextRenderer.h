@@ -9,5 +9,4 @@ class HeroTextRenderer : public TextRenderer{
     public:
         HeroTextRenderer(std::ostream& o = std::cout) : TextRenderer(o){}
         void render(Game& gm) const override;
-        //virtual ~HeroTextRenderer(){};
 };

@@ -125,14 +125,10 @@ public:
 
     virtual ~Game()
     {
-        //delete renderers.front();
         delete this->hero;
         for (auto r : renderers){
           checked_delete(r);
         }
-        // for(std::list<Renderer*>::iterator it = renderers.begin();it != renderers.end();it++) {
-        //     delete *it;
-        // }
     }
 
 public:
