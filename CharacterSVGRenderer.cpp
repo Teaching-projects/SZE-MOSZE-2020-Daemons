@@ -6,8 +6,6 @@
 #include <filesystem>
 
 void CharacterSVGRenderer::render(Game& gm) const{
-    
-    //std::string svg_output = gm.mapPrinterSVGWithLightRadius();
 
     std::string heroSVG = gm.hero->getHeroSVG();
     if(!std::filesystem::exists(heroSVG)){
@@ -23,10 +21,10 @@ void CharacterSVGRenderer::render(Game& gm) const{
     }
 
     std::string o_str;
-    int maxwidth = 0;             
-    int maxheight=gm.map.getHeight();                                     
+    int maxwidth = 0;
+    int maxheight=gm.map.getHeight();
     int hero_x=gm.hero_location.first;
-    int hero_y=gm.hero_location.second; 
+    int hero_y=gm.hero_location.second;
     int print_x_min=hero_x-gm.hero->getLightRadius();
     int print_x_max=hero_x+gm.hero->getLightRadius();
     int print_y_min=hero_y-gm.hero->getLightRadius();
@@ -52,7 +50,7 @@ void CharacterSVGRenderer::render(Game& gm) const{
 
      o_str = "<svg version=\"1.1\" baseProfile=\"full\" width=\""+std::to_string((width+1)*10)+"\" height=\""+std::to_string((print_y_max+1)*10)+"\" xmlns=\"http://www.w3.org/2000/svg\">";
 
-    int i=print_y_min; 
+    int i=print_y_min;
     while(i <= print_y_max && i < gm.map.getHeight())
     {
         int j=print_x_min;

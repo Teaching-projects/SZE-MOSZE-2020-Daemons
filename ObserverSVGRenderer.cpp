@@ -6,8 +6,6 @@
 #include <filesystem>
 
 void ObserverSVGRenderer::render(Game& gm) const{
-    
-    //std::string svg_output = gm.mapPrinterSVG();
     std::string o_str;
 
 
@@ -42,11 +40,11 @@ void ObserverSVGRenderer::render(Game& gm) const{
                 "y=\""+std::to_string(y*10)+"\" />";
             }
             else if(gm.checkForMonsters(x,y) == 1){
-                
+
                 o_str += "<image href=\""+gm.getMonsterSVG(std::make_pair(x,y))+
                 "\" width=\"10\" height=\"10\" x=\""+std::to_string(x*10)+"\""+
                 " y=\""+std::to_string(y*10)+"\" />";
-            } 
+            }
             else if (gm.map.get(x,y) == Map::Free) o_str += "<image href=\""+free_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(x*10)+"\" "+
                 "y=\""+std::to_string(y*10)+"\" />";
             else o_str += "<image href=\""+wall_field_svg+"\" width=\"10\" height=\"10\" x=\""+std::to_string(x*10)+"\" "+

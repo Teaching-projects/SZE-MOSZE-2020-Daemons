@@ -10,7 +10,7 @@ void Game::setMap(Map map)
         mapset = true;
     }
     else Game::MapAlreadySet("Map already set!");
-    
+
 }
 void Game::putHero(Hero hero,int x,int y)
 {
@@ -50,11 +50,9 @@ void Game::stepOn(int x, int y)
 }
 void Game::run()
 {
-    
+
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
-    //mapPrinter();
-    //Game::mapPrinter();
     for(auto &&renderer: renderers){
         renderer->render(*this);
     }
@@ -82,7 +80,6 @@ void Game::run()
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
 
-        //mapPrinterWithLightRadius();
         for(auto &&renderer: renderers){
             renderer->render(*this);
     }

@@ -59,14 +59,6 @@ public:
 
     bool checkForHero(int x,int y);
 
-    //!Method that prints the entire map of the game
-    //void mapPrinter(std::ostream&);
-    //!Method that prints an exact range of the map around Hero.
-    //void mapPrinterWithLightRadius(std::ostream&);
-
-    //std::string mapPrinterSVG();
-
-    //std::string mapPrinterSVGWithLightRadius();
 
     class OccupiedException : virtual public std::runtime_error{
         public:
