@@ -58,8 +58,8 @@ public:
     */
 
     bool checkForHero(int x,int y);
-    virtual std::string GetWall();
-    virtual std::string GetFree();
+    std::string GetWall();
+    std::string GetFree();
 
     class OccupiedException : virtual public std::runtime_error{
         public:
@@ -92,9 +92,9 @@ public:
     //!Method that puts Monsters on the map at the start of the game
     void putMonster(Monster monster,int x, int y);
     ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map
-    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false){};
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""){};
     ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false) {};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace("") {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
 
@@ -119,11 +119,9 @@ private:
     bool heroset;///<The hero was set or not
     //!Method that move the hero, and if he is stepping on a Monster, they fight till death
     void stepOn(int x,int y);
-    //! Method that sees if a Monster is on an exact spot of the map or not.
-    /*!
-    \return  the index of which Monster is on the spot of the monster_locations list.
-    */
-
+    protected:
+    std::string wall;
+    std::string freeplace;
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
     void run();
@@ -150,13 +148,14 @@ public:
 class PreparedGame : public Game
 {
     private:
-    std::string wall;
-    std::string freeplace;
     public:
         //! Constructor for PreparedGame class
         PreparedGame(std::string markedmap);
         using Game::run;
         void registerRenderer(Renderer* r);
-        std::string GetWall() override ;  
-        std::string GetFree() override ;
+        virtual ~PreparedGame()
+        {
+
+        }
+    
 };

@@ -116,7 +116,14 @@ bool Game::checkForHero(int x,int y)
     }
     return false;
 }
-
+std::string Game::GetWall() 
+ {
+     return wall;
+ }
+std::string Game::GetFree() 
+ {
+     return freeplace;
+ }
 
 
 void PreparedGame::registerRenderer(Renderer* r){
@@ -160,11 +167,4 @@ PreparedGame::PreparedGame(std::string markedmap)
     }
 
 }
- std::string PreparedGame::GetWall() 
- {
-     return wall;
- }
-std::string PreparedGame::GetFree() 
- {
-     return freeplace;
- }
+ 
