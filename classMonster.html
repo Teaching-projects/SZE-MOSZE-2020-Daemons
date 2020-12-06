@@ -89,10 +89,10 @@ Collaboration diagram for Monster:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af20b43d5b0f8c7e699b236656b3fba8c"><td class="memItemLeft" align="right" valign="top"><a id="af20b43d5b0f8c7e699b236656b3fba8c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#af20b43d5b0f8c7e699b236656b3fba8c">Monster</a> (const int &amp;h, const std::string &amp;n, const double &amp;a, const int &amp;def, <a class="el" href="structDamage.html">Damage</a> dmg)</td></tr>
-<tr class="memdesc:af20b43d5b0f8c7e699b236656b3fba8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classMonster.html" title="Monster class.">Monster</a>, it set all the member of the <a class="el" href="classMonster.html" title="Monster class.">Monster</a>. <br /></td></tr>
-<tr class="separator:af20b43d5b0f8c7e699b236656b3fba8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987461637d35f4384f0573697c921ec9"><td class="memItemLeft" align="right" valign="top"><a id="a987461637d35f4384f0573697c921ec9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a987461637d35f4384f0573697c921ec9">Monster</a> (const int &amp;h, const std::string &amp;n, const double &amp;a, const int &amp;def, <a class="el" href="structDamage.html">Damage</a> dmg, std::string svg)</td></tr>
+<tr class="memdesc:a987461637d35f4384f0573697c921ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classMonster.html" title="Monster class.">Monster</a>, it set all the member of the <a class="el" href="classMonster.html" title="Monster class.">Monster</a>. <br /></td></tr>
+<tr class="separator:a987461637d35f4384f0573697c921ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbfb552014439fe02d10f2492e60fe34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#acbfb552014439fe02d10f2492e60fe34">getHealthPoints</a> () const</td></tr>
 <tr class="memdesc:acbfb552014439fe02d10f2492e60fe34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for hp.  <a href="classMonster.html#acbfb552014439fe02d10f2492e60fe34">More...</a><br /></td></tr>
 <tr class="separator:acbfb552014439fe02d10f2492e60fe34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aafce7d1ded2630ea0d1d1089858b8fc0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#aafce7d1ded2630ea0d1d1089858b8fc0">getDefense</a> () const</td></tr>
 <tr class="memdesc:aafce7d1ded2630ea0d1d1089858b8fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Getter for Defense.  <a href="classMonster.html#aafce7d1ded2630ea0d1d1089858b8fc0">More...</a><br /></td></tr>
 <tr class="separator:aafce7d1ded2630ea0d1d1089858b8fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf504c10cbe8056793fdf6f860b8bb67"><td class="memItemLeft" align="right" valign="top"><a id="abf504c10cbe8056793fdf6f860b8bb67"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getSVG</b> () const</td></tr>
+<tr class="separator:abf504c10cbe8056793fdf6f860b8bb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -146,11 +149,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <a class="el" href="structDamage.html">Damage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a6614cc11c092b94f39869576fb049b67">damage</a></td></tr>
 <tr class="memdesc:a6614cc11c092b94f39869576fb049b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that contains the physical attack damage, and magic attack damage of the <a class="el" href="classMonster.html" title="Monster class.">Monster</a>. <br /></td></tr>
 <tr class="separator:a6614cc11c092b94f39869576fb049b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c1c13fe75e40b391e2d3eb30a26168"><td class="memItemLeft" align="right" valign="top"><a id="ad5c1c13fe75e40b391e2d3eb30a26168"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>svg</b></td></tr>
+<tr class="separator:ad5c1c13fe75e40b391e2d3eb30a26168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classMonster.html" title="Monster class.">Monster</a> class. </p>
 <dl class="section author"><dt>Author</dt><dd>Mesics Mátyás, Kulcsár Bence, Lázár Tamás</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>4.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>5.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/12/03 10:25</dd></dl>
 <p>Created on 2020/12/03 10:25 </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wrongindexexception_51',['WrongIndexException',['../classMap_1_1WrongIndexException.html',1,'Map']]]
+  ['vectormap_67',['vectormap',['../classMap.html#a448885e6afbca49a867b3cacba90fe45',1,'Map']]],
+  ['vertical_68',['VERTICAL',['../classGame.html#aa6465c8a03477f6ce1c62f1482812959',1,'Game']]]
 ];

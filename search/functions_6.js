@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['levelup_89',['levelUp',['../classHero.html#aef06e69ebb7d2d18c640af5e6746dff6',1,'Hero']]]
+  ['json_115',['JSON',['../classJSON.html#aa01e26294300ef22c5423792274a1eb1',1,'JSON']]]
 ];

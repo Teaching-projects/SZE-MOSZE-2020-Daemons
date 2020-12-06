@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['damage_104',['damage',['../classMonster.html#a6614cc11c092b94f39869576fb049b67',1,'Monster']]],
-  ['defense_105',['defense',['../classMonster.html#ad867513550d7fde7e4b79806fe90ae2f',1,'Monster']]]
+  ['bottom_5fleft_131',['BOTTOM_LEFT',['../classGame.html#a3ec293a654059106dae4fd60a0ceb0f5',1,'Game']]],
+  ['bottom_5fright_132',['BOTTOM_RIGHT',['../classGame.html#a3ea55dec019475981d024696cc7d5124',1,'Game']]]
 ];

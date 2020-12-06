@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['parseexception_65',['ParseException',['../classJSON_1_1ParseException.html',1,'JSON']]],
-  ['preparedgame_66',['PreparedGame',['../classPreparedGame.html',1,'']]]
+  ['observersvgrenderer_85',['ObserverSVGRenderer',['../classObserverSVGRenderer.html',1,'']]],
+  ['observertextrenderer_86',['ObserverTextRenderer',['../classObserverTextRenderer.html',1,'']]],
+  ['occupiedexception_87',['OccupiedException',['../classGame_1_1OccupiedException.html',1,'Game']]]
 ];

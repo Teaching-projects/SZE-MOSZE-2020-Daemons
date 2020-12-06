@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['physical_109',['physical',['../structDamage.html#aee70c6c924eac810d02f61efbc90c719',1,'Damage']]]
+  ['magical_140',['magical',['../structDamage.html#a496876891f196c2b4ac9afe9f31b77b4',1,'Damage']]],
+  ['map_141',['map',['../classGame.html#ab910de42d0cf4238d9d20815de472523',1,'Game']]],
+  ['monsterone_142',['MONSTERONE',['../classGame.html#a0a5cc77483b776ea581a3bf9861ba460',1,'Game']]],
+  ['monstertwo_143',['MONSTERTWO',['../classGame.html#ace08e3bec9f4179652c241b76a324a43',1,'Game']]]
 ];

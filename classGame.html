@@ -66,6 +66,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Game Class Reference</div>  </div>
@@ -83,6 +85,16 @@ Inheritance diagram for Game:</div>
 <map name="Game_inherit__map" id="Game_inherit__map">
 <area shape="rect" title="Game class." alt="" coords="34,5,95,32"/>
 <area shape="rect" href="classPreparedGame.html" title="PreparedGame class." alt="" coords="5,80,124,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Game:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGame__coll__graph.png" border="0" usemap="#Game_coll__map" alt="Collaboration graph"/></div>
+<map name="Game_coll__map" id="Game_coll__map">
+<area shape="rect" title="Game class." alt="" coords="37,95,99,121"/>
+<area shape="rect" href="classMap.html" title="Map class." alt="" coords="5,5,56,32"/>
+<area shape="rect" href="classHero.html" title="Hero class." alt="" coords="80,5,133,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -103,8 +115,26 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ab96887ac4b43ae42a99188b59177b6ac"><td class="memItemLeft" align="right" valign="top"><a id="ab96887ac4b43ae42a99188b59177b6ac"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkForHeroSVG</b> (int x, int y)</td></tr>
+<tr class="separator:ab96887ac4b43ae42a99188b59177b6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6f4d964060ad0f6adabb088e555a765"><td class="memItemLeft" align="right" valign="top"><a id="ad6f4d964060ad0f6adabb088e555a765"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsterSVG</b> (std::pair&lt; int, int &gt; loc) const</td></tr>
+<tr class="separator:ad6f4d964060ad0f6adabb088e555a765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55e7639f6e45f713a29bd51da0421e3e"><td class="memItemLeft" align="right" valign="top"><a id="a55e7639f6e45f713a29bd51da0421e3e"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>checkForMonsters</b> (int x, int y)</td></tr>
+<tr class="separator:a55e7639f6e45f713a29bd51da0421e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94aaf15d0a632f42de898399ea2f29b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a94aaf15d0a632f42de898399ea2f29b1">checkForHero</a> (int x, int y)</td></tr>
+<tr class="memdesc:a94aaf15d0a632f42de898399ea2f29b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that send the HERO string to the cout if the hero is on an exact spot.  <a href="classGame.html#a94aaf15d0a632f42de898399ea2f29b1">More...</a><br /></td></tr>
+<tr class="separator:a94aaf15d0a632f42de898399ea2f29b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc6d9b6438159e5bd893137225c1c66"><td class="memItemLeft" align="right" valign="top"><a id="aecc6d9b6438159e5bd893137225c1c66"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetWall</b> ()</td></tr>
+<tr class="separator:aecc6d9b6438159e5bd893137225c1c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f4e0c510b36d2bcfde460c00d65196c"><td class="memItemLeft" align="right" valign="top"><a id="a5f4e0c510b36d2bcfde460c00d65196c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetFree</b> ()</td></tr>
+<tr class="separator:a5f4e0c510b36d2bcfde460c00d65196c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memItemLeft" align="right" valign="top"><a id="a2c9bbc80ff60480af1bbdf06cd3380a7"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a2c9bbc80ff60480af1bbdf06cd3380a7">putHero</a> (<a class="el" href="classHero.html">Hero</a> hero, int x, int y)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a2c9bbc80ff60480af1bbdf06cd3380a7">putHero</a> (<a class="el" href="classHero.html">Hero</a> <a class="el" href="classGame.html#a349ad267515138c672f12fa0e6961790">hero</a>, int x, int y)</td></tr>
 <tr class="memdesc:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that puts the <a class="el" href="classHero.html" title="Hero class.">Hero</a> on the map at the start of the game. <br /></td></tr>
 <tr class="separator:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fc59a7c9f21b26c9b6502217dc5aa5d"><td class="memItemLeft" align="right" valign="top"><a id="a5fc59a7c9f21b26c9b6502217dc5aa5d"></a>
@@ -120,22 +150,129 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a3876b1ca516ea549b57de515b25c6acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">! Another Constructor of the <a class="el" href="classGame.html" title="Game class.">Game</a> class, it sets all boolean member to false and read in the map from a file <br /></td></tr>
 <tr class="separator:a3876b1ca516ea549b57de515b25c6acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83e25f737717d7bb4ec95b22efc82d9"><td class="memItemLeft" align="right" valign="top"><a id="ab83e25f737717d7bb4ec95b22efc82d9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ab83e25f737717d7bb4ec95b22efc82d9">setMap</a> (<a class="el" href="classMap.html">Map</a> map)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ab83e25f737717d7bb4ec95b22efc82d9">setMap</a> (<a class="el" href="classMap.html">Map</a> <a class="el" href="classGame.html#ab910de42d0cf4238d9d20815de472523">map</a>)</td></tr>
 <tr class="memdesc:ab83e25f737717d7bb4ec95b22efc82d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that read in the map from the file and store it. <br /></td></tr>
 <tr class="separator:ab83e25f737717d7bb4ec95b22efc82d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e24297988e2ec0b252c87ca4f60f0c"><td class="memTemplParams" colspan="2"><a id="a28e24297988e2ec0b252c87ca4f60f0c"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a28e24297988e2ec0b252c87ca4f60f0c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>checked_delete</b> (T *x)</td></tr>
+<tr class="separator:a28e24297988e2ec0b252c87ca4f60f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memItemLeft" align="right" valign="top"><a id="a1ab78f5ed0d5ea879157357cf2fb2afa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
 <tr class="memdesc:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that starts after the map, hero and monsters initialized, and control the rest of the game. <br /></td></tr>
 <tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa9a4aef431e3ba7c7ad6fbbb2d3910ec"><td class="memItemLeft" align="right" valign="top"><a id="aa9a4aef431e3ba7c7ad6fbbb2d3910ec"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aa9a4aef431e3ba7c7ad6fbbb2d3910ec">TOP_LEFT</a> = &quot;\u2554&quot;</td></tr>
+<tr class="memdesc:aa9a4aef431e3ba7c7ad6fbbb2d3910ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:aa9a4aef431e3ba7c7ad6fbbb2d3910ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f6e4fa538441eb15740d70d5a30ada6"><td class="memItemLeft" align="right" valign="top"><a id="a1f6e4fa538441eb15740d70d5a30ada6"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1f6e4fa538441eb15740d70d5a30ada6">TOP_RIGHT</a> = &quot;\u2557&quot;</td></tr>
+<tr class="memdesc:a1f6e4fa538441eb15740d70d5a30ada6"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a1f6e4fa538441eb15740d70d5a30ada6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6465c8a03477f6ce1c62f1482812959"><td class="memItemLeft" align="right" valign="top"><a id="aa6465c8a03477f6ce1c62f1482812959"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aa6465c8a03477f6ce1c62f1482812959">VERTICAL</a> = &quot;\u2551&quot;</td></tr>
+<tr class="memdesc:aa6465c8a03477f6ce1c62f1482812959"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:aa6465c8a03477f6ce1c62f1482812959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ec293a654059106dae4fd60a0ceb0f5"><td class="memItemLeft" align="right" valign="top"><a id="a3ec293a654059106dae4fd60a0ceb0f5"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a3ec293a654059106dae4fd60a0ceb0f5">BOTTOM_LEFT</a> = &quot;\u255A&quot;</td></tr>
+<tr class="memdesc:a3ec293a654059106dae4fd60a0ceb0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a3ec293a654059106dae4fd60a0ceb0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea55dec019475981d024696cc7d5124"><td class="memItemLeft" align="right" valign="top"><a id="a3ea55dec019475981d024696cc7d5124"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a3ea55dec019475981d024696cc7d5124">BOTTOM_RIGHT</a> = &quot;\u255D&quot;</td></tr>
+<tr class="memdesc:a3ea55dec019475981d024696cc7d5124"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a3ea55dec019475981d024696cc7d5124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f065fae11a399cc9906a3beb29a90c"><td class="memItemLeft" align="right" valign="top"><a id="a30f065fae11a399cc9906a3beb29a90c"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a30f065fae11a399cc9906a3beb29a90c">HORIZONTAL</a> = &quot;\u2550\u2550&quot;</td></tr>
+<tr class="memdesc:a30f065fae11a399cc9906a3beb29a90c"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a30f065fae11a399cc9906a3beb29a90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6bea3929f8fc64ee543f003da77be60"><td class="memItemLeft" align="right" valign="top"><a id="af6bea3929f8fc64ee543f003da77be60"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#af6bea3929f8fc64ee543f003da77be60">FREE_FIELD</a> = &quot;\u2591\u2591&quot;</td></tr>
+<tr class="memdesc:af6bea3929f8fc64ee543f003da77be60"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:af6bea3929f8fc64ee543f003da77be60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779c96e15818d40127f00185260f4fe4"><td class="memItemLeft" align="right" valign="top"><a id="a779c96e15818d40127f00185260f4fe4"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a779c96e15818d40127f00185260f4fe4">WALL_FIELD</a> = &quot;\u2588\u2588&quot;</td></tr>
+<tr class="memdesc:a779c96e15818d40127f00185260f4fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a779c96e15818d40127f00185260f4fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e727b0a5b1c995a33f0b15890768110"><td class="memItemLeft" align="right" valign="top"><a id="a9e727b0a5b1c995a33f0b15890768110"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a9e727b0a5b1c995a33f0b15890768110">HERO</a> = &quot;\u2523\u252B&quot;</td></tr>
+<tr class="memdesc:a9e727b0a5b1c995a33f0b15890768110"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a9e727b0a5b1c995a33f0b15890768110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5cc77483b776ea581a3bf9861ba460"><td class="memItemLeft" align="right" valign="top"><a id="a0a5cc77483b776ea581a3bf9861ba460"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a0a5cc77483b776ea581a3bf9861ba460">MONSTERONE</a> = &quot;\u004D\u2591&quot;</td></tr>
+<tr class="memdesc:a0a5cc77483b776ea581a3bf9861ba460"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:a0a5cc77483b776ea581a3bf9861ba460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace08e3bec9f4179652c241b76a324a43"><td class="memItemLeft" align="right" valign="top"><a id="ace08e3bec9f4179652c241b76a324a43"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ace08e3bec9f4179652c241b76a324a43">MONSTERTWO</a> = &quot;\u004D\u004D&quot;</td></tr>
+<tr class="memdesc:ace08e3bec9f4179652c241b76a324a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">String value that stores a unicode character to print the map correctly. <br /></td></tr>
+<tr class="separator:ace08e3bec9f4179652c241b76a324a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e7e543cb75f76fd110dc7f834088274"><td class="memItemLeft" align="right" valign="top"><a id="a0e7e543cb75f76fd110dc7f834088274"></a>
+std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a0e7e543cb75f76fd110dc7f834088274">hero_location</a></td></tr>
+<tr class="memdesc:a0e7e543cb75f76fd110dc7f834088274"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class.">Hero</a> location on the map. <br /></td></tr>
+<tr class="separator:a0e7e543cb75f76fd110dc7f834088274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab910de42d0cf4238d9d20815de472523"><td class="memItemLeft" align="right" valign="top"><a id="ab910de42d0cf4238d9d20815de472523"></a>
+<a class="el" href="classMap.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ab910de42d0cf4238d9d20815de472523">map</a></td></tr>
+<tr class="memdesc:ab910de42d0cf4238d9d20815de472523"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMap.html" title="Map class.">Map</a> object. <br /></td></tr>
+<tr class="separator:ab910de42d0cf4238d9d20815de472523"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a349ad267515138c672f12fa0e6961790"><td class="memItemLeft" align="right" valign="top"><a id="a349ad267515138c672f12fa0e6961790"></a>
+<a class="el" href="classHero.html">Hero</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a349ad267515138c672f12fa0e6961790">hero</a></td></tr>
+<tr class="memdesc:a349ad267515138c672f12fa0e6961790"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class.">Hero</a> object. <br /></td></tr>
+<tr class="separator:a349ad267515138c672f12fa0e6961790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a31ae712e27347072b664c2c522f163a2"><td class="memItemLeft" align="right" valign="top"><a id="a31ae712e27347072b664c2c522f163a2"></a>
+std::list&lt; <a class="el" href="classRenderer.html">Renderer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>renderers</b></td></tr>
+<tr class="separator:a31ae712e27347072b664c2c522f163a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc3813b81e1417fce4e724e1885fca8"><td class="memItemLeft" align="right" valign="top"><a id="a1cc3813b81e1417fce4e724e1885fca8"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>wall</b></td></tr>
+<tr class="separator:a1cc3813b81e1417fce4e724e1885fca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a662cffe620a6e89bc0769ffec2effb73"><td class="memItemLeft" align="right" valign="top"><a id="a662cffe620a6e89bc0769ffec2effb73"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>freeplace</b></td></tr>
+<tr class="separator:a662cffe620a6e89bc0769ffec2effb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classGame.html" title="Game class.">Game</a> class. </p>
 <p>This is the <a class="el" href="classGame.html" title="Game class.">Game</a> Class that controls the game when you are running it.</p>
 <dl class="section author"><dt>Author</dt><dd>Mesics Mátyás, Kulcsár Bence, Lázár Tamás</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>4.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>5.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/12/03 10:49</dd></dl>
 <p>Created on 2020/12/03 10:49 </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a94aaf15d0a632f42de898399ea2f29b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94aaf15d0a632f42de898399ea2f29b1">&#9670;&nbsp;</a></span>checkForHero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::checkForHero </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Method that send the HERO string to the cout if the hero is on an exact spot. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the hero is there, and false if not </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Game_8h_source.html">Game.h</a></li>
 <li>Game.cpp</li>
 </ul>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['invaliddirection_58',['InvalidDirection',['../classGame_1_1InvalidDirection.html',1,'Game']]]
+  ['hero_77',['Hero',['../classHero.html',1,'']]],
+  ['herotextrenderer_78',['HeroTextRenderer',['../classHeroTextRenderer.html',1,'']]]
 ];
