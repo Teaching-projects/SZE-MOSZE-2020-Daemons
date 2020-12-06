@@ -13,11 +13,11 @@ void ObserverSVGRenderer::render(Game& gm) const{
     if(!std::filesystem::exists(heroSVG)){
         heroSVG = "not_found.svg";
     }
-    std::string wall_field_svg = "wall_field.svg";
+    std::string wall_field_svg = gm.GetWall();
     if(!std::filesystem::exists(wall_field_svg)){
         wall_field_svg = "not_found.svg";
     }
-    std::string free_field_svg = "free_field.svg";
+    std::string free_field_svg = gm.GetFree();
     if(!std::filesystem::exists(free_field_svg)){
         free_field_svg = "not_found.svg";
     }
