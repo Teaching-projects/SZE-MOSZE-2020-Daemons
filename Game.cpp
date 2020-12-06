@@ -128,6 +128,8 @@ PreparedGame::PreparedGame(std::string markedmap)
     JSON remakredmap = JSON::parseFromFile(markedmap);
     std::string mapfile = remakredmap.get<std::string>("map");
     std::string herof = remakredmap.get<std::string>("hero");
+    wall=remakredmap.get<std::string>("wall-texture");
+    freeplace=remakredmap.get<std::string>("free-texture");
     std::vector<std::string> monsters_of;
 
     int mc = 1;
@@ -156,4 +158,13 @@ PreparedGame::PreparedGame(std::string markedmap)
             putMonster(monsterone,it->second,it->first);
         }
     }
+
 }
+ std::string PreparedGame::GetWall() const
+ {
+     return wall;
+ }
+std::string PreparedGame::GetFree() const
+ {
+     return freeplace;
+ }

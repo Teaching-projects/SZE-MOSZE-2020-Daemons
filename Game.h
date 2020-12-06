@@ -19,7 +19,7 @@ class Renderer;
  *
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
  *
- * \version 4.0
+ * \version 5.0
  *
  * \date 2020/12/03 10:49
  *
@@ -58,7 +58,8 @@ public:
     */
 
     bool checkForHero(int x,int y);
-
+    virtual std::string GetWall();
+    virtual std::string GetFree();
 
     class OccupiedException : virtual public std::runtime_error{
         public:
@@ -140,7 +141,7 @@ public:
  *
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
  *
- * \version 4.0
+ * \version 5.0
  *
  * \date 2020/12/03 10:49
  *
@@ -148,9 +149,14 @@ public:
  */
 class PreparedGame : public Game
 {
+    private:
+    std::string wall;
+    std::string freeplace;
     public:
         //! Constructor for PreparedGame class
         PreparedGame(std::string markedmap);
         using Game::run;
         void registerRenderer(Renderer* r);
+        std::string GetWall() const;  
+        std::string GetFree() const;
 };
