@@ -157,6 +157,6 @@ class PreparedGame : public Game
         PreparedGame(std::string markedmap);
         using Game::run;
         void registerRenderer(Renderer* r);
-        std::string GetWall() const;  
-        std::string GetFree() const;
+        std::string GetWall() override ;  
+        std::string GetFree() override ;
 };

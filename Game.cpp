@@ -160,11 +160,11 @@ PreparedGame::PreparedGame(std::string markedmap)
     }
 
 }
- std::string PreparedGame::GetWall() const
+ std::string PreparedGame::GetWall() 
  {
      return wall;
  }
-std::string PreparedGame::GetFree() const
+std::string PreparedGame::GetFree() 
  {
      return freeplace;
  }
