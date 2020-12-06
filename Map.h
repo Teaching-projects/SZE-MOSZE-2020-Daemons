@@ -15,7 +15,7 @@
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
  * 
- * \version 4.0
+ * \version 5.0
  * 
  * \date 2020/12/03 11:30
  * 

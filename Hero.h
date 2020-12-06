@@ -14,7 +14,7 @@ class Monster;
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
  * 
- * \version 4.0
+ * \version 5.0
  * 
  * \date 2020/12/03 10:46
  * 
@@ -41,6 +41,7 @@ class Hero
 	    unsigned int level;///< the level of the Hero
         unsigned int light_radius;///< How many land the hero sees of the map
         unsigned int light_radius_bonus_per_level;///<How many bonus bonus light radius the Hero has per levelup
+        std::string svg_file;
         
     public:
         //! Constructor of the Hero Class it set all the member the Hero has
@@ -57,7 +58,8 @@ class Hero
         Damage dmg,
         const unsigned int& magic_damage_bonus,
         const unsigned int& light_radius,
-        const unsigned int& light_radius_bonus_per_level
+        const unsigned int& light_radius_bonus_per_level,
+        std::string svg_file
         )
         : hp(h),
         name(n),
@@ -71,7 +73,8 @@ class Hero
         damage(dmg) ,
         magical_damage_bonus_per_level(magic_damage_bonus),
         light_radius(light_radius),
-        light_radius_bonus_per_level(light_radius_bonus_per_level)
+        light_radius_bonus_per_level(light_radius_bonus_per_level),
+        svg_file(svg_file)
         {
         maxHP=h;
         xp=0; 
@@ -149,6 +152,7 @@ class Hero
         /*!
         \return damage struct
         */
+        std::string getHeroSVG() const;
         Damage getDamage() const { return damage; }
         ///!Simple Getter for light radiuss
         /*!

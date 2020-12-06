@@ -76,3 +76,8 @@ const JSON JSON::parseJSON(const std::string& data){
 const int JSON::count(const std::string& input){
   return ((data_map.find(input) != data_map.end()) ? 1 : 0);
 }
+
+
+
+
+

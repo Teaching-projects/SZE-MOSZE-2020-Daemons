@@ -13,7 +13,7 @@ class Hero;
  * 
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás
  * 
- * \version 4.0
+ * \version 5.0
  * 
  * \date 2020/12/03 10:25
  * 
@@ -31,9 +31,10 @@ class Monster
         const double atkcooldown; ///<The atkcooldown of the Monster, which is a number, represents how many second between to attacks.
         int defense;///< The defense of the Monster it lowers the physical attack of the hero when it attack it
         Damage damage;///< Struct that contains the physical attack damage, and magic attack damage of the Monster
+        std::string svg;
     public:
         //! Constructor for the Monster, it set all the member of the Monster
-        Monster(const int& h, const std::string& n, const double& a,const int& def,Damage dmg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg){}
+        Monster(const int& h, const std::string& n, const double& a,const int& def,Damage dmg,std::string svg) : hp(h),name(n),atkcooldown(a),defense(def),damage(dmg),svg(svg){}
         //!Method that parse Monster Json files and return the generated Monster Object with the parsed data
         /*!
         \return  Monster Object with the parsed data
@@ -80,5 +81,7 @@ class Monster
         \return const integer defense value
         */
         int getDefense() const;
+
+        std::string getSVG() const; 
         
 };

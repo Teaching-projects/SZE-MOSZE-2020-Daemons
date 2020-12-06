@@ -2,6 +2,7 @@
 #include "Hero.h"
 #include "JSON.h"
 #include <map>
+#include <filesystem>
 
 Monster Monster::parse(const std::string& data){
 	JSON returnedMap = JSON::parseFromFile(data);
@@ -15,11 +16,19 @@ Monster Monster::parse(const std::string& data){
 	returnedMap.get<std::string>("name"),
 	returnedMap.get<double>("attack_cooldown"),
 	returnedMap.get<int>("defense"),
-	damage
+	damage,
+	returnedMap.get<std::string>("texture")
 	);
 
 }
-
+std::string Monster::getSVG() const
+{
+	std::string toReturn = svg;
+	if(!std::filesystem::exists(toReturn)){
+		toReturn = "textures/not_found.svg";
+	}
+	return toReturn;
+}
 
 void Monster::takeDamage(Hero& enemy)
 {

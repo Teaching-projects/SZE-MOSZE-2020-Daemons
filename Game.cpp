@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Map.h"
+#include <filesystem>
 
 void Game::setMap(Map map)
 {
@@ -9,7 +10,7 @@ void Game::setMap(Map map)
         mapset = true;
     }
     else Game::MapAlreadySet("Map already set!");
-    
+
 }
 void Game::putHero(Hero hero,int x,int y)
 {
@@ -49,11 +50,12 @@ void Game::stepOn(int x, int y)
 }
 void Game::run()
 {
-    
+
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
-    mapPrinter();
-    Game::mapPrinter();
+    for(auto &&renderer: renderers){
+        renderer->render(*this);
+    }
     Game::stepOn(hero_location.first,hero_location.second);
     while(hero->isAlive() && !monster_locations.empty())
     {
@@ -78,7 +80,9 @@ void Game::run()
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
 
-        mapPrinterWithLightRadius();
+        for(auto &&renderer: renderers){
+            renderer->render(*this);
+    }
 
     }
     if(hero->isAlive())
@@ -89,7 +93,7 @@ void Game::run()
 
 
 }
-unsigned int Game::checkForMonsters(int x,int y) const
+unsigned int Game::checkForMonsters(int x,int y)
 {
     int i = 0;
     for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
@@ -97,125 +101,42 @@ unsigned int Game::checkForMonsters(int x,int y) const
 
     return i;
 }
-bool Game::checkForHero(int x,int y) const
+std::string Game::getMonsterSVG(std::pair<int,int> loc) const
+{
+    for(auto iter = monster_locations.begin();iter != monster_locations.end();iter++)
+        if(iter->second.first == loc.first && iter->second.second == loc.second)
+            return iter->first.getSVG();
+    return "";
+}
+bool Game::checkForHero(int x,int y)
 {
     if((x == hero_location.first && y == hero_location.second && this->hero != nullptr))
     {
-        std::cout << HERO;
         return true;
     }
     return false;
 }
-
-void Game::mapPrinterWithLightRadius()
-{
-    int maxwidth = 0;             
-    int maxheight=map.getHeight();                                     
-    int hero_x=hero_location.first;
-    int hero_y=hero_location.second; 
-    int print_x_min=hero_x-hero->getLightRadius();
-    int print_x_max=hero_x+hero->getLightRadius();
-    int print_y_min=hero_y-hero->getLightRadius();
-    int print_y_max=hero_y+hero->getLightRadius();
-    int width;
-    for(int i = 0;i < map.getHeight();i++)
-        if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
-    if(print_x_min<0)
-    {
-        print_x_min=0;
-        width=hero_x+hero->getLightRadius()+1;
-    }
-    else
-    {
-        width=print_x_max-print_x_min+1;
-    }
-    if(print_x_max>maxwidth) print_x_max=maxwidth;
-    if(print_y_min<0)
-    {
-        print_y_min=0;
-    }
-    if(print_y_max>maxheight) print_y_max=maxheight;
-    std::cout << TOP_LEFT;
-    int w = 0;
-    while(w < width && w  <= map.getRowWidth(0))
-    {
-        std::cout << HORIZONTAL;
-        w++;
-    }
-    
-    std::cout << TOP_RIGHT << "\n";
+std::string Game::GetWall() 
+ {
+     return wall;
+ }
+std::string Game::GetFree() 
+ {
+     return freeplace;
+ }
 
 
-    int i=print_y_min; 
-    while(i <= print_y_max && i < map.getHeight())
-    {
-        std::cout << VERTICAL;
-        int j=print_x_min;
-        while(j <= print_x_max && j < map.getRowWidth(i))
-        {
-            if (checkForHero(j,i));
-            else if(checkForMonsters(j,i) == 1) std::cout << MONSTERONE;
-            else if(checkForMonsters(j,i) >= 2) std::cout << MONSTERTWO;
-            else if (map.get(j,i) == Map::Free) std::cout << FREE_FIELD;
-            else std::cout << WALL_FIELD;
-            j++;
-        }
-        for(int m = map.getRowWidth(i);m<=print_x_max;m++)
-            std::cout << WALL_FIELD;
-        std::cout << VERTICAL << "\n";
-        i++;
-    }
-
-    std::cout << BOTTOM_LEFT;
-    
-    for(int i = 0;i<w;i++)
-        std::cout << HORIZONTAL;
-    
-    std::cout << BOTTOM_RIGHT << "\n";
-
+void PreparedGame::registerRenderer(Renderer* r){
+    this->renderers.push_back(r);
 }
-void Game::mapPrinter()
-{
-    int maxwidth = 0;
-    for(int i = 0;i < map.getHeight();i++)
-        if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
 
-
-    std::cout << TOP_LEFT;
-    for(int i = 0;i < maxwidth;i++)
-        std::cout << HORIZONTAL;
-    
-    std::cout << TOP_RIGHT << "\n";
-
-    for(int y = 0;y < map.getHeight();y++)
-    {
-        std::cout << VERTICAL;
-        for(int x = 0;x < map.getRowWidth(y);x++)
-        {
-            if (checkForHero(x,y));
-            else if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
-            else if(checkForMonsters(x,y) >= 2) std::cout << MONSTERTWO;
-            else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
-            else std::cout << WALL_FIELD;
-        }
-        for(int i = 0;i<=(maxwidth - map.getRowWidth(y)-1);i++)
-            std::cout << WALL_FIELD;
-        std::cout << VERTICAL << "\n";
-    }
-    std::cout << BOTTOM_LEFT;
-    for(int i = 0;i < maxwidth;i++)
-        std::cout << HORIZONTAL;
-    
-    std::cout << BOTTOM_RIGHT << "\n";
-
-
-
-}
 PreparedGame::PreparedGame(std::string markedmap)
 {
     JSON remakredmap = JSON::parseFromFile(markedmap);
     std::string mapfile = remakredmap.get<std::string>("map");
     std::string herof = remakredmap.get<std::string>("hero");
+    wall=remakredmap.get<std::string>("wall-texture");
+    freeplace=remakredmap.get<std::string>("free-texture");
     std::vector<std::string> monsters_of;
 
     int mc = 1;
@@ -244,4 +165,6 @@ PreparedGame::PreparedGame(std::string markedmap)
             putMonster(monsterone,it->second,it->first);
         }
     }
+
 }
+ 
