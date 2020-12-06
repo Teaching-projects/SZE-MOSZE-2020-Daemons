@@ -32,19 +32,19 @@ Map.o: Map.cpp Map.h
 	$(RUN) $(CFLAGS) -c Map.cpp
 Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
 	$(RUN) $(CFLAGS) -c Game.cpp
-ObserverSVGRenderer.o: ObserverSVGRenderer.h Renderer.h
+ObserverSVGRenderer.o: ObserverSVGRenderer.h Renderer.h Game.h Monster.h Hero.h Map.h SVGRenderer.h
 	$(RUN) $(CFLAGS) -c ObserverSVGRenderer.cpp
 
-ObserverTextRenderer.o: ObserverTextRenderer.h Renderer.h
+ObserverTextRenderer.o: ObserverTextRenderer.h Renderer.h Game.h Monster.h Hero.h Map.h TextRenderer.h
 	$(RUN) $(CFLAGS) -c ObserverTextRenderer.cpp
 
-TextRenderer.o: TextRenderer.h Renderer.h
+TextRenderer.o: TextRenderer.h Renderer.h Game.h Monster.h Hero.h Map.h
 	$(RUN) $(CFLAGS) -c TextRenderer.cpp
 
-HeroTextRenderer.o: HeroTextRenderer.h Renderer.h
+HeroTextRenderer.o: HeroTextRenderer.h Renderer.h Game.h Monster.h Hero.h Map.h TextRenderer.h
 	$(RUN) $(CFLAGS) -c HeroTextRenderer.cpp
 
-CharacterSVGRenderer.o: CharacterSVGRenderer.h Renderer.h
+CharacterSVGRenderer.o: CharacterSVGRenderer.h Renderer.h Game.h Monster.h Hero.h Map.h SVGRenderer.h
 	$(RUN) $(CFLAGS) -c CharacterSVGRenderer.cpp
 
 
