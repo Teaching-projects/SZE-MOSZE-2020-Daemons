@@ -97,6 +97,7 @@ public:
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace("") {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
+    void mapPrinter();
 
     template<class T> inline void checked_delete(T * x)
     {
@@ -117,6 +118,7 @@ private:
     bool mapset;///<The map was set or not
     bool game_running;///<The game is running or not
     bool heroset;///<The hero was set or not
+    bool oldmode;/// The user called with preparedgame, or a scenario 1 if scenario, 0 if prepared
     //!Method that move the hero, and if he is stepping on a Monster, they fight till death
     void stepOn(int x,int y);
     protected:
@@ -125,7 +127,8 @@ private:
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
     void run();
-
+    //!Simple Setter for oldmode variable
+    void SetOldMode(bool b);
 };
 
 
