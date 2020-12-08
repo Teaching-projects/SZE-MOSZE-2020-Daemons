@@ -41,7 +41,7 @@ class Hero
 	    unsigned int level;///< the level of the Hero
         unsigned int light_radius;///< How many land the hero sees of the map
         unsigned int light_radius_bonus_per_level;///<How many bonus bonus light radius the Hero has per levelup
-        std::string svg_file;
+        std::string svg_file;///< SVG file name for Hero SVG print
         
     public:
         //! Constructor of the Hero Class it set all the member the Hero has
@@ -152,13 +152,17 @@ class Hero
         /*!
         \return damage struct
         */
-        std::string getHeroSVG() const;
         Damage getDamage() const { return damage; }
         ///!Simple Getter for light radiuss
         /*!
         \return light radius
         */
         int getLightRadius() const;
+        ///!Simple Getter for Hero SVG file
+        /*!
+        \return hero svg file name in string
+        */
+        std::string getHeroSVG() const;
         
         
 

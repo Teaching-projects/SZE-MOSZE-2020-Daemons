@@ -83,7 +83,11 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
-        Game::mapPrinter();
+        if(oldmode)
+        {
+            mapPrinter();
+        }
+        
         for(auto &&renderer: renderers){
             renderer->render(*this);
     }
@@ -186,7 +190,7 @@ PreparedGame::PreparedGame(std::string markedmap)
     wall=remakredmap.get<std::string>("wall-texture");
     freeplace=remakredmap.get<std::string>("free-texture");
     std::vector<std::string> monsters_of;
-
+    oldmode=false;
     int mc = 1;
     while(true)
     {
