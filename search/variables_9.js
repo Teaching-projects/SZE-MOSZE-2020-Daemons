@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vectormap_148',['vectormap',['../classMap.html#a448885e6afbca49a867b3cacba90fe45',1,'Map']]],
-  ['vertical_149',['VERTICAL',['../classGame.html#aa6465c8a03477f6ce1c62f1482812959',1,'Game']]]
+  ['top_5fleft_164',['TOP_LEFT',['../classGame.html#aa9a4aef431e3ba7c7ad6fbbb2d3910ec',1,'Game']]],
+  ['top_5fright_165',['TOP_RIGHT',['../classGame.html#a1f6e4fa538441eb15740d70d5a30ada6',1,'Game']]]
 ];
