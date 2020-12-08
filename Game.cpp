@@ -53,10 +53,6 @@ void Game::run()
 
     if(game_running && mapset && heroset) Game::GameAlreadyStartedException("Game is alredy running !\n");
     game_running = true;
-    if(oldmode)
-    {
-        mapPrinter();
-    }
     for(auto &&renderer: renderers){
         renderer->render(*this);
     }
@@ -83,10 +79,6 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
-        if(oldmode)
-        {
-            mapPrinter();
-        }
         
         for(auto &&renderer: renderers){
             renderer->render(*this);
@@ -120,10 +112,6 @@ bool Game::checkForHero(int x,int y)
 {
     if((x == hero_location.first && y == hero_location.second && this->hero != nullptr))
     {
-        if(oldmode)
-        {
-        std::cout << HERO;
-        }
         return true;
     }
     return false;
@@ -138,7 +126,7 @@ std::string Game::GetFree()
  }
 
 
-void PreparedGame::registerRenderer(Renderer* r){
+void Game::registerRenderer(Renderer* r){
     this->renderers.push_back(r);
 }
 void Game::mapPrinter()
@@ -178,10 +166,8 @@ void Game::mapPrinter()
 
 
 }
-void Game::SetOldMode(bool b)
-{
-    oldmode=b;
-}
+
+
 PreparedGame::PreparedGame(std::string markedmap)
 {
     JSON remakredmap = JSON::parseFromFile(markedmap);
@@ -190,7 +176,6 @@ PreparedGame::PreparedGame(std::string markedmap)
     wall=remakredmap.get<std::string>("wall-texture");
     freeplace=remakredmap.get<std::string>("free-texture");
     std::vector<std::string> monsters_of;
-    oldmode=false;
     int mc = 1;
     while(true)
     {

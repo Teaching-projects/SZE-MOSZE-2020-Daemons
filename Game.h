@@ -88,9 +88,9 @@ public:
     //!Method that puts Monsters on the map at the start of the game
     void putMonster(Monster monster,int x, int y);
     ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map
-    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""),oldmode(false){};
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""){};
     ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""),oldmode(false) {};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace("") {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
     //!Method that print the entire map for the old mode
@@ -121,12 +121,11 @@ private:
     protected:
     std::string wall; //!Wall SVG file location
     std::string freeplace;//! Free SVG file location
-    bool oldmode;/// The user called with preparedgame, or a scenario 1 if scenario, 0 if prepared
+    
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
     void run();
-    //!Simple Setter for oldmode variable
-    void SetOldMode(bool b);
+    void registerRenderer(Renderer* r);
 };
 
 
@@ -154,7 +153,6 @@ class PreparedGame : public Game
         PreparedGame(std::string markedmap);
         //!The class using the base class run method
         using Game::run;
-        void registerRenderer(Renderer* r);
         //!virtual destrcutor for PreparedGame class
         virtual ~PreparedGame()
         {

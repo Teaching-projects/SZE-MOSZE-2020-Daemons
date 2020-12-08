@@ -50,10 +50,10 @@ int main(int argc, char** argv){
             for(auto monster_file : monster_file_list)
                 monster_files.push_back(std::get<std::string>(monster_file));
             Hero hero{Hero::parse(hero_file)};
-        std::list<Monster> monsters;
-        for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));
-      
+             std::list<Monster> monsters;
+            for (const auto& monster_file : monster_files)
+                monsters.push_back(Monster::parse(monster_file));
+        
         std::cout << "Give a path to the map file !\n";
         std::string mapfile;
         std::getline(std::cin,mapfile);
@@ -81,7 +81,7 @@ int main(int argc, char** argv){
         int xc = std::stoi(x);
         int yc = std::stoi(y);
         game.putHero(hero,xc,yc);
-        game.SetOldMode(true);
+        game.registerRenderer(new HeroTextRenderer());
         game.run();
         }
     else if(scenario.count("monster-1")&& scenario.count("hero")&&scenario.count("map")&&scenario.count("wall-texture"))
@@ -96,7 +96,6 @@ int main(int argc, char** argv){
         game.registerRenderer(new ObserverTextRenderer(stream));
         game.registerRenderer(new CharacterSVGRenderer(svgrend));
         game.registerRenderer(new ObserverSVGRenderer(svgrend2));
-        game.SetOldMode(false);
         game.run();
         }
      catch (const JSON::ParseException& e) {bad_exit(4);}
