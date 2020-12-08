@@ -64,7 +64,7 @@ TEST(all_unitsTest,no_throw_fromUnitparser)
     EXPECT_NO_THROW(Monster::parse("../Fallen.json"));
     EXPECT_NO_THROW(Monster::parse("../Zombie.json"));
 }
-TEST(all_unitsTest,Monster_wins)
+TEST(all_unitsTest,Not_Monster_wins)
 {
     Hero hero{Hero::parse("../Dark_Wanderer.json")};
     Monster monster{Monster::parse("../Zombie.json")};
