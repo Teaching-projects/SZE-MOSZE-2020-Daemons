@@ -79,7 +79,7 @@ void Game::run()
             Game::stepOn(hero_location.first,hero_location.second-1);
         }
         else throw Game::InvalidDirection("Input contains invalid heading !\n");
-
+        
         for(auto &&renderer: renderers){
             renderer->render(*this);
     }
@@ -126,9 +126,47 @@ std::string Game::GetFree()
  }
 
 
-void PreparedGame::registerRenderer(Renderer* r){
+void Game::registerRenderer(Renderer* r){
     this->renderers.push_back(r);
 }
+void Game::mapPrinter()
+{
+    int maxwidth = 0;
+    for(int i = 0;i < map.getHeight();i++)
+        if(maxwidth < map.getRowWidth(i)) maxwidth = map.getRowWidth(i);
+
+
+    std::cout << TOP_LEFT;
+    for(int i = 0;i < maxwidth;i++)
+        std::cout << HORIZONTAL;
+    
+    std::cout << TOP_RIGHT << "\n";
+
+    for(int y = 0;y < map.getHeight();y++)
+    {
+        std::cout << VERTICAL;
+        for(int x = 0;x < map.getRowWidth(y);x++)
+        {
+            if (checkForHero(x,y));
+            else if(checkForMonsters(x,y) == 1) std::cout << MONSTERONE;
+            else if(checkForMonsters(x,y) >= 2) std::cout << MONSTERTWO;
+            else if (map.get(x,y) == Map::Free) std::cout << FREE_FIELD;
+            else std::cout << WALL_FIELD;
+        }
+        for(int i = 0;i<(maxwidth - map.getRowWidth(y));i++)
+            std::cout << WALL_FIELD;
+        std::cout << VERTICAL << "\n";
+    }
+    std::cout << BOTTOM_LEFT;
+    for(int i = 0;i < maxwidth;i++)
+        std::cout << HORIZONTAL;
+    
+    std::cout << BOTTOM_RIGHT << "\n";
+
+
+
+}
+
 
 PreparedGame::PreparedGame(std::string markedmap)
 {
@@ -138,7 +176,6 @@ PreparedGame::PreparedGame(std::string markedmap)
     wall=remakredmap.get<std::string>("wall-texture");
     freeplace=remakredmap.get<std::string>("free-texture");
     std::vector<std::string> monsters_of;
-
     int mc = 1;
     while(true)
     {

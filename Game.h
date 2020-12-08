@@ -46,16 +46,12 @@ public:
 	const std::string HERO = "\u2523\u252B";///<String value that stores a unicode character to print the map correctly
 	const std::string MONSTERONE = "\u004D\u2591";///<String value that stores a unicode character to print the map correctly
     const std::string MONSTERTWO = "\u004D\u004D";///<String value that stores a unicode character to print the map correctly
-    bool checkForHeroSVG(int x, int y);
     std::string getMonsterSVG(std::pair<int,int> loc) const;
     std::pair<int,int> hero_location;///< Hero location on the map
     Map map;///<Map object
     Hero *hero;///<Hero object
+    //! Method for check a specific type of Monsters
     unsigned int checkForMonsters(int x,int y);
-    //! Method that send the HERO string to the cout if the hero is on an exact spot
-    /*!
-    \return  true if the hero is there, and false if not
-    */
 
     bool checkForHero(int x,int y);
     std::string GetWall();
@@ -97,14 +93,16 @@ public:
     explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace("") {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
-
+    //!Method that print the entire map for the old mode
+    void mapPrinter();
+    //Template for delete everything that needs to be deleted
     template<class T> inline void checked_delete(T * x)
     {
         typedef char type_must_be_complete[ sizeof(T)? 1: -1 ];
         (void) sizeof(type_must_be_complete);
         delete x;
     }
-
+    //!Virtual destructor for Game class
     virtual ~Game()
     {
         delete this->hero;
@@ -117,15 +115,17 @@ private:
     bool mapset;///<The map was set or not
     bool game_running;///<The game is running or not
     bool heroset;///<The hero was set or not
+   
     //!Method that move the hero, and if he is stepping on a Monster, they fight till death
     void stepOn(int x,int y);
     protected:
-    std::string wall;
-    std::string freeplace;
+    std::string wall; //!Wall SVG file location
+    std::string freeplace;//! Free SVG file location
+    
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
     void run();
-
+    void registerRenderer(Renderer* r);
 };
 
 
@@ -151,8 +151,9 @@ class PreparedGame : public Game
     public:
         //! Constructor for PreparedGame class
         PreparedGame(std::string markedmap);
+        //!The class using the base class run method
         using Game::run;
-        void registerRenderer(Renderer* r);
+        //!virtual destrcutor for PreparedGame class
         virtual ~PreparedGame()
         {
 

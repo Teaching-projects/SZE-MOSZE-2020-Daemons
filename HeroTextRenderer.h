@@ -9,7 +9,7 @@
  *
  * \brief HeroTextRenderer class
  *
- *
+ * This class uses the print out with light radius around hero method
  *
  *
  * \author  Mesics Mátyás, Kulcsár Bence, Lázár Tamás

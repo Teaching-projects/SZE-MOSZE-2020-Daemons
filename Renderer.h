@@ -20,6 +20,8 @@ class Game;
 
 class Renderer{
     public:
+        //!virtual method for class render
         virtual void render(Game& gm) const = 0;
+        //!Virtual destructor for class Renderer
         virtual ~Renderer(){};
 };

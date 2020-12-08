@@ -41,8 +41,53 @@ void bad_exit(int exitcode){
 int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
-
-    try {
+    JSON scenario = JSON::parseFromFile(argv[1]);
+    std::string hero_file;
+    std::list<std::string> monster_files;
+    if (scenario.count("hero")&&scenario.count("monsters")) {
+            hero_file=scenario.get<std::string>("hero");
+            JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+            for(auto monster_file : monster_file_list)
+                monster_files.push_back(std::get<std::string>(monster_file));
+            Hero hero{Hero::parse(hero_file)};
+             std::list<Monster> monsters;
+            for (const auto& monster_file : monster_files)
+                monsters.push_back(Monster::parse(monster_file));
+        
+        std::cout << "Give a path to the map file !\n";
+        std::string mapfile;
+        std::getline(std::cin,mapfile);
+        Map map(mapfile);
+        Game game{};
+        game.setMap(map);
+        for(const auto& iter : monsters)
+        {
+            game.mapPrinter();
+            std::cout << "Give a location for the " << iter.getName() << " monster(Like: 3 5): \n";
+            std::string xy,x,y;
+            std::getline(std::cin,xy);
+            x = xy.at(0);
+            y = xy.at(2);
+            int xc = std::stoi(x);
+            int yc = std::stoi(y);
+            game.putMonster(iter,xc,yc);
+        }
+        game.mapPrinter();
+        std::cout << "Give a location for the " << hero.getName() << " Hero (Like: 3 5): \n";
+        std::string xy,x,y;
+        std::getline(std::cin,xy);
+        x = xy.at(0);
+        y = xy.at(2);
+        int xc = std::stoi(x);
+        int yc = std::stoi(y);
+        game.putHero(hero,xc,yc);
+        game.registerRenderer(new HeroTextRenderer());
+        game.run();
+        }
+    else if(scenario.count("monster-1")&& scenario.count("hero")&&scenario.count("map")&&scenario.count("wall-texture"))
+    {
+        try
+        {
         PreparedGame game(argv[1]);
         std::ofstream stream = std::ofstream("log.txt");
         std::string svgrend = "pretty.svg";
@@ -52,14 +97,15 @@ int main(int argc, char** argv){
         game.registerRenderer(new CharacterSVGRenderer(svgrend));
         game.registerRenderer(new ObserverSVGRenderer(svgrend2));
         game.run();
-
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+        }
+     catch (const JSON::ParseException& e) {bad_exit(4);}
     catch(const Game::OccupiedException& e) {bad_exit(5);}
     catch(const Game::AlreadyHasHeroException& e) {bad_exit(6);}
     catch(const Game::AlreadyHasUnitsException& e) {bad_exit(7);}
     catch(const Game::GameAlreadyStartedException& e) {bad_exit(8);}
     catch(const Game::InvalidDirection& e) {bad_exit(9);}
     catch(const Game::MapAlreadySet& e) {bad_exit(10);}
+    }
 
     return 0;
 }
