@@ -116,6 +116,10 @@ bool Game::checkForHero(int x,int y)
 {
     if((x == hero_location.first && y == hero_location.second && this->hero != nullptr))
     {
+        if(oldmode)
+        {
+        std::cout << HERO;
+        }
         return true;
     }
     return false;

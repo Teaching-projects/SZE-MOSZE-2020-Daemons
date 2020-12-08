@@ -118,12 +118,13 @@ private:
     bool mapset;///<The map was set or not
     bool game_running;///<The game is running or not
     bool heroset;///<The hero was set or not
-    bool oldmode;/// The user called with preparedgame, or a scenario 1 if scenario, 0 if prepared
+   
     //!Method that move the hero, and if he is stepping on a Monster, they fight till death
     void stepOn(int x,int y);
     protected:
     std::string wall;
     std::string freeplace;
+    bool oldmode;/// The user called with preparedgame, or a scenario 1 if scenario, 0 if prepared
 public:
     //! Method that starts after the map, hero and monsters initialized, and control the rest of the game.
     void run();
