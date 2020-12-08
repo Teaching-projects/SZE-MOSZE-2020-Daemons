@@ -92,9 +92,9 @@ public:
     //!Method that puts Monsters on the map at the start of the game
     void putMonster(Monster monster,int x, int y);
     ///! Constructor of the Game class it sets all boolean member to false, and create an object of Map
-    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""){};
+    Game() : map(Map()),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""),oldmode(false){};
     ///! Another Constructor of the Game class, it sets all boolean member to false and read in the map from a file
-    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace("") {};
+    explicit Game(std::string &mapfilename) : map(mapfilename),hero{nullptr},mapset(false),game_running(false),heroset(false),wall(""),freeplace(""),oldmode(false) {};
     //!Method that read in the map from the file and store it
     void setMap(Map map);
     void mapPrinter();
