@@ -1,6 +1,6 @@
 # Tagok
 
-| Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
+| Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  |
 | --- | ---- | --- | ------------------ | --------- |
 | Kulcsár Bence | @kulcsarbence | 0 | 30-40 |  |
 | Mesics Mátyás | @mesmatyi | 0 | 30-40 |  |
@@ -14,9 +14,9 @@
 
 # Befejezett feladatok
 
-| Feladat | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer | 
+| Feladat | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer |
 | ------- | ------------------------------- | -------------------- | -------- |
-| Feladat 1 | +2 | 3 | @hegyhati | 
+| Feladat 1 | +2 | 3 | @hegyhati |
 | Feladat 2 | 0 | 1 | @hegyhati |
 | jsonparser | +2 | 1 | @wajzy |
 | levelup | -2 | 1 | @oliverosz |
@@ -34,13 +34,13 @@
 | markedmap | Merge: 12.01 | 1 | @Vodor / @petinexus |
 | preparedgame | Merge: 12.03| 1 | @Vodor/@rolandborbely
 | light radius | Merge: 12.02 | 1 | @Vodor / @rolandborbely |
-| rendering | Merge: 12.06 | 2 | @otherteam / @petinexus, @rolandborbely |
+| rendering | Merge: 12.06 | 2 | @Vodor / @petinexus, @rolandborbely |
 
 # Unit tesztek
 
 | Osztály | Publikus metódusok száma | Unit tesztelt metódusok száma | Unit tesztek száma |
 | --- | --- | --- | --- |
-| `Hero` | 18 | 12 | 19 | 
+| `Hero` | 18 | 12 | 19 |
 | `Monster` | 10 | 7 | 9 |
 | `Map` | 3 | 2 | 8 |
 | `Markedmap` | 2 | 0 | 1|
@@ -61,29 +61,29 @@
 | --- | --- | --- |  
 | `Hero` |  -|  -  |  
 | `Monster` | - | - |  
-| `Game` | - | - | 
-| `JSON` | - | - | 
-| `Map` | - |- | 
-| `MarkedMap` | - | - | 
-| `HeroTextRenderer`| - | - | 
-| `ObserverSVGRenderer`| - |  - | 
-| `ObserverTextRenderer`| - | - | 
-| `Renderer`| - | - | 
-| `SVGRenderer`| - | - | 
-| `TextRenderer`| - | - | 
+| `Game` | - | - |
+| `JSON` | - | - |
+| `Map` | - |- |
+| `MarkedMap` | - | - |
+| `HeroTextRenderer`| - | - |
+| `ObserverSVGRenderer`| - |  - |
+| `ObserverTextRenderer`| - | - |
+| `Renderer`| - | - |
+| `SVGRenderer`| - | - |
+| `TextRenderer`| - | - |
 | ... |
 
 
 # Mindenféle számok
 
- - Összes cpp kódsor  : 793 
+ - Összes cpp kódsor  : 793
  - Egyéb kódsor (make,doxyfile,shellscript, -) :
  - cppcheck
    - warning :
    - style :
    - performance :
-   - unusedFunction : 
-   - missingInclude : 
+   - unusedFunction :
+   - missingInclude :
 
 # Implicit megtanult dolgok
 Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
@@ -94,11 +94,11 @@ Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
 
 # Feedback (optional)
 
-Melyik részt találtátok a leghasznosabbnak, miért. Használtátok-e az itt megszerzett dolgokat esetleg közben máskor. Volt-e olyan, amit hiányoltatok a tárgyból. Utólag visszagondolva is jó volt-e az online videósdi?
-
-Ha szívesebben írnátok meg anoním módon, OHV-nál várom.
+@kulcsarbence Nagyon hasznosnak találtam, főleg a dockeres és a unit tesztelős részt, ugyanis ezeket a dolgokat mostanában kezdtem el használni is a munkámban,:
+fontos technológiáknak tartom őket.
 
 # Üzenet a jövőbe (optional)
 
 Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?:
 @Lazar-source Nekem személyesen egy összkép hiányzott arról hogy pontosan mikkel is fogunk majd dolgozni a tárgy során. Akár csak felsorolás szerűen: makefile,docker,doxconf,unittest jó lett volna egybe látni már a legelején.
+@kulcsarbence Szerintem mindent kimerítő volt a tárgy, de amit @Lazar-source írt, azzal egyetértek.
