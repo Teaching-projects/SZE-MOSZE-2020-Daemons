@@ -2,9 +2,9 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  |
 | --- | ---- | --- | ------------------ | --------- |
-| Kulcsár Bence | @kulcsarbence | 0 | 30-40 |  |
-| Mesics Mátyás | @mesmatyi | 0 | 30-40 |  |
-| Lázár Tamás | @Lazar-source | 0 | 30-40 |  |
+| Kulcsár Bence | @kulcsarbence | 0 | 35-45 | könnyű volt eggyütt működni,szépen dolgozott |
+| Mesics Mátyás | @mesmatyi | 0 | 35-45 | szépen dolgozott, mindig minden rendeben volt |
+| Lázár Tamás | @Lazar-source | 0 | 35-45 | mindig minden kész volt a határidő előtt jóval, könnyű volt eggyütt működni |
 
 
 # Videók
