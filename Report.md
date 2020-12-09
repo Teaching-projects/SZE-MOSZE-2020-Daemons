@@ -99,7 +99,6 @@ fontos technológiáknak tartom őket.
 
 # Üzenet a jövőbe (optional)
 
-Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?:
 @Lazar-source Nekem személyesen egy összkép hiányzott arról hogy pontosan mikkel is fogunk majd dolgozni a tárgy során. Akár csak felsorolás szerűen: makefile,docker,doxconf,unittest jó lett volna egybe látni már a legelején.
 @kulcsarbence Szerintem mindent kimerítő volt a tárgy, de amit @Lazar-source írt, azzal egyetértek.\
 @mesmatyas Szerintem is jó és hasznos volt, személy szerint még örültem volna ha van még egy-kettő CI/CD-hoz kapcsolodó feladat.
