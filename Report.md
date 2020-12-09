@@ -77,13 +77,13 @@
 # Mindenféle számok
 
  - Összes cpp kódsor  : 793
- - Egyéb kódsor (make,doxyfile,shellscript, -) :
+ - Egyéb kódsor (make,doxyfile,shellscript, -) : 50(.yml), 10(.sh) 66(Makefile)
  - cppcheck
-   - warning :
-   - style :
-   - performance :
-   - unusedFunction :
-   - missingInclude :
+   - warning : 0
+   - style : 15
+   - performance : 4
+   - unusedFunction : 0
+   - missingInclude : 0
 
 # Implicit megtanult dolgok
 Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
@@ -101,4 +101,5 @@ fontos technológiáknak tartom őket.
 
 Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?:
 @Lazar-source Nekem személyesen egy összkép hiányzott arról hogy pontosan mikkel is fogunk majd dolgozni a tárgy során. Akár csak felsorolás szerűen: makefile,docker,doxconf,unittest jó lett volna egybe látni már a legelején.
-@kulcsarbence Szerintem mindent kimerítő volt a tárgy, de amit @Lazar-source írt, azzal egyetértek.
+@kulcsarbence Szerintem mindent kimerítő volt a tárgy, de amit @Lazar-source írt, azzal egyetértek.\
+@mesmatyas Szerintem is jó és hasznos volt, személy szerint még örültem volna ha van még egy-kettő CI/CD-hoz kapcsolodó feladat.
