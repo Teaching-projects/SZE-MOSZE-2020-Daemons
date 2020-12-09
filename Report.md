@@ -3,8 +3,8 @@
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
 | Kulcsár Bence | @kulcsarbence | 0 | 30-40 |  |
-| Mesics Mátyás | @mesmatyi | 0 | 30-40 | Sokszor Sta Hanovnak kellett megcsinálnia helyette a dolgokat. |
-| Lázár Tamás | @Lazar-source | 0 | 30-40 | Mindent megcsinált, és amikor Leyh Zee helyett be kellett ugrani, elvállalta a feladadokat, valamint a másik csapatnak a bírálatok zömét Ő csinálta |
+| Mesics Mátyás | @mesmatyi | 0 | 30-40 |  |
+| Lázár Tamás | @Lazar-source | 0 | 30-40 |  |
 
 
 # Videók
@@ -100,4 +100,5 @@ Ha szívesebben írnátok meg anoním módon, OHV-nál várom.
 
 # Üzenet a jövőbe (optional)
 
-Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
+Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?:
+@Lazar-source Nekem személyesen egy összkép hiányzott arról hogy pontosan mikkel is fogunk majd dolgozni a tárgy során. Akár csak felsorolás szerűen: makefile,docker,doxconf,unittest jó lett volna egybe látni már a legelején.
